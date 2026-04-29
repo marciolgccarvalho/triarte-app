@@ -1,0 +1,174 @@
+[
+  {
+    "id": "gengar",
+    "nome": "Gengar Pokémon",
+    "categoria": "Pokémon",
+    "imagem": "images/gengar.webp",
+    "descricao": "Receita completa do personagem Gengar em amigurumi.",
+    "premium": false,
+    "destaqueInicio": "2026-04-20",
+    "destaqueFim": "2026-05-26",
+    "ativo": true,
+    "ordem": 1,
+    "videos": [
+      { "titulo": "Parte 01", "youtubeId": "QjgVIFozpNI" },
+      { "titulo": "Parte 02", "youtubeId": "FkFGyaea8-M" },
+      { "titulo": "Parte 03", "youtubeId": "NXXpLikxWBE" },
+      { "titulo": "Parte 04", "youtubeId": "WsGYjtnInfk" },
+      { "titulo": "Parte 05", "youtubeId": "Jg7G25T8zX4" },
+      { "titulo": "Parte 06", "youtubeId": "rBghdto4SmY" },
+      { "titulo": "Parte 07", "youtubeId": "M3GdIM2Zeh8" },
+      { "titulo": "Parte 08", "youtubeId": "ihgiuvH7YI4" },
+      { "titulo": "Parte 09", "youtubeId": "DG4x3FQj3qE" },
+      { "titulo": "Parte 10", "youtubeId": "8q9DQTGIkjI" },
+      { "titulo": "Parte 11", "youtubeId": "uoOyWs6cDH4" },
+      { "titulo": "Parte 12", "youtubeId": "y_FOIiWvgnI" },
+      { "titulo": "Parte 13", "youtubeId": "ksFM3D8M1Ss" }
+    ]
+  },
+  {
+    "id": "pikachu",
+    "nome": "Pikachu",
+    "categoria": "Pokémon",
+    "imagem": "/images/pikachu.webp",
+    "descricao": "Receita completa do Pikachu em amigurumi.",
+    "premium": false,
+    "destaqueInicio": "2026-04-20",
+    "destaqueFim": "2026-05-26",
+    "ativo": true,
+    "ordem": 2,
+    "videos": [
+      { "titulo": "Parte 01", "youtubeId": "pikachu001" },
+      { "titulo": "Parte 02", "youtubeId": "pikachu002" }
+    ]
+  },
+  {
+    "id": "super-mario",
+    "nome": "Super Mario",
+    "categoria": "Games",
+    "imagem": "/images/mario.webp",
+    "descricao": "Receita do personagem Super Mario.",
+    "premium": true,
+    "destaqueInicio": "2026-06-01",
+    "destaqueFim": "2026-06-15",
+    "ativo": true,
+    "ordem": 3,
+    "videos": [
+      { "titulo": "Parte 01", "youtubeId": "mario001" },
+      { "titulo": "Parte 02", "youtubeId": "mario002" },
+      { "titulo": "Parte 03", "youtubeId": "mario003" }
+    ]
+  },
+  {
+    "id": "luigi",
+    "nome": "Luigi",
+    "categoria": "Games",
+    "imagem": "/images/luigi.webp",
+    "descricao": "Receita do Luigi em amigurumi.",
+    "premium": false,
+    "destaqueInicio": "",
+    "destaqueFim": "",
+    "ativo": true,
+    "ordem": 4,
+    "videos": [
+      { "titulo": "Parte 01", "youtubeId": "luigi001" },
+      { "titulo": "Parte 02", "youtubeId": "luigi002" }
+    ]
+  },
+  {
+    "id": "stitch",
+    "nome": "Stitch",
+    "categoria": "Filmes",
+    "imagem": "/images/stitch.webp",
+    "descricao": "Receita do Stitch em amigurumi.",
+    "premium": true,
+    "destaqueInicio": "",
+    "destaqueFim": "",
+    "ativo": true,
+    "ordem": 5,
+    "videos": [
+      { "titulo": "Parte 01", "youtubeId": "stitch001" },
+      { "titulo": "Parte 02", "youtubeId": "stitch002" }
+    ]
+  },
+  {
+    "id": "elsa",
+    "nome": "Elsa Frozen",
+    "categoria": "Princesas",
+    "imagem": "/images/elsa.webp",
+    "descricao": "Receita da Elsa em amigurumi.",
+    "premium": false,
+    "destaqueInicio": "",
+    "destaqueFim": "",
+    "ativo": true,
+    "ordem": 6,
+    "videos": [
+      { "titulo": "Parte 01", "youtubeId": "elsa001" },
+      { "titulo": "Parte 02", "youtubeId": "elsa002" }
+    ]
+  },
+  {
+    "id": "minnie",
+    "nome": "Minnie",
+    "categoria": "Desenhos",
+    "imagem": "/images/minnie.webp",
+    "descricao": "Receita da Minnie em amigurumi.",
+    "premium": false,
+    "destaqueInicio": "",
+    "destaqueFim": "",
+    "ativo": true,
+    "ordem": 7,
+    "videos": [
+      { "titulo": "Parte 01", "youtubeId": "minnie001" },
+      { "titulo": "Parte 02", "youtubeId": "minnie002" }
+    ]
+  },
+  {
+    "id": "mickey",
+    "nome": "Mickey",
+    "categoria": "Desenhos",
+    "imagem": "/images/mickey.webp",
+    "descricao": "Receita do Mickey em amigurumi.",
+    "premium": false,
+    "destaqueInicio": "",
+    "destaqueFim": "",
+    "ativo": true,
+    "ordem": 8,
+    "videos": [
+      { "titulo": "Parte 01", "youtubeId": "mickey001" },
+      { "titulo": "Parte 02", "youtubeId": "mickey002" }
+    ]
+  },
+  {
+    "id": "harry-potter",
+    "nome": "Harry Potter",
+    "categoria": "Filmes",
+    "imagem": "/images/harry.webp",
+    "descricao": "Receita do Harry Potter em amigurumi.",
+    "premium": true,
+    "destaqueInicio": "",
+    "destaqueFim": "",
+    "ativo": true,
+    "ordem": 9,
+    "videos": [
+      { "titulo": "Parte 01", "youtubeId": "harry001" },
+      { "titulo": "Parte 02", "youtubeId": "harry002" }
+    ]
+  },
+  {
+    "id": "homem-aranha",
+    "nome": "Homem Aranha",
+    "categoria": "Heróis",
+    "imagem": "/images/aranha.webp",
+    "descricao": "Receita do Homem Aranha em amigurumi.",
+    "premium": false,
+    "destaqueInicio": "",
+    "destaqueFim": "",
+    "ativo": true,
+    "ordem": 10,
+    "videos": [
+      { "titulo": "Parte 01", "youtubeId": "aranha001" },
+      { "titulo": "Parte 02", "youtubeId": "aranha002" }
+    ]
+  }
+]
