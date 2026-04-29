@@ -10,6 +10,23 @@
     "destaqueFim": "2026-05-26",
     "ativo": true,
     "ordem": 1,
+    "materiais": {
+      "linhas": [
+        "Fio Amigurumi 6201 Tecno",
+        "Fio Amigurumi Preto"
+      ],
+      "itens": [
+        "Agulha de Crochê",
+        "Agulha de Tapeceiro",
+        "Alfinetes",
+        "Tesoura",
+        "Cola de Silicone",
+        "Fibra Siliconada",
+        "Bastão de cola quente",
+        "Olhos com Trava de Segurança",
+        "Tinta Branca de Tecido"
+      ]
+    },
     "videos": [
       { "titulo": "Parte 01", "youtubeId": "QjgVIFozpNI" },
       { "titulo": "Parte 02", "youtubeId": "FkFGyaea8-M" },
@@ -27,19 +44,56 @@
     ]
   },
   {
-    "id": "pikachu",
-    "nome": "Pikachu",
-    "categoria": "Pokémon",
-    "imagem": "/images/pikachu.webp",
-    "descricao": "Receita completa do Pikachu em amigurumi.",
+    "id": "gatodebotas",
+    "nome": "Gato de Botas",
+    "categoria": "Animação",
+    "imagem": "/images/gatodebotas.webp",
+    "descricao": "Receita completa do Gato de Botas em amigurumi.",
     "premium": false,
     "destaqueInicio": "2026-04-20",
-    "destaqueFim": "2026-05-26",
+    "destaqueFim": "2026-05-29",
     "ativo": true,
     "ordem": 2,
+    "materiais": {
+      "linhas": [
+        "Fio Amigurumi Creme 1112",
+        "Fio Amigurumi Laranja 4456",
+        "Fio Amigurumi Preto 8990",
+        "Fio Amigurumi Rubi 3611",
+        "Fio Amigurumi Castanha 7625",
+        "Fio Amigurumi Aço 8797"
+      ],
+      "itens": [
+        "Agulha de Crochê",
+        "Agulha de Tapeceiro",
+        "Alfinetes, Tesoura",
+        "Cola de Silicone",
+        "Fibra Siliconada",
+        "Bastão de cola quente",
+        "Olhos com Trava de Segurança",
+        "1 pena amarela",
+        "Material plástico (tipo tampa de pote)"
+      ]
+    },
     "videos": [
-      { "titulo": "Parte 01", "youtubeId": "pikachu001" },
-      { "titulo": "Parte 02", "youtubeId": "pikachu002" }
+      { "titulo": "Parte 01", "youtubeId": "klbiya8fHaon5t_T" },
+      { "titulo": "Parte 02", "youtubeId": "hRlPIjpz7-9M9P-j" },
+      { "titulo": "Parte 03", "youtubeId": "9A4_VbR-OamnrUiq" },
+      { "titulo": "Parte 04", "youtubeId": "5btnk6xQ85V6_9w8" },
+      { "titulo": "Parte 05", "youtubeId": "bXtEj60ONLhFz9FL" },
+      { "titulo": "Parte 06", "youtubeId": "sfHKcZFDBWjyf78G" },
+      { "titulo": "Parte 07", "youtubeId": "6RZqfhaE3dVxRifK" },
+      { "titulo": "Parte 08", "youtubeId": "b6ZOIB6KpN6xZacq" },
+      { "titulo": "Parte 09", "youtubeId": "ac6UW_f1s0_6wyPn" },
+      { "titulo": "Parte 10", "youtubeId": "lCn1VBhhSn3Dh-iT" },
+      { "titulo": "Parte 11", "youtubeId": "vh-LMClMVW1fvmnJ" },
+      { "titulo": "Parte 12", "youtubeId": "LWgDLUHIJI0ODdC7" },
+      { "titulo": "Parte 13", "youtubeId": "bGSUJogy95zQeGGL" },
+      { "titulo": "Parte 14", "youtubeId": "Qc6h9aGO3Tie65y0" },
+      { "titulo": "Parte 15", "youtubeId": "M3ZRVlzTg0GK9DHz" },
+      { "titulo": "Parte 16", "youtubeId": "cJXAyIeENDUkH3cZ" },
+      { "titulo": "Parte 17", "youtubeId": "CIvIgS2i_oRLpHr6" },
+      { "titulo": "Parte 18", "youtubeId": "9hvPuPVvpx4gTRFn" }
     ]
   },
   {
@@ -53,6 +107,23 @@
     "destaqueFim": "2026-06-15",
     "ativo": true,
     "ordem": 3,
+    "materiais": {
+      "linhas": [
+        "Fio Amigurumi Vermelho",
+        "Fio Amigurumi Azul",
+        "Fio Amigurumi Bege",
+        "Fio Amigurumi Marrom",
+        "Fio Amigurumi Branco"
+      ],
+      "itens": [
+        "Agulha de Crochê",
+        "Agulha de Tapeceiro",
+        "Fibra Siliconada",
+        "Olhos com Trava de Segurança",
+        "Tesoura",
+        "Cola de Silicone"
+      ]
+    },
     "videos": [
       { "titulo": "Parte 01", "youtubeId": "mario001" },
       { "titulo": "Parte 02", "youtubeId": "mario002" },
@@ -70,6 +141,23 @@
     "destaqueFim": "",
     "ativo": true,
     "ordem": 4,
+    "materiais": {
+      "linhas": [
+        "Fio Amigurumi Verde",
+        "Fio Amigurumi Azul",
+        "Fio Amigurumi Bege",
+        "Fio Amigurumi Marrom",
+        "Fio Amigurumi Branco"
+      ],
+      "itens": [
+        "Agulha de Crochê",
+        "Agulha de Tapeceiro",
+        "Fibra Siliconada",
+        "Olhos com Trava de Segurança",
+        "Tesoura",
+        "Alfinetes"
+      ]
+    },
     "videos": [
       { "titulo": "Parte 01", "youtubeId": "luigi001" },
       { "titulo": "Parte 02", "youtubeId": "luigi002" }
@@ -86,6 +174,22 @@
     "destaqueFim": "",
     "ativo": true,
     "ordem": 5,
+    "materiais": {
+      "linhas": [
+        "Fio Amigurumi Azul",
+        "Fio Amigurumi Azul Claro",
+        "Fio Amigurumi Rosa",
+        "Fio Amigurumi Preto"
+      ],
+      "itens": [
+        "Agulha de Crochê",
+        "Agulha de Tapeceiro",
+        "Fibra Siliconada",
+        "Olhos com Trava de Segurança",
+        "Tesoura",
+        "Cola de Silicone"
+      ]
+    },
     "videos": [
       { "titulo": "Parte 01", "youtubeId": "stitch001" },
       { "titulo": "Parte 02", "youtubeId": "stitch002" }
@@ -102,6 +206,22 @@
     "destaqueFim": "",
     "ativo": true,
     "ordem": 6,
+    "materiais": {
+      "linhas": [
+        "Fio Amigurumi Azul Claro",
+        "Fio Amigurumi Branco",
+        "Fio Amigurumi Pele",
+        "Fio Amigurumi Amarelo Claro"
+      ],
+      "itens": [
+        "Agulha de Crochê",
+        "Agulha de Tapeceiro",
+        "Fibra Siliconada",
+        "Olhos com Trava de Segurança",
+        "Tesoura",
+        "Alfinetes"
+      ]
+    },
     "videos": [
       { "titulo": "Parte 01", "youtubeId": "elsa001" },
       { "titulo": "Parte 02", "youtubeId": "elsa002" }
@@ -118,6 +238,22 @@
     "destaqueFim": "",
     "ativo": true,
     "ordem": 7,
+    "materiais": {
+      "linhas": [
+        "Fio Amigurumi Preto",
+        "Fio Amigurumi Vermelho",
+        "Fio Amigurumi Branco",
+        "Fio Amigurumi Pele"
+      ],
+      "itens": [
+        "Agulha de Crochê",
+        "Agulha de Tapeceiro",
+        "Fibra Siliconada",
+        "Olhos com Trava de Segurança",
+        "Tesoura",
+        "Cola de Silicone"
+      ]
+    },
     "videos": [
       { "titulo": "Parte 01", "youtubeId": "minnie001" },
       { "titulo": "Parte 02", "youtubeId": "minnie002" }
@@ -134,6 +270,23 @@
     "destaqueFim": "",
     "ativo": true,
     "ordem": 8,
+    "materiais": {
+      "linhas": [
+        "Fio Amigurumi Preto",
+        "Fio Amigurumi Vermelho",
+        "Fio Amigurumi Branco",
+        "Fio Amigurumi Pele",
+        "Fio Amigurumi Amarelo"
+      ],
+      "itens": [
+        "Agulha de Crochê",
+        "Agulha de Tapeceiro",
+        "Fibra Siliconada",
+        "Olhos com Trava de Segurança",
+        "Tesoura",
+        "Alfinetes"
+      ]
+    },
     "videos": [
       { "titulo": "Parte 01", "youtubeId": "mickey001" },
       { "titulo": "Parte 02", "youtubeId": "mickey002" }
@@ -150,6 +303,23 @@
     "destaqueFim": "",
     "ativo": true,
     "ordem": 9,
+    "materiais": {
+      "linhas": [
+        "Fio Amigurumi Preto",
+        "Fio Amigurumi Pele",
+        "Fio Amigurumi Vermelho",
+        "Fio Amigurumi Amarelo",
+        "Fio Amigurumi Marrom"
+      ],
+      "itens": [
+        "Agulha de Crochê",
+        "Agulha de Tapeceiro",
+        "Fibra Siliconada",
+        "Olhos com Trava de Segurança",
+        "Tesoura",
+        "Óculos em arame ou feltro"
+      ]
+    },
     "videos": [
       { "titulo": "Parte 01", "youtubeId": "harry001" },
       { "titulo": "Parte 02", "youtubeId": "harry002" }
@@ -166,6 +336,22 @@
     "destaqueFim": "",
     "ativo": true,
     "ordem": 10,
+    "materiais": {
+      "linhas": [
+        "Fio Amigurumi Vermelho",
+        "Fio Amigurumi Azul",
+        "Fio Amigurumi Preto",
+        "Fio Amigurumi Branco"
+      ],
+      "itens": [
+        "Agulha de Crochê",
+        "Agulha de Tapeceiro",
+        "Fibra Siliconada",
+        "Tesoura",
+        "Cola de Silicone",
+        "Tinta ou feltro branco para os olhos"
+      ]
+    },
     "videos": [
       { "titulo": "Parte 01", "youtubeId": "aranha001" },
       { "titulo": "Parte 02", "youtubeId": "aranha002" }

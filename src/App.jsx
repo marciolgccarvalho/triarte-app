@@ -107,6 +107,10 @@ function App() {
     setMenuAberto(false);
   };
 
+  const abrirMateriais = () => {
+  setPagina("materiais");
+  };
+
   const abrirVideo = (video, index) => {
     setVideoSelecionado({ ...video, index });
     setPagina("video");
@@ -865,6 +869,25 @@ const menuLink = (icone, texto, link) => (
                   {receitaSelecionada.descricao}
                 </p>
 
+                <button
+                  onClick={abrirMateriais}
+                  style={{
+                    width: "100%",
+                    marginTop: "14px",
+                    padding: "14px",
+                    borderRadius: "14px",
+                    border: "none",
+                    background: "#FFD91A",
+                    color: "#222",
+                    fontSize: "17px",
+                    fontWeight: "800"
+                  }}
+                >
+                  Materiais desta Receita
+                </button>
+
+
+
                 <div
                   style={{
                     background: "#f7f7f7",
@@ -966,6 +989,129 @@ const menuLink = (icone, texto, link) => (
             </div>
           </div>
         )}
+
+        {pagina === "materiais" && receitaSelecionada && (
+          <div>
+            <button
+              onClick={() => irPara("receita")}
+              style={{
+                marginBottom: "12px",
+                background: "transparent",
+                border: "none",
+                fontSize: "16px",
+                fontWeight: "700"
+              }}
+            >
+              ← Voltar para receita
+            </button>
+
+            <div
+              style={{
+                background: "#ffffff",
+                borderRadius: "16px",
+                padding: "18px",
+                boxShadow: "0 3px 10px rgba(0,0,0,0.12)"
+              }}
+            >
+              <img
+                src={receitaSelecionada.imagem}
+                style={{
+                  width: "100%",
+                  height: "180px",
+                  objectFit: "cover",
+                  borderRadius: "14px",
+                  marginBottom: "15px"
+                }}
+              />
+
+              <h2 style={{ marginTop: 0 }}>
+                {receitaSelecionada.nome}
+              </h2>
+
+
+
+              <div style={{ display: "grid", gap: "8px" }}>
+                {receitaSelecionada.materiais?.linhas?.map((item, i) => (
+                  <div
+                    key={i}
+                    style={{
+                      background: "#fff8cc",
+                      padding: "12px",
+                      borderRadius: "12px",
+                      fontWeight: "700"
+                    }}
+                  >
+                    🧶 {item}
+                  </div>
+                ))}
+              </div>
+
+              <h3 style={{ marginTop: "20px", marginBottom: "10px" }}>
+                Outros Materiais
+              </h3>
+
+              <div style={{ display: "grid", gap: "8px" }}>
+                {receitaSelecionada.materiais?.itens?.map((item, i) => (
+                  <div
+                    key={i}
+                    style={{
+                      background: "#f5f5f5",
+                      padding: "12px",
+                      borderRadius: "12px",
+                      fontWeight: "600"
+                    }}
+                  >
+                    ✔ {item}
+                  </div>
+                ))}
+              </div>
+
+              <div
+                style={{
+                  background: "#ffffff",
+                  borderRadius: "14px",
+                  padding: "16px",
+                  marginTop: "20px",
+                  textAlign: "center",
+                  border: "1px solid #eee"
+                }}
+              >
+                <p
+                  style={{
+                    margin: "0 0 12px",
+                    fontSize: "15px",
+                    fontWeight: "700",
+                    color: "#222"
+                  }}
+                >
+                  🛍 Compre seus materiais recomendados
+                </p>
+
+                <button
+                  onClick={() =>
+                    window.open(
+                      "https://mercadolivre.com/sec/1AW2X78",
+                      "_blank"
+                    )
+                  }
+                  style={{
+                    width: "100%",
+                    padding: "14px",
+                    borderRadius: "14px",
+                    border: "none",
+                    background: "#FFE600",
+                    color: "#222",
+                    fontSize: "17px",
+                    fontWeight: "800"
+                  }}
+                >
+                  Ver produtos no Mercado Livre
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
 
         {pagina === "video" && receitaSelecionada && videoSelecionado && (
           <div>
@@ -1476,6 +1622,7 @@ const menuLink = (icone, texto, link) => (
   "busca",
   "favoritos",
   "receita",
+  "materiais",
   "video",
   "calculo",
   "sobre",
