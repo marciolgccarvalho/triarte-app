@@ -194,25 +194,65 @@ function App() {
   };
 
   const menuItem = (icone, texto, destino) => (
-    <button
-      onClick={() => irPara(destino)}
+  <button
+    onClick={() => irPara(destino)}
+    style={{
+      width: "100%",
+      display: "flex",
+      alignItems: "center",
+      gap: "12px",
+      padding: "12px 0",
+      background: "transparent",
+      border: "none",
+      fontSize: "17px",
+      fontWeight: "600",
+      color: "#222",
+      cursor: "pointer"
+    }}
+  >
+    <img
+      src={icone}
       style={{
-        width: "100%",
-        display: "flex",
-        alignItems: "center",
-        gap: "12px",
-        padding: "12px 0",
-        background: "transparent",
-        border: "none",
-        fontSize: "17px",
-        fontWeight: "600",
-        color: "#222"
+        width: "34px",
+        height: "34px"
       }}
-    >
-      <img src={icone} style={{ width: "34px", height: "34px" }} />
-      {texto}
-    </button>
-  );
+    />
+
+    {texto}
+  </button>
+);
+
+const menuLink = (icone, texto, link) => (
+  <button
+    onClick={() => {
+      window.open(link, "_blank");
+      setMenuAberto(false);
+    }}
+    style={{
+      width: "100%",
+      display: "flex",
+      alignItems: "center",
+      gap: "12px",
+      padding: "12px 0",
+      background: "transparent",
+      border: "none",
+      fontSize: "17px",
+      fontWeight: "600",
+      color: "#222",
+      cursor: "pointer"
+    }}
+  >
+    <img
+      src={icone}
+      style={{
+        width: "34px",
+        height: "34px"
+      }}
+    />
+
+    {texto}
+  </button>
+);
 
   const BotaoLink = ({ icone, texto, link }) => (
     <button style={botaoLink} onClick={() => window.open(link, "_blank")}>
@@ -406,6 +446,16 @@ function App() {
             {menuItem("/images/icons/favoritos.png", "Favoritos", "favoritos")}
             {menuItem("/images/icons/busca.png", "Buscar", "busca")}
             {menuItem("/images/icons/calculo.png", "Simulador de Preço", "calculo")}
+            {menuLink(
+              "/images/icons/triarteicon.png",
+              "Receitas PDF",
+              "https://triarte.com.br"
+            )}
+            {menuLink(
+              "/images/icons/mercadolivre.png",
+              "Materiais ML",
+              "https://mercadolivre.com/sec/1AW2X78"
+            )}
             {menuItem("/images/icons/sobre.png", "Sobre", "sobre")}
             {menuItem("/images/icons/contato.png", "Contato", "contato")}
           </div>
@@ -1000,6 +1050,144 @@ function App() {
                   ? "✅ Parte concluída"
                   : "Marcar como concluída"}
               </button>
+              
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr",
+                  gap: "10px",
+                  marginTop: "12px"
+                }}
+              >
+                {videoSelecionado.index > 0 && (
+                  <button
+                    onClick={() => {
+                      const novoIndex = videoSelecionado.index - 1;
+                      abrirVideo(receitaSelecionada.videos[novoIndex], novoIndex);
+                    }}
+                    style={{
+                      padding: "14px",
+                      borderRadius: "14px",
+                      border: "none",
+                      background: "#333",
+                      color: "#fff",
+                      fontSize: "16px",
+                      fontWeight: "800"
+                    }}
+                  >
+                    ← Vídeo anterior
+                  </button>
+                )}
+
+                {videoSelecionado.index < receitaSelecionada.videos.length - 1 && (
+                  <button
+                    onClick={() => {
+                      const novoIndex = videoSelecionado.index + 1;
+                      abrirVideo(receitaSelecionada.videos[novoIndex], novoIndex);
+                    }}
+                    style={{
+                      padding: "14px",
+                      borderRadius: "14px",
+                      border: "none",
+                      background: "#ffd400",
+                      color: "#222",
+                      fontSize: "16px",
+                      fontWeight: "800"
+                    }}
+                  >
+                    Próximo vídeo →
+                  </button>
+                )}
+              </div>
+
+              <div
+                style={{
+                  background: "#fff4b8",
+                  borderRadius: "14px",
+                  padding: "16px",
+                  marginTop: "14px",
+                  textAlign: "center"
+                }}
+              >
+                <p
+                  style={{
+                    margin: "0 0 12px",
+                    fontSize: "15px",
+                    fontWeight: "700",
+                    color: "#222",
+                    lineHeight: "1.5"
+                  }}
+                >
+                  ⭐ Seja membro e tenha acesso antecipado a todos os vídeos do canal.
+                </p>
+
+                <button
+                  onClick={() =>
+                    window.open(
+                      "https://www.youtube.com/@RealTriarte/join",
+                      "_blank"
+                    )
+                  }
+                  style={{
+                    width: "100%",
+                    padding: "14px",
+                    borderRadius: "14px",
+                    border: "none",
+                    background: "#ff0000",
+                    color: "#fff",
+                    fontSize: "17px",
+                    fontWeight: "800"
+                  }}
+                >
+                  Seja Membro do Canal
+                </button>
+              </div>
+
+
+              <div
+                style={{
+                  background: "#ffffff",
+                  borderRadius: "14px",
+                  padding: "16px",
+                  marginTop: "14px",
+                  textAlign: "center",
+                  border: "1px solid #eee"
+                }}
+              >
+                <p
+                  style={{
+                    margin: "0 0 12px",
+                    fontSize: "15px",
+                    fontWeight: "700",
+                    color: "#222"
+                  }}
+                >
+                  🛍 Materiais recomendados para suas receitas
+                </p>
+
+                <button
+                  onClick={() =>
+                    window.open(
+                      "https://mercadolivre.com/sec/1AW2X78",
+                      "_blank"
+                    )
+                  }
+                  style={{
+                    width: "100%",
+                    padding: "14px",
+                    borderRadius: "14px",
+                    border: "none",
+                    background: "#FFE600",
+                    color: "#222",
+                    fontSize: "17px",
+                    fontWeight: "800"
+                  }}
+                >
+                  Ver produtos no Mercado Livre
+                </button>
+              </div>
+
+
             </div>
           </div>
         )}
