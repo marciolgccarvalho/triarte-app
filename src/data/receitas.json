@@ -97,45 +97,59 @@
     ]
   },
   {
-    "id": "super-mario",
-    "nome": "Super Mario",
-    "categoria": "Games",
-    "imagem": "/images/mario.webp",
-    "descricao": "Receita do personagem Super Mario.",
+    "id": "egg",
+    "nome": "EGG O Cavaleiro dos 7 Reinos",
+    "categoria": "Séries",
+    "imagem": "/images/egg.webp",
+    "descricao": "Receita do personagem EGG de Cavaleiro do 7 Reinos.",
     "premium": true,
-    "destaqueInicio": "2026-06-01",
-    "destaqueFim": "2026-06-15",
+    "destaqueInicio": "",
+    "destaqueFim": "",
     "ativo": true,
     "ordem": 3,
     "materiais": {
       "linhas": [
-        "Fio Amigurumi Vermelho",
-        "Fio Amigurumi Azul",
-        "Fio Amigurumi Bege",
-        "Fio Amigurumi Marrom",
-        "Fio Amigurumi Branco"
+        "Fio Amigurumi Chantily 7563",
+        "Fio Amigurumi Craft 7148",
+        "Fio Amigurumi Preto 8990",
+        "Fio Amigurumi Brigadeiro 7569",
+        "Fio Amigurumi Matrix 8069"
       ],
       "itens": [
         "Agulha de Crochê",
         "Agulha de Tapeceiro",
+        "Alfinetes",
         "Fibra Siliconada",
         "Olhos com Trava de Segurança",
         "Tesoura",
+        "Bastão de cola quente",
         "Cola de Silicone"
       ]
     },
     "videos": [
-      { "titulo": "Parte 01", "youtubeId": "mario001" },
-      { "titulo": "Parte 02", "youtubeId": "mario002" },
-      { "titulo": "Parte 03", "youtubeId": "mario003" }
+      { "titulo": "Parte 01", "youtubeId": "Y9QeH7ooZPA" },
+      { "titulo": "Parte 02", "youtubeId": "dbIQy7HpkMc" },
+      { "titulo": "Parte 03", "youtubeId": "I1y-fGW2WFo" },
+      { "titulo": "Parte 04", "youtubeId": "r7Pxzs0xoLk" },
+      { "titulo": "Parte 05", "youtubeId": "PrvYk7b8zus" },
+      { "titulo": "Parte 06", "youtubeId": "OAJ-8JKRqVE" },
+      { "titulo": "Parte 07", "youtubeId": "5M7rBfnIpLQ" },
+      { "titulo": "Parte 08", "youtubeId": "OqYmlvRO8nI" },
+      { "titulo": "Parte 09", "youtubeId": "pn3DueP1ta0" },
+      { "titulo": "Parte 10", "youtubeId": "Ks2FT_Hhs6c" },
+      { "titulo": "Parte 11", "youtubeId": "st-qAuE9p3s" },
+      { "titulo": "Parte 12", "youtubeId": "btlJI3RF7dI" },
+      { "titulo": "Parte 13", "youtubeId": "xGswcB6QLsA" },
+      { "titulo": "Parte 14", "youtubeId": "ibDppnHb_wk" },
+      { "titulo": "Parte 15", "youtubeId": "t_CD-wgZDhM" }
     ]
   },
   {
-    "id": "luigi",
-    "nome": "Luigi",
-    "categoria": "Games",
-    "imagem": "/images/luigi.webp",
-    "descricao": "Receita do Luigi em amigurumi.",
+    "id": "rumi",
+    "nome": "Rumi Guerreiras do Kpop",
+    "categoria": "Anime",
+    "imagem": "/images/rumi.webp",
+    "descricao": "Receita da Rumi Guerreiras do Kpop.",
     "premium": false,
     "destaqueInicio": "",
     "destaqueFim": "",
@@ -143,11 +157,14 @@
     "ordem": 4,
     "materiais": {
       "linhas": [
-        "Fio Amigurumi Verde",
-        "Fio Amigurumi Azul",
-        "Fio Amigurumi Bege",
-        "Fio Amigurumi Marrom",
-        "Fio Amigurumi Branco"
+        "Fio Amigurumi Chantily 7563",
+        "Fio Amigurumi Preto 8990",
+        "Fio Amigurumi Marinheiro 2745",
+        "Fio Amigurumi Branco 8001",
+        "Fio Amigurumi Canário 1289",
+        "Fio Amigurumi Glacial 8013",
+        "Fio Amigurumi Carmim 3528",
+        "Fio Amigurumi Azaleia 6399"
       ],
       "itens": [
         "Agulha de Crochê",
@@ -155,20 +172,35 @@
         "Fibra Siliconada",
         "Olhos com Trava de Segurança",
         "Tesoura",
+        "Bastão de Cola Quente",
+        "Retalho de Feltro Vermelho",
         "Alfinetes"
       ]
     },
     "videos": [
-      { "titulo": "Parte 01", "youtubeId": "luigi001" },
-      { "titulo": "Parte 02", "youtubeId": "luigi002" }
+      { "titulo": "Parte 01", "youtubeId": "9EE_Dm4miyc" },
+      { "titulo": "Parte 02", "youtubeId": "gafP2j5b-rM" },
+      { "titulo": "Parte 03", "youtubeId": "H6cLb8pH8xY" },
+      { "titulo": "Parte 04", "youtubeId": "wlBL-K7rrVc" },
+      { "titulo": "Parte 05", "youtubeId": "nsN21Xf6npE" },
+      { "titulo": "Parte 06", "youtubeId": "UfrSd7QhmuI" },
+      { "titulo": "Parte 07", "youtubeId": "QcFcLygZdjE" },
+      { "titulo": "Parte 08", "youtubeId": "wCF8de9JVzY" },
+      { "titulo": "Parte 09", "youtubeId": "emI0UTx0nJ4" },
+      { "titulo": "Parte 10", "youtubeId": "71nKiNrGRMI" },
+      { "titulo": "Parte 11", "youtubeId": "9MpY2ID9-cc" },
+      { "titulo": "Parte 12", "youtubeId": "7A6Wz403_zg" },
+      { "titulo": "Parte 13", "youtubeId": "b--tFAa-Kuw" },
+      { "titulo": "Parte 14", "youtubeId": "xeS3fChKzDE" },
+      { "titulo": "Parte 15", "youtubeId": "LUfPWsAhNbA" }
     ]
   },
   {
-    "id": "stitch",
-    "nome": "Stitch",
-    "categoria": "Filmes",
-    "imagem": "/images/stitch.webp",
-    "descricao": "Receita do Stitch em amigurumi.",
+    "id": "demogorgon",
+    "nome": "Demogorgon Stranger Things",
+    "categoria": "Séries",
+    "imagem": "/images/demogorgon.webp",
+    "descricao": "Receita do Demogorgon de Stranger Things.",
     "premium": true,
     "destaqueInicio": "",
     "destaqueFim": "",
@@ -176,31 +208,43 @@
     "ordem": 5,
     "materiais": {
       "linhas": [
-        "Fio Amigurumi Azul",
-        "Fio Amigurumi Azul Claro",
-        "Fio Amigurumi Rosa",
-        "Fio Amigurumi Preto"
+        "Fio Amigurumi Carmim 3528",
+        "Fio Amigurumi Pedreira 8008",
+        "Fio Amigurumi Off-White 8175"
       ],
       "itens": [
         "Agulha de Crochê",
         "Agulha de Tapeceiro",
+        "Alfinete",
         "Fibra Siliconada",
         "Olhos com Trava de Segurança",
+        "Bastão de Cola Quente",
+        "Material Plástico (Palmilha)",
         "Tesoura",
         "Cola de Silicone"
       ]
     },
     "videos": [
-      { "titulo": "Parte 01", "youtubeId": "stitch001" },
-      { "titulo": "Parte 02", "youtubeId": "stitch002" }
+      { "titulo": "Parte 01", "youtubeId": "m2UHDy3ha_4" },
+      { "titulo": "Parte 02", "youtubeId": "fuivMmMrvLE" },
+      { "titulo": "Parte 03", "youtubeId": "ytpqnhC10No" },
+      { "titulo": "Parte 04", "youtubeId": "2JHGF3MLfic" },
+      { "titulo": "Parte 05", "youtubeId": "PKlVx14X8XY" },
+      { "titulo": "Parte 06", "youtubeId": "MIYO8UOQfmY" },
+      { "titulo": "Parte 07", "youtubeId": "MA07Q4c3RXY" },
+      { "titulo": "Parte 08", "youtubeId": "4g6FCIUqNwo" },
+      { "titulo": "Parte 09", "youtubeId": "fbW7C71ZiXk" },
+      { "titulo": "Parte 10", "youtubeId": "zZamyhrTNTs" },
+      { "titulo": "Parte 11", "youtubeId": "9RmDIkst4Uk" },
+      { "titulo": "Parte 12", "youtubeId": "AMFeLR2r9fc" }
     ]
   },
   {
-    "id": "elsa",
-    "nome": "Elsa Frozen",
-    "categoria": "Princesas",
-    "imagem": "/images/elsa.webp",
-    "descricao": "Receita da Elsa em amigurumi.",
+    "id": "duncan",
+    "nome": "Duncan O Cavaleiro dos 7 Reinos",
+    "categoria": "Séries",
+    "imagem": "/images/duncan.webp",
+    "descricao": "Receita da Duncan de O Cavaleiro dos 7 Reinos.",
     "premium": false,
     "destaqueInicio": "",
     "destaqueFim": "",
@@ -208,10 +252,17 @@
     "ordem": 6,
     "materiais": {
       "linhas": [
-        "Fio Amigurumi Azul Claro",
-        "Fio Amigurumi Branco",
-        "Fio Amigurumi Pele",
-        "Fio Amigurumi Amarelo Claro"
+        "Fio Amigurumi Chantily 7563",
+        "Fio Amigurumi Petróleo 5073",
+        "Fio Amigurumi Preto 8990",
+        "Fio Amigurumi Brigadeiro 7569",
+        "Fio Amigurumi Verde Militar 5368",
+        "Fio Amigurumi Caramelito 7076",
+        "Fio Amigurumi Pedreira 8008",
+        "Fio Amigurumi Verde Bandeira 5767",
+        "Fio Amigurumi Creme 1112",
+        "Fios para bordado Creme 1112",
+        "Fios para bordado Laranja 4456"
       ],
       "itens": [
         "Agulha de Crochê",
@@ -219,20 +270,39 @@
         "Fibra Siliconada",
         "Olhos com Trava de Segurança",
         "Tesoura",
+        "Cola de Silicone",
+        "Bastão de Cola Quente",
+        "Mini Botões",
         "Alfinetes"
       ]
     },
     "videos": [
-      { "titulo": "Parte 01", "youtubeId": "elsa001" },
-      { "titulo": "Parte 02", "youtubeId": "elsa002" }
+      { "titulo": "Parte 01", "youtubeId": "mHTWhVlXhMA" },
+      { "titulo": "Parte 02", "youtubeId": "J9K5xYT9kWA" },
+      { "titulo": "Parte 03", "youtubeId": "qy7BG8ch32I" },
+      { "titulo": "Parte 04", "youtubeId": "gKxOnFf4Yq4" },
+      { "titulo": "Parte 05", "youtubeId": "5BvSMm7ISW4" },
+      { "titulo": "Parte 06", "youtubeId": "oJA5R4qHAoI" },
+      { "titulo": "Parte 07", "youtubeId": "3MYXC49RoUY" },
+      { "titulo": "Parte 08", "youtubeId": "S2OvgpxzBhs" },
+      { "titulo": "Parte 09", "youtubeId": "4PX0EM7gme4" },
+      { "titulo": "Parte 10", "youtubeId": "CDZpECNjq8Y" },
+      { "titulo": "Parte 11", "youtubeId": "rqbXcAvXtLc" },
+      { "titulo": "Parte 12", "youtubeId": "1CyVUC1lyns" },
+      { "titulo": "Parte 13", "youtubeId": "hedtvCW85KE" },
+      { "titulo": "Parte 14", "youtubeId": "u45W-uVTDN4" },
+      { "titulo": "Parte 15", "youtubeId": "52Cp3k2_obE" },
+      { "titulo": "Parte 16", "youtubeId": "5MBtmOFUgrE" },
+      { "titulo": "Parte 17", "youtubeId": "0rxNJdEr9M0" },
+      { "titulo": "Parte 18", "youtubeId": "l882C8IfbVI" }
     ]
   },
   {
-    "id": "minnie",
-    "nome": "Minnie",
-    "categoria": "Desenhos",
-    "imagem": "/images/minnie.webp",
-    "descricao": "Receita da Minnie em amigurumi.",
+    "id": "judy",
+    "nome": "Coelha Judy de Zootopia 2",
+    "categoria": "Animação",
+    "imagem": "/images/judy.webp",
+    "descricao": "Receita da Judy de Zootopia.",
     "premium": false,
     "destaqueInicio": "",
     "destaqueFim": "",
@@ -240,31 +310,54 @@
     "ordem": 7,
     "materiais": {
       "linhas": [
-        "Fio Amigurumi Preto",
-        "Fio Amigurumi Vermelho",
-        "Fio Amigurumi Branco",
-        "Fio Amigurumi Pele"
+        "Fio Amigurumi Off White 8176",
+        "Fio Amigurumi Cinza Pedreira 8008",
+        "Fio Amigurumi Preto 8990",
+        "Fio Amigurumi Azul Náutico 2931",
+        "Fio Amigurumi Azul Hortênsia 2137",
+        "Fio Amigurumi Branco 8001",
+        "Fio Amigurumi Rosa Quatzo 3077",
+        "Fio Amigurumi Amarelo Canário 1289 (distintivo)"
       ],
       "itens": [
         "Agulha de Crochê",
         "Agulha de Tapeceiro",
+        "Alfinete",
         "Fibra Siliconada",
         "Olhos com Trava de Segurança",
         "Tesoura",
+        "Botão",
+        "Feltro Branco (para os olhos)",
         "Cola de Silicone"
       ]
     },
     "videos": [
-      { "titulo": "Parte 01", "youtubeId": "minnie001" },
-      { "titulo": "Parte 02", "youtubeId": "minnie002" }
+      { "titulo": "Parte 01", "youtubeId": "lBbO3ZXmTxs" },
+      { "titulo": "Parte 02", "youtubeId": "z_DcAvlEoFU" },
+      { "titulo": "Parte 03", "youtubeId": "J5ouK9lc1rE" },
+      { "titulo": "Parte 04", "youtubeId": "rzz2bNFrBVE" },
+      { "titulo": "Parte 05", "youtubeId": "WTejSAwYZNQ" },
+      { "titulo": "Parte 06", "youtubeId": "yqXPTSOjzkk" },
+      { "titulo": "Parte 07", "youtubeId": "mWKtN-DH4eM" },
+      { "titulo": "Parte 08", "youtubeId": "Qgv6Q3dfw_s" },
+      { "titulo": "Parte 09", "youtubeId": "JzcDRPLBlPU" },
+      { "titulo": "Parte 10", "youtubeId": "qj2Bi6DhSnE" },
+      { "titulo": "Parte 11", "youtubeId": "tdM1o7v6Oek" },
+      { "titulo": "Parte 12", "youtubeId": "7o0dTFCw8QY" },
+      { "titulo": "Parte 13", "youtubeId": "sT20NBArPw0" },
+      { "titulo": "Parte 14", "youtubeId": "v1y8gRMqdTM" },
+      { "titulo": "Parte 15", "youtubeId": "ye_RBeY_GFI" },
+      { "titulo": "Parte 16", "youtubeId": "tl1AZFfhwyY" },
+      { "titulo": "Parte 17", "youtubeId": "mM1AGFd9mz8" },
+      { "titulo": "Parte 18", "youtubeId": "mMtDx-Fw1zc" }
     ]
   },
   {
-    "id": "mickey",
-    "nome": "Mickey",
-    "categoria": "Desenhos",
-    "imagem": "/images/mickey.webp",
-    "descricao": "Receita do Mickey em amigurumi.",
+    "id": "mira",
+    "nome": "Mira Guerreiras do Kpop",
+    "categoria": "Anime",
+    "imagem": "/images/mira.webp",
+    "descricao": "Receita da Mira de Guerreiras do Kpop.",
     "premium": false,
     "destaqueInicio": "",
     "destaqueFim": "",
@@ -272,11 +365,13 @@
     "ordem": 8,
     "materiais": {
       "linhas": [
-        "Fio Amigurumi Preto",
-        "Fio Amigurumi Vermelho",
-        "Fio Amigurumi Branco",
-        "Fio Amigurumi Pele",
-        "Fio Amigurumi Amarelo"
+        "Fio Amigurumi Chantily 7563",
+        "Fio Amigurumi Preto 8990",
+        "Fio Amigurumi Branco 8001",
+        "Fio Amigurumi Canário 1289",
+        "Fio Amigurumi Rosa Pink 3754",
+        "Fio Amigurumi Azul Água 2500 (Bordados)",
+        "Fio Amigurumi Lilaz Candy 6006 (Bordados)"
       ],
       "itens": [
         "Agulha de Crochê",
@@ -284,20 +379,37 @@
         "Fibra Siliconada",
         "Olhos com Trava de Segurança",
         "Tesoura",
+        "Bastão de Cola Quente",
+        "Retalho de Feltro Vermelho",
         "Alfinetes"
       ]
     },
     "videos": [
-      { "titulo": "Parte 01", "youtubeId": "mickey001" },
-      { "titulo": "Parte 02", "youtubeId": "mickey002" }
+      { "titulo": "Parte 01", "youtubeId": "1AWlviLUATE" },
+      { "titulo": "Parte 02", "youtubeId": "wBR01sg-yDc" },
+      { "titulo": "Parte 03", "youtubeId": "kcO3PqAdhRA" },
+      { "titulo": "Parte 04", "youtubeId": "jOnJWJQcnko" },
+      { "titulo": "Parte 05", "youtubeId": "rcqGv3kk3U4" },
+      { "titulo": "Parte 06", "youtubeId": "Pu4WlCzmWag" },
+      { "titulo": "Parte 07", "youtubeId": "XqnqcZLfGF8" },
+      { "titulo": "Parte 08", "youtubeId": "NkrC7lm25tQ" },
+      { "titulo": "Parte 09", "youtubeId": "mz4sRSgj_DU" },
+      { "titulo": "Parte 10", "youtubeId": "LKYmsutej2U" },
+      { "titulo": "Parte 11", "youtubeId": "w5UlZOyrEq8" },
+      { "titulo": "Parte 12", "youtubeId": "8wHU_SMKyEs" },
+      { "titulo": "Parte 13", "youtubeId": "-Zt-urXSmR4" },
+      { "titulo": "Parte 14", "youtubeId": "19GEJErkEuo" },
+      { "titulo": "Parte 15", "youtubeId": "gPx4dr1rzGw" },
+      { "titulo": "Parte 16", "youtubeId": "eODJJDGEyXU" },
+      { "titulo": "Parte 17", "youtubeId": "6TQRaX0RuBU" }
     ]
   },
   {
-    "id": "harry-potter",
-    "nome": "Harry Potter",
-    "categoria": "Filmes",
-    "imagem": "/images/harry.webp",
-    "descricao": "Receita do Harry Potter em amigurumi.",
+    "id": "zoey",
+    "nome": "Zoey Guerreiras do Kpop",
+    "categoria": "Anime",
+    "imagem": "/images/zoey.webp",
+    "descricao": "Receita da Zoey de Guerreiras do Kpop.",
     "premium": true,
     "destaqueInicio": "",
     "destaqueFim": "",
@@ -305,32 +417,51 @@
     "ordem": 9,
     "materiais": {
       "linhas": [
-        "Fio Amigurumi Preto",
-        "Fio Amigurumi Pele",
-        "Fio Amigurumi Vermelho",
-        "Fio Amigurumi Amarelo",
-        "Fio Amigurumi Marrom"
+        "Fio Amigurumi Chantily 7563",
+        "Fio Amigurumi Amarelo Canário 1289",
+        "Fio Amigurumi Azul Marinheiro 2745",
+        "Fio Amigurumi Preto 8990",
+        "Fio Amigurumi Verde Neo Mind 5743"
       ],
       "itens": [
         "Agulha de Crochê",
         "Agulha de Tapeceiro",
+        "Alfinete",
+        "Cola de Silicone",
         "Fibra Siliconada",
+        "Mini Botões",
         "Olhos com Trava de Segurança",
         "Tesoura",
+        "Bastão de Cola Quente",
+        "Florzinha (aplicação)",
         "Óculos em arame ou feltro"
       ]
     },
     "videos": [
-      { "titulo": "Parte 01", "youtubeId": "harry001" },
-      { "titulo": "Parte 02", "youtubeId": "harry002" }
+      { "titulo": "Parte 01", "youtubeId": "mGshWL5d_-w" },
+      { "titulo": "Parte 02", "youtubeId": "zSJDGKgKV8o" },
+      { "titulo": "Parte 03", "youtubeId": "IJOUwPI9kFE" },
+      { "titulo": "Parte 04", "youtubeId": "63QXIZ74UIk" },
+      { "titulo": "Parte 05", "youtubeId": "_XDwemYjXLw" },
+      { "titulo": "Parte 06", "youtubeId": "QZMB6q0DsiA" },
+      { "titulo": "Parte 07", "youtubeId": "6IuHPYpNN1Y" },
+      { "titulo": "Parte 08", "youtubeId": "oT0UFCG52tA" },
+      { "titulo": "Parte 09", "youtubeId": "U8aVbWTQcDU" },
+      { "titulo": "Parte 10", "youtubeId": "dbFkCnYoKkA" },
+      { "titulo": "Parte 11", "youtubeId": "r6lpkXG_-98" },
+      { "titulo": "Parte 12", "youtubeId": "WFAyGwXhp5g" },
+      { "titulo": "Parte 13", "youtubeId": "8fXjHB-2YJY" },
+      { "titulo": "Parte 14", "youtubeId": "6MLDf3sKqUc" },
+      { "titulo": "Parte 15", "youtubeId": "Na-T65-qv8I" },
+      { "titulo": "Parte 18", "youtubeId": "5es4N_f9Uf4" }
     ]
   },
   {
-    "id": "homem-aranha",
-    "nome": "Homem Aranha",
+    "id": "shadow",
+    "nome": "Shadow do Sonic",
     "categoria": "Heróis",
-    "imagem": "/images/aranha.webp",
-    "descricao": "Receita do Homem Aranha em amigurumi.",
+    "imagem": "/images/shadow.webp",
+    "descricao": "Receita do Shadow do Sonic em Amigurumi.",
     "premium": false,
     "destaqueInicio": "",
     "destaqueFim": "",
@@ -338,23 +469,92 @@
     "ordem": 10,
     "materiais": {
       "linhas": [
-        "Fio Amigurumi Vermelho",
-        "Fio Amigurumi Azul",
-        "Fio Amigurumi Preto",
-        "Fio Amigurumi Branco"
+        "Fio Amigurumi Preto 8990",
+        "Fio Amigurumi Branco 8001",
+        "Fio Amigurumi Mostarda 7030",
+        "Fio Amigurumi Carmim 3528",
+        "Fio Amigurumi Porcelana 7564"
       ],
       "itens": [
         "Agulha de Crochê",
         "Agulha de Tapeceiro",
+        "Alfinetes",
         "Fibra Siliconada",
         "Tesoura",
         "Cola de Silicone",
-        "Tinta ou feltro branco para os olhos"
+        "Bastão de Cola Quente",
+        "Retalho de Feltro Branco",
+        "Retalho de Feltro Vermelho",
+        "Olhos com Trava de Segurança"
       ]
     },
     "videos": [
-      { "titulo": "Parte 01", "youtubeId": "aranha001" },
-      { "titulo": "Parte 02", "youtubeId": "aranha002" }
+      { "titulo": "Parte 01", "youtubeId": "gx-2ff5ngvA" },
+      { "titulo": "Parte 02", "youtubeId": "gZBE36_TqM4" },
+      { "titulo": "Parte 03", "youtubeId": "NuV9jXKcAYE" },
+      { "titulo": "Parte 04", "youtubeId": "JQuZ3hHqIlw" },
+      { "titulo": "Parte 05", "youtubeId": "nP41K2fB33E" },
+      { "titulo": "Parte 06", "youtubeId": "9UNMRuZ8Tes" },
+      { "titulo": "Parte 07", "youtubeId": "VXby5m9XC0M" },
+      { "titulo": "Parte 08", "youtubeId": "jJS00bAGWEg" },
+      { "titulo": "Parte 09", "youtubeId": "jnY2eGZjhdg" },
+      { "titulo": "Parte 10", "youtubeId": "4AIoybvx95I" },
+      { "titulo": "Parte 11", "youtubeId": "gBhDLwff-NM" },
+      { "titulo": "Parte 12", "youtubeId": "slKPD3nxc9Q" },
+      { "titulo": "Parte 13", "youtubeId": "5Czup8dEBrE" },
+      { "titulo": "Parte 14", "youtubeId": "Xd1wYa-y_IQ" },
+      { "titulo": "Parte 15", "youtubeId": "7g4PlmlrphQ" },
+      { "titulo": "Parte 16", "youtubeId": "z32XxVNy-tQ" },
+      { "titulo": "Parte 17", "youtubeId": "lJ5DlPYY4x8" },
+      { "titulo": "Parte 18", "youtubeId": "3S8OzjTgnuc" }
+    ]
+  },
+  {
+    "id": "squirtle",
+    "nome": "Squirtle Pokémon",
+    "categoria": "Pokémon",
+    "imagem": "/images/squirtle.webp",
+    "descricao": "Receita do Squirtle Pokémon em amigurumi.",
+    "premium": false,
+    "destaqueInicio": "",
+    "destaqueFim": "",
+    "ativo": true,
+    "ordem": 11,
+    "materiais": {
+      "linhas": [
+        "Fio Amigurumi Azul Hortênsia 2137",
+        "Fio Amigurumi Porcelana 7564",
+        "Fio Amigurumi Craft 7148",
+        "Fio Amigurumi Preto 8990"
+      ],
+      "itens": [
+        "Agulha de Crochê",
+        "Agulha de Tapeceiro",
+        "Alfinete",
+        "Fibra Siliconada",
+        "Tesoura",
+        "Olhos com Trava de Segurança",
+        "Bastão de Cola Quente"
+      ]
+    },
+    "videos": [
+      { "titulo": "Parte 01", "youtubeId": "jjhce8s58hs" },
+      { "titulo": "Parte 02", "youtubeId": "y1ATQx8JrXI" },
+      { "titulo": "Parte 03", "youtubeId": "yWYdwhLkfns" },
+      { "titulo": "Parte 04", "youtubeId": "SmPA4RaOLFc" },
+      { "titulo": "Parte 05", "youtubeId": "fLFOAKkHEms" },
+      { "titulo": "Parte 06", "youtubeId": "8yySQsvsgT8" },
+      { "titulo": "Parte 07", "youtubeId": "2csgC1XvkE4" },
+      { "titulo": "Parte 08", "youtubeId": "wm6WpH_wQ_A" },
+      { "titulo": "Parte 09", "youtubeId": "8OE9JJaygck" },
+      { "titulo": "Parte 10", "youtubeId": "nHRMs4yYCIc" },
+      { "titulo": "Parte 11", "youtubeId": "eYfO9xeWgQc" },
+      { "titulo": "Parte 12", "youtubeId": "aDy6No0zfd8" },
+      { "titulo": "Parte 13", "youtubeId": "bV5vKX_WVgs" },
+      { "titulo": "Parte 14", "youtubeId": "kqkUEp7CrOw" },
+      { "titulo": "Parte 15", "youtubeId": "FjWx_eDogY4" },
+      { "titulo": "Parte 16", "youtubeId": "KiCloxh6QpQ" },
+      { "titulo": "Parte 17", "youtubeId": "gNGU_xxs1CA" }
     ]
   }
 ]
