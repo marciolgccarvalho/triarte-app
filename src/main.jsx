@@ -125,12 +125,24 @@ function criarTelaInstalacao() {
     .addEventListener("click", async () => {
       if (!deferredPrompt) return;
 
+      const botao = document.getElementById("btn-instalar-app");
+
+      botao.innerText = "Instalando...";
+      botao.disabled = true;
+      botao.style.opacity = "0.7";
+
       deferredPrompt.prompt();
 
-      await deferredPrompt.userChoice;
+      const escolha = await deferredPrompt.userChoice;
+
+      if (escolha.outcome !== "accepted") {
+        botao.innerText = "📱 Quero Instalar";
+        botao.disabled = false;
+        botao.style.opacity = "1";
+        return;
+      }
 
       deferredPrompt = null;
-      removerTelaInstalacao();
     });
 
   document
@@ -150,13 +162,13 @@ window.addEventListener("beforeinstallprompt", (e) => {
   }
 });
 
-/* quando instalar */
+/* quando instalar de verdade */
 window.addEventListener("appinstalled", () => {
   deferredPrompt = null;
   removerTelaInstalacao();
 });
 
-/* quando voltar ao navegador após desinstalar */
+/* caso desinstale depois */
 window.addEventListener("focus", () => {
   setTimeout(() => {
     if (!appEstaInstalado() && deferredPrompt) {
