@@ -8,9 +8,6 @@ function App() {
   const [videoSelecionado, setVideoSelecionado] = React.useState(null);
   const [slideAtual, setSlideAtual] = React.useState(0);
 
-  const [installPrompt, setInstallPrompt] = React.useState(null);
-  const [podeInstalar, setPodeInstalar] = React.useState(false);
-
   const [buscaNome, setBuscaNome] = React.useState("");
   const [buscaCategoria, setBuscaCategoria] = React.useState("");
   const [buscaData, setBuscaData] = React.useState("");
@@ -40,21 +37,6 @@ function App() {
   React.useEffect(() => {
     localStorage.setItem("receitasFavoritas", JSON.stringify(favoritos));
   }, [favoritos]);
-
-  React.useEffect(() => {
-  const handler = (e) => {
-    e.preventDefault();
-    setInstallPrompt(e);
-    setPodeInstalar(true);
-  };
-
-  window.addEventListener("beforeinstallprompt", handler);
-
-  return () => {
-    window.removeEventListener("beforeinstallprompt", handler);
-  };
-}, []);
-
 
   const hoje = new Date();
 
@@ -596,55 +578,7 @@ const menuLink = (icone, texto, link) => (
             )}
 
 
-            {podeInstalar && (
-              <div
-                style={{
-                  background: "#ffffff",
-                  borderRadius: "16px",
-                  padding: "16px",
-                  marginBottom: "15px",
-                  textAlign: "center",
-                  boxShadow: "0 3px 10px rgba(0,0,0,0.10)"
-                }}
-              >
-                <h3 style={{ margin: "0 0 8px", fontSize: "22px" }}>
-                  📱 Instale o App
-                </h3>
-
-                <p style={{ margin: "0 0 14px", color: "#555" }}>
-                  Acesso rápido às receitas no seu celular.
-                </p>
-
-                <button
-                  onClick={async () => {
-                    if (!installPrompt) return;
-
-                    installPrompt.prompt();
-
-                    const choice = await installPrompt.userChoice;
-
-                    if (choice.outcome === "accepted") {
-                      setPodeInstalar(false);
-                    }
-                  }}
-                  style={{
-                    width: "100%",
-                    padding: "14px",
-                    borderRadius: "14px",
-                    border: "none",
-                    background: "#FFD400",
-                    color: "#222",
-                    fontSize: "18px",
-                    fontWeight: "800"
-                  }}
-                >
-                  Instalar Agora
-                </button>
-              </div>
-            )}
-
-
-
+      
             <h2 style={{ fontSize: "22px", margin: "8px 0 12px" }}>
               Receitas para você hoje
             </h2>

@@ -62,21 +62,9 @@ function criarTela() {
           color:#222;
           font-size:20px;
           font-weight:800;
+          cursor:pointer;
         ">
         📱 Instalar App
-      </button>
-
-      <button id="btn-entrar"
-        style="
-          width:100%;
-          padding:14px;
-          margin-top:10px;
-          border:none;
-          background:transparent;
-          color:#666;
-          font-size:16px;
-        ">
-        Entrar sem instalar
       </button>
     </div>
   `;
@@ -93,12 +81,6 @@ function criarTela() {
         return;
       }
     }
-
-    removerTela();
-  };
-
-  document.getElementById("btn-entrar").onclick = () => {
-    removerTela();
   };
 }
 
