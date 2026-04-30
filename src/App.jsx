@@ -1150,7 +1150,7 @@ const menuLink = (icone, texto, link) => (
                 }}
               >
                 <iframe
-                  src={`https://www.youtube.com/embed/${videoSelecionado.youtubeId}`}
+                  src={`https://www.youtube.com/embed/${videoSelecionado.youtubeId}?rel=0&modestbranding=1&playsinline=1`}
                   title={videoSelecionado.titulo}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
