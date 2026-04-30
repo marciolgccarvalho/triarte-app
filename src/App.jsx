@@ -1,6 +1,7 @@
 
 import React from "react";
 import receitas from "./data/receitas.json";
+import mensagens from "./data/mensagens.json";
 
 function App() {
   const [pagina, setPagina] = React.useState("home");
@@ -21,6 +22,9 @@ function App() {
 });
   
   const [sobreAberto, setSobreAberto] = React.useState(null);
+  const [ultimaReceita, setUltimaReceita] = React.useState(null);
+  const [mostrarContinuar, setMostrarContinuar] = React.useState(true);
+  const [mensagemAtual, setMensagemAtual] = React.useState("");
 
   const [linha, setLinha] = React.useState(0);
   const [olhos, setOlhos] = React.useState(0);
@@ -42,6 +46,7 @@ function App() {
     return Number(localStorage.getItem("pontosUsuario")) || 0;
   });
 
+  
 
 const inputStyle = {
   padding: "10px",
@@ -59,6 +64,67 @@ const labelStyle = {
   color: "#444"
 };
 
+const paragraphStyle = {
+  fontSize: "14px",
+  color: "#555",
+  lineHeight: "1.65",
+  margin: "0 0 10px",
+  textAlign: "left"
+};
+
+const sectionTitleStyle = {
+  margin: "0 0 8px",
+  fontSize: "15px",
+  color: "#222"
+};
+
+const sectionBoxStyle = {
+  background: "#fff",
+  padding: "14px",
+  borderRadius: "12px",
+  marginBottom: "10px",
+  border: "1px solid #eee"
+};
+
+const listStyle = {
+  margin: "8px 0 12px 18px",
+  padding: 0,
+  color: "#555",
+  fontSize: "14px",
+  lineHeight: "1.7"
+};
+
+const infoHeaderStyle = {
+  background: "#fff8cc",
+  border: "1px solid #f0dd73",
+  padding: "12px",
+  borderRadius: "12px",
+  marginBottom: "12px",
+  display: "grid",
+  gap: "4px",
+  color: "#222",
+  fontSize: "14px"
+};
+
+const contactBoxStyle = {
+  background: "#fff",
+  padding: "14px",
+  borderRadius: "12px",
+  border: "1px solid #eee",
+  textAlign: "center"
+};
+
+const emailButtonStyle = {
+  marginTop: "10px",
+  width: "100%",
+  padding: "12px",
+  background: "#ffd400",
+  border: "none",
+  borderRadius: "10px",
+  fontWeight: "800",
+  cursor: "pointer",
+  color: "#222"
+};
 
   React.useEffect(() => {
     localStorage.setItem("progressoReceitas", JSON.stringify(progresso));
@@ -69,8 +135,28 @@ const labelStyle = {
   }, [pontos]);
 
   React.useEffect(() => {
+  const salva = localStorage.getItem("ultimaReceita");
+  if (salva) {
+    setUltimaReceita(JSON.parse(salva));
+  }
+}, []);
+
+  React.useEffect(() => {
   localStorage.setItem("favoritos", JSON.stringify(favoritos));
 }, [favoritos]);
+
+React.useEffect(() => {
+  if (!mensagens.length) return;
+
+  const tipo = pagina === "home" ? "boasvindas" : "dica";
+  const filtradas = mensagens.filter((m) => m.tipo === tipo);
+  const escolhida = filtradas[Math.floor(Math.random() * filtradas.length)];
+
+  if (escolhida) {
+    setMensagemAtual(escolhida.texto);
+  }
+}, [pagina]);
+
 
   const irPara = (novaPagina) => {
     setPagina(novaPagina);
@@ -79,6 +165,7 @@ const labelStyle = {
 
   const abrirReceita = (receita) => {
     setReceitaSelecionada(receita);
+    localStorage.setItem("ultimaReceita", JSON.stringify(receita))
     setPagina("receita");
   };
 
@@ -396,11 +483,102 @@ const labelStyle = {
 
       <div style={{ padding: "80px 15px 90px" }}>
        {pagina === "home" && (
-  <>
-    {/* CARROSSEL */}
-    <div style={{ marginBottom: "20px" }}>
+               
+  
+<>
+{/* BLOCO DE BOAS-VINDAS */}
+<div
+  style={{
+    background: "linear-gradient(135deg, #ffd400, #fff3a0)",
+    borderRadius: "18px",
+    padding: "18px",
+    marginBottom: "16px",
+    boxShadow: "0 4px 12px rgba(0,0,0,0.12)"
+  }}
+>
+  <p
+    style={{
+      margin: "0 0 4px",
+      fontSize: "13px",
+      fontWeight: "700",
+      color: "#5a4a00"
+    }}
+  >
+    {mensagemAtual || "Bem-vindo ao Real Triarte 🧶"}
+  </p>
+
+  <h2
+    style={{
+      margin: "0 0 8px",
+      fontSize: "22px",
+      lineHeight: "1.2",
+      color: "#222"
+    }}
+  >
+    Aprenda amigurumi com receitas organizadas
+  </h2>
+
+  <p
+    style={{
+      margin: 0,
+      fontSize: "14px",
+      color: "#444",
+      lineHeight: "1.5"
+    }}
+  >
+    Acompanhe vídeos passo a passo, salve favoritos e continue sua evolução no artesanato.
+  </p>
+</div>
+
+{ultimaReceita && mostrarContinuar && (
   <div
-    onClick={() => abrirReceita(receitasDestaque[indexCarrossel])}
+    onClick={() => {
+      setReceitaSelecionada(ultimaReceita);
+      setMostrarContinuar(false);
+      setPagina("receita");
+    }}
+    style={{
+      background: "#fff",
+      borderRadius: "16px",
+      padding: "16px",
+      marginBottom: "16px",
+      boxShadow: "0 3px 10px rgba(0,0,0,0.12)",
+      cursor: "pointer"
+    }}
+  >
+    <p style={{ margin: "0 0 8px", fontWeight: "700", color: "#222" }}>
+      Continuar de onde parei 👇
+    </p>
+
+    <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
+      <img
+        src={ultimaReceita.imagem}
+        style={{
+          width: "70px",
+          height: "70px",
+          borderRadius: "10px",
+          objectFit: "cover"
+        }}
+      />
+
+      <div>
+        <strong style={{ fontSize: "14px" }}>
+          {ultimaReceita.nome}
+        </strong>
+        <p style={{ fontSize: "12px", color: "#666", margin: 0 }}>
+          Toque para continuar
+        </p>
+      </div>
+    </div>
+  </div>
+)}
+
+
+    {/* CARROSSEL */}
+    {receitasDestaque.length > 0 && (
+  <div style={{ marginBottom: "20px" }}>
+    <div
+      onClick={() => abrirReceita(receitasDestaque[indexCarrossel])}
     style={{
       position: "relative",
       borderRadius: "16px",
@@ -551,9 +729,32 @@ const labelStyle = {
     </button>
   </div>
 </div>
+)}
 
-    {/* GRID 2 COLUNAS */}
-    <h2>Receitas</h2>
+{/* GRID 2 COLUNAS */}
+    <div
+  style={{
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    margin: "18px 0 10px"
+  }}
+>
+  <h2 style={{ margin: 0 }}>Receitas</h2>
+
+  <button
+    onClick={() => irPara("receitas")}
+    style={{
+      background: "transparent",
+      border: "none",
+      color: "#555",
+      fontWeight: "700",
+      cursor: "pointer"
+    }}
+  >
+    Ver todas
+  </button>
+</div>
 
     <div
       style={{
@@ -892,189 +1093,364 @@ const labelStyle = {
         )}
 
 
-
         {pagina === "sobre" && (
           <>
-            <h2>Sobre</h2>
+            <h2 style={{ marginBottom: "6px" }}>Quem Somos</h2>
+
+            <p style={{ fontSize: "14px", color: "#666", marginBottom: "16px" }}>
+              Conheça o Real Triarte, nossa missão e as informações oficiais do aplicativo.
+            </p>
 
             {[
               {
-                id: "sobre",
-                titulo: "Sobre a Triarte",
-                texto: `Bem-vindo ao Real Triarte 🧶✨
+                id: "quemSomos",
+                titulo: "Quem Somos",
+                conteudo: (
+                  <div>
+                    <div style={{ textAlign: "center", marginBottom: "18px" }}>
+                      <img
+                        src="/images/logo/logo.png"
+                        alt="Real Triarte"
+                        style={{
+                          width: "96px",
+                          height: "96px",
+                          borderRadius: "50%",
+                          boxShadow: "0 4px 12px rgba(0,0,0,0.15)"
+                        }}
+                      />
 
+                      <h3 style={{ margin: "12px 0 4px", color: "#222" }}>
+                        Real Triarte
+                      </h3>
 
-                Aqui você transforma fios em personagens incríveis com receitas de amigurumi organizadas, vídeos passo a passo e lista completa de materiais para facilitar cada etapa.
+                      <p style={{ margin: 0, fontSize: "13px", color: "#777" }}>
+                        Amigurumi com carinho, criatividade e passo a passo organizado.
+                      </p>
+                    </div>
 
-                Nosso objetivo é tornar o aprendizado simples, leve e acessível para todos — do iniciante ao avançado — sempre com carinho, criatividade e aquele toque artesanal que faz toda a diferença.
+                    <div style={sectionBoxStyle}>
+                      <h4 style={sectionTitleStyle}>Nossa história</h4>
+                      <p style={paragraphStyle}>
+                        O Real Triarte nasceu para compartilhar receitas de amigurumi de forma
+                        simples, acessível e acolhedora.
+                      </p>
 
-                Desde 2020, o Real Triarte já ajudou milhares de pessoas a aprender, criar e evoluir no mundo do amigurumi, transformando um hobby em paixão e, muitas vezes, em fonte de renda.
+                      <p style={paragraphStyle}>
+                        Desde 2020, ajudamos pessoas apaixonadas por artesanato a aprender,
+                        praticar e evoluir no mundo do amigurumi.
+                      </p>
+                    </div>
 
-                Crie, aprenda e evolua com a gente 💛`
+                    <div style={sectionBoxStyle}>
+                      <h4 style={sectionTitleStyle}>O que você encontra aqui</h4>
+                      <ul style={listStyle}>
+                        <li>Receitas organizadas por personagem e categoria</li>
+                        <li>Vídeos passo a passo no YouTube</li>
+                        <li>Lista de materiais</li>
+                        <li>Favoritos para salvar suas receitas preferidas</li>
+                        <li>Progresso para acompanhar sua evolução</li>
+                        <li>Simulador de preço para venda de amigurumi</li>
+                      </ul>
+                    </div>
+
+                    <div style={sectionBoxStyle}>
+                      <h4 style={sectionTitleStyle}>Nossa missão</h4>
+                      <p style={paragraphStyle}>
+                        Tornar o aprendizado do amigurumi mais leve, prático e organizado,
+                        ajudando cada pessoa a transformar fios em peças cheias de encanto.
+                      </p>
+                    </div>
+
+                    <div
+                      style={{
+                        background: "#fff8cc",
+                        padding: "14px",
+                        borderRadius: "12px",
+                        border: "1px solid #f0dd73",
+                        textAlign: "center"
+                      }}
+                    >
+                      <strong style={{ color: "#222" }}>
+                        Obrigado por fazer parte da comunidade Real Triarte 💛
+                      </strong>
+                    </div>
+                  </div>
+                )
               },
+
               {
                 id: "privacidade",
                 titulo: "Política de Privacidade",
-                texto: `Política de Privacidade – Real Triarte
+                conteudo: (
+                  <div>
+                    <div style={infoHeaderStyle}>
+                      <strong>Política de Privacidade</strong>
+                      <span>Última atualização: 2026</span>
+                    </div>
 
-                O aplicativo Real Triarte valoriza a privacidade dos usuários e se compromete a proteger suas informações.
+                    <div style={sectionBoxStyle}>
+                      <h4 style={sectionTitleStyle}>1. Coleta de dados</h4>
+                      <p style={paragraphStyle}>
+                        O aplicativo Real Triarte não coleta dados pessoais sensíveis,
+                        como nome, telefone, e-mail ou localização.
+                      </p>
+                    </div>
 
-                1. Coleta de Dados
-                O aplicativo não coleta dados pessoais sensíveis diretamente, como nome, e-mail ou localização.
+                    <div style={sectionBoxStyle}>
+                      <h4 style={sectionTitleStyle}>2. Dados armazenados no dispositivo</h4>
+                      <p style={paragraphStyle}>
+                        O app pode salvar algumas informações localmente no seu aparelho:
+                      </p>
 
-                Podemos armazenar dados localmente no dispositivo do usuário, como:
-                - Progresso nas receitas
-                - Receitas favoritas
+                      <ul style={listStyle}>
+                        <li>Progresso nas receitas</li>
+                        <li>Receitas favoritas</li>
+                        <li>Pontuação e evolução dentro do aplicativo</li>
+                      </ul>
 
-                Esses dados são utilizados exclusivamente para melhorar a experiência dentro do aplicativo.
+                      <p style={paragraphStyle}>
+                        Esses dados ficam apenas no dispositivo do usuário e não são
+                        enviados para servidores externos.
+                      </p>
+                    </div>
 
-                2. Uso de Dados
-                Os dados armazenados são utilizados para:
-                - Salvar seu progresso nas receitas
-                - Personalizar sua experiência no aplicativo
-                - Facilitar o acesso às suas receitas favoritas
+                    <div style={sectionBoxStyle}>
+                      <h4 style={sectionTitleStyle}>3. Uso das informações</h4>
+                      <p style={paragraphStyle}>
+                        As informações armazenadas localmente são utilizadas apenas para
+                        melhorar a experiência dentro do aplicativo.
+                      </p>
 
-                3. Serviços de Terceiros
-                O aplicativo pode conter links para serviços externos, como:
-                - YouTube (para reprodução de vídeos)
-                - Mercado Livre (para compra de materiais)
+                      <ul style={listStyle}>
+                        <li>Salvar seu progresso</li>
+                        <li>Manter suas receitas favoritas</li>
+                        <li>Personalizar sua navegação</li>
+                      </ul>
+                    </div>
 
-                Esses serviços possuem suas próprias políticas de privacidade, e não temos controle sobre a coleta ou uso de dados por essas plataformas.
+                    <div style={sectionBoxStyle}>
+                      <h4 style={sectionTitleStyle}>4. Serviços de terceiros</h4>
+                      <p style={paragraphStyle}>
+                        O aplicativo pode conter links para plataformas externas:
+                      </p>
 
-                No futuro, o aplicativo poderá utilizar serviços de terceiros, como plataformas de anúncios (ex: Google AdMob), que podem coletar dados anônimos de uso e navegação.
+                      <ul style={listStyle}>
+                        <li>YouTube</li>
+                        <li>Mercado Livre</li>
+                        <li>Redes sociais</li>
+                      </ul>
 
-                4. Armazenamento e Segurança
-                Os dados do usuário são armazenados localmente no dispositivo e não são compartilhados com servidores externos pelo aplicativo.
+                      <p style={paragraphStyle}>
+                        Ao acessar esses serviços, você estará sujeito às políticas de
+                        privacidade de cada plataforma.
+                      </p>
+                    </div>
 
-                5. Controle do Usuário
-                O usuário pode, a qualquer momento:
-                - Limpar os dados do aplicativo nas configurações do dispositivo
-                - Remover favoritos e progresso diretamente no app
+                    <div style={sectionBoxStyle}>
+                      <h4 style={sectionTitleStyle}>5. Controle do usuário</h4>
+                      <p style={paragraphStyle}>
+                        O usuário pode limpar os dados do aplicativo a qualquer momento
+                        pelas configurações do navegador ou do dispositivo.
+                      </p>
+                    </div>
 
-                6. Alterações nesta Política
-                Esta política pode ser atualizada a qualquer momento para refletir melhorias ou mudanças no aplicativo.
-
-                7. Contato
-                Em caso de dúvidas, entre em contato:
-                📧 contato@triarte.com.br
-
-                Ao utilizar o aplicativo, você concorda com esta Política de Privacidade.`
+                    <div style={contactBoxStyle}>
+                      <strong>Dúvidas sobre privacidade?</strong>
+                      <button
+                        onClick={() =>
+                          (window.location.href = "mailto:contato@triarte.com.br")
+                        }
+                        style={emailButtonStyle}
+                      >
+                        📧 contato@triarte.com.br
+                      </button>
+                    </div>
+                  </div>
+                )
               },
+
               {
                 id: "termos",
                 titulo: "Termos de Uso",
-                texto: `Ao utilizar o aplicativo Real Triarte, você concorda com os seguintes termos:
+                conteudo: (
+                  <div>
+                    <div style={infoHeaderStyle}>
+                      <strong>Termos de Uso</strong>
+                      <span>Última atualização: 2026</span>
+                    </div>
 
-                  O conteúdo disponibilizado no aplicativo, incluindo receitas, vídeos e materiais, é destinado exclusivamente para uso pessoal e não comercial.
+                    <div style={sectionBoxStyle}>
+                      <h4 style={sectionTitleStyle}>1. Uso do aplicativo</h4>
+                      <p style={paragraphStyle}>
+                        O Real Triarte é destinado ao aprendizado, organização e
+                        acompanhamento de receitas de amigurumi.
+                      </p>
+                    </div>
 
-                  As receitas e vídeos podem estar hospedados em plataformas externas, como o YouTube, sendo de responsabilidade dessas plataformas o funcionamento e disponibilidade do conteúdo.
+                    <div style={sectionBoxStyle}>
+                      <h4 style={sectionTitleStyle}>2. Conteúdo</h4>
+                      <p style={paragraphStyle}>
+                        O aplicativo pode reunir receitas, listas de materiais, vídeos,
+                        links externos e ferramentas de apoio ao artesanato.
+                      </p>
+                    </div>
 
-                  Não é permitida a reprodução, redistribuição ou comercialização do conteúdo sem autorização prévia.
+                    <div style={sectionBoxStyle}>
+                      <h4 style={sectionTitleStyle}>3. Uso pessoal</h4>
+                      <p style={paragraphStyle}>
+                        O conteúdo disponibilizado é voltado para uso pessoal e
+                        educacional. Não é permitida a redistribuição ou revenda sem
+                        autorização.
+                      </p>
+                    </div>
 
-                  O aplicativo pode conter links para sites externos, como Mercado Livre ou outras plataformas. Não nos responsabilizamos pelo conteúdo, políticas ou práticas desses serviços.
+                    <div style={sectionBoxStyle}>
+                      <h4 style={sectionTitleStyle}>4. Links externos</h4>
+                      <p style={paragraphStyle}>
+                        O app pode direcionar o usuário para serviços externos, como
+                        YouTube, Mercado Livre e redes sociais. O Real Triarte não se
+                        responsabiliza pelas políticas ou funcionamento dessas plataformas.
+                      </p>
+                    </div>
 
-                  O uso do aplicativo é por sua conta e risco. Embora busquemos manter as informações atualizadas e corretas, não garantimos ausência de erros ou interrupções.
-
-                  Reservamo-nos o direito de atualizar estes termos a qualquer momento, sem aviso prévio.
-
-                  Ao continuar utilizando o aplicativo, você declara estar ciente e de acordo com estes termos.`
+                    <div style={sectionBoxStyle}>
+                      <h4 style={sectionTitleStyle}>5. Alterações</h4>
+                      <p style={paragraphStyle}>
+                        O aplicativo e estes termos podem ser atualizados a qualquer
+                        momento para melhorias, correções ou ajustes de conteúdo.
+                      </p>
+                    </div>
+                  </div>
+                )
               },
+
               {
                 id: "dados",
                 titulo: "Política de Dados",
-                texto: `Este aplicativo pode armazenar dados localmente no seu dispositivo, como progresso e receitas favoritas, com o objetivo de melhorar sua experiência.
+                conteudo: (
+                  <div>
+                    <div style={sectionBoxStyle}>
+                      <h4 style={sectionTitleStyle}>Dados locais</h4>
+                      <p style={paragraphStyle}>
+                        O aplicativo utiliza armazenamento local para salvar progresso,
+                        favoritos e pontuação.
+                      </p>
+                    </div>
 
-                  Não coletamos dados pessoais sensíveis diretamente.
+                    <div style={sectionBoxStyle}>
+                      <h4 style={sectionTitleStyle}>Sem cadastro obrigatório</h4>
+                      <p style={paragraphStyle}>
+                        O app não exige criação de conta, senha ou envio de dados
+                        pessoais para funcionar.
+                      </p>
+                    </div>
 
-                  O aplicativo pode conter links externos (como YouTube e Mercado Livre) e, futuramente, poderá utilizar serviços de terceiros, como plataformas de anúncios. Esses serviços podem coletar dados anônimos, como informações de uso e navegação, de acordo com suas próprias políticas de privacidade.
+                    <div style={sectionBoxStyle}>
+                      <h4 style={sectionTitleStyle}>Serviços externos</h4>
+                      <p style={paragraphStyle}>
+                        Ao acessar links externos, como YouTube, Mercado Livre ou redes
+                        sociais, o usuário passa a seguir as regras dessas plataformas.
+                      </p>
+                    </div>
+                  </div>
+                )
+              },
 
-                  Você pode, a qualquer momento, limpar os dados do aplicativo diretamente nas configurações do seu dispositivo.
+              {
+                id: "aviso",
+                titulo: "Aviso Legal",
+                conteudo: (
+                  <div>
+                    <div style={sectionBoxStyle}>
+                      <p style={paragraphStyle}>
+                        O Real Triarte apresenta criações artesanais e conteúdos
+                        inspirados no universo do amigurumi e da cultura pop.
+                      </p>
 
-                  Ao utilizar este aplicativo, você concorda com estas condições.`
+                      <p style={paragraphStyle}>
+                        Este aplicativo não possui vínculo oficial, licença, parceria ou
+                        associação com marcas, empresas, personagens ou franquias
+                        eventualmente citadas ou referenciadas.
+                      </p>
+
+                      <p style={paragraphStyle}>
+                        Todas as marcas pertencem aos seus respectivos proprietários.
+                      </p>
+                    </div>
+                  </div>
+                )
               }
             ].map((item) => (
               <div
                 key={item.id}
                 style={{
                   background: "#fff",
-                  borderRadius: "12px",
-                  marginBottom: "8px",
+                  borderRadius: "16px",
+                  marginBottom: "12px",
                   overflow: "hidden",
-                  boxShadow: "0 2px 6px rgba(0,0,0,0.08)"
+                  boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+                  border: "1px solid #eee"
                 }}
               >
-                {/* CABEÇALHO */}
                 <div
                   onClick={() =>
                     setSobreAberto(sobreAberto === item.id ? null : item.id)
                   }
                   style={{
-                    padding: "12px",
-                    fontWeight: "600",
-                    cursor: "pointer"
+                    padding: "15px",
+                    fontWeight: "800",
+                    cursor: "pointer",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    color: "#222"
                   }}
                 >
-                  {item.titulo}
+                  <span>{item.titulo}</span>
+                  <span style={{ fontSize: "20px", color: "#999" }}>
+                    {sobreAberto === item.id ? "−" : "+"}
+                  </span>
                 </div>
 
-                {/* CONTEÚDO */}
                 {sobreAberto === item.id && (
-                  <div style={{ padding: "12px", borderTop: "1px solid #eee" }}>
-                    {item.id === "sobre" && (
-                      <div style={{ textAlign: "center", marginBottom: "10px" }}>
-                        <img
-                          src="/images/logo/logo.png"
-                          style={{ width: "80px", borderRadius: "50%" }}
-                        />
-                      </div>
-                    )}
-
-                    <p
-                      style={{
-                        fontSize: "14px",
-                        color: "#555",
-                        textAlign: "justify",
-                        lineHeight: "1.6"
-                      }}
-                    >
-                      {item.texto}
-                    </p>
+                  <div
+                    style={{
+                      padding: "14px",
+                      borderTop: "1px solid #eee",
+                      background: "#fafafa"
+                    }}
+                  >
+                    {item.conteudo}
                   </div>
                 )}
               </div>
             ))}
 
-            {/* VERSÃO DO APP */}
             <div
               style={{
                 marginTop: "20px",
-                background: "#f2f2f2",
-                padding: "16px",
-                borderRadius: "12px",
+                background: "#222",
+                color: "#fff",
+                padding: "18px",
+                borderRadius: "16px",
                 textAlign: "center",
-                color: "#444"
+                boxShadow: "0 4px 12px rgba(0,0,0,0.12)"
               }}
             >
-              <strong>Versão do App</strong>
+              <strong style={{ fontSize: "15px" }}>Versão do App</strong>
 
               <p style={{ margin: "8px 0 4px", fontSize: "14px" }}>
                 Real Triarte v1.0.0
               </p>
 
-              <p style={{ margin: 0, fontSize: "13px", color: "#666" }}>
-                Lançamento oficial 2026
-              </p>
-
-              <p style={{ marginTop: "10px", fontSize: "12px", color: "#777" }}>
+              <p style={{ margin: 0, fontSize: "12px", color: "#ddd" }}>
                 Desenvolvido por Real Triarte • Brasil
               </p>
 
-              <p style={{ fontSize: "12px", color: "#777" }}>
-                Este aplicativo pode conter links externos e conteúdo incorporado do YouTube.
+              <p style={{ marginTop: "10px", fontSize: "12px", color: "#ccc" }}>
+                App educacional de apoio ao aprendizado de amigurumi.
               </p>
-
             </div>
-
           </>
         )}
 
@@ -1095,6 +1471,7 @@ const labelStyle = {
               
               {/* EMAIL */}
               <div
+                onClick={() => window.location.href = "mailto:contato@triarte.com.br"}
                 style={{
                   background: "#fff",
                   padding: "14px",
@@ -1106,11 +1483,12 @@ const labelStyle = {
                 }}
               >
                 <img src="/images/icons/email.png" style={{ width: "32px" }} />
-                <span>E-mail</span>
+                <span>contato@triarte.com.br</span>
               </div>
 
               {/* SITE */}
               <div
+                onClick={() => window.open("https://triarte.com.br", "_blank")}
                 style={{
                   background: "#fff",
                   padding: "14px",
@@ -1122,11 +1500,12 @@ const labelStyle = {
                 }}
               >
                 <img src="/images/icons/site.png" style={{ width: "32px" }} />
-                <span>Site</span>
+                <span>Site Oficial</span>
               </div>
 
               {/* YOUTUBE */}
               <div
+                onClick={() => window.open("https://www.youtube.com/@RealTriarte", "_blank")}
                 style={{
                   background: "#fff",
                   padding: "14px",
@@ -1142,8 +1521,9 @@ const labelStyle = {
               </div>
 
               {/* INSTAGRAM */}
-              <div
-                style={{
+             <div
+              onClick={() => window.open("https://instagram.com/realtriarte", "_blank")}
+              style={{
                   background: "#fff",
                   padding: "14px",
                   borderRadius: "12px",
@@ -1152,13 +1532,14 @@ const labelStyle = {
                   gap: "12px",
                   cursor: "pointer"
                 }}
-              >
-                <img src="/images/icons/instagram.png" style={{ width: "32px" }} />
-                <span>Instagram</span>
-              </div>
+            >
+              <img src="/images/icons/instagram.png" style={{ width: "32px" }} />
+              <span>Instagram</span>
+            </div>
 
               {/* FACEBOOK */}
               <div
+                onClick={() => window.open("https://www.facebook.com/realtriarteartesanato", "_blank")}
                 style={{
                   background: "#fff",
                   padding: "14px",
@@ -1173,21 +1554,22 @@ const labelStyle = {
                 <span>Facebook</span>
               </div>
 
-              {/* TIKTOK */}
-              <div
-                style={{
-                  background: "#fff",
-                  padding: "14px",
-                  borderRadius: "12px",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "12px",
-                  cursor: "pointer"
-                }}
-              >
-                <img src="/images/icons/tiktok.png" style={{ width: "32px" }} />
-                <span>TikTok</span>
-              </div>
+             {/* TIKTOK */}
+            <div
+              onClick={() => window.open("https://www.tiktok.com/@triarteamigurumi", "_blank")}
+              style={{
+                background: "#fff",
+                padding: "14px",
+                borderRadius: "12px",
+                display: "flex",
+                alignItems: "center",
+                gap: "12px",
+                cursor: "pointer"
+              }}
+            >
+              <img src="/images/icons/tiktok.png" style={{ width: "32px" }} />
+              <span>TikTok</span>
+            </div>
 
             </div>
           </>

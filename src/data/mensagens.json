@@ -1,0 +1,10 @@
+[
+  { "tipo": "boasvindas", "texto": "Bem-vindo ao Real Triarte 🧶" },
+  { "tipo": "boasvindas", "texto": "Que bom te ver por aqui 💛" },
+  { "tipo": "boasvindas", "texto": "Hora de criar algo incrível hoje ✨" },
+
+  { "tipo": "dica", "texto": "Dica: use marcador de pontos para não se perder 😉" },
+  { "tipo": "dica", "texto": "Dica: fios mais claros ajudam iniciantes 🧵" },
+  { "tipo": "dica", "texto": "Dica: anote o progresso das receitas 📌" },
+  { "tipo": "dica", "texto": "Dica: pratique tensão uniforme no fio 🎯" }
+]
