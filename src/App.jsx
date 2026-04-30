@@ -24,7 +24,7 @@ function App() {
   const [sobreAberto, setSobreAberto] = React.useState(null);
   const [ultimaReceita, setUltimaReceita] = React.useState(null);
   const [mostrarContinuar, setMostrarContinuar] = React.useState(true);
-  const [mensagemAtual, setMensagemAtual] = React.useState("");
+  const [mensagemAtual, setMensagemAtual] = React.useState(null);
 
   const [linha, setLinha] = React.useState(0);
   const [olhos, setOlhos] = React.useState(0);
@@ -153,7 +153,7 @@ React.useEffect(() => {
   const escolhida = filtradas[Math.floor(Math.random() * filtradas.length)];
 
   if (escolhida) {
-    setMensagemAtual(escolhida.texto);
+    setMensagemAtual(escolhida);
   }
 }, [pagina]);
 
@@ -504,7 +504,7 @@ React.useEffect(() => {
       color: "#5a4a00"
     }}
   >
-    {mensagemAtual || "Bem-vindo ao Real Triarte 🧶"}
+    {mensagemAtual?.titulo || "Bem-vindo ao Real Triarte 🧶"}
   </p>
 
   <h2
@@ -515,7 +515,7 @@ React.useEffect(() => {
       color: "#222"
     }}
   >
-    Aprenda amigurumi com receitas organizadas
+    {mensagemAtual?.subtitulo || "Aprenda amigurumi com receitas organizadas"}
   </h2>
 
   <p
@@ -526,7 +526,7 @@ React.useEffect(() => {
       lineHeight: "1.5"
     }}
   >
-    Acompanhe vídeos passo a passo, salve favoritos e continue sua evolução no artesanato.
+    {mensagemAtual?.descricao || "Acompanhe vídeos passo a passo, salve favoritos e continue sua evolução no artesanato."}
   </p>
 </div>
 

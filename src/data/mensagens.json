@@ -1,10 +1,45 @@
 [
-  { "tipo": "boasvindas", "texto": "Bem-vindo ao Real Triarte 🧶" },
-  { "tipo": "boasvindas", "texto": "Que bom te ver por aqui 💛" },
-  { "tipo": "boasvindas", "texto": "Hora de criar algo incrível hoje ✨" },
+  {
+    "tipo": "boasvindas",
+    "titulo": "Bem-vindo ao Real Triarte 🧶",
+    "subtitulo": "Aprenda amigurumi com receitas organizadas",
+    "descricao": "Acompanhe vídeos passo a passo, salve favoritos e evolua no seu artesanato."
+  },
+  {
+    "tipo": "boasvindas",
+    "titulo": "Que bom te ver por aqui 💛",
+    "subtitulo": "Crie peças incríveis com facilidade",
+    "descricao": "Receitas organizadas para facilitar sua jornada no amigurumi."
+  },
+  {
+    "tipo": "boasvindas",
+    "titulo": "Hora de criar algo incrível ✨",
+    "subtitulo": "Seu próximo amigurumi começa agora",
+    "descricao": "Escolha uma receita e comece hoje mesmo."
+  },
 
-  { "tipo": "dica", "texto": "Dica: use marcador de pontos para não se perder 😉" },
-  { "tipo": "dica", "texto": "Dica: fios mais claros ajudam iniciantes 🧵" },
-  { "tipo": "dica", "texto": "Dica: anote o progresso das receitas 📌" },
-  { "tipo": "dica", "texto": "Dica: pratique tensão uniforme no fio 🎯" }
+  {
+    "tipo": "dica",
+    "titulo": "Dica do dia 🎯",
+    "subtitulo": "Use marcador de pontos",
+    "descricao": "Isso evita erros e facilita muito seu progresso nas receitas."
+  },
+  {
+    "tipo": "dica",
+    "titulo": "Dica do dia 🧵",
+    "subtitulo": "Prefira fios claros",
+    "descricao": "Eles ajudam a visualizar melhor os pontos, principalmente no início."
+  },
+  {
+    "tipo": "dica",
+    "titulo": "Dica do dia 📌",
+    "subtitulo": "Anote seu progresso",
+    "descricao": "Assim você não se perde nas partes da receita."
+  },
+  {
+    "tipo": "dica",
+    "titulo": "Dica do dia 🔥",
+    "subtitulo": "Mantenha a tensão do fio",
+    "descricao": "Isso deixa seu amigurumi mais bonito e uniforme."
+  }
 ]
