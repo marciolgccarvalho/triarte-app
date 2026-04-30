@@ -25,6 +25,9 @@ function App() {
   const [ultimaReceita, setUltimaReceita] = React.useState(null);
   const [mostrarContinuar, setMostrarContinuar] = React.useState(true);
   const [mensagemAtual, setMensagemAtual] = React.useState(null);
+  const [modoExibicao, setModoExibicao] = React.useState("grid");
+  const [limite, setLimite] = React.useState(10);
+  const [paginaAtual, setPaginaAtual] = React.useState(1);
 
   const [linha, setLinha] = React.useState(0);
   const [olhos, setOlhos] = React.useState(0);
@@ -246,6 +249,32 @@ React.useEffect(() => {
     );
   });
 
+  const favoritosFiltrados = receitasAtivas
+    .filter((r) => favoritos.includes(r.id))
+    .filter((r) => {
+      const nome = buscaNome.toLowerCase();
+
+      return (
+        (nome.length < 3 || r.nome.toLowerCase().includes(nome)) &&
+        (buscaCategoria === "" || r.categoria === buscaCategoria)
+      );
+    });
+
+  const totalPaginas = Math.ceil(receitasFiltradas.length / limite);
+
+  const receitasPaginadas = receitasFiltradas.slice(
+    (paginaAtual - 1) * limite,
+    paginaAtual * limite
+  );
+
+const totalPaginasFavoritos = Math.ceil(favoritosFiltrados.length / limite);
+
+const favoritosPaginados = favoritosFiltrados.slice(
+  (paginaAtual - 1) * limite,
+  paginaAtual * limite
+);
+
+
   const menuItem = (icone, texto, destino) => (
     <button
       onClick={() => irPara(destino)}
@@ -406,7 +435,6 @@ React.useEffect(() => {
             {menuItem("/images/icons/home.png", "Home", "home")}
             {menuItem("/images/icons/receitas.png", "Receitas", "receitas")}
             {menuItem("/images/icons/favoritos.png", "Favoritos", "favoritos")}
-            {menuItem("/images/icons/busca.png", "Busca", "busca")}
             {menuItem("/images/icons/calculo.png", "Simulador", "simulador")}
             {menuItem("/images/icons/conquistas.png", "Progresso", "progresso")}
             {menuItem("/images/icons/sobre.png", "Sobre", "sobre")}
@@ -763,7 +791,7 @@ React.useEffect(() => {
         gap: "10px"
       }}
     >
-      {receitasRandom.map((r) => (
+      {receitasRandom.slice(0, 8).map((r) => (
         <CardReceita key={r.id} receita={r} />
       ))}
     </div>
@@ -771,8 +799,87 @@ React.useEffect(() => {
 )}
 
         {pagina === "receitas" && (
-          <>
-            <h2>Todas as receitas</h2>
+        <>
+          <h2>Todas as receitas</h2>
+          {/* BUSCA */}
+        <input
+          placeholder="Buscar receita..."
+          value={buscaNome}
+          onChange={(e) => {
+            setBuscaNome(e.target.value);
+            setPaginaAtual(1);
+          }}
+          style={{
+            width: "100%",
+            padding: "12px",
+            marginBottom: "10px",
+            borderRadius: "10px",
+            border: "1px solid #ddd"
+          }}
+        />
+
+        <select
+          value={buscaCategoria}
+          onChange={(e) => {
+            setBuscaCategoria(e.target.value);
+            setPaginaAtual(1);
+          }}
+          style={{
+            width: "100%",
+            padding: "12px",
+            marginBottom: "10px",
+            borderRadius: "10px",
+            border: "1px solid #ddd"
+          }}
+        >
+          <option value="">Todas as categorias</option>
+          {categorias.map((c) => (
+            <option key={c} value={c}>
+              {c}
+            </option>
+          ))}
+        </select>
+
+          {/* CONTROLES */}
+          <div
+            style={{
+              display: "flex",
+              gap: "10px",
+              marginBottom: "12px",
+              flexWrap: "wrap"
+            }}
+          >
+            {/* MODO */}
+            <button
+              onClick={() => setModoExibicao("grid")}
+              style={{ background: "transparent", border: "none", cursor: "pointer" }}
+            >
+              <img src="/images/icons/grid.png" style={{ width: "28px" }} />
+            </button>
+
+            <button
+              onClick={() => setModoExibicao("lista")}
+              style={{ background: "transparent", border: "none", cursor: "pointer" }}
+            >
+              <img src="/images/icons/lista.png" style={{ width: "28px" }} />
+            </button>
+
+            {/* LIMITE */}
+            <select
+              value={limite}
+              onChange={(e) => {
+                setLimite(Number(e.target.value));
+                setPaginaAtual(1);
+              }}
+            >
+              <option value={10}>10</option>
+              <option value={20}>20</option>
+              <option value={30}>30</option>
+            </select>
+          </div>
+
+          {/* GRID */}
+          {modoExibicao === "grid" && (
             <div
               style={{
                 display: "grid",
@@ -780,69 +887,94 @@ React.useEffect(() => {
                 gap: "10px"
               }}
             >
-              {receitasAtivas.map((r) => (
+              {receitasPaginadas.map((r) => (
                 <CardReceita key={r.id} receita={r} />
               ))}
             </div>
-          </>
-        )}
+          )}
 
-        {pagina === "busca" && (
-          <>
-            <h2>Buscar</h2>
+          {/* LISTA */}
+          {modoExibicao === "lista" && (
+            <div style={{ display: "grid", gap: "10px" }}>
+              {receitasPaginadas.map((r) => (
+                <div
+                  key={r.id}
+                  onClick={() => abrirReceita(r)}
+                  style={{
+                    background: "#fff",
+                    padding: "12px",
+                    borderRadius: "12px",
+                    boxShadow: "0 3px 8px rgba(0,0,0,0.1)",
+                    cursor: "pointer"
+                  }}
+                >
+                  <strong>{r.nome}</strong>
+                  <p style={{ fontSize: "13px", color: "#666" }}>
+                    {r.categoria}
+                  </p>
 
-            <input
-              placeholder="Digite o nome..."
-              value={buscaNome}
-              onChange={(e) => setBuscaNome(e.target.value)}
-              style={{
-                width: "100%",
-                padding: "12px",
-                marginBottom: "10px",
-                borderRadius: "10px",
-                border: "1px solid #ddd",
-                boxSizing: "border-box"
-              }}
-            />
+                  <div
+                    style={{
+                      height: "6px",
+                      background: "#ddd",
+                      borderRadius: "6px",
+                      overflow: "hidden"
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: `${percentual(r)}%`,
+                        height: "100%",
+                        background: "#ffd400"
+                      }}
+                    />
+                  </div>
 
-            <select
-              value={buscaCategoria}
-              onChange={(e) => setBuscaCategoria(e.target.value)}
-              style={{
-                width: "100%",
-                padding: "12px",
-                marginBottom: "10px",
-                borderRadius: "10px",
-                border: "1px solid #ddd"
-              }}
+                  <p style={{ fontSize: "12px", marginTop: "4px" }}>
+                    {percentual(r)}%
+                  </p>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* PAGINAÇÃO */}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              gap: "10px",
+              marginTop: "15px"
+            }}
+          >
+            <button
+              disabled={paginaAtual === 1}
+              onClick={() => setPaginaAtual((p) => p - 1)}
+              style={{ background: "transparent", border: "none" }}
             >
-              <option value="">Todas as categorias</option>
-              {categorias.map((c) => (
-                <option key={c} value={c}>
-                  {c}
-                </option>
-              ))}
-            </select>
+              <img src="/images/icons/anterior.png" style={{ width: "28px", opacity: paginaAtual === 1 ? 0.3 : 1 }} />
+            </button>
 
-            <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
-                  gap: "10px"
-                }}
-              >
-              {receitasFiltradas.map((r) => (
-                <CardReceita key={r.id} receita={r} />
-              ))}
-            </div>
-          </>
-        )}
+            <span>
+              {paginaAtual} / {totalPaginas}
+            </span>
+
+            <button
+              disabled={paginaAtual === totalPaginas}
+              onClick={() => setPaginaAtual((p) => p + 1)}
+              style={{ background: "transparent", border: "none" }}
+            >
+              <img src="/images/icons/proxima.png" style={{ width: "28px", opacity: paginaAtual === totalPaginas ? 0.3 : 1 }} />
+            </button>
+          </div>
+        </>
+      )}
 
         {pagina === "favoritos" && (
         <>
           <h2>Minhas receitas favoritas</h2>
 
-          {receitasAtivas.filter((r) => favoritos.includes(r.id)).length === 0 ? (
+          {favoritosFiltrados.length === 0 ? (
             <div
               style={{
                 marginTop: "20px",
@@ -871,19 +1003,186 @@ React.useEffect(() => {
               </p>
             </div>
           ) : (
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: "10px"
-              }}
-            >
-              {receitasAtivas
-                .filter((r) => favoritos.includes(r.id))
-                .map((r) => (
-                  <CardReceita key={r.id} receita={r} />
+            <>
+              {/* BUSCA */}
+              <input
+                placeholder="Buscar favorita..."
+                value={buscaNome}
+                onChange={(e) => {
+                  setBuscaNome(e.target.value);
+                  setPaginaAtual(1);
+                }}
+                style={{
+                  width: "100%",
+                  padding: "12px",
+                  marginBottom: "10px",
+                  borderRadius: "10px",
+                  border: "1px solid #ddd"
+                }}
+              />
+
+              <select
+                value={buscaCategoria}
+                onChange={(e) => {
+                  setBuscaCategoria(e.target.value);
+                  setPaginaAtual(1);
+                }}
+                style={{
+                  width: "100%",
+                  padding: "12px",
+                  marginBottom: "10px",
+                  borderRadius: "10px",
+                  border: "1px solid #ddd"
+                }}
+              >
+                <option value="">Todas as categorias</option>
+                {categorias.map((c) => (
+                  <option key={c} value={c}>
+                    {c}
+                  </option>
                 ))}
-            </div>
+              </select>
+
+              {/* CONTROLES */}
+              <div
+                style={{
+                  display: "flex",
+                  gap: "10px",
+                  marginBottom: "12px",
+                  alignItems: "center"
+                }}
+              >
+                <button
+                  onClick={() => setModoExibicao("grid")}
+                  style={{ background: "transparent", border: "none", cursor: "pointer" }}
+                >
+                  <img src="/images/icons/grid.png" style={{ width: "28px" }} />
+                </button>
+
+                <button
+                  onClick={() => setModoExibicao("lista")}
+                  style={{ background: "transparent", border: "none", cursor: "pointer" }}
+                >
+                  <img src="/images/icons/lista.png" style={{ width: "28px" }} />
+                </button>
+
+                <select
+                  value={limite}
+                  onChange={(e) => {
+                    setLimite(Number(e.target.value));
+                    setPaginaAtual(1);
+                  }}
+                >
+                  <option value={10}>10</option>
+                  <option value={20}>20</option>
+                  <option value={30}>30</option>
+                </select>
+              </div>
+
+              {/* GRID */}
+              {modoExibicao === "grid" && (
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "1fr 1fr",
+                    gap: "10px"
+                  }}
+                >
+                  {favoritosPaginados.map((r) => (
+                    <CardReceita key={r.id} receita={r} />
+                  ))}
+                </div>
+              )}
+
+              {/* LISTA */}
+              {modoExibicao === "lista" && (
+                <div style={{ display: "grid", gap: "10px" }}>
+                  {favoritosPaginados.map((r) => (
+                    <div
+                      key={r.id}
+                      onClick={() => abrirReceita(r)}
+                      style={{
+                        background: "#fff",
+                        padding: "12px",
+                        borderRadius: "12px",
+                        boxShadow: "0 3px 8px rgba(0,0,0,0.1)",
+                        cursor: "pointer"
+                      }}
+                    >
+                      <strong>{r.nome}</strong>
+
+                      <p style={{ fontSize: "13px", color: "#666", margin: "4px 0 8px" }}>
+                        {r.categoria}
+                      </p>
+
+                      <div
+                        style={{
+                          height: "6px",
+                          background: "#ddd",
+                          borderRadius: "6px",
+                          overflow: "hidden"
+                        }}
+                      >
+                        <div
+                          style={{
+                            width: `${percentual(r)}%`,
+                            height: "100%",
+                            background: "#ffd400"
+                          }}
+                        />
+                      </div>
+
+                      <p style={{ fontSize: "12px", marginTop: "4px" }}>
+                        {percentual(r)}% concluído
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* PAGINAÇÃO */}
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  gap: "10px",
+                  marginTop: "15px",
+                  alignItems: "center"
+                }}
+              >
+                <button
+                  disabled={paginaAtual === 1}
+                  onClick={() => setPaginaAtual((p) => p - 1)}
+                  style={{ background: "transparent", border: "none" }}
+                >
+                  <img
+                    src="/images/icons/anterior.png"
+                    style={{
+                      width: "28px",
+                      opacity: paginaAtual === 1 ? 0.3 : 1
+                    }}
+                  />
+                </button>
+
+                <span>
+                  {paginaAtual} / {totalPaginasFavoritos}
+                </span>
+
+                <button
+                  disabled={paginaAtual === totalPaginasFavoritos}
+                  onClick={() => setPaginaAtual((p) => p + 1)}
+                  style={{ background: "transparent", border: "none" }}
+                >
+                  <img
+                    src="/images/icons/proxima.png"
+                    style={{
+                      width: "28px",
+                      opacity: paginaAtual === totalPaginasFavoritos ? 0.3 : 1
+                    }}
+                  />
+                </button>
+              </div>
+            </>
           )}
         </>
       )}
@@ -1917,7 +2216,7 @@ React.useEffect(() => {
         </button>
 
         <button
-          onClick={() => irPara("busca")}
+          onClick={() => irPara("receitas")}
           style={{ background: "transparent", border: "none" }}
         >
           <img src="/images/icons/busca.png" style={{ width: "40px" }} />
