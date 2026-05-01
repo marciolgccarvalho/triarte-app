@@ -1,191 +1,98 @@
-
 import React from "react";
 import receitas from "./data/receitas.json";
 import mensagens from "./data/mensagens.json";
+// COMPONENTES
+import MenuLateral from "./components/MenuLateral";
+// PÁGINAS
+import Home from "./pages/Home";
+import Receitas from "./pages/Receitas";
+import Favoritos from "./pages/Favoritos";
+import ReceitaDetalhe from "./pages/ReceitaDetalhe";
+import Materiais from "./pages/Materiais";
+import Simulador from "./pages/Simulador";
+import Abreviatura from "./pages/Abreviatura";
+import Conquistas from "./pages/Conquistas";
+import Sobre from "./pages/Sobre";
+import Contato from "./pages/Contato";
 
 function App() {
   const [pagina, setPagina] = React.useState("home");
   const [menuAberto, setMenuAberto] = React.useState(false);
   const [receitaSelecionada, setReceitaSelecionada] = React.useState(null);
-
-
-  
   const [buscaNome, setBuscaNome] = React.useState("");
   const [buscaCategoria, setBuscaCategoria] = React.useState("");
-
-  const [indexCarrossel, setIndexCarrossel] = React.useState(0);
-  const [receitasRandom, setReceitasRandom] = React.useState([]);
-
-  const [favoritos, setFavoritos] = React.useState(() => {
-  const salvo = localStorage.getItem("favoritos");
-  return salvo ? JSON.parse(salvo) : [];
-});
-  
-  const [sobreAberto, setSobreAberto] = React.useState(null);
-  const [ultimaReceita, setUltimaReceita] = React.useState(null);
-  const [mostrarContinuar, setMostrarContinuar] = React.useState(true);
-  const [mensagemAtual, setMensagemAtual] = React.useState(null);
   const [modoExibicao, setModoExibicao] = React.useState("grid");
   const [limite, setLimite] = React.useState(10);
   const [paginaAtual, setPaginaAtual] = React.useState(1);
-
-  const [linha, setLinha] = React.useState(0);
-  const [olhos, setOlhos] = React.useState(0);
-  const [enchimento, setEnchimento] = React.useState(0);
-  const [outros, setOutros] = React.useState(0);
-
-  const [horas, setHoras] = React.useState(0);
-  const [valorHora, setValorHora] = React.useState(0);
-
-  const [margem, setMargem] = React.useState(100);
-  const [calcular, setCalcular] = React.useState(false);
-
+  const [favoritos, setFavoritos] = React.useState(() => {
+    const salvo = localStorage.getItem("favoritos");
+    return salvo ? JSON.parse(salvo) : [];
+  });
   const [progresso, setProgresso] = React.useState(() => {
     const salvo = localStorage.getItem("progressoReceitas");
     return salvo ? JSON.parse(salvo) : {};
   });
-
-  const [pontos, setPontos] = React.useState(() => {
-    return Number(localStorage.getItem("pontosUsuario")) || 0;
+  const [ultimaReceita, setUltimaReceita] = React.useState(() => {
+    const salvo = localStorage.getItem("ultimaReceita");
+    return salvo ? JSON.parse(salvo) : null;
   });
+  const [mensagemAtual, setMensagemAtual] = React.useState(null);
 
-  
+  // =========================
+  // EFFECTS
+  // =========================
 
-const inputStyle = {
-  padding: "10px",
-  borderRadius: "10px",
-  border: "1px solid #ddd",
-  fontSize: "14px",
-  width: "100%",
-  boxSizing: "border-box"
-};
-
-const labelStyle = {
-  fontSize: "13px",
-  fontWeight: "600",
-  marginBottom: "4px",
-  color: "#444"
-};
-
-const paragraphStyle = {
-  fontSize: "14px",
-  color: "#555",
-  lineHeight: "1.65",
-  margin: "0 0 10px",
-  textAlign: "left"
-};
-
-const sectionTitleStyle = {
-  margin: "0 0 8px",
-  fontSize: "15px",
-  color: "#222"
-};
-
-const sectionBoxStyle = {
-  background: "#fff",
-  padding: "14px",
-  borderRadius: "12px",
-  marginBottom: "10px",
-  border: "1px solid #eee"
-};
-
-const listStyle = {
-  margin: "8px 0 12px 18px",
-  padding: 0,
-  color: "#555",
-  fontSize: "14px",
-  lineHeight: "1.7"
-};
-
-const infoHeaderStyle = {
-  background: "#fff8cc",
-  border: "1px solid #f0dd73",
-  padding: "12px",
-  borderRadius: "12px",
-  marginBottom: "12px",
-  display: "grid",
-  gap: "4px",
-  color: "#222",
-  fontSize: "14px"
-};
-
-const contactBoxStyle = {
-  background: "#fff",
-  padding: "14px",
-  borderRadius: "12px",
-  border: "1px solid #eee",
-  textAlign: "center"
-};
-
-const emailButtonStyle = {
-  marginTop: "10px",
-  width: "100%",
-  padding: "12px",
-  background: "#ffd400",
-  border: "none",
-  borderRadius: "10px",
-  fontWeight: "800",
-  cursor: "pointer",
-  color: "#222"
-};
-
+  React.useEffect(() => {
+    localStorage.setItem("favoritos", JSON.stringify(favoritos));
+  }, [favoritos]);
   React.useEffect(() => {
     localStorage.setItem("progressoReceitas", JSON.stringify(progresso));
   }, [progresso]);
 
   React.useEffect(() => {
-    localStorage.setItem("pontosUsuario", pontos);
-  }, [pontos]);
+    if (!mensagens.length) return;
 
-  React.useEffect(() => {
-  const salva = localStorage.getItem("ultimaReceita");
-  if (salva) {
-    setUltimaReceita(JSON.parse(salva));
-  }
-}, []);
+    const tipo = pagina === "home" ? "boasvindas" : "dica";
+    const filtradas = mensagens.filter((m) => m.tipo === tipo);
+    const escolhida =
+      filtradas[Math.floor(Math.random() * filtradas.length)];
 
-  React.useEffect(() => {
-  localStorage.setItem("favoritos", JSON.stringify(favoritos));
-}, [favoritos]);
-
-React.useEffect(() => {
-  if (!mensagens.length) return;
-
-  const tipo = pagina === "home" ? "boasvindas" : "dica";
-  const filtradas = mensagens.filter((m) => m.tipo === tipo);
-  const escolhida = filtradas[Math.floor(Math.random() * filtradas.length)];
-
-  if (escolhida) {
     setMensagemAtual(escolhida);
-  }
-}, [pagina]);
+  }, [pagina]);
+  React.useEffect(() => {
+    setPaginaAtual(1);
+  }, [buscaNome, buscaCategoria, limite, pagina]);
 
-
-  const irPara = (novaPagina) => {
-    setPagina(novaPagina);
+  // =========================
+  // FUNÇÕES
+  // =========================
+  const irPara = (p) => {
+    setPagina(p);
     setMenuAberto(false);
   };
-
-  const abrirReceita = (receita) => {
-    setReceitaSelecionada(receita);
-    localStorage.setItem("ultimaReceita", JSON.stringify(receita))
+  const abrirReceita = (r) => {
+    setReceitaSelecionada(r);
+    setUltimaReceita(r);
+    localStorage.setItem("ultimaReceita", JSON.stringify(r));
     setPagina("receita");
   };
-
   const toggleFavorito = (id) => {
-    setFavoritos((anterior) =>
-      anterior.includes(id)
-        ? anterior.filter((f) => f !== id)
-        : [...anterior, id]
+    setFavoritos((prev) =>
+      prev.includes(id)
+        ? prev.filter((f) => f !== id)
+        : [...prev, id]
     );
+  };
+  const percentual = (receita) => {
+    const vistos = progresso[receita.id]?.vistos?.length || 0;
+    const total = receita.videos?.length || 0;
+    return total === 0 ? 0 : Math.round((vistos / total) * 100);
   };
 
   const marcarVideo = (receitaId, index) => {
     setProgresso((anterior) => {
       const vistos = anterior[receitaId]?.vistos || [];
       const jaViu = vistos.includes(index);
-
-      if (!jaViu) setPontos((p) => p + 1);
 
       const novos = jaViu
         ? vistos.filter((i) => i !== index)
@@ -197,199 +104,9 @@ React.useEffect(() => {
       };
     });
   };
-
-  const percentual = (receita) => {
-    const vistos = progresso[receita.id]?.vistos?.length || 0;
-    const total = receita.videos?.length || 0;
-    return total === 0 ? 0 : Math.round((vistos / total) * 100);
-  };
-
-  const receitasAtivas = receitas.filter((r) => r.ativo);
-  const hoje = new Date();
-
-	const receitasDestaque = receitasAtivas.filter((r) => {
-	  if (!r.destaqueInicio || !r.destaqueFim) return false;
-
-	  const inicio = new Date(r.destaqueInicio);
-	  const fim = new Date(r.destaqueFim);
-
-	  return hoje >= inicio && hoje <= fim;
-	});
-
-    React.useEffect(() => {
-      const lista = receitasAtivas
-        .filter((r) => !receitasDestaque.includes(r))
-        .sort(() => Math.random() - 0.5);
-
-      setReceitasRandom(lista);
-    }, []);
-
-
-  React.useEffect(() => {
-  if (receitasDestaque.length === 0) return;
-
-
-  const intervalo = setInterval(() => {
-    setIndexCarrossel((i) =>
-      i === receitasDestaque.length - 1 ? 0 : i + 1
-    );
-  }, 6000);
-
-  return () => clearInterval(intervalo);
-}, [receitasDestaque]);
-  
-  const categorias = [...new Set(receitasAtivas.map((r) => r.categoria))];
-
-  const receitasFiltradas = receitasAtivas.filter((r) => {
-    const nome = buscaNome.toLowerCase();
-
-    return (
-      (nome.length < 3 || r.nome.toLowerCase().includes(nome)) &&
-      (buscaCategoria === "" || r.categoria === buscaCategoria)
-    );
-  });
-
-  const favoritosFiltrados = receitasAtivas
-    .filter((r) => favoritos.includes(r.id))
-    .filter((r) => {
-      const nome = buscaNome.toLowerCase();
-
-      return (
-        (nome.length < 3 || r.nome.toLowerCase().includes(nome)) &&
-        (buscaCategoria === "" || r.categoria === buscaCategoria)
-      );
-    });
-
-  const totalPaginas = Math.ceil(receitasFiltradas.length / limite);
-
-  const receitasPaginadas = receitasFiltradas.slice(
-    (paginaAtual - 1) * limite,
-    paginaAtual * limite
-  );
-
-const totalPaginasFavoritos = Math.ceil(favoritosFiltrados.length / limite);
-
-const favoritosPaginados = favoritosFiltrados.slice(
-  (paginaAtual - 1) * limite,
-  paginaAtual * limite
-);
-
-
-  const menuItem = (icone, texto, destino) => (
-    <button
-      onClick={() => irPara(destino)}
-      style={{
-        width: "100%",
-        display: "flex",
-        alignItems: "center",
-        gap: "12px",
-        padding: "12px 0",
-        background: "transparent",
-        border: "none",
-        fontSize: "17px",
-        fontWeight: "600",
-        color: "#222"
-      }}
-    >
-      <img src={icone} style={{ width: "34px", height: "34px" }} />
-      {texto}
-    </button>
-  );
-
-		  const CardReceita = ({ receita }) => (
-		  <div
-			onClick={() => abrirReceita(receita)}
-			style={{
-			  background: "#fff",
-			  borderRadius: "14px",
-			  overflow: "hidden",
-			  boxShadow: "0 3px 10px rgba(0,0,0,0.12)",
-			  cursor: "pointer"
-			}}
-		  >
-			<div style={{ position: "relative" }}>
-  <img
-    src={receita.imagem}
-    alt={receita.nome}
-    style={{
-      width: "100%",
-      height: "140px",
-      objectFit: "cover"
-    }}
-  />
-
-  {/* BOTÃO FAVORITO */}
-  <div
-    onClick={(e) => {
-      e.stopPropagation();
-      toggleFavorito(receita.id);
-    }}
-    style={{
-      position: "absolute",
-      top: "8px",
-      right: "8px",
-      width: "36px",
-      height: "36px",
-      borderRadius: "50%",
-      background: "rgba(255,255,255,0.85)",
-      padding: "4px",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      cursor: "pointer"
-    }}
-  >
-    <img
-      src={
-        favoritos.includes(receita.id)
-          ? "/images/icons/favoritos.png"
-          : "/images/icons/favoritos2.png"
-      }
-      style={{ width: "26px" }}
-    />
-  </div>
-</div>
-
-			<div style={{ padding: "12px" }}>
-			  <strong style={{ fontSize: "15px" }}>
-				{receita.nome}
-			  </strong>
-
-			  <p style={{ fontSize: "13px", color: "#666", marginBottom: "8px" }}>
-				{receita.categoria}
-			  </p>
-
-			  {/* BARRA DE PROGRESSO */}
-			  <div
-				style={{
-				  width: "100%",
-				  height: "6px",
-				  background: "#e0e0e0",
-				  borderRadius: "6px",
-				  overflow: "hidden"
-				}}
-			  >
-				<div
-				  style={{
-					width: `${percentual(receita)}%`,
-					height: "100%",
-					background: "#ffd400"
-				  }}
-				/>
-			  </div>
-
-			  <p style={{ fontSize: "12px", marginTop: "4px", color: "#444" }}>
-				{percentual(receita)}% concluído
-			  </p>
-			</div>
-		  </div>
-		);
-
   const listaMateriaisTexto = () => {
     const linhas = receitaSelecionada?.materiais?.linhas || [];
     const itens = receitaSelecionada?.materiais?.itens || [];
-
-  
 
     return [
       `Materiais - ${receitaSelecionada?.nome}`,
@@ -403,1827 +120,303 @@ const favoritosPaginados = favoritosFiltrados.slice(
       "App Real Triarte"
     ].join("\n");
   };
+  // =========================
+  // DADOS
+  // =========================
+  const receitasAtivas = receitas.filter((r) => r.ativo);
+  // 🔥 DATA ATUAL
+  const hoje = new Date();  
+  // 🔥 IDENTIFICA RECEITAS EM DESTAQUE (CARROSSEL)
+  const receitasDestaque = receitasAtivas.filter((r) => {
+  if (!r.destaqueInicio || !r.destaqueFim) return false;
+  const inicio = new Date(r.destaqueInicio);
+  const fim = new Date(r.destaqueFim);
+  return hoje >= inicio && hoje <= fim;
+});
 
+// 🔥 STATE PARA FIXAR RANDOM
+    const [receitasRandom, setReceitasRandom] = React.useState([]);
+
+// 🔥 RANDOM SEM REPETIR DESTAQUES (SÓ QUANDO ENTRA NA HOME)
+  React.useEffect(() => {
+  if (pagina !== "home") return;
+
+  const idsDestaque = receitasDestaque.map((r) => r.id);
+
+  const lista = [...receitasAtivas]
+    .filter((r) => !idsDestaque.includes(r.id))
+    .sort(() => Math.random() - 0.5);
+
+  setReceitasRandom(lista);
+}, [pagina]);
+
+// 🔥 CATEGORIAS
+  const categorias = [
+  ...new Set(receitasAtivas.map((r) => r.categoria))
+];
+
+// 🔥 FILTRO DE BUSCA
+  const receitasFiltradas = React.useMemo(() => {
+    return receitasAtivas.filter((r) => {
+      const nome = buscaNome.toLowerCase();
+
+      return (
+        (nome.length < 3 || r.nome.toLowerCase().includes(nome)) &&
+        (buscaCategoria === "" || r.categoria === buscaCategoria)
+      );
+    });
+  }, [receitasAtivas, buscaNome, buscaCategoria]);
+
+// 🔥 PAGINAÇÃO
+  const totalPaginas = Math.max(
+    1,
+    Math.ceil(receitasFiltradas.length / limite)
+  );
+  const receitasPaginadas = React.useMemo(() => {
+    return receitasFiltradas.slice(
+      (paginaAtual - 1) * limite,
+      paginaAtual * limite
+    );
+  }, [receitasFiltradas, paginaAtual, limite]);
+  React.useEffect(() => {
+    if (paginaAtual > totalPaginas) {
+      setPaginaAtual(1);
+    }
+  }, [totalPaginas]);
+  // =========================
+  // LAYOUT
+  // =========================
   return (
+    <div style={{ maxWidth: "430px", margin: "0 auto", minHeight: "100vh", background: "#f5f5f5" }}>
+
+     {/* HEADER FIXO */}
     <div
-      style={{
-        maxWidth: "430px",
-        margin: "0 auto",
-        minHeight: "100vh",
-        background: "#f5f5f5"
+      style={{ position: "fixed", top: 0, left: "50%", transform: "translateX(-50%)", width: "100%",  maxWidth: "430px", zIndex: 1000,
+
+        background: "#fff",
+        padding: "10px 16px",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+
+        boxShadow: "0 2px 6px rgba(0,0,0,0.08)"
       }}
-    >
-      {menuAberto && (
-        <div
-          onClick={() => setMenuAberto(false)}
-          style={{
-            position: "fixed",
-            inset: 0,
-            background: "rgba(0,0,0,0.4)",
-            zIndex: 999
-          }}
-        >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            style={{
-              width: "75%",
-              height: "100%",
-              background: "#fff",
-              padding: "20px"
-            }}
-          >
-            {menuItem("/images/icons/home.png", "Home", "home")}
-            {menuItem("/images/icons/receitas.png", "Receitas", "receitas")}
-            {menuItem("/images/icons/favoritos.png", "Favoritos", "favoritos")}
-            {menuItem("/images/icons/calculo.png", "Simulador", "simulador")}
-            {menuItem("/images/icons/conquistas.png", "Progresso", "progresso")}
-            {menuItem("/images/icons/sobre.png", "Sobre", "sobre")}
-            {menuItem("/images/icons/contato.png", "Contato", "contato")}
-          </div>
-          
-        </div>
-      )}
-
-      <div
-        style={{
-          position: "fixed",
-          top: 0,
-          left: "50%",
-          transform: "translateX(-50%)",
-          width: "100%",
-          maxWidth: "430px",
-          zIndex: 1000,
-
-          background: "#fff",
-          padding: "10px 16px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          boxShadow: "0 2px 6px rgba(0,0,0,0.08)"
-        }}
-      >
-        {/* LOGO ESQUERDA */}
-        <img
-          onClick={() => irPara("sobre")}
-          src="/images/logo/logo.png"
-          alt="Logo"
-          style={{
-            width: "48px",
-            height: "48px",
-            borderRadius: "50%",
-            cursor: "pointer"
-          }}
-
-        />
-
-        {/* TEXTO CENTRAL */}
-        <h2
-          style={{
-            margin: 0,
-            fontSize: "22px",
-            fontWeight: "700",
-            color: "#222",
-            textAlign: "center",
-            flex: 1
-          }}
-        >
-          Real Triarte
-        </h2>
-
-        {/* MENU DIREITA */}
-        <button
-          onClick={() => setMenuAberto(true)}
-          style={{
-            background: "transparent",
-            border: "none",
-            padding: 0
-          }}
-        >
-          <img
-            src="/images/icons/menu.png"
-            style={{
-              width: "48px",
-              height: "48px"
-            }}
-          />
-        </button>
-      </div>
-
-      <div style={{ padding: "80px 15px 90px" }}>
-       {pagina === "home" && (
-               
-  
-<>
-{/* BLOCO DE BOAS-VINDAS */}
-<div
-  style={{
-    background: "linear-gradient(135deg, #ffd400, #fff3a0)",
-    borderRadius: "18px",
-    padding: "18px",
-    marginBottom: "16px",
-    boxShadow: "0 4px 12px rgba(0,0,0,0.12)"
-  }}
 >
-  <p
+  {/* LOGO */}
+  <img
+    src="/images/logo/logo.png"
     style={{
-      margin: "0 0 4px",
-      fontSize: "13px",
-      fontWeight: "700",
-      color: "#5a4a00"
+      width: "45px",
+      height: "45px",
+      borderRadius: "50%",
+      cursor: "pointer"
     }}
-  >
-    {mensagemAtual?.titulo || "Bem-vindo ao Real Triarte 🧶"}
-  </p>
+    onClick={() => irPara("home")}
+  />
 
-  <h2
+  {/* TÍTULO */}
+  <strong
     style={{
-      margin: "0 0 8px",
-      fontSize: "22px",
-      lineHeight: "1.2",
+      fontSize: "38px",
       color: "#222"
     }}
   >
-    {mensagemAtual?.subtitulo || "Aprenda amigurumi com receitas organizadas"}
-  </h2>
+    Real Triarte
+  </strong>
 
-  <p
+  {/* MENU */}
+  <img
+    src="/images/icons/menu.png"
     style={{
-      margin: 0,
-      fontSize: "14px",
-      color: "#444",
-      lineHeight: "1.5"
-    }}
-  >
-    {mensagemAtual?.descricao || "Acompanhe vídeos passo a passo, salve favoritos e continue sua evolução no artesanato."}
-  </p>
-</div>
-
-{ultimaReceita && mostrarContinuar && (
-  <div
-    onClick={() => {
-      setReceitaSelecionada(ultimaReceita);
-      setMostrarContinuar(false);
-      setPagina("receita");
-    }}
-    style={{
-      background: "#fff",
-      borderRadius: "16px",
-      padding: "16px",
-      marginBottom: "16px",
-      boxShadow: "0 3px 10px rgba(0,0,0,0.12)",
+      width: "40px",
+      height: "40px",
       cursor: "pointer"
     }}
-  >
-    <p style={{ margin: "0 0 8px", fontWeight: "700", color: "#222" }}>
-      Continuar de onde parei 👇
-    </p>
-
-    <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
-      <img
-        src={ultimaReceita.imagem}
-        style={{
-          width: "70px",
-          height: "70px",
-          borderRadius: "10px",
-          objectFit: "cover"
-        }}
-      />
-
-      <div>
-        <strong style={{ fontSize: "14px" }}>
-          {ultimaReceita.nome}
-        </strong>
-        <p style={{ fontSize: "12px", color: "#666", margin: 0 }}>
-          Toque para continuar
-        </p>
-      </div>
-    </div>
-  </div>
-)}
-
-
-    {/* CARROSSEL */}
-    {receitasDestaque.length > 0 && (
-  <div style={{ marginBottom: "20px" }}>
-    <div
-      onClick={() => abrirReceita(receitasDestaque[indexCarrossel])}
-    style={{
-      position: "relative",
-      borderRadius: "16px",
-      overflow: "hidden",
-      cursor: "pointer"
-    }}
-  >
-    {/* IMAGEM */}
-    <img
-      src={receitasDestaque[indexCarrossel].imagem}
-      style={{
-        width: "100%",
-        height: "200px",
-        objectFit: "cover"
-      }}
-    />
-
-    {/* OVERLAY ESCURO */}
-    <div
-      style={{
-        position: "absolute",
-        inset: 0,
-        background:
-          "linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.1))"
-      }}
-    />
-
-    {/* TEXTO */}
-    <div
-      style={{
-        position: "absolute",
-        bottom: "12px",
-        left: "12px",
-        right: "12px",
-        color: "#fff"
-      }}
-    >
-      <strong style={{ fontSize: "18px" }}>
-        {receitasDestaque[indexCarrossel].nome}
-      </strong>
-
-      <p style={{ margin: "4px 0", fontSize: "13px" }}>
-        Toque para assistir a receita
-      </p>
-
-      {/* BARRA */}
-      <div
-        style={{
-          marginTop: "6px",
-          width: "100%",
-          height: "6px",
-          background: "rgba(255,255,255,0.3)",
-          borderRadius: "6px",
-          overflow: "hidden"
-        }}
-      >
-        <div
-          style={{
-            width: `${percentual(receitasDestaque[indexCarrossel])}%`,
-            height: "100%",
-            background: "#ffd400"
-          }}
-        />
-      </div>
-
-      <span style={{ fontSize: "11px" }}>
-        {percentual(receitasDestaque[indexCarrossel])}% concluído
-      </span>
-    </div>
-
-
-    {/* FAVORITO NO CARROSSEL */}
-    <div
-      onClick={(e) => {
-        e.stopPropagation();
-        toggleFavorito(receitasDestaque[indexCarrossel].id);
-      }}
-      style={{
-        position: "absolute",
-        top: "10px",
-        right: "10px",
-        width: "38px",
-        height: "38px",
-        borderRadius: "50%",
-        background: "rgba(255,255,255,0.85)",
-        padding: "4px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        cursor: "pointer"
-      }}
-    >
-      <img
-        src={
-          favoritos.includes(receitasDestaque[indexCarrossel].id)
-            ? "/images/icons/favoritos.png"
-            : "/images/icons/favoritos2.png"
-        }
-        style={{ width: "28px" }}
-      />
-    </div>
-
-
-
-    {/* BOTÕES */}
-    <button
-      onClick={(e) => {
-        e.stopPropagation();
-        setIndexCarrossel((i) =>
-          i === 0 ? receitasDestaque.length - 1 : i - 1
-        );
-      }}
-      style={{
-        position: "absolute",
-        top: "50%",
-        left: "10px",
-        transform: "translateY(-50%)",
-        background: "#ffd400",
-        border: "none",
-        borderRadius: "50%",
-        width: "36px",
-        height: "36px"
-      }}
-    >
-      ‹
-    </button>
-
-    <button
-      onClick={(e) => {
-        e.stopPropagation();
-        setIndexCarrossel((i) =>
-          i === receitasDestaque.length - 1 ? 0 : i + 1
-        );
-      }}
-      style={{
-        position: "absolute",
-        top: "50%",
-        right: "10px",
-        transform: "translateY(-50%)",
-        background: "#ffd400",
-        border: "none",
-        borderRadius: "50%",
-        width: "36px",
-        height: "36px"
-      }}
-    >
-      ›
-    </button>
-  </div>
-</div>
-)}
-
-{/* GRID 2 COLUNAS */}
-    <div
-  style={{
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    margin: "18px 0 10px"
-  }}
->
-  <h2 style={{ margin: 0 }}>Receitas</h2>
-
-  <button
-    onClick={() => irPara("receitas")}
-    style={{
-      background: "transparent",
-      border: "none",
-      color: "#555",
-      fontWeight: "700",
-      cursor: "pointer"
-    }}
-  >
-    Ver todas
-  </button>
+    onClick={() => setMenuAberto(true)}
+  />
 </div>
 
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        gap: "10px"
-      }}
-    >
-      {receitasRandom.slice(0, 8).map((r) => (
-        <CardReceita key={r.id} receita={r} />
-      ))}
-    </div>
-  </>
-)}
+      {/* MENU */}
+      <MenuLateral aberto={menuAberto} fechar={() => setMenuAberto(false)} irPara={irPara} />
+
+      {/* CONTEÚDO */}
+      <div style={{ padding: "80px 15px 90px" }}>
+
+        {pagina === "home" && (
+          <Home
+            mensagemAtual={mensagemAtual}
+            ultimaReceita={ultimaReceita}
+            receitas={receitasAtivas}        // ✅ CORREÇÃO PRINCIPAL
+            receitasRandom={receitasRandom}  // ✅ RANDOM CORRETO
+            abrirReceita={abrirReceita}
+            percentual={percentual}
+            toggleFavorito={toggleFavorito}
+            favoritos={favoritos}
+          />
+        )}
 
         {pagina === "receitas" && (
-        <>
-          <h2>Todas as receitas</h2>
-          {/* BUSCA */}
-        <input
-          placeholder="Buscar receita..."
-          value={buscaNome}
-          onChange={(e) => {
-            setBuscaNome(e.target.value);
-            setPaginaAtual(1);
-          }}
-          style={{
-            width: "100%",
-            padding: "12px",
-            marginBottom: "10px",
-            borderRadius: "10px",
-            border: "1px solid #ddd"
-          }}
-        />
-
-        <select
-          value={buscaCategoria}
-          onChange={(e) => {
-            setBuscaCategoria(e.target.value);
-            setPaginaAtual(1);
-          }}
-          style={{
-            width: "100%",
-            padding: "12px",
-            marginBottom: "10px",
-            borderRadius: "10px",
-            border: "1px solid #ddd"
-          }}
-        >
-          <option value="">Todas as categorias</option>
-          {categorias.map((c) => (
-            <option key={c} value={c}>
-              {c}
-            </option>
-          ))}
-        </select>
-
-          {/* CONTROLES */}
-          <div
-            style={{
-              display: "flex",
-              gap: "10px",
-              marginBottom: "12px",
-              flexWrap: "wrap"
-            }}
-          >
-            {/* MODO */}
-            <button
-              onClick={() => setModoExibicao("grid")}
-              style={{ background: "transparent", border: "none", cursor: "pointer" }}
-            >
-              <img src="/images/icons/grid.png" style={{ width: "28px" }} />
-            </button>
-
-            <button
-              onClick={() => setModoExibicao("lista")}
-              style={{ background: "transparent", border: "none", cursor: "pointer" }}
-            >
-              <img src="/images/icons/lista.png" style={{ width: "28px" }} />
-            </button>
-
-            {/* LIMITE */}
-            <select
-              value={limite}
-              onChange={(e) => {
-                setLimite(Number(e.target.value));
-                setPaginaAtual(1);
-              }}
-            >
-              <option value={10}>10</option>
-              <option value={20}>20</option>
-              <option value={30}>30</option>
-            </select>
-          </div>
-
-          {/* GRID */}
-          {modoExibicao === "grid" && (
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: "10px"
-              }}
-            >
-              {receitasPaginadas.map((r) => (
-                <CardReceita key={r.id} receita={r} />
-              ))}
-            </div>
-          )}
-
-          {/* LISTA */}
-          {modoExibicao === "lista" && (
-            <div style={{ display: "grid", gap: "10px" }}>
-              {receitasPaginadas.map((r) => (
-                <div
-                  key={r.id}
-                  onClick={() => abrirReceita(r)}
-                  style={{
-                    background: "#fff",
-                    padding: "12px",
-                    borderRadius: "12px",
-                    boxShadow: "0 3px 8px rgba(0,0,0,0.1)",
-                    cursor: "pointer"
-                  }}
-                >
-                  <strong>{r.nome}</strong>
-                  <p style={{ fontSize: "13px", color: "#666" }}>
-                    {r.categoria}
-                  </p>
-
-                  <div
-                    style={{
-                      height: "6px",
-                      background: "#ddd",
-                      borderRadius: "6px",
-                      overflow: "hidden"
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: `${percentual(r)}%`,
-                        height: "100%",
-                        background: "#ffd400"
-                      }}
-                    />
-                  </div>
-
-                  <p style={{ fontSize: "12px", marginTop: "4px" }}>
-                    {percentual(r)}%
-                  </p>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {/* PAGINAÇÃO */}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              gap: "10px",
-              marginTop: "15px"
-            }}
-          >
-            <button
-              disabled={paginaAtual === 1}
-              onClick={() => setPaginaAtual((p) => p - 1)}
-              style={{ background: "transparent", border: "none" }}
-            >
-              <img src="/images/icons/anterior.png" style={{ width: "28px", opacity: paginaAtual === 1 ? 0.3 : 1 }} />
-            </button>
-
-            <span>
-              {paginaAtual} / {totalPaginas}
-            </span>
-
-            <button
-              disabled={paginaAtual === totalPaginas}
-              onClick={() => setPaginaAtual((p) => p + 1)}
-              style={{ background: "transparent", border: "none" }}
-            >
-              <img src="/images/icons/proxima.png" style={{ width: "28px", opacity: paginaAtual === totalPaginas ? 0.3 : 1 }} />
-            </button>
-          </div>
-        </>
-      )}
+          <Receitas
+            receitas={receitasAtivas}
+            buscaNome={buscaNome}
+            setBuscaNome={setBuscaNome}
+            buscaCategoria={buscaCategoria}
+            setBuscaCategoria={setBuscaCategoria}
+            categorias={categorias}
+            receitasPaginadas={receitasPaginadas}
+            modoExibicao={modoExibicao}
+            setModoExibicao={setModoExibicao}
+            limite={limite}
+            setLimite={setLimite}
+            paginaAtual={paginaAtual}
+            setPaginaAtual={setPaginaAtual}
+            totalPaginas={totalPaginas}
+            abrirReceita={abrirReceita}
+            toggleFavorito={toggleFavorito}
+            favoritos={favoritos}
+            percentual={percentual}
+          />
+        )}
 
         {pagina === "favoritos" && (
-        <>
-          <h2>Minhas receitas favoritas</h2>
-
-          {favoritosFiltrados.length === 0 ? (
-            <div
-              style={{
-                marginTop: "20px",
-                background: "#fff",
-                padding: "30px 20px",
-                borderRadius: "16px",
-                textAlign: "center",
-                boxShadow: "0 3px 10px rgba(0,0,0,0.08)"
-              }}
-            >
-              <img
-                src="/images/icons/favoritos2.png"
-                style={{
-                  width: "70px",
-                  opacity: 0.6,
-                  marginBottom: "12px"
-                }}
-              />
-
-              <h3 style={{ margin: "10px 0 5px" }}>
-                Nenhuma receita favorita ainda
-              </h3>
-
-              <p style={{ color: "#666", fontSize: "14px" }}>
-                Toque no coração das receitas para salvar suas favoritas aqui.
-              </p>
-            </div>
-          ) : (
-            <>
-              {/* BUSCA */}
-              <input
-                placeholder="Buscar favorita..."
-                value={buscaNome}
-                onChange={(e) => {
-                  setBuscaNome(e.target.value);
-                  setPaginaAtual(1);
-                }}
-                style={{
-                  width: "100%",
-                  padding: "12px",
-                  marginBottom: "10px",
-                  borderRadius: "10px",
-                  border: "1px solid #ddd"
-                }}
-              />
-
-              <select
-                value={buscaCategoria}
-                onChange={(e) => {
-                  setBuscaCategoria(e.target.value);
-                  setPaginaAtual(1);
-                }}
-                style={{
-                  width: "100%",
-                  padding: "12px",
-                  marginBottom: "10px",
-                  borderRadius: "10px",
-                  border: "1px solid #ddd"
-                }}
-              >
-                <option value="">Todas as categorias</option>
-                {categorias.map((c) => (
-                  <option key={c} value={c}>
-                    {c}
-                  </option>
-                ))}
-              </select>
-
-              {/* CONTROLES */}
-              <div
-                style={{
-                  display: "flex",
-                  gap: "10px",
-                  marginBottom: "12px",
-                  alignItems: "center"
-                }}
-              >
-                <button
-                  onClick={() => setModoExibicao("grid")}
-                  style={{ background: "transparent", border: "none", cursor: "pointer" }}
-                >
-                  <img src="/images/icons/grid.png" style={{ width: "28px" }} />
-                </button>
-
-                <button
-                  onClick={() => setModoExibicao("lista")}
-                  style={{ background: "transparent", border: "none", cursor: "pointer" }}
-                >
-                  <img src="/images/icons/lista.png" style={{ width: "28px" }} />
-                </button>
-
-                <select
-                  value={limite}
-                  onChange={(e) => {
-                    setLimite(Number(e.target.value));
-                    setPaginaAtual(1);
-                  }}
-                >
-                  <option value={10}>10</option>
-                  <option value={20}>20</option>
-                  <option value={30}>30</option>
-                </select>
-              </div>
-
-              {/* GRID */}
-              {modoExibicao === "grid" && (
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "1fr 1fr",
-                    gap: "10px"
-                  }}
-                >
-                  {favoritosPaginados.map((r) => (
-                    <CardReceita key={r.id} receita={r} />
-                  ))}
-                </div>
-              )}
-
-              {/* LISTA */}
-              {modoExibicao === "lista" && (
-                <div style={{ display: "grid", gap: "10px" }}>
-                  {favoritosPaginados.map((r) => (
-                    <div
-                      key={r.id}
-                      onClick={() => abrirReceita(r)}
-                      style={{
-                        background: "#fff",
-                        padding: "12px",
-                        borderRadius: "12px",
-                        boxShadow: "0 3px 8px rgba(0,0,0,0.1)",
-                        cursor: "pointer"
-                      }}
-                    >
-                      <strong>{r.nome}</strong>
-
-                      <p style={{ fontSize: "13px", color: "#666", margin: "4px 0 8px" }}>
-                        {r.categoria}
-                      </p>
-
-                      <div
-                        style={{
-                          height: "6px",
-                          background: "#ddd",
-                          borderRadius: "6px",
-                          overflow: "hidden"
-                        }}
-                      >
-                        <div
-                          style={{
-                            width: `${percentual(r)}%`,
-                            height: "100%",
-                            background: "#ffd400"
-                          }}
-                        />
-                      </div>
-
-                      <p style={{ fontSize: "12px", marginTop: "4px" }}>
-                        {percentual(r)}% concluído
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              {/* PAGINAÇÃO */}
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  gap: "10px",
-                  marginTop: "15px",
-                  alignItems: "center"
-                }}
-              >
-                <button
-                  disabled={paginaAtual === 1}
-                  onClick={() => setPaginaAtual((p) => p - 1)}
-                  style={{ background: "transparent", border: "none" }}
-                >
-                  <img
-                    src="/images/icons/anterior.png"
-                    style={{
-                      width: "28px",
-                      opacity: paginaAtual === 1 ? 0.3 : 1
-                    }}
-                  />
-                </button>
-
-                <span>
-                  {paginaAtual} / {totalPaginasFavoritos}
-                </span>
-
-                <button
-                  disabled={paginaAtual === totalPaginasFavoritos}
-                  onClick={() => setPaginaAtual((p) => p + 1)}
-                  style={{ background: "transparent", border: "none" }}
-                >
-                  <img
-                    src="/images/icons/proxima.png"
-                    style={{
-                      width: "28px",
-                      opacity: paginaAtual === totalPaginasFavoritos ? 0.3 : 1
-                    }}
-                  />
-                </button>
-              </div>
-            </>
-          )}
-        </>
-      )}
-
+          <Favoritos
+            receitas={receitasAtivas}
+            favoritos={favoritos}
+            abrirReceita={abrirReceita}
+            percentual={percentual}
+            toggleFavorito={toggleFavorito}
+          />
+        )}
 
         {pagina === "receita" && receitaSelecionada && (
-          <div>
-            <button onClick={() => irPara("home")}>← Voltar</button>
-
-            <img
-              src={receitaSelecionada.imagem}
-              alt={receitaSelecionada.nome}
-              style={{
-                width: "100%",
-                height: "180px",
-                objectFit: "cover",
-                borderRadius: "14px",
-                marginTop: "12px"
-              }}
-            />
-
-            <h2>{receitaSelecionada.nome}</h2>
-            <p>{receitaSelecionada.descricao}</p>
-
-            <button
-              onClick={() => irPara("materiais")}
-              style={{
-                width: "100%",
-                padding: "14px",
-                background: "#ffd400",
-                border: "none",
-                borderRadius: "12px",
-                fontWeight: "800"
-              }}
-            >
-              Ver materiais
-            </button>
-
-            <div style={{ margin: "15px 0" }}>
-              <div style={{ margin: "15px 0" }}>
-				  <strong>{percentual(receitaSelecionada)}% concluído</strong>
-
-				  <div
-					style={{
-					  marginTop: "8px",
-					  width: "100%",
-					  height: "10px",
-					  background: "#ddd",
-					  borderRadius: "10px",
-					  overflow: "hidden"
-					}}
-				  >
-					<div
-					  style={{
-						width: `${percentual(receitaSelecionada)}%`,
-						height: "100%",
-						background: "#35a853",
-						transition: "0.3s"
-					  }}
-					/>
-				  </div>
-				</div>
-            </div>
-
-            <div style={{ display: "grid", gap: "10px" }}>
-              {receitaSelecionada.videos.map((video, index) => {
-                const visto =
-                  progresso[receitaSelecionada.id]?.vistos?.includes(index);
-
-                return (
-                  <div
-                    key={index}
-                    style={{
-                      background: "#fff",
-                      border: "1px solid #ddd",
-                      padding: "12px",
-                      borderRadius: "12px"
-                    }}
-                  >
-                    <strong>
-                      {visto ? "✅" : "▶"} {video.titulo}
-                    </strong>
-
-                    <div style={{ display: "flex", gap: "10px", marginTop: "10px" }}>
-                      <button
-                        onClick={() =>
-                          window.open(
-                            `https://www.youtube.com/watch?v=${video.youtubeId}`,
-                            "_blank"
-                          )
-                        }
-                        style={{
-                          flex: 1,
-                          padding: "12px",
-                          background: "#ffd400",
-                          border: "none",
-                          borderRadius: "10px",
-                          fontWeight: "700"
-                        }}
-                      >
-                        Assistir no YouTube
-                      </button>
-
-                      <button
-                        onClick={() => marcarVideo(receitaSelecionada.id, index)}
-                        style={{
-                          width: "60px",
-                          background: visto ? "#35a853" : "#ddd",
-                          border: "none",
-                          borderRadius: "10px",
-                          fontWeight: "700"
-                        }}
-                      >
-                        ✓
-                      </button>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
+          <ReceitaDetalhe
+            receita={receitaSelecionada}
+            percentual={percentual}
+            marcarVideo={marcarVideo}
+            progresso={progresso}
+            voltar={() => irPara("receitas")}
+            irPara={irPara}
+          />
         )}
 
         {pagina === "materiais" && receitaSelecionada && (
-          <div>
-            <button onClick={() => irPara("receita")}>← Voltar para receita</button>
-
-            <h2>Materiais</h2>
-
-            <p style={{ color: "#666", lineHeight: "1.5" }}>
-              Compre os materiais pelo nosso link do Mercado Livre e ajude o
-              Real Triarte a continuar criando receitas gratuitas 🧶
-            </p>
-
-            <h3>Linhas</h3>
-
-            <div style={{ display: "grid", gap: "8px" }}>
-              {(receitaSelecionada.materiais?.linhas || []).map((item, index) => (
-                <div
-                  key={index}
-                  style={{
-                    background: "#fff8cc",
-                    padding: "12px",
-                    borderRadius: "10px",
-                    fontWeight: "700"
-                  }}
-                >
-                  🧶 {item}
-                </div>
-              ))}
-            </div>
-
-            <h3>Outros materiais</h3>
-
-            <div style={{ display: "grid", gap: "8px" }}>
-              {(receitaSelecionada.materiais?.itens || []).map((item, index) => (
-                <div
-                  key={index}
-                  style={{
-                    background: "#fff",
-                    padding: "12px",
-                    borderRadius: "10px",
-                    border: "1px solid #ddd"
-                  }}
-                >
-                  ✔ {item}
-                </div>
-              ))}
-            </div>
-
-            <button
-              onClick={() => {
-                navigator.clipboard.writeText(listaMateriaisTexto());
-                alert("Lista de materiais copiada!");
-              }}
-              style={{
-                marginTop: "15px",
-                width: "100%",
-                padding: "14px",
-                background: "#333",
-                color: "#fff",
-                border: "none",
-                borderRadius: "12px",
-                fontWeight: "800"
-              }}
-            >
-              Copiar lista de materiais
-            </button>
-
-            <button
-              onClick={() =>
-                window.open("https://mercadolivre.com/sec/1AW2X78", "_blank")
-              }
-              style={{
-                marginTop: "10px",
-                width: "100%",
-                padding: "14px",
-                background: "#ffd400",
-                border: "none",
-                borderRadius: "12px",
-                fontWeight: "800"
-              }}
-            >
-              Comprar no Mercado Livre
-            </button>
-          </div>
+          <Materiais
+            receita={receitaSelecionada}
+            voltar={() => irPara("receita")}
+            listaMateriaisTexto={listaMateriaisTexto}
+          />
         )}
 
+        {pagina === "simulador" && <Simulador />}
 
-        {pagina === "sobre" && (
-          <>
-            <h2 style={{ marginBottom: "6px" }}>Quem Somos</h2>
-
-            <p style={{ fontSize: "14px", color: "#666", marginBottom: "16px" }}>
-              Conheça o Real Triarte, nossa missão e as informações oficiais do aplicativo.
-            </p>
-
-            {[
-              {
-                id: "quemSomos",
-                titulo: "Quem Somos",
-                conteudo: (
-                  <div>
-                    <div style={{ textAlign: "center", marginBottom: "18px" }}>
-                      <img
-                        src="/images/logo/logo.png"
-                        alt="Real Triarte"
-                        style={{
-                          width: "96px",
-                          height: "96px",
-                          borderRadius: "50%",
-                          boxShadow: "0 4px 12px rgba(0,0,0,0.15)"
-                        }}
-                      />
-
-                      <h3 style={{ margin: "12px 0 4px", color: "#222" }}>
-                        Real Triarte
-                      </h3>
-
-                      <p style={{ margin: 0, fontSize: "13px", color: "#777" }}>
-                        Amigurumi com carinho, criatividade e passo a passo organizado.
-                      </p>
-                    </div>
-
-                    <div style={sectionBoxStyle}>
-                      <h4 style={sectionTitleStyle}>Nossa história</h4>
-                      <p style={paragraphStyle}>
-                        O Real Triarte nasceu para compartilhar receitas de amigurumi de forma
-                        simples, acessível e acolhedora.
-                      </p>
-
-                      <p style={paragraphStyle}>
-                        Desde 2020, ajudamos pessoas apaixonadas por artesanato a aprender,
-                        praticar e evoluir no mundo do amigurumi.
-                      </p>
-                    </div>
-
-                    <div style={sectionBoxStyle}>
-                      <h4 style={sectionTitleStyle}>O que você encontra aqui</h4>
-                      <ul style={listStyle}>
-                        <li>Receitas organizadas por personagem e categoria</li>
-                        <li>Vídeos passo a passo no YouTube</li>
-                        <li>Lista de materiais</li>
-                        <li>Favoritos para salvar suas receitas preferidas</li>
-                        <li>Progresso para acompanhar sua evolução</li>
-                        <li>Simulador de preço para venda de amigurumi</li>
-                      </ul>
-                    </div>
-
-                    <div style={sectionBoxStyle}>
-                      <h4 style={sectionTitleStyle}>Nossa missão</h4>
-                      <p style={paragraphStyle}>
-                        Tornar o aprendizado do amigurumi mais leve, prático e organizado,
-                        ajudando cada pessoa a transformar fios em peças cheias de encanto.
-                      </p>
-                    </div>
-
-                    <div
-                      style={{
-                        background: "#fff8cc",
-                        padding: "14px",
-                        borderRadius: "12px",
-                        border: "1px solid #f0dd73",
-                        textAlign: "center"
-                      }}
-                    >
-                      <strong style={{ color: "#222" }}>
-                        Obrigado por fazer parte da comunidade Real Triarte 💛
-                      </strong>
-                    </div>
-                  </div>
-                )
-              },
-
-              {
-                id: "privacidade",
-                titulo: "Política de Privacidade",
-                conteudo: (
-                  <div>
-                    <div style={infoHeaderStyle}>
-                      <strong>Política de Privacidade</strong>
-                      <span>Última atualização: 2026</span>
-                    </div>
-
-                    <div style={sectionBoxStyle}>
-                      <h4 style={sectionTitleStyle}>1. Coleta de dados</h4>
-                      <p style={paragraphStyle}>
-                        O aplicativo Real Triarte não coleta dados pessoais sensíveis,
-                        como nome, telefone, e-mail ou localização.
-                      </p>
-                    </div>
-
-                    <div style={sectionBoxStyle}>
-                      <h4 style={sectionTitleStyle}>2. Dados armazenados no dispositivo</h4>
-                      <p style={paragraphStyle}>
-                        O app pode salvar algumas informações localmente no seu aparelho:
-                      </p>
-
-                      <ul style={listStyle}>
-                        <li>Progresso nas receitas</li>
-                        <li>Receitas favoritas</li>
-                        <li>Pontuação e evolução dentro do aplicativo</li>
-                      </ul>
-
-                      <p style={paragraphStyle}>
-                        Esses dados ficam apenas no dispositivo do usuário e não são
-                        enviados para servidores externos.
-                      </p>
-                    </div>
-
-                    <div style={sectionBoxStyle}>
-                      <h4 style={sectionTitleStyle}>3. Uso das informações</h4>
-                      <p style={paragraphStyle}>
-                        As informações armazenadas localmente são utilizadas apenas para
-                        melhorar a experiência dentro do aplicativo.
-                      </p>
-
-                      <ul style={listStyle}>
-                        <li>Salvar seu progresso</li>
-                        <li>Manter suas receitas favoritas</li>
-                        <li>Personalizar sua navegação</li>
-                      </ul>
-                    </div>
-
-                    <div style={sectionBoxStyle}>
-                      <h4 style={sectionTitleStyle}>4. Serviços de terceiros</h4>
-                      <p style={paragraphStyle}>
-                        O aplicativo pode conter links para plataformas externas:
-                      </p>
-
-                      <ul style={listStyle}>
-                        <li>YouTube</li>
-                        <li>Mercado Livre</li>
-                        <li>Redes sociais</li>
-                      </ul>
-
-                      <p style={paragraphStyle}>
-                        Ao acessar esses serviços, você estará sujeito às políticas de
-                        privacidade de cada plataforma.
-                      </p>
-                    </div>
-
-                    <div style={sectionBoxStyle}>
-                      <h4 style={sectionTitleStyle}>5. Controle do usuário</h4>
-                      <p style={paragraphStyle}>
-                        O usuário pode limpar os dados do aplicativo a qualquer momento
-                        pelas configurações do navegador ou do dispositivo.
-                      </p>
-                    </div>
-
-                    <div style={contactBoxStyle}>
-                      <strong>Dúvidas sobre privacidade?</strong>
-                      <button
-                        onClick={() =>
-                          (window.location.href = "mailto:contato@triarte.com.br")
-                        }
-                        style={emailButtonStyle}
-                      >
-                        📧 contato@triarte.com.br
-                      </button>
-                    </div>
-                  </div>
-                )
-              },
-
-              {
-                id: "termos",
-                titulo: "Termos de Uso",
-                conteudo: (
-                  <div>
-                    <div style={infoHeaderStyle}>
-                      <strong>Termos de Uso</strong>
-                      <span>Última atualização: 2026</span>
-                    </div>
-
-                    <div style={sectionBoxStyle}>
-                      <h4 style={sectionTitleStyle}>1. Uso do aplicativo</h4>
-                      <p style={paragraphStyle}>
-                        O Real Triarte é destinado ao aprendizado, organização e
-                        acompanhamento de receitas de amigurumi.
-                      </p>
-                    </div>
-
-                    <div style={sectionBoxStyle}>
-                      <h4 style={sectionTitleStyle}>2. Conteúdo</h4>
-                      <p style={paragraphStyle}>
-                        O aplicativo pode reunir receitas, listas de materiais, vídeos,
-                        links externos e ferramentas de apoio ao artesanato.
-                      </p>
-                    </div>
-
-                    <div style={sectionBoxStyle}>
-                      <h4 style={sectionTitleStyle}>3. Uso pessoal</h4>
-                      <p style={paragraphStyle}>
-                        O conteúdo disponibilizado é voltado para uso pessoal e
-                        educacional. Não é permitida a redistribuição ou revenda sem
-                        autorização.
-                      </p>
-                    </div>
-
-                    <div style={sectionBoxStyle}>
-                      <h4 style={sectionTitleStyle}>4. Links externos</h4>
-                      <p style={paragraphStyle}>
-                        O app pode direcionar o usuário para serviços externos, como
-                        YouTube, Mercado Livre e redes sociais. O Real Triarte não se
-                        responsabiliza pelas políticas ou funcionamento dessas plataformas.
-                      </p>
-                    </div>
-
-                    <div style={sectionBoxStyle}>
-                      <h4 style={sectionTitleStyle}>5. Alterações</h4>
-                      <p style={paragraphStyle}>
-                        O aplicativo e estes termos podem ser atualizados a qualquer
-                        momento para melhorias, correções ou ajustes de conteúdo.
-                      </p>
-                    </div>
-                  </div>
-                )
-              },
-
-              {
-                id: "dados",
-                titulo: "Política de Dados",
-                conteudo: (
-                  <div>
-                    <div style={sectionBoxStyle}>
-                      <h4 style={sectionTitleStyle}>Dados locais</h4>
-                      <p style={paragraphStyle}>
-                        O aplicativo utiliza armazenamento local para salvar progresso,
-                        favoritos e pontuação.
-                      </p>
-                    </div>
-
-                    <div style={sectionBoxStyle}>
-                      <h4 style={sectionTitleStyle}>Sem cadastro obrigatório</h4>
-                      <p style={paragraphStyle}>
-                        O app não exige criação de conta, senha ou envio de dados
-                        pessoais para funcionar.
-                      </p>
-                    </div>
-
-                    <div style={sectionBoxStyle}>
-                      <h4 style={sectionTitleStyle}>Serviços externos</h4>
-                      <p style={paragraphStyle}>
-                        Ao acessar links externos, como YouTube, Mercado Livre ou redes
-                        sociais, o usuário passa a seguir as regras dessas plataformas.
-                      </p>
-                    </div>
-                  </div>
-                )
-              },
-
-              {
-                id: "aviso",
-                titulo: "Aviso Legal",
-                conteudo: (
-                  <div>
-                    <div style={sectionBoxStyle}>
-                      <p style={paragraphStyle}>
-                        O Real Triarte apresenta criações artesanais e conteúdos
-                        inspirados no universo do amigurumi e da cultura pop.
-                      </p>
-
-                      <p style={paragraphStyle}>
-                        Este aplicativo não possui vínculo oficial, licença, parceria ou
-                        associação com marcas, empresas, personagens ou franquias
-                        eventualmente citadas ou referenciadas.
-                      </p>
-
-                      <p style={paragraphStyle}>
-                        Todas as marcas pertencem aos seus respectivos proprietários.
-                      </p>
-                    </div>
-                  </div>
-                )
-              }
-            ].map((item) => (
-              <div
-                key={item.id}
-                style={{
-                  background: "#fff",
-                  borderRadius: "16px",
-                  marginBottom: "12px",
-                  overflow: "hidden",
-                  boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
-                  border: "1px solid #eee"
-                }}
-              >
-                <div
-                  onClick={() =>
-                    setSobreAberto(sobreAberto === item.id ? null : item.id)
-                  }
-                  style={{
-                    padding: "15px",
-                    fontWeight: "800",
-                    cursor: "pointer",
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    color: "#222"
-                  }}
-                >
-                  <span>{item.titulo}</span>
-                  <span style={{ fontSize: "20px", color: "#999" }}>
-                    {sobreAberto === item.id ? "−" : "+"}
-                  </span>
-                </div>
-
-                {sobreAberto === item.id && (
-                  <div
-                    style={{
-                      padding: "14px",
-                      borderTop: "1px solid #eee",
-                      background: "#fafafa"
-                    }}
-                  >
-                    {item.conteudo}
-                  </div>
-                )}
-              </div>
-            ))}
-
-            <div
-              style={{
-                marginTop: "20px",
-                background: "#222",
-                color: "#fff",
-                padding: "18px",
-                borderRadius: "16px",
-                textAlign: "center",
-                boxShadow: "0 4px 12px rgba(0,0,0,0.12)"
-              }}
-            >
-              <strong style={{ fontSize: "15px" }}>Versão do App</strong>
-
-              <p style={{ margin: "8px 0 4px", fontSize: "14px" }}>
-                Real Triarte v1.0.0
-              </p>
-
-              <p style={{ margin: 0, fontSize: "12px", color: "#ddd" }}>
-                Desenvolvido por Real Triarte • Brasil
-              </p>
-
-              <p style={{ marginTop: "10px", fontSize: "12px", color: "#ccc" }}>
-                App educacional de apoio ao aprendizado de amigurumi.
-              </p>
-            </div>
-          </>
+        {pagina === "conquistas" && (
+          <Conquistas
+            voltar={() => irPara("home")}
+            progresso={progresso}
+            receitas={receitasAtivas}
+            favoritos={favoritos}
+          />
         )}
 
-        {pagina === "contato" && (
-          <>
-            <h2 style={{ marginBottom: "5px" }}>Contato</h2>
-            <p
-              style={{
-                fontSize: "14px",
-                color: "#666",
-                marginBottom: "15px"
-              }}
-            >
-              Entre em contato ou acesse nossas redes:
-            </p>
-
-            <div style={{ display: "grid", gap: "10px" }}>
-              
-              {/* EMAIL */}
-              <div
-                onClick={() => window.location.href = "mailto:contato@triarte.com.br"}
-                style={{
-                  background: "#fff",
-                  padding: "14px",
-                  borderRadius: "12px",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "12px",
-                  cursor: "pointer"
-                }}
-              >
-                <img src="/images/icons/email.png" style={{ width: "32px" }} />
-                <span>contato@triarte.com.br</span>
-              </div>
-
-              {/* SITE */}
-              <div
-                onClick={() => window.open("https://triarte.com.br", "_blank")}
-                style={{
-                  background: "#fff",
-                  padding: "14px",
-                  borderRadius: "12px",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "12px",
-                  cursor: "pointer"
-                }}
-              >
-                <img src="/images/icons/site.png" style={{ width: "32px" }} />
-                <span>Site Oficial</span>
-              </div>
-
-              {/* YOUTUBE */}
-              <div
-                onClick={() => window.open("https://www.youtube.com/@RealTriarte", "_blank")}
-                style={{
-                  background: "#fff",
-                  padding: "14px",
-                  borderRadius: "12px",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "12px",
-                  cursor: "pointer"
-                }}
-              >
-                <img src="/images/icons/youtube.png" style={{ width: "32px" }} />
-                <span>YouTube</span>
-              </div>
-
-              {/* INSTAGRAM */}
-             <div
-              onClick={() => window.open("https://instagram.com/realtriarte", "_blank")}
-              style={{
-                  background: "#fff",
-                  padding: "14px",
-                  borderRadius: "12px",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "12px",
-                  cursor: "pointer"
-                }}
-            >
-              <img src="/images/icons/instagram.png" style={{ width: "32px" }} />
-              <span>Instagram</span>
-            </div>
-
-              {/* FACEBOOK */}
-              <div
-                onClick={() => window.open("https://www.facebook.com/realtriarteartesanato", "_blank")}
-                style={{
-                  background: "#fff",
-                  padding: "14px",
-                  borderRadius: "12px",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "12px",
-                  cursor: "pointer"
-                }}
-              >
-                <img src="/images/icons/facebook.png" style={{ width: "32px" }} />
-                <span>Facebook</span>
-              </div>
-
-             {/* TIKTOK */}
-            <div
-              onClick={() => window.open("https://www.tiktok.com/@triarteamigurumi", "_blank")}
-              style={{
-                background: "#fff",
-                padding: "14px",
-                borderRadius: "12px",
-                display: "flex",
-                alignItems: "center",
-                gap: "12px",
-                cursor: "pointer"
-              }}
-            >
-              <img src="/images/icons/tiktok.png" style={{ width: "32px" }} />
-              <span>TikTok</span>
-            </div>
-
-            </div>
-          </>
+        {pagina === "abreviatura" && (
+          <Abreviatura voltar={() => irPara("home")} />
         )}
 
-          {pagina === "progresso" && (
-            <>
-              <h2>Meu Progresso</h2>
-
-              <p
-                style={{
-                  fontSize: "14px",
-                  color: "#666",
-                  marginBottom: "15px"
-                }}
-              >
-                Continue evoluindo e desbloqueie novas conquistas 🧶✨
-              </p>
-
-
-              {/* RESUMO */}
-              <div
-                style={{
-                  background: "#fff",
-                  padding: "16px",
-                  borderRadius: "14px",
-                  marginBottom: "15px",
-                  textAlign: "center"
-                }}
-              >
-                <img src="/images/icons/pontos.png" style={{ width: "60px" }} />
-
-                <h3 style={{ margin: "10px 0 5px" }}>
-                  {pontos} pontos
-                </h3>
-
-                <p style={{ color: "#666", fontSize: "14px" }}>
-                  Nível {Math.floor(pontos / 500) + 1}
-                </p>
-              </div>
-
-              {/* GRID DE STATUS */}
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
-                  gap: "12px"
-                }}
-              >
-                {/* RECEITAS CONCLUÍDAS */}
-                <div
-                  style={{
-                    background: "#fff",
-                    padding: "14px",
-                    borderRadius: "12px",
-                    textAlign: "center"
-                  }}
-                >
-                  <img src="/images/icons/receitasprontas.png" style={{ width: "40px" }} />
-                  <p style={{ marginTop: "8px", fontWeight: "600" }}>
-                    {receitasAtivas.filter(r => percentual(r) === 100).length}
-                  </p>
-                  <p style={{ fontSize: "13px", color: "#666" }}>
-                    Concluídas
-                  </p>
-                </div>
-
-                {/* EM ANDAMENTO */}
-                <div
-                  style={{
-                    background: "#fff",
-                    padding: "14px",
-                    borderRadius: "12px",
-                    textAlign: "center"
-                  }}
-                >
-                  <img src="/images/icons/receitas.png" style={{ width: "40px" }} />
-                  <p style={{ marginTop: "8px", fontWeight: "600" }}>
-                    {receitasAtivas.filter(r => percentual(r) > 0 && percentual(r) < 100).length}
-                  </p>
-                  <p style={{ fontSize: "13px", color: "#666" }}>
-                    Em andamento
-                  </p>
-                </div>
-
-                {/* MEDALHAS */}
-                <div
-                  style={{
-                    background: "#fff",
-                    padding: "14px",
-                    borderRadius: "12px",
-                    textAlign: "center"
-                  }}
-                >
-                  <img src="/images/icons/medalhas.png" style={{ width: "40px" }} />
-                  <p style={{ marginTop: "8px", fontWeight: "600" }}>
-                    {Math.floor(pontos / 500)}
-                  </p>
-                  <p style={{ fontSize: "13px", color: "#666" }}>
-                    Medalhas
-                  </p>
-                </div>
-
-                {/* COMPARTILHAR */}
-                <div
-                  onClick={() => {
-                  const texto = `🧶 Meu progresso no Real Triarte!
-
-                  ⭐ Pontos: ${pontos}
-                  🏆 Nível: ${Math.floor(pontos / 500) + 1}
-
-                  📚 Receitas concluídas: ${receitasAtivas.filter(r => percentual(r) === 100).length}
-                  🧵 Em andamento: ${receitasAtivas.filter(r => percentual(r) > 0 && percentual(r) < 100).length}
-                  🏅 Medalhas: ${Math.floor(pontos / 500)}
-
-                  🎯 Faltam ${500 - (pontos % 500)} pontos para o próximo nível!
-
-                  💛 Estou evoluindo no amigurumi todos os dias!
-
-                  Aprenda também:
-                  https://real.triarte.com.br`;
-
-                    if (navigator.share) {
-                      navigator.share({
-                        title: "Meu progresso no Real Triarte",
-                        text: texto
-                      });
-                    } else {
-                      navigator.clipboard.writeText(texto);
-                      alert("Texto copiado para compartilhar!");
-                    }
-                  }}
-                  style={{
-                    background: "#fff",
-                    padding: "14px",
-                    borderRadius: "12px",
-                    textAlign: "center",
-                    cursor: "pointer"
-                  }}
-                >
-                  <img src="/images/icons/compartilhar.png" style={{ width: "40px" }} />
-                  <p style={{ marginTop: "8px", fontWeight: "600" }}>
-                    Compartilhar
-                  </p>
-                  <p style={{ fontSize: "13px", color: "#666" }}>
-                    Conquista
-                  </p>
-                </div>
-              </div>
-
-              {/* META */}
-              <div
-                style={{
-                  marginTop: "15px",
-                  background: "#fff",
-                  padding: "14px",
-                  borderRadius: "12px",
-                  textAlign: "center"
-                }}
-              >
-                <p style={{ fontSize: "14px", color: "#666" }}>
-                  Faltam{" "}
-                  <strong>{500 - (pontos % 500)}</strong>{" "}
-                  pontos para o próximo nível
-                </p>
-              </div>
-            </>
-          )}
-
-          {pagina === "simulador" && (
-  <>
-    {/* TÍTULO */}
-    <h2 style={{ marginBottom: "5px" }}>Simulador de Preço</h2>
-
-    <p style={{ fontSize: "14px", color: "#666", marginBottom: "15px" }}>
-      Descubra o valor ideal para vender seu amigurumi 🧶
-    </p>
-
-    {/* BLOCO MATERIAIS */}
-    <div style={{
-      background: "#fff",
-      padding: "14px",
-      borderRadius: "14px",
-      marginBottom: "12px"
-    }}>
-      <strong>Materiais</strong>
-
-      <div style={{ display: "grid", gap: "8px", marginTop: "10px" }}>
-        <div>
-  <p style={labelStyle}>Linha utilizada (R$)</p>
-  <input style={inputStyle} placeholder="Ex: 12.00" type="number" value={linha} onChange={e => setLinha(Number(e.target.value))} />
-</div>
-        <div>
-  <p style={labelStyle}>Olhos / acessórios (R$)</p>
-  <input style={inputStyle} placeholder="Ex: 5.00" type="number" value={olhos} onChange={e => setOlhos(Number(e.target.value))} />
-</div>
-        <div>
-  <p style={labelStyle}>Enchimento (R$)</p>
-  <input style={inputStyle} placeholder="Ex: 4.00" type="number" value={enchimento} onChange={e => setEnchimento(Number(e.target.value))} />
-</div>
-        <div>
-  <p style={labelStyle}>Outros custos (R$)</p>
-  <input style={inputStyle} placeholder="Ex: embalagem, cola..." type="number" value={outros} onChange={e => setOutros(Number(e.target.value))} />
-</div>
-      </div>
-    </div>
-
-    {/* BLOCO TRABALHO */}
-    <div style={{
-      background: "#fff",
-      padding: "14px",
-      borderRadius: "14px",
-      marginBottom: "12px"
-    }}>
-      <strong>Mão de obra</strong>
-
-      <div style={{ display: "grid", gap: "8px", marginTop: "10px" }}>
-        <div>
-  <p style={labelStyle}>Horas para produzir</p>
-  <input style={inputStyle} placeholder="Ex: 3" type="number" value={horas} onChange={e => setHoras(Number(e.target.value))} />
-</div>
-        <div>
-  <p style={labelStyle}>Valor por hora (R$)</p>
-  <input style={inputStyle} placeholder="Ex: 10.00" type="number" value={valorHora} onChange={e => setValorHora(Number(e.target.value))} />
-</div>
-      </div>
-    </div>
-
-    {/* BLOCO LUCRO */}
-    <div style={{
-      background: "#fff",
-      padding: "14px",
-      borderRadius: "14px",
-      marginBottom: "12px"
-    }}>
-      <strong>Lucro</strong>
-
-      <div>
-        <p style={labelStyle}>Margem de lucro (%)</p>
-        <input
-          style={inputStyle}
-          placeholder="Ex: 100"
-          type="number"
-          value={margem}
-          onChange={e => setMargem(Number(e.target.value))}
-        />
-      </div>
-      </div>
-
-    {/* BOTÃO */}
-    <button
-      onClick={() => setCalcular(true)}
-      style={{
-        width: "100%",
-        padding: "14px",
-        background: "#ffd400",
-        border: "none",
-        borderRadius: "12px",
-        fontWeight: "800",
-        fontSize: "16px",
-        marginTop: "5px"
-      }}
-    >
-      Calcular preço
-    </button>
-
-    {/* RESULTADO */}
-    {calcular && (
-      <div style={{
-        marginTop: "15px",
-        background: "#fff",
-        padding: "16px",
-        borderRadius: "14px"
-      }}>
-        <p style={{ fontSize: "14px", color: "#666" }}>
-          Materiais: <strong>R$ {(linha + olhos + enchimento + outros).toFixed(2)}</strong>
-        </p>
-
-        <p style={{ fontSize: "14px", color: "#666" }}>
-          Mão de obra: <strong>R$ {(horas * valorHora).toFixed(2)}</strong>
-        </p>
-
-        <p style={{ fontSize: "15px", marginTop: "5px" }}>
-          <strong>Custo total: R$ {(linha + olhos + enchimento + outros + (horas * valorHora)).toFixed(2)}</strong>
-        </p>
-
-        <div style={{
-          marginTop: "12px",
-          padding: "12px",
-          background: "#fff8cc",
-          borderRadius: "10px",
-          textAlign: "center"
-        }}>
-          <p style={{ margin: 0, fontSize: "13px", color: "#666" }}>
-            Preço sugerido
-          </p>
-
-          <p style={{
-            margin: "5px 0 0",
-            fontSize: "22px",
-            fontWeight: "800",
-            color: "#222"
-          }}>
-            R$ {((linha + olhos + enchimento + outros + (horas * valorHora)) * (1 + margem / 100)).toFixed(2)}
-          </p>
-        </div>
-      </div>
-    )}
-  </>
-)}
-
+        {pagina === "sobre" && <Sobre />}
+        {pagina === "contato" && <Contato />}
 
       </div>
-      {/* MENU INFERIOR */}
+
+      
+      {/* MENU INFERIOR ESTILO LATERAL */}
       <div
         style={{
           position: "fixed",
           bottom: 0,
-          left: "50%",
-          transform: "translateX(-50%)",
           width: "100%",
           maxWidth: "430px",
-          height: "70px",
-          background: "#333",
+          background: "#2b2b2b",
+          borderTop: "1px solid #444",
+
           display: "flex",
           justifyContent: "space-around",
           alignItems: "center",
-          borderTopLeftRadius: "16px",
-          borderTopRightRadius: "16px",
-          zIndex: 1000
+
+          padding: "10px 0"
         }}
       >
-        <button
-          onClick={() => irPara("home")}
-          style={{ background: "transparent", border: "none" }}
-        >
-          <img src="/images/icons/home.png" style={{ width: "40px" }} />
-        </button>
 
-        <button
-          onClick={() => irPara("favoritos")}
-          style={{ background: "transparent", border: "none" }}
-        >
-          <img src="/images/icons/favoritos.png" style={{ width: "40px" }} />
-        </button>
-
-        <button
+        {/* RECEITAS */}
+        <div
           onClick={() => irPara("receitas")}
-          style={{ background: "transparent", border: "none" }}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            cursor: "pointer"
+          }}
         >
-          <img src="/images/icons/busca.png" style={{ width: "40px" }} />
-        </button>
+          <img src="/images/icons/receitas.png" style={{ width: "28px" }} />
+          <span style={{ fontSize: "11px", color: "#fff" }}>Receitas</span>
+        </div>
+
+        {/* FAVORITOS */}
+        <div
+          onClick={() => irPara("favoritos")}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            cursor: "pointer"
+          }}
+        >
+          <img src="/images/icons/favoritos.png" style={{ width: "28px" }} />
+          <span style={{ fontSize: "11px", color: "#fff" }}>Favoritos</span>
+        </div>
+
+        {/* CONQUISTAS */}
+        <div
+          onClick={() => irPara("conquistas")}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            cursor: "pointer"
+          }}
+        >
+          <img src="/images/icons/conquistas.png" style={{ width: "28px" }} />
+          <span style={{ fontSize: "11px", color: "#fff" }}>Conquistas</span>
+        </div>
+
+        {/* SIMULADOR */}
+        <div
+          onClick={() => irPara("simulador")}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            cursor: "pointer"
+          }}
+        >
+          <img src="/images/icons/calculo.png" style={{ width: "28px" }} />
+          <span style={{ fontSize: "11px", color: "#fff" }}>Simulador</span>
+        </div>
+
+        {/* MENU */}
+          <div
+            onClick={() => setMenuAberto(true)}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              cursor: "pointer"
+            }}
+        >
+          <img src="/images/icons/menu.png" style={{ width: "28px" }} />
+          <span style={{ fontSize: "11px", color: "#fff" }}>Menu</span>
+        </div>
       </div>
     </div>
   );
 }
-
 export default App;
