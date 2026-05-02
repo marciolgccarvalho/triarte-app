@@ -16,6 +16,101 @@ import Sobre from "./pages/Sobre";
 import Contato from "./pages/Contato";
 
 function App() {
+
+  // 🔥 PWA DETECÇÃO
+  const isStandalone =
+    window.matchMedia("(display-mode: standalone)").matches ||
+    window.navigator.standalone;
+
+  const [podeInstalar, setPodeInstalar] = React.useState(false);
+  const [promptInstalar, setPromptInstalar] = React.useState(null);
+
+  // 🔥 EVENTO INSTALAÇÃO
+  React.useEffect(() => {
+    const handler = (e) => {
+      e.preventDefault();
+      setPromptInstalar(e);
+      setPodeInstalar(true);
+    };
+
+    window.addEventListener("beforeinstallprompt", handler);
+
+    return () => window.removeEventListener("beforeinstallprompt", handler);
+  }, []);
+
+  // 🔥 BLOQUEIO ROTAÇÃO
+  const [rotacionado, setRotacionado] = React.useState(false);
+
+  React.useEffect(() => {
+    const check = () => {
+      setRotacionado(window.innerWidth > window.innerHeight);
+    };
+
+    check();
+    window.addEventListener("resize", check);
+
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  // 🚫 BLOQUEIA ROTAÇÃO
+  if (rotacionado) {
+    return (
+      <div style={{
+        height: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        textAlign: "center",
+        padding: "20px"
+      }}>
+        <div>
+          <h2>📱 Gire o celular</h2>
+          <p>Use o app na vertical</p>
+        </div>
+      </div>
+    );
+  }
+
+  // 🚫 BLOQUEIA SE NÃO INSTALADO
+  if (!isStandalone) {
+    return (
+      <div style={{
+        height: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        textAlign: "center",
+        padding: "20px"
+      }}>
+        <div>
+          <h2>📲 Instale o app</h2>
+          <p>Para usar o Real Triarte, instale no seu celular</p>
+
+          {podeInstalar && (
+            <button
+              onClick={() => {
+                promptInstalar.prompt();
+                promptInstalar.userChoice.then(() => {
+                  setPodeInstalar(false);
+                });
+              }}
+              style={{
+                marginTop: "20px",
+                padding: "14px",
+                background: "#ffd400",
+                border: "none",
+                borderRadius: "12px",
+                fontWeight: "800",
+                cursor: "pointer"
+              }}
+            >
+              Instalar App
+            </button>
+          )}
+        </div>
+      </div>
+    );
+  }
   const [pagina, setPagina] = React.useState("home");
   const [menuAberto, setMenuAberto] = React.useState(false);
   const [receitaSelecionada, setReceitaSelecionada] = React.useState(null);
