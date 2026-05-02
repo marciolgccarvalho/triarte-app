@@ -24,6 +24,7 @@ function App() {
 
   const [podeInstalar, setPodeInstalar] = React.useState(false);
   const [promptInstalar, setPromptInstalar] = React.useState(null);
+  const [mostrarAvisoApp, setMostrarAvisoApp] = React.useState(false);
 
   // 🔥 EVENTO INSTALAÇÃO
   React.useEffect(() => {
@@ -37,6 +38,18 @@ function App() {
 
     return () => window.removeEventListener("beforeinstallprompt", handler);
   }, []);
+
+// 🔥 DETECTA SE JÁ ESTÁ INSTALADO
+React.useEffect(() => {
+  if (isStandalone) {
+    setMostrarAvisoApp(true);
+
+    setTimeout(() => {
+      setMostrarAvisoApp(false);
+    }, 3000); // desaparece sozinho
+  }
+}, []);
+
 
   // 🔥 BLOQUEIO ROTAÇÃO
   const [rotacionado, setRotacionado] = React.useState(false);
@@ -335,6 +348,22 @@ function App() {
       <MenuLateral aberto={menuAberto} fechar={() => setMenuAberto(false)} irPara={irPara} />
 
       {/* CONTEÚDO */}
+      {mostrarAvisoApp && (
+            <div
+              style={{
+                background: "#e8f7ee",
+                border: "1px solid #b7e4c7",
+                padding: "10px",
+                borderRadius: "10px",
+                margin: "10px",
+                textAlign: "center",
+                fontSize: "13px"
+              }}
+            >
+              💛 Você já está usando o app instalado
+            </div>
+          )}
+
       <div style={{ padding: "80px 15px 90px" }}>
 
         {pagina === "home" && (
