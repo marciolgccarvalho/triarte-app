@@ -1,8 +1,10 @@
 import React from "react";
 import receitas from "./data/receitas.json";
 import mensagens from "./data/mensagens.json";
+
 // COMPONENTES
 import MenuLateral from "./components/MenuLateral";
+
 // PÁGINAS
 import Home from "./pages/Home";
 import Receitas from "./pages/Receitas";
@@ -16,8 +18,14 @@ import Sobre from "./pages/Sobre";
 import Contato from "./pages/Contato";
 
 function App() {
+  // 🔓 LIBERAR ACESSO NO PC
+  // true = libera no PC para testar
+  // false = bloqueia rotação no PC/produção, se desejar
+  const liberarNoPC = true;
 
-  // 🔥 PWA DETECÇÃO
+  // =========================
+  // PWA
+  // =========================
   const isStandalone =
     window.matchMedia("(display-mode: standalone)").matches ||
     window.navigator.standalone;
@@ -26,48 +34,51 @@ function App() {
   const [promptInstalar, setPromptInstalar] = React.useState(null);
   const [mostrarAvisoApp, setMostrarAvisoApp] = React.useState(false);
   const [instalado, setInstalado] = React.useState(
-  localStorage.getItem("appInstalado") === "true"
-);
-  
-  
- // 🔥 DETECTA QUANDO INSTALOU O APP
-      React.useEffect(() => {
-        const handleInstalled = () => {
-          console.log("App instalado!");
+    localStorage.getItem("appInstalado") === "true"
+  );
 
-          localStorage.setItem("appInstalado", "true");
-          setInstalado(true);
-          setMostrarAvisoApp(true);
+  React.useEffect(() => {
+    const handleInstalled = () => {
+      localStorage.setItem("appInstalado", "true");
+      setInstalado(true);
+      setMostrarAvisoApp(true);
+      setPodeInstalar(false);
+    };
 
-          setTimeout(() => {
-            window.location.href = window.location.origin;
-          }, 800);
-        };
+    window.addEventListener("appinstalled", handleInstalled);
 
-        window.addEventListener("appinstalled", handleInstalled);
+    return () => {
+      window.removeEventListener("appinstalled", handleInstalled);
+    };
+  }, []);
 
-        return () => {
-          window.removeEventListener("appinstalled", handleInstalled);
-        };
-      }, []);
+  React.useEffect(() => {
+    const handler = (e) => {
+      e.preventDefault();
+      setPromptInstalar(e);
+      setPodeInstalar(true);
+    };
 
+    window.addEventListener("beforeinstallprompt", handler);
 
-// 🔥 DETECTA SE PODE INSTALAR
-React.useEffect(() => {
-  const handler = (e) => {
-    e.preventDefault();
-    setPromptInstalar(e);
-    setPodeInstalar(true);
-  };
+    return () => {
+      window.removeEventListener("beforeinstallprompt", handler);
+    };
+  }, []);
 
-  window.addEventListener("beforeinstallprompt", handler);
+  React.useEffect(() => {
+    if (mostrarAvisoApp) {
+      const timer = setTimeout(() => {
+        setMostrarAvisoApp(false);
+      }, 3000);
 
-  return () => {
-    window.removeEventListener("beforeinstallprompt", handler);
-  };
-}, []);
+      return () => clearTimeout(timer);
+    }
+  }, [mostrarAvisoApp]);
 
-  // 🔥 BLOQUEIO ROTAÇÃO
+  // =========================
+  // BLOQUEIO ROTAÇÃO
+  // =========================
   const [rotacionado, setRotacionado] = React.useState(false);
 
   React.useEffect(() => {
@@ -81,59 +92,44 @@ React.useEffect(() => {
     return () => window.removeEventListener("resize", check);
   }, []);
 
-  // 🚫 BLOQUEIA ROTAÇÃO
-  if (rotacionado) {
-    return (
-      <div style={{
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        textAlign: "center",
-        padding: "20px"
-      }}>
-        <div>
-          <h2>📱 Gire o celular</h2>
-          <p>Use o app na vertical</p>
-        </div>
-      </div>
-    );
-  }
-
-
-
-
-
-  
+  // =========================
+  // STATES PRINCIPAIS
+  // =========================
   const [pagina, setPagina] = React.useState("home");
   const [menuAberto, setMenuAberto] = React.useState(false);
   const [receitaSelecionada, setReceitaSelecionada] = React.useState(null);
+
   const [buscaNome, setBuscaNome] = React.useState("");
   const [buscaCategoria, setBuscaCategoria] = React.useState("");
   const [modoExibicao, setModoExibicao] = React.useState("grid");
   const [limite, setLimite] = React.useState(10);
   const [paginaAtual, setPaginaAtual] = React.useState(1);
+
   const [favoritos, setFavoritos] = React.useState(() => {
     const salvo = localStorage.getItem("favoritos");
     return salvo ? JSON.parse(salvo) : [];
   });
+
   const [progresso, setProgresso] = React.useState(() => {
     const salvo = localStorage.getItem("progressoReceitas");
     return salvo ? JSON.parse(salvo) : {};
   });
+
   const [ultimaReceita, setUltimaReceita] = React.useState(() => {
     const salvo = localStorage.getItem("ultimaReceita");
     return salvo ? JSON.parse(salvo) : null;
   });
+
   const [mensagemAtual, setMensagemAtual] = React.useState(null);
+  const [receitasRandom, setReceitasRandom] = React.useState([]);
 
   // =========================
   // EFFECTS
   // =========================
-
   React.useEffect(() => {
     localStorage.setItem("favoritos", JSON.stringify(favoritos));
   }, [favoritos]);
+
   React.useEffect(() => {
     localStorage.setItem("progressoReceitas", JSON.stringify(progresso));
   }, [progresso]);
@@ -148,19 +144,10 @@ React.useEffect(() => {
 
     setMensagemAtual(escolhida);
   }, [pagina]);
+
   React.useEffect(() => {
     setPaginaAtual(1);
   }, [buscaNome, buscaCategoria, limite, pagina]);
-
-  React.useEffect(() => {
-    if (mostrarAvisoApp) {
-      setTimeout(() => {
-        setMostrarAvisoApp(false);
-      }, 3000);
-    }
-  }, [mostrarAvisoApp]);
-
-
 
   // =========================
   // FUNÇÕES
@@ -169,12 +156,14 @@ React.useEffect(() => {
     setPagina(p);
     setMenuAberto(false);
   };
+
   const abrirReceita = (r) => {
     setReceitaSelecionada(r);
     setUltimaReceita(r);
     localStorage.setItem("ultimaReceita", JSON.stringify(r));
     setPagina("receita");
   };
+
   const toggleFavorito = (id) => {
     setFavoritos((prev) =>
       prev.includes(id)
@@ -182,6 +171,7 @@ React.useEffect(() => {
         : [...prev, id]
     );
   };
+
   const percentual = (receita) => {
     const vistos = progresso[receita.id]?.vistos?.length || 0;
     const total = receita.videos?.length || 0;
@@ -203,6 +193,7 @@ React.useEffect(() => {
       };
     });
   };
+
   const listaMateriaisTexto = () => {
     const linhas = receitaSelecionada?.materiais?.linhas || [];
     const itens = receitaSelecionada?.materiais?.itens || [];
@@ -219,42 +210,54 @@ React.useEffect(() => {
       "App Real Triarte"
     ].join("\n");
   };
+
+  const instalarApp = async () => {
+    if (!promptInstalar) return;
+
+    promptInstalar.prompt();
+
+    const escolha = await promptInstalar.userChoice;
+
+    if (escolha.outcome === "accepted") {
+      localStorage.setItem("appInstalado", "true");
+      setInstalado(true);
+      setMostrarAvisoApp(true);
+      setPodeInstalar(false);
+    }
+  };
+
   // =========================
   // DADOS
   // =========================
   const receitasAtivas = receitas.filter((r) => r.ativo);
-  // 🔥 DATA ATUAL
-  const hoje = new Date();  
-  // 🔥 IDENTIFICA RECEITAS EM DESTAQUE (CARROSSEL)
+
+  const hoje = new Date();
+
   const receitasDestaque = receitasAtivas.filter((r) => {
-  if (!r.destaqueInicio || !r.destaqueFim) return false;
-  const inicio = new Date(r.destaqueInicio);
-  const fim = new Date(r.destaqueFim);
-  return hoje >= inicio && hoje <= fim;
-});
+    if (!r.destaqueInicio || !r.destaqueFim) return false;
 
-// 🔥 STATE PARA FIXAR RANDOM
-    const [receitasRandom, setReceitasRandom] = React.useState([]);
+    const inicio = new Date(r.destaqueInicio);
+    const fim = new Date(r.destaqueFim);
 
-// 🔥 RANDOM SEM REPETIR DESTAQUES (SÓ QUANDO ENTRA NA HOME)
+    return hoje >= inicio && hoje <= fim;
+  });
+
   React.useEffect(() => {
-  if (pagina !== "home") return;
+    if (pagina !== "home") return;
 
-  const idsDestaque = receitasDestaque.map((r) => r.id);
+    const idsDestaque = receitasDestaque.map((r) => r.id);
 
-  const lista = [...receitasAtivas]
-    .filter((r) => !idsDestaque.includes(r.id))
-    .sort(() => Math.random() - 0.5);
+    const lista = [...receitasAtivas]
+      .filter((r) => !idsDestaque.includes(r.id))
+      .sort(() => Math.random() - 0.5);
 
-  setReceitasRandom(lista);
-}, [pagina]);
+    setReceitasRandom(lista);
+  }, [pagina]);
 
-// 🔥 CATEGORIAS
   const categorias = [
-  ...new Set(receitasAtivas.map((r) => r.categoria))
-];
+    ...new Set(receitasAtivas.map((r) => r.categoria))
+  ];
 
-// 🔥 FILTRO DE BUSCA
   const receitasFiltradas = React.useMemo(() => {
     return receitasAtivas.filter((r) => {
       const nome = buscaNome.toLowerCase();
@@ -266,280 +269,371 @@ React.useEffect(() => {
     });
   }, [receitasAtivas, buscaNome, buscaCategoria]);
 
-// 🔥 PAGINAÇÃO
   const totalPaginas = Math.max(
     1,
     Math.ceil(receitasFiltradas.length / limite)
   );
+
   const receitasPaginadas = React.useMemo(() => {
     return receitasFiltradas.slice(
       (paginaAtual - 1) * limite,
       paginaAtual * limite
     );
   }, [receitasFiltradas, paginaAtual, limite]);
+
   React.useEffect(() => {
     if (paginaAtual > totalPaginas) {
       setPaginaAtual(1);
     }
   }, [totalPaginas]);
+
+  // =========================
+  // BLOQUEIO ROTAÇÃO
+  // =========================
+  if (rotacionado && !liberarNoPC) {
+    return (
+      <div
+        style={{
+          height: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          textAlign: "center",
+          padding: "20px",
+          background: "#f5f5f5"
+        }}
+      >
+        <div>
+          <h2>📱 Gire o celular</h2>
+          <p>Use o app na vertical</p>
+        </div>
+      </div>
+    );
+  }
+
   // =========================
   // LAYOUT
   // =========================
   return (
-    <div style={{ maxWidth: "430px", margin: "0 auto", minHeight: "100vh", background: "#f5f5f5" }}>
-
-     {/* HEADER FIXO */}
     <div
-      style={{ position: "fixed", top: 0, left: "50%", transform: "translateX(-50%)", width: "100%",  maxWidth: "430px", zIndex: 1000,
-
-        background: "#fff",
-        padding: "10px 16px",
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-
-        boxShadow: "0 2px 6px rgba(0,0,0,0.08)"
-      }}
->
-  {/* LOGO */}
-  <img
-    src="/images/logo/logo.png"
-    style={{
-      width: "45px",
-      height: "45px",
-      borderRadius: "50%",
-      cursor: "pointer"
-    }}
-    onClick={() => irPara("home")}
-  />
-
-  {/* TÍTULO */}
-  <strong
-    style={{
-      fontSize: "38px",
-      color: "#222"
-    }}
-  >
-    Real Triarte
-  </strong>
-
-  {/* MENU */}
-  <img
-    src="/images/icons/menu.png"
-    style={{
-      width: "40px",
-      height: "40px",
-      cursor: "pointer"
-    }}
-    onClick={() => setMenuAberto(true)}
-  />
-</div>
-
-      {/* MENU */}
-      <MenuLateral aberto={menuAberto} fechar={() => setMenuAberto(false)} irPara={irPara} />
-
-      {/* CONTEÚDO */}
-
-{podeInstalar && !isStandalone && !instalado && (
-  <div style={{ textAlign: "center", marginBottom: "10px" }}>
-    <button
-      onClick={() => {
-        if (!promptInstalar) return;
-        promptInstalar.prompt();
-      }}
       style={{
-        padding: "12px 16px",
-        background: "#ffd400",
-        border: "none",
-        borderRadius: "12px",
-        fontWeight: "800",
-        cursor: "pointer"
+        width: "100%",
+        minHeight: "100vh",
+        background: liberarNoPC ? "#1a1a1a" : "#f5f5f5",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
       }}
     >
-      📱 Instalar App
-    </button>
-  </div>
-)}
-
-     {!isStandalone && (
-        <div
-          style={{
-            background: "#fff3cd",
-            border: "1px solid #ffeeba",
-            padding: "10px",
-            borderRadius: "10px",
-            margin: "10px",
-            textAlign: "center",
-            fontSize: "13px"
-          }}
-        >
-          📲 Instale o app para melhor experiência
-        </div>
-      )}
-
-      <div style={{ padding: "80px 15px 90px" }}>
-
-        {pagina === "home" && (
-          <Home
-            mensagemAtual={mensagemAtual}
-            ultimaReceita={ultimaReceita}
-            receitas={receitasAtivas}        // ✅ CORREÇÃO PRINCIPAL
-            receitasRandom={receitasRandom}  // ✅ RANDOM CORRETO
-            abrirReceita={abrirReceita}
-            percentual={percentual}
-            toggleFavorito={toggleFavorito}
-            favoritos={favoritos}
-          />
-        )}
-
-        {pagina === "receitas" && (
-          <Receitas
-            receitas={receitasAtivas}
-            buscaNome={buscaNome}
-            setBuscaNome={setBuscaNome}
-            buscaCategoria={buscaCategoria}
-            setBuscaCategoria={setBuscaCategoria}
-            categorias={categorias}
-            receitasPaginadas={receitasPaginadas}
-            modoExibicao={modoExibicao}
-            setModoExibicao={setModoExibicao}
-            limite={limite}
-            setLimite={setLimite}
-            paginaAtual={paginaAtual}
-            setPaginaAtual={setPaginaAtual}
-            totalPaginas={totalPaginas}
-            abrirReceita={abrirReceita}
-            toggleFavorito={toggleFavorito}
-            favoritos={favoritos}
-            percentual={percentual}
-          />
-        )}
-
-        {pagina === "favoritos" && (
-          <Favoritos
-            receitas={receitasAtivas}
-            favoritos={favoritos}
-            abrirReceita={abrirReceita}
-            percentual={percentual}
-            toggleFavorito={toggleFavorito}
-          />
-        )}
-
-        {pagina === "receita" && receitaSelecionada && (
-          <ReceitaDetalhe
-            receita={receitaSelecionada}
-            percentual={percentual}
-            marcarVideo={marcarVideo}
-            progresso={progresso}
-            voltar={() => irPara("receitas")}
-            irPara={irPara}
-          />
-        )}
-
-        {pagina === "materiais" && receitaSelecionada && (
-          <Materiais
-            receita={receitaSelecionada}
-            voltar={() => irPara("receita")}
-            listaMateriaisTexto={listaMateriaisTexto}
-          />
-        )}
-
-        {pagina === "simulador" && <Simulador />}
-
-        {pagina === "conquistas" && (
-          <Conquistas
-            voltar={() => irPara("home")}
-            progresso={progresso}
-            receitas={receitasAtivas}
-            favoritos={favoritos}
-          />
-        )}
-
-        {pagina === "abreviatura" && (
-          <Abreviatura voltar={() => irPara("home")} />
-        )}
-
-        {pagina === "sobre" && <Sobre />}
-        {pagina === "contato" && <Contato />}
-
-      </div>
-
-      
-      {/* MENU INFERIOR ESTILO LATERAL */}
+      {/* APP CELULAR */}
       <div
         style={{
-          position: "fixed",
-          bottom: 0,
           width: "100%",
           maxWidth: "430px",
-          background: "#2b2b2b",
-          borderTop: "1px solid #444",
-
-          display: "flex",
-          justifyContent: "space-around",
-          alignItems: "center",
-
-          padding: "10px 0"
+          height: "100vh",
+          background: "#f5f5f5",
+          position: "relative",
+          overflow: "hidden",
+          borderRadius: liberarNoPC ? "20px" : "0",
+          boxShadow: liberarNoPC
+            ? "0 0 30px rgba(0,0,0,0.45)"
+            : "none"
         }}
       >
-
-        {/* RECEITAS */}
+        {/* HEADER */}
         <div
-          onClick={() => irPara("receitas")}
           style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            height: "64px",
+            background: "#fff",
+            padding: "10px 14px",
             display: "flex",
-            flexDirection: "column",
+            justifyContent: "space-between",
             alignItems: "center",
-            cursor: "pointer"
+            zIndex: 10,
+            boxShadow: "0 2px 6px rgba(0,0,0,0.08)"
           }}
         >
-          <img src="/images/icons/receitas.png" style={{ width: "28px" }} />
-          <span style={{ fontSize: "11px", color: "#fff" }}>Receitas</span>
+          <img
+            src="/images/logo/logo.png"
+            style={{
+              width: "44px",
+              height: "44px",
+              borderRadius: "50%",
+              cursor: "pointer"
+            }}
+            onClick={() => irPara("home")}
+          />
+
+          <strong
+            style={{
+              fontSize: "22px",
+              color: "#222"
+            }}
+          >
+            Real Triarte
+          </strong>
+
+          <img
+            src="/images/icons/menu.png"
+            style={{
+              width: "38px",
+              height: "38px",
+              cursor: "pointer"
+            }}
+            onClick={() => setMenuAberto(true)}
+          />
         </div>
 
-        {/* FAVORITOS */}
+        {/* MENU LATERAL */}
+        <MenuLateral
+          aberto={menuAberto}
+          fechar={() => setMenuAberto(false)}
+          irPara={irPara}
+        />
+
+        {/* CONTEÚDO ROLÁVEL */}
         <div
-          onClick={() => irPara("favoritos")}
           style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            cursor: "pointer"
+            position: "absolute",
+            top: "64px",
+            bottom: "66px",
+            left: 0,
+            right: 0,
+            overflowY: "auto",
+            padding: "12px 14px"
           }}
         >
-          <img src="/images/icons/favoritos.png" style={{ width: "28px" }} />
-          <span style={{ fontSize: "11px", color: "#fff" }}>Favoritos</span>
+          {/* AVISO PWA */}
+          {!isStandalone && (
+            <div
+              style={{
+                background: "#fff3cd",
+                border: "1px solid #ffeeba",
+                padding: "10px",
+                borderRadius: "10px",
+                marginBottom: "10px",
+                textAlign: "center",
+                fontSize: "13px"
+              }}
+            >
+              📲 Instale o app para melhor experiência
+            </div>
+          )}
+
+          {/* BOTÃO INSTALAR */}
+          {podeInstalar && !isStandalone && !instalado && (
+            <div style={{ textAlign: "center", marginBottom: "12px" }}>
+              <button
+                onClick={instalarApp}
+                style={{
+                  width: "100%",
+                  padding: "13px",
+                  background: "#ffd400",
+                  border: "none",
+                  borderRadius: "12px",
+                  fontWeight: "800",
+                  cursor: "pointer",
+                  fontSize: "15px"
+                }}
+              >
+                📱 Instalar App
+              </button>
+            </div>
+          )}
+
+          {/* AVISO APP INSTALADO */}
+          {mostrarAvisoApp && (
+            <div
+              style={{
+                background: "#e8f7ee",
+                border: "1px solid #b7e4c7",
+                padding: "10px",
+                borderRadius: "10px",
+                marginBottom: "10px",
+                textAlign: "center",
+                fontSize: "13px"
+              }}
+            >
+              💛 Você já está usando o app instalado
+            </div>
+          )}
+
+          {pagina === "home" && (
+            <Home
+              mensagemAtual={mensagemAtual}
+              ultimaReceita={ultimaReceita}
+              receitas={receitasAtivas}
+              receitasRandom={receitasRandom}
+              abrirReceita={abrirReceita}
+              percentual={percentual}
+              toggleFavorito={toggleFavorito}
+              favoritos={favoritos}
+            />
+          )}
+
+          {pagina === "receitas" && (
+            <Receitas
+              receitas={receitasAtivas}
+              buscaNome={buscaNome}
+              setBuscaNome={setBuscaNome}
+              buscaCategoria={buscaCategoria}
+              setBuscaCategoria={setBuscaCategoria}
+              categorias={categorias}
+              receitasPaginadas={receitasPaginadas}
+              modoExibicao={modoExibicao}
+              setModoExibicao={setModoExibicao}
+              limite={limite}
+              setLimite={setLimite}
+              paginaAtual={paginaAtual}
+              setPaginaAtual={setPaginaAtual}
+              totalPaginas={totalPaginas}
+              abrirReceita={abrirReceita}
+              toggleFavorito={toggleFavorito}
+              favoritos={favoritos}
+              percentual={percentual}
+            />
+          )}
+
+          {pagina === "favoritos" && (
+            <Favoritos
+              receitas={receitasAtivas}
+              favoritos={favoritos}
+              abrirReceita={abrirReceita}
+              percentual={percentual}
+              toggleFavorito={toggleFavorito}
+            />
+          )}
+
+          {pagina === "receita" && receitaSelecionada && (
+            <ReceitaDetalhe
+              receita={receitaSelecionada}
+              percentual={percentual}
+              marcarVideo={marcarVideo}
+              progresso={progresso}
+              voltar={() => irPara("receitas")}
+              irPara={irPara}
+            />
+          )}
+
+          {pagina === "materiais" && receitaSelecionada && (
+            <Materiais
+              receita={receitaSelecionada}
+              voltar={() => irPara("receita")}
+              listaMateriaisTexto={listaMateriaisTexto}
+            />
+          )}
+
+          {pagina === "simulador" && <Simulador />}
+
+          {pagina === "conquistas" && (
+            <Conquistas
+              voltar={() => irPara("home")}
+              progresso={progresso}
+              receitas={receitasAtivas}
+              favoritos={favoritos}
+            />
+          )}
+
+          {pagina === "abreviatura" && (
+            <Abreviatura voltar={() => irPara("home")} />
+          )}
+
+          {pagina === "sobre" && <Sobre />}
+          {pagina === "contato" && <Contato />}
         </div>
 
-        {/* CONQUISTAS */}
+        {/* MENU INFERIOR */}
         <div
-          onClick={() => irPara("conquistas")}
           style={{
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: "66px",
+            background: "#2b2b2b",
+            borderTop: "1px solid #444",
             display: "flex",
-            flexDirection: "column",
+            justifyContent: "space-around",
             alignItems: "center",
-            cursor: "pointer"
+            zIndex: 10
           }}
         >
-          <img src="/images/icons/conquistas.png" style={{ width: "28px" }} />
-          <span style={{ fontSize: "11px", color: "#fff" }}>Conquistas</span>
-        </div>
+          <div
+            onClick={() => irPara("receitas")}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              cursor: "pointer"
+            }}
+          >
+            <img
+              src="/images/icons/receitas.png"
+              style={{ width: "27px" }}
+            />
+            <span style={{ fontSize: "10px", color: "#fff" }}>
+              Receitas
+            </span>
+          </div>
 
-        {/* SIMULADOR */}
-        <div
-          onClick={() => irPara("simulador")}
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            cursor: "pointer"
-          }}
-        >
-          <img src="/images/icons/calculo.png" style={{ width: "28px" }} />
-          <span style={{ fontSize: "11px", color: "#fff" }}>Simulador</span>
-        </div>
+          <div
+            onClick={() => irPara("favoritos")}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              cursor: "pointer"
+            }}
+          >
+            <img
+              src="/images/icons/favoritos.png"
+              style={{ width: "27px" }}
+            />
+            <span style={{ fontSize: "10px", color: "#fff" }}>
+              Favoritos
+            </span>
+          </div>
 
-        {/* MENU */}
+          <div
+            onClick={() => irPara("conquistas")}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              cursor: "pointer"
+            }}
+          >
+            <img
+              src="/images/icons/conquistas.png"
+              style={{ width: "27px" }}
+            />
+            <span style={{ fontSize: "10px", color: "#fff" }}>
+              Conquistas
+            </span>
+          </div>
+
+          <div
+            onClick={() => irPara("simulador")}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              cursor: "pointer"
+            }}
+          >
+            <img
+              src="/images/icons/calculo.png"
+              style={{ width: "27px" }}
+            />
+            <span style={{ fontSize: "10px", color: "#fff" }}>
+              Simulador
+            </span>
+          </div>
+
           <div
             onClick={() => setMenuAberto(true)}
             style={{
@@ -548,12 +642,19 @@ React.useEffect(() => {
               alignItems: "center",
               cursor: "pointer"
             }}
-        >
-          <img src="/images/icons/menu.png" style={{ width: "28px" }} />
-          <span style={{ fontSize: "11px", color: "#fff" }}>Menu</span>
+          >
+            <img
+              src="/images/icons/menu.png"
+              style={{ width: "27px" }}
+            />
+            <span style={{ fontSize: "10px", color: "#fff" }}>
+              Menu
+            </span>
+          </div>
         </div>
       </div>
     </div>
   );
 }
+
 export default App;
