@@ -66,51 +66,8 @@ function App() {
     };
   }, []);
 
-  {mostrarAvisoApp && (
-  <div
-    style={{
-      position: "fixed",
-      inset: 0,
-      background: "#ffffff",
-      zIndex: 999999,
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      padding: "20px",
-      textAlign: "center"
-    }}
-  >
-    <div style={{ maxWidth: "360px" }}>
-      <img
-        src="/images/logo/logo.png"
-        style={{ width: "80px", marginBottom: "20px" }}
-      />
+  
 
-      <h2 style={{ marginBottom: "10px" }}>
-        🎉 App instalado com sucesso!
-      </h2>
-
-      <p style={{ fontSize: "15px", color: "#555", marginBottom: "20px" }}>
-        Agora feche esta página e abra o aplicativo instalado no seu celular.
-      </p>
-
-      <button
-        onClick={() => window.close()}
-        style={{
-          width: "100%",
-          padding: "14px",
-          background: "#FFD400",
-          border: "none",
-          borderRadius: "12px",
-          fontWeight: "bold",
-          cursor: "pointer"
-        }}
-      >
-        Fechar página
-      </button>
-    </div>
-  </div>
-)}
 
   // =========================
   // BLOQUEIO ROTAÇÃO
@@ -378,6 +335,106 @@ function App() {
       </div>
     );
   }
+
+// =========================
+// BLOQUEIO INSTALAÇÃO
+// =========================
+
+// SE JÁ INSTALADO → trava tela
+if (instalado) {
+  return (
+    <div
+      style={{
+        height: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        textAlign: "center",
+        padding: "20px",
+        background: "#ffffff"
+      }}
+    >
+      <div style={{ maxWidth: "360px" }}>
+        <img
+          src="/images/logo/logo.png"
+          style={{ width: "90px", marginBottom: "20px" }}
+        />
+
+        <h2 style={{ marginBottom: "10px" }}>
+          ✅ App já instalado
+        </h2>
+
+        <p style={{ color: "#555", marginBottom: "20px" }}>
+          Feche esta página e abra o aplicativo instalado no seu celular
+        </p>
+
+        <button
+          onClick={() => window.close()}
+          style={{
+            width: "100%",
+            padding: "14px",
+            background: "#FFD400",
+            border: "none",
+            borderRadius: "12px",
+            fontWeight: "bold",
+            cursor: "pointer"
+          }}
+        >
+          Fechar página
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// SE NÃO INSTALADO → tela branca com botão
+if (!instalado && !isStandalone) {
+  return (
+    <div
+      style={{
+        height: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        textAlign: "center",
+        padding: "20px",
+        background: "#ffffff"
+      }}
+    >
+      <div style={{ maxWidth: "360px" }}>
+        <img
+          src="/images/logo/logo.png"
+          style={{ width: "90px", marginBottom: "20px" }}
+        />
+
+        <h2 style={{ marginBottom: "10px" }}>
+          Instale o aplicativo
+        </h2>
+
+        <p style={{ marginBottom: "20px", color: "#555" }}>
+          Clique no botão abaixo para instalar o app
+        </p>
+
+        <button
+          onClick={instalarApp}
+          style={{
+            width: "100%",
+            padding: "14px",
+            background: "#FFD400",
+            border: "none",
+            borderRadius: "12px",
+            fontWeight: "bold",
+            cursor: "pointer"
+          }}
+        >
+          📱 Instalar App
+        </button>
+      </div>
+    </div>
+  );
+}
+
+
 
   // =========================
   // LAYOUT
