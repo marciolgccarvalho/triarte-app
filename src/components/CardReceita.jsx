@@ -7,7 +7,6 @@ export default function CardReceita({
   favoritos = [],
   percentual
 }) {
-  // proteção total
   if (!receita) return null;
 
   const isFavorito = Array.isArray(favoritos)
@@ -15,74 +14,98 @@ export default function CardReceita({
     : false;
 
   const progresso =
-    typeof percentual === "function"
-      ? percentual(receita)
-      : 0;
+    typeof percentual === "function" ? percentual(receita) : 0;
 
   return (
     <div
       onClick={() => abrirReceita && abrirReceita(receita)}
       style={{
-        background: "#fff",
-        borderRadius: "14px",
+        position: "relative",
+        borderRadius: "16px",
         overflow: "hidden",
-        boxShadow: "0 3px 10px rgba(0,0,0,0.12)",
         cursor: "pointer"
       }}
     >
-      <div style={{ position: "relative" }}>
-        <img
-          src={receita.imagem}
-          alt={receita.nome}
-          style={{
-            width: "100%",
-            height: "140px",
-            objectFit: "cover"
-          }}
-        />
+      {/* IMAGEM */}
+      <img
+        src={receita?.imagem || "/images/logo/logo.png"}
+        alt={receita?.nome || "Receita"}
+        style={{
+          width: "100%",
+          height: "160px",
+          objectFit: "cover"
+        }}
+      />
 
-        {/* FAVORITO */}
-        <div
-          onClick={(e) => {
-            e.stopPropagation();
-            toggleFavorito && toggleFavorito(receita.id);
-          }}
-          style={{
-            position: "absolute",
-            top: "8px",
-            right: "8px",
-            width: "36px",
-            height: "36px",
-            borderRadius: "50%",
-            background: "rgba(255,255,255,0.9)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center"
-          }}
-        >
-          <img
-            src={
-              isFavorito
-                ? "/images/icons/favoritos.png"
-                : "/images/icons/favoritos2.png"
-            }
-            style={{ width: "24px" }}
-          />
-        </div>
+      {/* OVERLAY ESCURO */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background:
+            "linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.1))"
+        }}
+      />
+
+      {/* FAVORITO */}
+      <div
+        onClick={(e) => {
+          e.stopPropagation();
+          toggleFavorito && toggleFavorito(receita.id);
+        }}
+        style={{
+          position: "absolute",
+          top: "8px",
+          right: "8px",
+          width: "36px",
+          height: "36px",
+          borderRadius: "50%",
+          background: "rgba(255,255,255,0.9)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          zIndex: 2
+        }}
+      >
+        <img
+          src={
+            isFavorito
+              ? "/images/icons/favoritos.png"
+              : "/images/icons/favoritos2.png"
+          }
+          alt="Favorito"
+          style={{ width: "24px" }}
+        />
       </div>
 
-      <div style={{ padding: "12px" }}>
-        <strong>{receita.nome}</strong>
+      {/* CONTEÚDO SOBRE A IMAGEM */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: "10px",
+          left: "10px",
+          right: "10px",
+          color: "#fff",
+          zIndex: 2
+        }}
+      >
+        <strong
+          style={{
+            display: "block",
+            fontSize: "14px",
+            marginBottom: "4px"
+          }}
+        >
+          {receita?.nome || "Receita"}
+        </strong>
 
-        <p style={{ fontSize: "13px", color: "#666" }}>
-          {receita.categoria}
-        </p>
-
+        {/* BARRA DE PROGRESSO */}
         <div
           style={{
-            height: "6px",
-            background: "#ddd",
-            borderRadius: "6px",
+            width: "100%",
+            height: "5px",
+            background: "rgba(255,255,255,0.3)",
+            borderRadius: "5px",
             overflow: "hidden"
           }}
         >
@@ -95,9 +118,9 @@ export default function CardReceita({
           />
         </div>
 
-        <p style={{ fontSize: "12px", marginTop: "4px" }}>
-          {progresso}%
-        </p>
+        <span style={{ fontSize: "11px" }}>
+          {progresso}% concluído
+        </span>
       </div>
     </div>
   );

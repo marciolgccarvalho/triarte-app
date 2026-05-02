@@ -84,23 +84,78 @@ export default function Home({
         </div>
       )}
 
-      {/* CARROSSEL */}
+      {/* CARROSSEL (CORRIGIDO) */}
       {receitaAtual && (
         <div style={{ marginBottom: "20px" }}>
           <div
             onClick={() => abrirReceita(receitaAtual)}
-            style={{ borderRadius: "16px", overflow: "hidden" }}
+            style={{
+              position: "relative",
+              borderRadius: "16px",
+              overflow: "hidden",
+              cursor: "pointer"
+            }}
           >
+            {/* IMAGEM */}
             <img
               src={receitaAtual?.imagem || "/images/logo/logo.png"}
-              style={{ width: "100%", height: "200px", objectFit: "cover" }}
+              style={{
+                width: "100%",
+                height: "200px",
+                objectFit: "cover"
+              }}
             />
 
-            <div style={{ padding: "10px", background: "#000", color: "#fff" }}>
-              <strong>{receitaAtual?.nome}</strong>
-              <div style={{ fontSize: "12px" }}>
-                {percentual(receitaAtual)}% concluído
+            {/* OVERLAY */}
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                background:
+                  "linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.1))"
+              }}
+            />
+
+            {/* TEXTO + PROGRESSO */}
+            <div
+              style={{
+                position: "absolute",
+                bottom: "12px",
+                left: "12px",
+                right: "12px",
+                color: "#fff"
+              }}
+            >
+              <strong style={{ fontSize: "18px" }}>
+                {receitaAtual?.nome}
+              </strong>
+
+              <p style={{ margin: "4px 0", fontSize: "13px" }}>
+                Toque para assistir a receita
+              </p>
+
+              {/* BARRA */}
+              <div
+                style={{
+                  width: "100%",
+                  height: "6px",
+                  background: "rgba(255,255,255,0.3)",
+                  borderRadius: "6px",
+                  overflow: "hidden"
+                }}
+              >
+                <div
+                  style={{
+                    width: `${percentual(receitaAtual)}%`,
+                    height: "100%",
+                    background: "#ffd400"
+                  }}
+                />
               </div>
+
+              <span style={{ fontSize: "11px" }}>
+                {percentual(receitaAtual)}% concluído
+              </span>
             </div>
           </div>
         </div>
