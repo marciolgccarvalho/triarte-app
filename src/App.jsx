@@ -39,15 +39,21 @@ function App() {
     return () => window.removeEventListener("beforeinstallprompt", handler);
   }, []);
 
-// 🔥 DETECTA SE JÁ ESTÁ INSTALADO
+  // 🔥 DETECTA QUANDO INSTALOU O APP
 React.useEffect(() => {
-  if (isStandalone) {
-    setMostrarAvisoApp(true);
+  const instalado = () => {
+    console.log("App instalado!");
 
+    // pequena pausa pra garantir
     setTimeout(() => {
-      setMostrarAvisoApp(false);
-    }, 3000); // desaparece sozinho
-  }
+      window.location.reload();
+    }, 800);
+  };
+
+  window.addEventListener("appinstalled", instalado);
+
+  return () =>
+    window.removeEventListener("appinstalled", instalado);
 }, []);
 
 
