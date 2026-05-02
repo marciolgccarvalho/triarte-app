@@ -66,15 +66,51 @@ function App() {
     };
   }, []);
 
-  React.useEffect(() => {
-    if (mostrarAvisoApp) {
-      const timer = setTimeout(() => {
-        setMostrarAvisoApp(false);
-      }, 3000);
+  {mostrarAvisoApp && (
+  <div
+    style={{
+      position: "fixed",
+      inset: 0,
+      background: "#ffffff",
+      zIndex: 999999,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      padding: "20px",
+      textAlign: "center"
+    }}
+  >
+    <div style={{ maxWidth: "360px" }}>
+      <img
+        src="/images/logo/logo.png"
+        style={{ width: "80px", marginBottom: "20px" }}
+      />
 
-      return () => clearTimeout(timer);
-    }
-  }, [mostrarAvisoApp]);
+      <h2 style={{ marginBottom: "10px" }}>
+        🎉 App instalado com sucesso!
+      </h2>
+
+      <p style={{ fontSize: "15px", color: "#555", marginBottom: "20px" }}>
+        Agora feche esta página e abra o aplicativo instalado no seu celular.
+      </p>
+
+      <button
+        onClick={() => window.close()}
+        style={{
+          width: "100%",
+          padding: "14px",
+          background: "#FFD400",
+          border: "none",
+          borderRadius: "12px",
+          fontWeight: "bold",
+          cursor: "pointer"
+        }}
+      >
+        Fechar página
+      </button>
+    </div>
+  </div>
+)}
 
   // =========================
   // BLOQUEIO ROTAÇÃO
