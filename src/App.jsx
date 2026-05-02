@@ -28,7 +28,7 @@ function App() {
   const [instalado, setInstalado] = React.useState(
   localStorage.getItem("appInstalado") === "true"
 );
-
+  
   
  // 🔥 DETECTA QUANDO INSTALOU O APP
       React.useEffect(() => {
@@ -100,48 +100,11 @@ React.useEffect(() => {
     );
   }
 
-  // 🚫 BLOQUEIA SE NÃO INSTALADO
-  if (!isStandalone && !instalado) {
-    return (
-      <div style={{
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        textAlign: "center",
-        padding: "20px"
-      }}>
-        <div>
-          <h2>📲 Instale o app</h2>
-          <p>Para usar o Real Triarte, instale no seu celular</p>
 
-          {podeInstalar && (
-            <button
-              onClick={() => {
-                  if (!promptInstalar) return;
 
-                  promptInstalar.prompt();
-                  promptInstalar.userChoice.then(() => {
-                    setPodeInstalar(false);
-                  });
-                }}
-              style={{
-                marginTop: "20px",
-                padding: "14px",
-                background: "#ffd400",
-                border: "none",
-                borderRadius: "12px",
-                fontWeight: "800",
-                cursor: "pointer"
-              }}
-            >
-              Instalar App
-            </button>
-          )}
-        </div>
-      </div>
-    );
-  }
+
+
+  
   const [pagina, setPagina] = React.useState("home");
   const [menuAberto, setMenuAberto] = React.useState(false);
   const [receitaSelecionada, setReceitaSelecionada] = React.useState(null);
@@ -376,21 +339,43 @@ React.useEffect(() => {
       <MenuLateral aberto={menuAberto} fechar={() => setMenuAberto(false)} irPara={irPara} />
 
       {/* CONTEÚDO */}
-      {mostrarAvisoApp && (
-            <div
-              style={{
-                background: "#e8f7ee",
-                border: "1px solid #b7e4c7",
-                padding: "10px",
-                borderRadius: "10px",
-                margin: "10px",
-                textAlign: "center",
-                fontSize: "13px"
-              }}
-            >
-              💛 Você já está usando o app instalado
-            </div>
-          )}
+
+{podeInstalar && !isStandalone && !instalado && (
+  <div style={{ textAlign: "center", marginBottom: "10px" }}>
+    <button
+      onClick={() => {
+        if (!promptInstalar) return;
+        promptInstalar.prompt();
+      }}
+      style={{
+        padding: "12px 16px",
+        background: "#ffd400",
+        border: "none",
+        borderRadius: "12px",
+        fontWeight: "800",
+        cursor: "pointer"
+      }}
+    >
+      📱 Instalar App
+    </button>
+  </div>
+)}
+
+     {!isStandalone && (
+        <div
+          style={{
+            background: "#fff3cd",
+            border: "1px solid #ffeeba",
+            padding: "10px",
+            borderRadius: "10px",
+            margin: "10px",
+            textAlign: "center",
+            fontSize: "13px"
+          }}
+        >
+          📲 Instale o app para melhor experiência
+        </div>
+      )}
 
       <div style={{ padding: "80px 15px 90px" }}>
 
