@@ -1,47 +1,23 @@
 import React from "react";
 
 export default function InstallGate({ instalarApp }) {
-  const isStandalone =
-  window.matchMedia("(display-mode: standalone)").matches ||
-  window.navigator.standalone === true;
-
-  const [instalado, setInstalado] = React.useState(
-    localStorage.getItem("appInstalado") === "true" || isStandalone
-  );
-
-  React.useEffect(() => {
-    const handleInstalled = () => {
-      localStorage.setItem("appInstalado", "true");
-      setInstalado(true);
-    };
-
-    window.addEventListener("appinstalled", handleInstalled);
-
-    return () =>
-      window.removeEventListener("appinstalled", handleInstalled);
-  }, []);
-
-  // JÁ INSTALADO
-  if (instalado) {
-    return (
-      <div style={estilo}>
-        <div>
-          <h2>✅ App já instalado</h2>
-          <p>Feche esta página e abra o app no seu celular</p>
-        </div>
-      </div>
-    );
-  }
-
-  // NÃO INSTALADO
   return (
     <div style={estilo}>
       <div>
         <h2>Instale o aplicativo</h2>
 
+        <p style={{ marginTop: "10px" }}>
+          Para uma melhor experiência, instale o app no seu dispositivo
+        </p>
+
         <button onClick={instalarApp} style={botao}>
           📱 Instalar App
         </button>
+
+        <p style={{ marginTop: "20px", fontSize: "14px", color: "#666" }}>
+          Caso o botão não funcione, use o menu do navegador (⋮) e toque em
+          "Instalar aplicativo"
+        </p>
       </div>
     </div>
   );
@@ -53,7 +29,8 @@ const estilo = {
   alignItems: "center",
   justifyContent: "center",
   textAlign: "center",
-  background: "#fff"
+  background: "#fff",
+  padding: "20px"
 };
 
 const botao = {

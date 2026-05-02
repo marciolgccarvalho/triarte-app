@@ -4,7 +4,7 @@ import InstallGate from "./InstallGate";
 
 function App() {
   // =========================
-  // DETECÇÃO APP (CORRIGIDA)
+  // DETECÇÃO STANDALONE (REAL)
   // =========================
   const [isStandalone, setIsStandalone] = React.useState(false);
 
@@ -12,18 +12,16 @@ function App() {
     const checkStandalone = () => {
       const standalone =
         window.matchMedia("(display-mode: standalone)").matches ||
-        window.navigator.standalone === true ||
-        window.location.href.includes("android-app://");
+        window.navigator.standalone === true;
 
       setIsStandalone(standalone);
     };
 
     checkStandalone();
 
-    // 🔥 revalidação (corrige bug pós-instalação Android)
-    setTimeout(checkStandalone, 1200);
+    // 🔥 revalidação (ajuda pós-instalação Android)
+    setTimeout(checkStandalone, 1000);
     setTimeout(checkStandalone, 2500);
-    setTimeout(checkStandalone, 4000);
   }, []);
 
   // =========================
@@ -31,11 +29,11 @@ function App() {
   // =========================
   const [instalando, setInstalando] = React.useState(false);
   const [promptInstalar, setPromptInstalar] = React.useState(null);
-  const [instalado, setInstalado] = React.useState(
-    localStorage.getItem("appInstalado") === "true"
-  );
+  const [foiInstalado, setFoiInstalado] = React.useState(false);
 
-  // captura evento de instalação
+  // =========================
+  // CAPTURA EVENTO INSTALL
+  // =========================
   React.useEffect(() => {
     const handler = (e) => {
       e.preventDefault();
@@ -44,27 +42,30 @@ function App() {
 
     window.addEventListener("beforeinstallprompt", handler);
 
-    return () =>
+    return () => {
       window.removeEventListener("beforeinstallprompt", handler);
+    };
   }, []);
 
-  // quando instala
+  // =========================
+  // QUANDO INSTALA
+  // =========================
   React.useEffect(() => {
     const handleInstalled = () => {
       setInstalando(true);
 
-      // 🔥 simula tempo de instalação real
+      // pequena simulação UX
       setTimeout(() => {
-        localStorage.setItem("appInstalado", "true");
-        setInstalado(true);
+        setFoiInstalado(true);
         setInstalando(false);
-      }, 2500);
+      }, 2000);
     };
 
     window.addEventListener("appinstalled", handleInstalled);
 
-    return () =>
+    return () => {
       window.removeEventListener("appinstalled", handleInstalled);
+    };
   }, []);
 
   // =========================
@@ -110,16 +111,16 @@ function App() {
   }
 
   // =========================
-  // ACESSO PELO APP
+  // ACESSO PELO APP INSTALADO
   // =========================
   if (isStandalone) {
     return <MainApp />;
   }
 
   // =========================
-  // NAVEGADOR (INSTALADO)
+  // INSTALOU AGORA (feedback)
   // =========================
-  if (instalado) {
+  if (foiInstalado) {
     return (
       <div
         style={{
@@ -133,17 +134,15 @@ function App() {
         }}
       >
         <div>
-          <h2>✅ App já instalado</h2>
-          <p>
-            Feche esta página e abra o aplicativo pelo seu celular
-          </p>
+          <h2>✅ App instalado</h2>
+          <p>Feche esta página e abra o app pela tela inicial</p>
         </div>
       </div>
     );
   }
 
   // =========================
-  // NAVEGADOR (NÃO INSTALADO)
+  // NAVEGADOR → MOSTRA INSTALAÇÃO
   // =========================
   return <InstallGate instalarApp={instalarApp} />;
 }

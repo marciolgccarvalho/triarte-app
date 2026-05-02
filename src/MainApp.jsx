@@ -17,70 +17,27 @@ import Conquistas from "./pages/Conquistas";
 import Sobre from "./pages/Sobre";
 import Contato from "./pages/Contato";
 
-function App() {
+function MainApp() {
   // 🔓 LIBERAR ACESSO NO PC
   // true = libera no PC para testar
   // false = bloqueia rotação no PC/produção, se desejar
   const liberarNoPC = true;
 
-  // =========================
-  // PWA
-  // =========================
-  const isStandalone =
-    window.matchMedia("(display-mode: standalone)").matches ||
-    window.navigator.standalone === true;
-
-  const [podeInstalar, setPodeInstalar] = React.useState(false);
-  const [promptInstalar, setPromptInstalar] = React.useState(null);
-  const [mostrarAvisoApp, setMostrarAvisoApp] = React.useState(false);
-  const [instalado, setInstalado] = React.useState(
-    localStorage.getItem("appInstalado") === "true"
-  );
-
-  React.useEffect(() => {
-    const handleInstalled = () => {
-      localStorage.setItem("appInstalado", "true");
-      setInstalado(true);
-      setMostrarAvisoApp(true);
-      setPodeInstalar(false);
-    };
-
-    window.addEventListener("appinstalled", handleInstalled);
-
-    return () => {
-      window.removeEventListener("appinstalled", handleInstalled);
-    };
-  }, []);
-
-  React.useEffect(() => {
-    const handler = (e) => {
-      e.preventDefault();
-      setPromptInstalar(e);
-      setPodeInstalar(true);
-    };
-
-    window.addEventListener("beforeinstallprompt", handler);
-
-    return () => {
-      window.removeEventListener("beforeinstallprompt", handler);
-    };
-  }, []);
 
   // =========================
   // BLOQUEIO ROTAÇÃO
   // =========================
   const [rotacionado, setRotacionado] = React.useState(false);
-
   React.useEffect(() => {
-    const check = () => {
-      setRotacionado(window.innerWidth > window.innerHeight);
-    };
+  const check = () => {
+    setRotacionado(window.innerWidth > window.innerHeight);
+  };
 
-    check();
-    window.addEventListener("resize", check);
+  check();
+  window.addEventListener("resize", check);
 
-    return () => window.removeEventListener("resize", check);
-  }, []);
+  return () => window.removeEventListener("resize", check);
+}, []);
 
   // =========================
   // STATES PRINCIPAIS
@@ -226,24 +183,6 @@ function App() {
     ].join("\n");
   };
 
-  const instalarApp = async () => {
-    if (!promptInstalar) {
-      alert("Use o menu do navegador e toque em 'Adicionar à tela inicial'.");
-      return;
-    }
-
-    promptInstalar.prompt();
-
-    const escolha = await promptInstalar.userChoice;
-
-    if (escolha.outcome === "accepted") {
-      localStorage.setItem("appInstalado", "true");
-      setInstalado(true);
-      setMostrarAvisoApp(true);
-      setPodeInstalar(false);
-    }
-  };
-
   // =========================
   // DADOS
   // =========================
@@ -336,140 +275,6 @@ function App() {
     );
   }
 
-  // =========================
-  // CONTROLE DE ACESSO
-  // =========================
-  // 1. Se abriu pelo APP instalado, libera o app normalmente.
-  // 2. Se abriu pelo navegador e já instalou, mostra tela branca fixa.
-  // 3. Se abriu pelo navegador e ainda não instalou, mostra tela branca com botão instalar.
-
-  if (!isStandalone && instalado) {
-    return (
-      <div
-        style={{
-          minHeight: "100vh",
-          background: "#ffffff",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          textAlign: "center",
-          padding: "24px"
-        }}
-      >
-        <div style={{ maxWidth: "380px" }}>
-          <img
-            src="/images/logo/logo.png"
-            style={{
-              width: "92px",
-              height: "92px",
-              borderRadius: "50%",
-              margin: "0 auto 20px"
-            }}
-          />
-
-          <h2
-            style={{
-              marginBottom: "10px",
-              fontSize: "24px",
-              color: "#222"
-            }}
-          >
-            ✅ App já instalado
-          </h2>
-
-          <p
-            style={{
-              color: "#555",
-              fontSize: "16px",
-              lineHeight: "1.5"
-            }}
-          >
-            Feche esta página e acesse pelo aplicativo instalado no seu celular.
-          </p>
-        </div>
-      </div>
-    );
-  }
-
-  if (!isStandalone && !instalado) {
-    return (
-      <div
-        style={{
-          minHeight: "100vh",
-          background: "#ffffff",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          textAlign: "center",
-          padding: "24px"
-        }}
-      >
-        <div style={{ maxWidth: "380px" }}>
-          <img
-            src="/images/logo/logo.png"
-            style={{
-              width: "92px",
-              height: "92px",
-              borderRadius: "50%",
-              margin: "0 auto 20px"
-            }}
-          />
-
-          <h2
-            style={{
-              marginBottom: "10px",
-              fontSize: "24px",
-              color: "#222"
-            }}
-          >
-            Instale o aplicativo
-          </h2>
-
-          <p
-            style={{
-              marginBottom: "22px",
-              color: "#555",
-              fontSize: "16px",
-              lineHeight: "1.5"
-            }}
-          >
-            Clique no botão abaixo para instalar o app no seu celular.
-          </p>
-
-          <button
-            onClick={instalarApp}
-            style={{
-              width: "100%",
-              padding: "15px",
-              background: "#FFD400",
-              color: "#222",
-              border: "none",
-              borderRadius: "14px",
-              fontWeight: "800",
-              fontSize: "16px",
-              cursor: "pointer"
-            }}
-          >
-            📱 Instalar App
-          </button>
-
-          {!podeInstalar && (
-            <p
-              style={{
-                marginTop: "14px",
-                fontSize: "13px",
-                color: "#777",
-                lineHeight: "1.4"
-              }}
-            >
-              Se o botão não abrir a instalação, use o menu do navegador e toque
-              em “Adicionar à tela inicial”.
-            </p>
-          )}
-        </div>
-      </div>
-    );
-  }
 
   // =========================
   // LAYOUT
@@ -567,21 +372,6 @@ function App() {
             padding: "12px 14px"
           }}
         >
-          {mostrarAvisoApp && isStandalone && (
-            <div
-              style={{
-                background: "#e8f7ee",
-                border: "1px solid #b7e4c7",
-                padding: "10px",
-                borderRadius: "10px",
-                marginBottom: "10px",
-                textAlign: "center",
-                fontSize: "13px"
-              }}
-            >
-              💛 Você já está usando o app instalado
-            </div>
-          )}
 
           {pagina === "home" && (
             <Home
@@ -778,4 +568,4 @@ function App() {
   );
 }
 
-export default App;
+export default MainApp;
