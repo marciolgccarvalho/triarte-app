@@ -25,37 +25,47 @@ function App() {
   const [podeInstalar, setPodeInstalar] = React.useState(false);
   const [promptInstalar, setPromptInstalar] = React.useState(null);
   const [mostrarAvisoApp, setMostrarAvisoApp] = React.useState(false);
+  const [instalado, setInstalado] = React.useState(
+  localStorage.getItem("appInstalado") === "true"
+);
 
-  // 🔥 EVENTO INSTALAÇÃO
-  React.useEffect(() => {
-    const handler = (e) => {
-      e.preventDefault();
-      setPromptInstalar(e);
-      setPodeInstalar(true);
-    };
+  
+ // 🔥 DETECTA QUANDO INSTALOU O APP
+      React.useEffect(() => {
+        const handleInstalled = () => {
+          console.log("App instalado!");
 
-    window.addEventListener("beforeinstallprompt", handler);
+          localStorage.setItem("appInstalado", "true");
+          setInstalado(true);
+          setMostrarAvisoApp(true);
 
-    return () => window.removeEventListener("beforeinstallprompt", handler);
-  }, []);
+          setTimeout(() => {
+            window.location.href = window.location.origin;
+          }, 800);
+        };
 
-  // 🔥 DETECTA QUANDO INSTALOU O APP
+        window.addEventListener("appinstalled", handleInstalled);
+
+        return () => {
+          window.removeEventListener("appinstalled", handleInstalled);
+        };
+      }, []);
+
+
+// 🔥 DETECTA SE PODE INSTALAR
 React.useEffect(() => {
-  const instalado = () => {
-    console.log("App instalado!");
-
-    // pequena pausa pra garantir
-    setTimeout(() => {
-      window.location.reload();
-    }, 800);
+  const handler = (e) => {
+    e.preventDefault();
+    setPromptInstalar(e);
+    setPodeInstalar(true);
   };
 
-  window.addEventListener("appinstalled", instalado);
+  window.addEventListener("beforeinstallprompt", handler);
 
-  return () =>
-    window.removeEventListener("appinstalled", instalado);
+  return () => {
+    window.removeEventListener("beforeinstallprompt", handler);
+  };
 }, []);
-
 
   // 🔥 BLOQUEIO ROTAÇÃO
   const [rotacionado, setRotacionado] = React.useState(false);
@@ -91,7 +101,7 @@ React.useEffect(() => {
   }
 
   // 🚫 BLOQUEIA SE NÃO INSTALADO
-  if (!isStandalone) {
+  if (!isStandalone && !instalado) {
     return (
       <div style={{
         height: "100vh",
@@ -108,11 +118,13 @@ React.useEffect(() => {
           {podeInstalar && (
             <button
               onClick={() => {
-                promptInstalar.prompt();
-                promptInstalar.userChoice.then(() => {
-                  setPodeInstalar(false);
-                });
-              }}
+                  if (!promptInstalar) return;
+
+                  promptInstalar.prompt();
+                  promptInstalar.userChoice.then(() => {
+                    setPodeInstalar(false);
+                  });
+                }}
               style={{
                 marginTop: "20px",
                 padding: "14px",
@@ -176,6 +188,16 @@ React.useEffect(() => {
   React.useEffect(() => {
     setPaginaAtual(1);
   }, [buscaNome, buscaCategoria, limite, pagina]);
+
+  React.useEffect(() => {
+    if (mostrarAvisoApp) {
+      setTimeout(() => {
+        setMostrarAvisoApp(false);
+      }, 3000);
+    }
+  }, [mostrarAvisoApp]);
+
+
 
   // =========================
   // FUNÇÕES
