@@ -82,7 +82,7 @@ export default function ParabensModal({ aberto, fechar = () => {}, receita }) {
           }}
         >
           <img
-            src={receita?.imagem || "/images/logo/logo.png"}
+            src={receita?.imagem || "/images/logo/logo.webp"}
             style={{
               position: "absolute",
               width: "100%",
@@ -94,7 +94,7 @@ export default function ParabensModal({ aberto, fechar = () => {}, receita }) {
           />
 
           <img
-            src={receita?.imagem || "/images/logo/logo.png"}
+            src={receita?.imagem || "/images/logo/logo.webp"}
             alt="receita"
             style={{
               position: "relative",
@@ -106,18 +106,25 @@ export default function ParabensModal({ aberto, fechar = () => {}, receita }) {
         </div>
 
         {/* CONTEÚDO */}
-        <div style={{ padding: "18px" }}>
+        <div style={{ padding: "18px", position: "relative" }}>
+          
+          {/* 🔥 LOGO CORRIGIDO */}
           <img
-            src="/images/logo/logo.png"
+            src="/images/logo/logo.webp"
             style={{
+              position: "absolute",
+              top: "-32px",
+              left: "50%",
+              transform: "translateX(-50%)",
               width: "65px",
               borderRadius: "50%",
-              marginTop: "-40px",
-              border: "4px solid #fff"
+              border: "4px solid #fff",
+              background: "#fff",
+              zIndex: 10
             }}
           />
 
-          <div style={{ marginTop: "10px" }}>
+          <div style={{ marginTop: "20px" }}>
             <div style={{ fontSize: "26px" }}>🎉</div>
 
             <h2>Parabéns!</h2>

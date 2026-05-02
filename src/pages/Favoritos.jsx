@@ -45,12 +45,10 @@ export default function Favoritos({
     );
   }, [listaFiltrada, paginaAtual, limite]);
 
-  // reset automático
   React.useEffect(() => {
     setPaginaAtual(1);
   }, [buscaNome, buscaCategoria, limite]);
 
-  // proteção de página inválida
   React.useEffect(() => {
     if (paginaAtual > totalPaginas) {
       setPaginaAtual(1);
@@ -77,6 +75,8 @@ export default function Favoritos({
         >
           <img
             src="/images/icons/favoritos2.png"
+            loading="lazy"
+            decoding="async"
             style={{
               width: "60px",
               opacity: 0.6,
@@ -136,25 +136,25 @@ export default function Favoritos({
             }}
           >
             <button
-                onClick={() => setModoExibicao("grid")}
-                style={{
-                    background: "transparent",
-                    border: "none",
-                    padding: 0,
-                    cursor: "pointer"
-                }}
+              onClick={() => setModoExibicao("grid")}
+              style={{
+                background: "transparent",
+                border: "none",
+                padding: 0,
+                cursor: "pointer"
+              }}
             >
               <img src="/images/icons/grid.png" style={{ width: "28px" }} />
             </button>
 
             <button
-            onClick={() => setModoExibicao("lista")}
-            style={{
+              onClick={() => setModoExibicao("lista")}
+              style={{
                 background: "transparent",
                 border: "none",
                 padding: 0,
                 cursor: "pointer"
-            }}
+              }}
             >
               <img src="/images/icons/lista.png" style={{ width: "28px" }} />
             </button>
@@ -212,12 +212,28 @@ export default function Favoritos({
                     {r.categoria}
                   </p>
 
+                  {/* 🔥 IMAGEM COM LAZY */}
+                  <img
+                    src={r.imagem}
+                    alt={r.nome}
+                    loading="lazy"
+                    decoding="async"
+                    style={{
+                      width: "100%",
+                      height: "140px",
+                      objectFit: "cover",
+                      borderRadius: "10px",
+                      marginTop: "8px"
+                    }}
+                  />
+
                   <div
                     style={{
                       height: "6px",
                       background: "#ddd",
                       borderRadius: "6px",
-                      overflow: "hidden"
+                      overflow: "hidden",
+                      marginTop: "8px"
                     }}
                   >
                     <div
@@ -238,59 +254,59 @@ export default function Favoritos({
           )}
 
           {/* PAGINAÇÃO */}
-            {listaFiltrada.length > 0 && (
+          {listaFiltrada.length > 0 && (
             <div
-                style={{
+              style={{
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
                 gap: "10px",
                 marginTop: "15px"
-                }}
+              }}
             >
-                <button
+              <button
                 disabled={paginaAtual === 1}
                 onClick={() => setPaginaAtual((p) => p - 1)}
                 style={{
-                    background: "transparent",
-                    border: "none",
-                    padding: 0,
-                    cursor: "pointer"
+                  background: "transparent",
+                  border: "none",
+                  padding: 0,
+                  cursor: "pointer"
                 }}
-                >
+              >
                 <img
-                    src="/images/icons/anterior.png"
-                    style={{
+                  src="/images/icons/anterior.png"
+                  style={{
                     width: "28px",
                     opacity: paginaAtual === 1 ? 0.3 : 1
-                    }}
+                  }}
                 />
-                </button>
+              </button>
 
-                <span>
+              <span>
                 {paginaAtual} / {totalPaginas}
-                </span>
+              </span>
 
-                <button
+              <button
                 disabled={paginaAtual === totalPaginas}
                 onClick={() => setPaginaAtual((p) => p + 1)}
                 style={{
-                    background: "transparent",
-                    border: "none",
-                    padding: 0,
-                    cursor: "pointer"
+                  background: "transparent",
+                  border: "none",
+                  padding: 0,
+                  cursor: "pointer"
                 }}
-                >
+              >
                 <img
-                    src="/images/icons/proxima.png"
-                    style={{
+                  src="/images/icons/proxima.png"
+                  style={{
                     width: "28px",
                     opacity: paginaAtual === totalPaginas ? 0.3 : 1
-                    }}
+                  }}
                 />
-                </button>
+              </button>
             </div>
-            )}
+          )}
         </>
       )}
     </>

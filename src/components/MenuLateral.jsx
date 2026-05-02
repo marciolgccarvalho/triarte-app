@@ -26,7 +26,7 @@ export default function MenuLateral({ aberto, fechar = () => {}, irPara = () => 
         {/* LOGO */}
         <div style={{ textAlign: "center", marginBottom: "20px" }}>
           <img
-            src="/images/logo/logo.png"
+            src="/images/logo/logo.webp"
             alt="Logo"
             style={{ width: "70px", borderRadius: "50%" }}
           />
@@ -66,7 +66,7 @@ function Item({ icone, texto, onClick = () => {} }) {
       onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
     >
       <img
-        src={icone || "/images/logo/logo.png"}
+        src={icone || "/images/logo/logo.webp"}
         alt={texto}
         style={{ width: "28px" }}
       />

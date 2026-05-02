@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sem conexão</title>
+
+  <!-- 🔥 ESSENCIAL PARA PWA -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#ffffff" />
+
+  <!-- 🔥 evita cache quebrado -->
+  <meta http-equiv="Cache-Control" content="no-store" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .box {
+      max-width: 350px;
+      width: 100%;
+    }
+
+    img {
+      width: 90px;
+      margin-bottom: 15px;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #666;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 14px;
+      width: 100%;
+      border: none;
+      border-radius: 12px;
+      background: #ffd400;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 15px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    
+    <!-- 🔥 ALT ADICIONADO (ACESSIBILIDADE + SEO) -->
+    <img src="/images/logo/logo.webp" alt="Real Triarte" />
+
+    <h2>Sem conexão</h2>
+
+    <p>
+      Você está offline no momento.<br />
+      Verifique sua internet e tente novamente.
+    </p>
+
+    <button onclick="tentarReconectar()">
+      🔄 Tentar novamente
+    </button>
+  </div>
+
+  <script>
+    function tentarReconectar() {
+      // 🔥 força nova tentativa de conexão real
+      window.location.href = "/";
+    }
+
+    // 🔥 tenta reconectar automaticamente
+    window.addEventListener("online", () => {
+      window.location.href = "/";
+    });
+  </script>
+</body>
+</html>

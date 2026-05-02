@@ -323,7 +323,7 @@ function MainApp() {
           }}
         >
           <img
-            src="/images/logo/logo.png"
+            src="/images/logo/logo.webp"
             style={{
               width: "44px",
               height: "44px",

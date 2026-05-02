@@ -25,6 +25,12 @@ function App() {
   }, []);
 
   // =========================
+  // 🔓 LIBERAÇÃO TEMPORÁRIA NO PC (REMOVER DEPOIS)
+  // =========================
+  const liberarNoPC = true; // ⬅️ MUDAR PARA false quando publicar
+  const isDesktop = window.innerWidth > 768;
+
+  // =========================
   // ESTADOS INSTALAÇÃO
   // =========================
   const [instalando, setInstalando] = React.useState(false);
@@ -54,7 +60,6 @@ function App() {
     const handleInstalled = () => {
       setInstalando(true);
 
-      // pequena simulação UX
       setTimeout(() => {
         setFoiInstalado(true);
         setInstalando(false);
@@ -111,9 +116,9 @@ function App() {
   }
 
   // =========================
-  // ACESSO PELO APP INSTALADO
+  // ACESSO PELO APP INSTALADO OU PC (TEMPORÁRIO)
   // =========================
-  if (isStandalone) {
+  if (isStandalone || (liberarNoPC && isDesktop)) {
     return <MainApp />;
   }
 

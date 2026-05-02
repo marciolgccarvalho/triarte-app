@@ -22,7 +22,6 @@ export default function Receitas({
   percentual
 }) {
 
-  // 🔥 CORREÇÃO 1: evita página inválida (principal causa do bug)
   React.useEffect(() => {
     if (paginaAtual > totalPaginas && totalPaginas > 0) {
       setPaginaAtual(1);
@@ -82,7 +81,6 @@ export default function Receitas({
           alignItems: "center"
         }}
       >
-        {/* GRID */}
         <button
           onClick={() => setModoExibicao("grid")}
           style={{ background: "transparent", border: "none" }}
@@ -90,7 +88,6 @@ export default function Receitas({
           <img src="/images/icons/grid.png" style={{ width: "28px" }} />
         </button>
 
-        {/* LISTA */}
         <button
           onClick={() => setModoExibicao("lista")}
           style={{ background: "transparent", border: "none" }}
@@ -98,7 +95,6 @@ export default function Receitas({
           <img src="/images/icons/lista.png" style={{ width: "28px" }} />
         </button>
 
-        {/* LIMITE */}
         <select
           value={limite}
           onChange={(e) => {
@@ -155,12 +151,28 @@ export default function Receitas({
                 {r.categoria}
               </p>
 
+              {/* 🔥 IMAGEM (adicionado lazy) */}
+              <img
+                src={r.imagem}
+                alt={r.nome}
+                loading="lazy"
+                decoding="async"
+                style={{
+                  width: "100%",
+                  height: "140px",
+                  objectFit: "cover",
+                  borderRadius: "10px",
+                  marginTop: "8px"
+                }}
+              />
+
               <div
                 style={{
                   height: "6px",
                   background: "#ddd",
                   borderRadius: "6px",
-                  overflow: "hidden"
+                  overflow: "hidden",
+                  marginTop: "8px"
                 }}
               >
                 <div

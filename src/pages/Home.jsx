@@ -34,7 +34,6 @@ export default function Home({
     }
   }, [indexCarrossel, receitasDestaque.length]);
 
-  // AUTO PLAY CARROSSEL
   React.useEffect(() => {
     if (receitasDestaque.length <= 1) return;
 
@@ -48,6 +47,20 @@ export default function Home({
   }, [receitasDestaque.length]);
 
   const receitaAtual = receitasDestaque[indexCarrossel] || null;
+
+  const proximo = (e) => {
+    e.stopPropagation();
+    setIndexCarrossel((i) =>
+      i === receitasDestaque.length - 1 ? 0 : i + 1
+    );
+  };
+
+  const anterior = (e) => {
+    e.stopPropagation();
+    setIndexCarrossel((i) =>
+      i === 0 ? receitasDestaque.length - 1 : i - 1
+    );
+  };
 
   return (
     <>
@@ -74,9 +87,12 @@ export default function Home({
           }}
         >
           <img
-            src={ultimaReceita?.imagem || "/images/logo/logo.png"}
+            src={ultimaReceita?.imagem || "/images/logo/logo.webp"}
+            loading="lazy"
+            decoding="async"
             style={{ width: "44px", height: "44px", borderRadius: "8px" }}
           />
+
           <div style={{ marginLeft: "10px" }}>
             <strong>{ultimaReceita?.nome || "Receita"}</strong>
             <div style={{ fontSize: "11px" }}>Continuar</div>
@@ -84,7 +100,7 @@ export default function Home({
         </div>
       )}
 
-      {/* CARROSSEL (CORRIGIDO) */}
+      {/* CARROSSEL */}
       {receitaAtual && (
         <div style={{ marginBottom: "20px" }}>
           <div
@@ -96,9 +112,9 @@ export default function Home({
               cursor: "pointer"
             }}
           >
-            {/* IMAGEM */}
+            {/* IMAGEM PRINCIPAL (SEM LAZY) */}
             <img
-              src={receitaAtual?.imagem || "/images/logo/logo.png"}
+              src={receitaAtual?.imagem || "/images/logo/logo.webp"}
               style={{
                 width: "100%",
                 height: "200px",
@@ -106,7 +122,40 @@ export default function Home({
               }}
             />
 
-            {/* OVERLAY */}
+            {receitasDestaque.length > 1 && (
+              <img
+                src="/images/icons/anterior.png"
+                onClick={anterior}
+                style={{
+                  position: "absolute",
+                  left: "10px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  width: "40px",
+                  height: "40px",
+                  cursor: "pointer",
+                  zIndex: 5
+                }}
+              />
+            )}
+
+            {receitasDestaque.length > 1 && (
+              <img
+                src="/images/icons/proxima.png"
+                onClick={proximo}
+                style={{
+                  position: "absolute",
+                  right: "10px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  width: "40px",
+                  height: "40px",
+                  cursor: "pointer",
+                  zIndex: 5
+                }}
+              />
+            )}
+
             <div
               style={{
                 position: "absolute",
@@ -116,7 +165,6 @@ export default function Home({
               }}
             />
 
-            {/* TEXTO + PROGRESSO */}
             <div
               style={{
                 position: "absolute",
@@ -134,7 +182,6 @@ export default function Home({
                 Toque para assistir a receita
               </p>
 
-              {/* BARRA */}
               <div
                 style={{
                   width: "100%",
@@ -163,7 +210,6 @@ export default function Home({
 
       <h2>Receitas para você hoje</h2>
 
-      {/* GRID */}
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
         {(Array.isArray(receitasRandom) ? receitasRandom : [])
           .slice(0, 8)

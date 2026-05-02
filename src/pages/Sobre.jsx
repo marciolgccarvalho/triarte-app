@@ -73,7 +73,7 @@ export default function Sobre() {
         <div>
           <div style={{ textAlign: "center", marginBottom: "18px" }}>
             <img
-              src="/images/logo/logo.png"
+              src="/images/logo/logo.webp"
               alt="Real Triarte"
               style={{
                 width: "96px",

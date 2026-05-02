@@ -28,8 +28,10 @@ export default function CardReceita({
     >
       {/* IMAGEM */}
       <img
-        src={receita?.imagem || "/images/logo/logo.png"}
+        src={receita?.imagem || "/images/logo/logo.webp"}
         alt={receita?.nome || "Receita"}
+        loading="lazy"
+        decoding="async"
         style={{
           width: "100%",
           height: "160px",

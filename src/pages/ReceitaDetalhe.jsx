@@ -26,17 +26,15 @@ export default function ReceitaDetalhe({
     if (!video.liberacao) return false;
 
     const [dia, mes, ano] = video.liberacao.split("/");
-
     const dataLiberacao = new Date(`20${ano}`, mes - 1, dia, 16, 30);
 
     return agora < dataLiberacao;
   }
 
-  // 🔥 DETECTA TRANSIÇÃO CORRETA (SEM BUG)
+  // 🔥 DETECTA TRANSIÇÃO CORRETA
   React.useEffect(() => {
     const atual = percentual(receita);
 
-    // inicializa corretamente ao entrar na tela
     if (prevPercentual.current === 0 && atual === 100) {
       prevPercentual.current = atual;
       return;
@@ -136,6 +134,14 @@ export default function ReceitaDetalhe({
           const podeMarcar =
             index === 0 || vistos.includes(index - 1);
 
+          // 🔥 NOVA REGRA (DESMARCAR)
+          const podeDesmarcar =
+            !vistos.includes(index + 1);
+
+          const ativo =
+            (!visto && podeMarcar) ||
+            (visto && podeDesmarcar);
+
           const bloqueado = aindaEhMembro(video);
 
           return (
@@ -207,7 +213,11 @@ export default function ReceitaDetalhe({
 
                 <button
                   onClick={() => {
-                    if (podeMarcar) {
+                    if (!visto && podeMarcar) {
+                      marcarVideo(receita.id, index);
+                    }
+
+                    if (visto && podeDesmarcar) {
                       marcarVideo(receita.id, index);
                     }
                   }}
@@ -218,8 +228,8 @@ export default function ReceitaDetalhe({
                     borderRadius: "10px",
                     color: "#fff",
                     fontWeight: "700",
-                    cursor: podeMarcar ? "pointer" : "not-allowed",
-                    opacity: podeMarcar ? 1 : 0.3
+                    cursor: ativo ? "pointer" : "not-allowed",
+                    opacity: ativo ? 1 : 0.3
                   }}
                 >
                   ✓
