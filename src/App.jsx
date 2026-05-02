@@ -490,7 +490,7 @@ function App() {
                 fontSize: "13px"
               }}
             >
-              💛 Você já está usando o app instalado
+              💛 Você já está usando o app instalado, feche a Página e acesse o APP
             </div>
           )}
 
