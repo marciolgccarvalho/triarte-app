@@ -1,20 +1,53 @@
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
+/* 🔥 BLOQUEIA PULL-TO-REFRESH (IMPORTANTE PWA) */
+html, body {
+  overscroll-behavior-y: contain;
+}
+
+body {
   font-family: Arial, Helvetica, sans-serif;
-  background:#f5f5f5;
-  color:#222;
+  background: #f5f5f5;
+  color: #222;
+
+  /* 🔥 melhora renderização de texto */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* 🔥 evita seleção acidental (UX mobile) */
+  user-select: none;
 }
 
-a{
-  text-decoration:none;
-  color:inherit;
+/* 🔥 mantém inputs selecionáveis */
+input, textarea {
+  user-select: text;
 }
 
-button{
-  cursor:pointer;
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+
+  /* 🔥 remove estilo padrão feio mobile */
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+/* 🔥 remove highlight azul no mobile */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 🔥 imagens mais suaves */
+img {
+  display: block;
+  max-width: 100%;
 }
