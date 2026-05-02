@@ -28,7 +28,7 @@ function App() {
   // =========================
   const isStandalone =
     window.matchMedia("(display-mode: standalone)").matches ||
-    window.navigator.standalone;
+    window.navigator.standalone === true;
 
   const [podeInstalar, setPodeInstalar] = React.useState(false);
   const [promptInstalar, setPromptInstalar] = React.useState(null);
@@ -106,18 +106,30 @@ function App() {
   const [paginaAtual, setPaginaAtual] = React.useState(1);
 
   const [favoritos, setFavoritos] = React.useState(() => {
-    const salvo = localStorage.getItem("favoritos");
-    return salvo ? JSON.parse(salvo) : [];
+    try {
+      const salvo = localStorage.getItem("favoritos");
+      return salvo ? JSON.parse(salvo) : [];
+    } catch {
+      return [];
+    }
   });
 
   const [progresso, setProgresso] = React.useState(() => {
-    const salvo = localStorage.getItem("progressoReceitas");
-    return salvo ? JSON.parse(salvo) : {};
+    try {
+      const salvo = localStorage.getItem("progressoReceitas");
+      return salvo ? JSON.parse(salvo) : {};
+    } catch {
+      return {};
+    }
   });
 
   const [ultimaReceita, setUltimaReceita] = React.useState(() => {
-    const salvo = localStorage.getItem("ultimaReceita");
-    return salvo ? JSON.parse(salvo) : null;
+    try {
+      const salvo = localStorage.getItem("ultimaReceita");
+      return salvo ? JSON.parse(salvo) : null;
+    } catch {
+      return null;
+    }
   });
 
   const [mensagemAtual, setMensagemAtual] = React.useState(null);
@@ -135,10 +147,16 @@ function App() {
   }, [progresso]);
 
   React.useEffect(() => {
-    if (!mensagens.length) return;
+    if (!mensagens || !mensagens.length) return;
 
     const tipo = pagina === "home" ? "boasvindas" : "dica";
     const filtradas = mensagens.filter((m) => m.tipo === tipo);
+
+    if (!filtradas.length) {
+      setMensagemAtual(null);
+      return;
+    }
+
     const escolhida =
       filtradas[Math.floor(Math.random() * filtradas.length)];
 
@@ -158,6 +176,8 @@ function App() {
   };
 
   const abrirReceita = (r) => {
+    if (!r) return;
+
     setReceitaSelecionada(r);
     setUltimaReceita(r);
     localStorage.setItem("ultimaReceita", JSON.stringify(r));
@@ -173,8 +193,11 @@ function App() {
   };
 
   const percentual = (receita) => {
-    const vistos = progresso[receita.id]?.vistos?.length || 0;
-    const total = receita.videos?.length || 0;
+    if (!receita || !receita.id) return 0;
+
+    const vistos = progresso?.[receita.id]?.vistos?.length || 0;
+    const total = receita?.videos?.length || 0;
+
     return total === 0 ? 0 : Math.round((vistos / total) * 100);
   };
 
@@ -195,11 +218,13 @@ function App() {
   };
 
   const listaMateriaisTexto = () => {
+    if (!receitaSelecionada) return "";
+
     const linhas = receitaSelecionada?.materiais?.linhas || [];
     const itens = receitaSelecionada?.materiais?.itens || [];
 
     return [
-      `Materiais - ${receitaSelecionada?.nome}`,
+      `Materiais - ${receitaSelecionada?.nome || ""}`,
       "",
       "Linhas:",
       ...linhas.map((item) => `- ${item}`),
@@ -229,18 +254,22 @@ function App() {
   // =========================
   // DADOS
   // =========================
-  const receitasAtivas = receitas.filter((r) => r.ativo);
+  const receitasAtivas = React.useMemo(() => {
+    return (receitas || []).filter((r) => r && r.ativo);
+  }, []);
 
-  const hoje = new Date();
+  const hoje = React.useMemo(() => new Date(), []);
 
-  const receitasDestaque = receitasAtivas.filter((r) => {
-    if (!r.destaqueInicio || !r.destaqueFim) return false;
+  const receitasDestaque = React.useMemo(() => {
+    return receitasAtivas.filter((r) => {
+      if (!r.destaqueInicio || !r.destaqueFim) return false;
 
-    const inicio = new Date(r.destaqueInicio);
-    const fim = new Date(r.destaqueFim);
+      const inicio = new Date(r.destaqueInicio);
+      const fim = new Date(r.destaqueFim);
 
-    return hoje >= inicio && hoje <= fim;
-  });
+      return hoje >= inicio && hoje <= fim;
+    });
+  }, [receitasAtivas, hoje]);
 
   React.useEffect(() => {
     if (pagina !== "home") return;
@@ -252,18 +281,21 @@ function App() {
       .sort(() => Math.random() - 0.5);
 
     setReceitasRandom(lista);
-  }, [pagina]);
+  }, [pagina, receitasAtivas, receitasDestaque]);
 
-  const categorias = [
-    ...new Set(receitasAtivas.map((r) => r.categoria))
-  ];
+  const categorias = React.useMemo(() => {
+    return [
+      ...new Set(receitasAtivas.map((r) => r.categoria).filter(Boolean))
+    ];
+  }, [receitasAtivas]);
 
   const receitasFiltradas = React.useMemo(() => {
     return receitasAtivas.filter((r) => {
       const nome = buscaNome.toLowerCase();
+      const nomeReceita = (r.nome || "").toLowerCase();
 
       return (
-        (nome.length < 3 || r.nome.toLowerCase().includes(nome)) &&
+        (nome.length < 3 || nomeReceita.includes(nome)) &&
         (buscaCategoria === "" || r.categoria === buscaCategoria)
       );
     });
@@ -285,7 +317,7 @@ function App() {
     if (paginaAtual > totalPaginas) {
       setPaginaAtual(1);
     }
-  }, [totalPaginas]);
+  }, [paginaAtual, totalPaginas]);
 
   // =========================
   // BLOQUEIO ROTAÇÃO

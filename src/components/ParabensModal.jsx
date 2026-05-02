@@ -1,25 +1,29 @@
 import React from "react";
 import html2canvas from "html2canvas";
 
-export default function ParabensModal({ aberto, fechar, receita }) {
+export default function ParabensModal({ aberto, fechar = () => {}, receita }) {
   if (!aberto) return null;
 
   const dataHoje = new Date().toLocaleDateString("pt-BR");
 
   const salvarImagem = async () => {
-    const elemento = document.getElementById("print-area");
-    if (!elemento) return;
+    try {
+      const elemento = document.getElementById("print-area");
+      if (!elemento || !html2canvas) return;
 
-    const canvas = await html2canvas(elemento, {
-      scale: 2,
-      useCORS: true,
-      backgroundColor: "#ffffff"
-    });
+      const canvas = await html2canvas(elemento, {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: "#ffffff"
+      });
 
-    const link = document.createElement("a");
-    link.download = "real-triarte-conquista.png";
-    link.href = canvas.toDataURL("image/png");
-    link.click();
+      const link = document.createElement("a");
+      link.download = "real-triarte-conquista.png";
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    } catch (err) {
+      console.error("Erro ao gerar imagem:", err);
+    }
   };
 
   return (
@@ -47,13 +51,11 @@ export default function ParabensModal({ aberto, fechar, receita }) {
           textAlign: "center"
         }}
       >
-        {/* HEADER FIXO */}
+        {/* HEADER */}
         <div
           style={{
             padding: "10px",
             textAlign: "left",
-            position: "relative",
-            zIndex: 2,
             background: "#fff"
           }}
         >
@@ -70,7 +72,7 @@ export default function ParabensModal({ aberto, fechar, receita }) {
           </button>
         </div>
 
-        {/* IMAGEM ESTILO INSTAGRAM (CORRIGIDO) */}
+        {/* IMAGEM */}
         <div
           style={{
             width: "100%",
@@ -79,9 +81,8 @@ export default function ParabensModal({ aberto, fechar, receita }) {
             overflow: "hidden"
           }}
         >
-          {/* FUNDO BLUR */}
           <img
-            src={receita?.imagem}
+            src={receita?.imagem || "/images/logo/logo.png"}
             style={{
               position: "absolute",
               width: "100%",
@@ -92,9 +93,8 @@ export default function ParabensModal({ aberto, fechar, receita }) {
             }}
           />
 
-          {/* IMAGEM PRINCIPAL */}
           <img
-            src={receita?.imagem}
+            src={receita?.imagem || "/images/logo/logo.png"}
             alt="receita"
             style={{
               position: "relative",
@@ -106,68 +106,45 @@ export default function ParabensModal({ aberto, fechar, receita }) {
         </div>
 
         {/* CONTEÚDO */}
-        <div style={{ padding: "18px", position: "relative", zIndex: 2 }}>
-          {/* LOGO */}
+        <div style={{ padding: "18px" }}>
           <img
             src="/images/logo/logo.png"
             style={{
               width: "65px",
               borderRadius: "50%",
               marginTop: "-40px",
-              border: "4px solid #fff",
-              background: "#fff"
+              border: "4px solid #fff"
             }}
           />
 
-          {/* TEXTO */}
           <div style={{ marginTop: "10px" }}>
             <div style={{ fontSize: "26px" }}>🎉</div>
 
-            <h2 style={{ margin: "6px 0", fontSize: "22px" }}>
-              Parabéns!
-            </h2>
+            <h2>Parabéns!</h2>
 
             <p style={{ color: "#666", fontSize: "14px" }}>
               Você concluiu o projeto
             </p>
 
-            <strong
-              style={{
-                display: "block",
-                fontSize: "17px",
-                marginTop: "6px",
-                color: "#222"
-              }}
-            >
-              {receita?.nome}
-            </strong>
+            <strong>{receita?.nome || "Receita"}</strong>
 
-            <div
-              style={{
-                marginTop: "4px",
-                fontSize: "13px",
-                color: "#888"
-              }}
-            >
+            <div style={{ fontSize: "13px", color: "#888" }}>
               {dataHoje}
             </div>
           </div>
 
-          {/* BOTÃO */}
           <button
             onClick={salvarImagem}
             style={{
               marginTop: "18px",
               width: "100%",
               padding: "14px",
-              background: "linear-gradient(135deg, #ff5a5a, #ff7a7a)",
+              background: "#ff5a5a",
               color: "#fff",
               border: "none",
               borderRadius: "30px",
               fontWeight: "800",
-              fontSize: "15px",
-              cursor: "pointer",
-              boxShadow: "0 6px 15px rgba(255,90,90,0.4)"
+              cursor: "pointer"
             }}
           >
             📸 Salve este momento

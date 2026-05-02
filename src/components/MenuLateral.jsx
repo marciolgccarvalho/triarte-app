@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function MenuLateral({ aberto, fechar, irPara }) {
+export default function MenuLateral({ aberto, fechar = () => {}, irPara = () => {} }) {
   if (!aberto) return null;
 
   return (
@@ -27,6 +27,7 @@ export default function MenuLateral({ aberto, fechar, irPara }) {
         <div style={{ textAlign: "center", marginBottom: "20px" }}>
           <img
             src="/images/logo/logo.png"
+            alt="Logo"
             style={{ width: "70px", borderRadius: "50%" }}
           />
           <h3 style={{ marginTop: "10px" }}>Real Triarte</h3>
@@ -34,31 +35,21 @@ export default function MenuLateral({ aberto, fechar, irPara }) {
 
         {/* MENU */}
         <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-
           <Item icone="/images/icons/home.png" texto="Home" onClick={() => irPara("home")} />
-
           <Item icone="/images/icons/receitas.png" texto="Receitas" onClick={() => irPara("receitas")} />
-
           <Item icone="/images/icons/favoritos.png" texto="Favoritos" onClick={() => irPara("favoritos")} />
-
           <Item icone="/images/icons/calculo.png" texto="Simulador" onClick={() => irPara("simulador")} />
-
           <Item icone="/images/icons/conquistas.png" texto="Conquistas" onClick={() => irPara("conquistas")} />
-
-          {/* NOVO */}
           <Item icone="/images/icons/abreviacao.png" texto="Abreviações" onClick={() => irPara("abreviatura")} />
-
           <Item icone="/images/icons/sobre.png" texto="Sobre" onClick={() => irPara("sobre")} />
-
           <Item icone="/images/icons/contato.png" texto="Contato" onClick={() => irPara("contato")} />
-
         </div>
       </div>
     </div>
   );
 }
 
-function Item({ icone, texto, onClick }) {
+function Item({ icone, texto, onClick = () => {} }) {
   return (
     <div
       onClick={onClick}
@@ -74,9 +65,13 @@ function Item({ icone, texto, onClick }) {
       onMouseEnter={(e) => (e.currentTarget.style.background = "#eaeaea")}
       onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
     >
-      <img src={icone} style={{ width: "28px" }} />
+      <img
+        src={icone || "/images/logo/logo.png"}
+        alt={texto}
+        style={{ width: "28px" }}
+      />
       <span style={{ fontSize: "15px", fontWeight: "600", color: "#333" }}>
-        {texto}
+        {texto || ""}
       </span>
     </div>
   );
