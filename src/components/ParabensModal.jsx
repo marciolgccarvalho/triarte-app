@@ -28,47 +28,21 @@ export default function ParabensModal({ aberto, fechar = () => {}, receita }) {
   };
 
   return (
-    <div
-      style={{
-        position: "fixed",
-        inset: 0,
-        background: "rgba(0,0,0,0.65)",
-        zIndex: 2000,
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        padding: "20px"
-      }}
-    >
+    <div className="modal-overlay">
+
       <div
         id="print-area"
+        className="modal"
         style={{
-          width: "100%",
           maxWidth: "360px",
-          background: "#fff",
           borderRadius: "22px",
           overflow: "hidden",
-          boxShadow: "0 12px 30px rgba(0,0,0,0.25)",
           textAlign: "center"
         }}
       >
         {/* HEADER */}
-        <div
-          style={{
-            padding: "10px",
-            textAlign: "left",
-            background: "#fff"
-          }}
-        >
-          <button
-            onClick={fechar}
-            style={{
-              background: "transparent",
-              border: "none",
-              fontSize: "18px",
-              cursor: "pointer"
-            }}
-          >
+        <div className="flex" style={{ justifyContent: "flex-start" }}>
+          <button onClick={fechar}>
             ✕
           </button>
         </div>
@@ -107,9 +81,9 @@ export default function ParabensModal({ aberto, fechar = () => {}, receita }) {
         </div>
 
         {/* CONTEÚDO */}
-        <div style={{ padding: "18px", position: "relative" }}>
+        <div className="p-md" style={{ position: "relative" }}>
           
-          {/* 🔥 LOGO CORRIGIDO */}
+          {/* LOGO */}
           <img
             src={IMAGES.ui.logo}
             style={{
@@ -119,46 +93,37 @@ export default function ParabensModal({ aberto, fechar = () => {}, receita }) {
               transform: "translateX(-50%)",
               width: "65px",
               borderRadius: "50%",
-              border: "4px solid #fff",
-              background: "#fff",
-              zIndex: 10
+              border: "4px solid var(--color-bg-light)",
+              background: "var(--color-bg-light)"
             }}
           />
 
-          <div style={{ marginTop: "20px" }}>
-            <div style={{ fontSize: "26px" }}>🎉</div>
+          <div className="mt-md">
+            <div className="title">🎉</div>
 
             <h2>Parabéns!</h2>
 
-            <p style={{ color: "#666", fontSize: "14px" }}>
+            <p className="small text-muted">
               Você concluiu o projeto
             </p>
 
             <strong>{receita?.nome || "Receita"}</strong>
 
-            <div style={{ fontSize: "13px", color: "#888" }}>
+            <div className="small text-muted">
               {dataHoje}
             </div>
           </div>
 
           <button
             onClick={salvarImagem}
-            style={{
-              marginTop: "18px",
-              width: "100%",
-              padding: "14px",
-              background: "#ff5a5a",
-              color: "#fff",
-              border: "none",
-              borderRadius: "30px",
-              fontWeight: "800",
-              cursor: "pointer"
-            }}
+            className="btn btn-primary mt-md"
+            style={{ width: "100%", borderRadius: "30px" }}
           >
             📸 Salve este momento
           </button>
         </div>
       </div>
+
     </div>
   );
 }

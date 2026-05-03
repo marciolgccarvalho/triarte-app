@@ -31,38 +31,26 @@ export default function Receitas({
 
   return (
     <>
-      <h2>Todas as receitas</h2>
+      <h2 className="mb-sm">Todas as receitas</h2>
 
       {/* BUSCA */}
       <input
+        className="input mb-sm"
         placeholder="Buscar receita..."
         value={buscaNome}
         onChange={(e) => {
           setBuscaNome(e.target.value);
           setPaginaAtual(1);
         }}
-        style={{
-          width: "100%",
-          padding: "12px",
-          marginBottom: "10px",
-          borderRadius: "10px",
-          border: "1px solid #ddd"
-        }}
       />
 
       {/* CATEGORIA */}
       <select
+        className="input mb-sm"
         value={buscaCategoria}
         onChange={(e) => {
           setBuscaCategoria(e.target.value);
           setPaginaAtual(1);
-        }}
-        style={{
-          width: "100%",
-          padding: "12px",
-          marginBottom: "10px",
-          borderRadius: "10px",
-          border: "1px solid #ddd"
         }}
       >
         <option value="">Todas as categorias</option>
@@ -74,29 +62,17 @@ export default function Receitas({
       </select>
 
       {/* CONTROLES */}
-      <div
-        style={{
-          display: "flex",
-          gap: "10px",
-          marginBottom: "12px",
-          alignItems: "center"
-        }}
-      >
-        <button
-          onClick={() => setModoExibicao("grid")}
-          style={{ background: "transparent", border: "none" }}
-        >
+      <div className="flex gap-sm mb-md flex-center">
+        <button onClick={() => setModoExibicao("grid")}>
           <img src={IMAGES.icons.grid.active} style={{ width: "28px" }} />
         </button>
 
-        <button
-          onClick={() => setModoExibicao("lista")}
-          style={{ background: "transparent", border: "none" }}
-        >
+        <button onClick={() => setModoExibicao("lista")}>
           <img src={IMAGES.icons.lista.active} style={{ width: "28px" }} />
         </button>
 
         <select
+          className="input"
           value={limite}
           onChange={(e) => {
             setLimite(Number(e.target.value));
@@ -111,13 +87,7 @@ export default function Receitas({
 
       {/* GRID */}
       {modoExibicao === "grid" && (
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "10px"
-          }}
-        >
+        <div className="grid gap-sm">
           {receitasPaginadas.map((r) => (
             <CardReceita
               key={r.id}
@@ -133,26 +103,20 @@ export default function Receitas({
 
       {/* LISTA */}
       {modoExibicao === "lista" && (
-        <div style={{ display: "grid", gap: "10px" }}>
+        <div className="grid gap-sm">
           {receitasPaginadas.map((r) => (
             <div
               key={r.id}
               onClick={() => abrirReceita(r)}
-              style={{
-                background: "#fff",
-                padding: "12px",
-                borderRadius: "12px",
-                boxShadow: "0 3px 8px rgba(0,0,0,0.1)",
-                cursor: "pointer"
-              }}
+              className="card"
+              style={{ cursor: "pointer" }}
             >
               <strong>{r.nome}</strong>
 
-              <p style={{ fontSize: "13px", color: "#666" }}>
+              <p className="small text-muted">
                 {r.categoria}
               </p>
 
-              {/* 🔥 IMAGEM (adicionado lazy) */}
               <img
                 src={r.imagem}
                 alt={r.nome}
@@ -167,10 +131,11 @@ export default function Receitas({
                 }}
               />
 
+              {/* PROGRESSO */}
               <div
                 style={{
                   height: "6px",
-                  background: "#ddd",
+                  background: "var(--color-surface)",
                   borderRadius: "6px",
                   overflow: "hidden",
                   marginTop: "8px"
@@ -180,12 +145,12 @@ export default function Receitas({
                   style={{
                     width: `${percentual(r)}%`,
                     height: "100%",
-                    background: "#ffd400"
+                    background: "var(--color-accent)"
                   }}
                 />
               </div>
 
-              <p style={{ fontSize: "12px", marginTop: "4px" }}>
+              <p className="small mt-sm">
                 {percentual(r)}%
               </p>
             </div>
@@ -195,19 +160,10 @@ export default function Receitas({
 
       {/* PAGINAÇÃO */}
       {totalPaginas > 0 && (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: "10px",
-            marginTop: "15px"
-          }}
-        >
+        <div className="flex-center gap-sm mt-md">
           <button
             disabled={paginaAtual === 1}
             onClick={() => setPaginaAtual((p) => p - 1)}
-            style={{ background: "transparent", border: "none" }}
           >
             <img
               src={IMAGES.icons.anterior.active}
@@ -225,7 +181,6 @@ export default function Receitas({
           <button
             disabled={paginaAtual === totalPaginas}
             onClick={() => setPaginaAtual((p) => p + 1)}
-            style={{ background: "transparent", border: "none" }}
           >
             <img
               src={IMAGES.icons.proxima.active}

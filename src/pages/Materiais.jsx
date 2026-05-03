@@ -8,7 +8,7 @@ export default function Materiais({
 }) {
   if (!receita) {
     return (
-      <div style={{ padding: "20px" }}>
+      <div className="p-md">
         <h2>Nenhuma receita selecionada</h2>
       </div>
     );
@@ -17,17 +17,9 @@ export default function Materiais({
   return (
     <div>
 
-      {/* BOTÃO VOLTAR */}
-      <div style={{ marginBottom: "10px" }}>
-        <button
-          onClick={voltar}
-          style={{
-            background: "transparent",
-            border: "none",
-            padding: 0,
-            cursor: "pointer"
-          }}
-        >
+      {/* VOLTAR */}
+      <div className="mb-sm">
+        <button onClick={voltar}>
           <img
             src={IMAGES.icons.anterior.active}
             style={{ width: "25px" }}
@@ -36,43 +28,34 @@ export default function Materiais({
       </div>
 
       {/* TÍTULO */}
-      <h2 style={{ marginBottom: "5px" }}>Materiais</h2>
+      <h2 className="mb-sm">Materiais</h2>
 
-      <p style={{ color: "#666", fontSize: "14px", marginBottom: "10px" }}>
+      <p className="small text-muted mb-sm">
         Compre os materiais pelo nosso link e ajude o Real Triarte 💛
       </p>
 
-      {/* 🔥 BOTÃO MERCADO LIVRE (MOVIDO PARA CIMA) */}
+      {/* BOTÃO MERCADO LIVRE */}
       <button
         onClick={() =>
           window.open("https://mercadolivre.com/sec/1AW2X78", "_blank")
         }
-        style={{
-          marginBottom: "15px",
-          width: "100%",
-          padding: "14px",
-          background: "#ffd400",
-          border: "none",
-          borderRadius: "12px",
-          fontWeight: "800",
-          cursor: "pointer"
-        }}
+        className="btn btn-primary mb-md"
+        style={{ width: "100%" }}
       >
         Comprar no Mercado Livre
       </button>
 
       {/* LINHAS */}
-      <h3 style={{ marginBottom: "8px" }}>Linhas</h3>
+      <h3 className="mb-sm">Linhas</h3>
 
-      <div style={{ display: "grid", gap: "8px", marginBottom: "12px" }}>
+      <div className="grid gap-sm mb-md">
         {(receita.materiais?.linhas || []).map((item, index) => (
           <div
             key={index}
+            className="card"
             style={{
-              background: "#fff3b0",
-              padding: "12px",
-              borderRadius: "10px",
-              fontWeight: "600"
+              fontWeight: "600",
+              background: "var(--color-accent)"
             }}
           >
             🧶 {item}
@@ -81,41 +64,25 @@ export default function Materiais({
       </div>
 
       {/* OUTROS */}
-      <h3 style={{ marginBottom: "8px" }}>Outros materiais</h3>
+      <h3 className="mb-sm">Outros materiais</h3>
 
-      <div style={{ display: "grid", gap: "8px" }}>
+      <div className="grid gap-sm">
         {(receita.materiais?.itens || []).map((item, index) => (
-          <div
-            key={index}
-            style={{
-              background: "#fff",
-              padding: "12px",
-              borderRadius: "10px",
-              border: "1px solid #ddd"
-            }}
-          >
+          <div key={index} className="card">
             ✔ {item}
           </div>
         ))}
       </div>
 
       {/* BOTÃO COPIAR */}
-      <div style={{ marginTop: "15px" }}>
+      <div className="mt-md">
         <button
           onClick={() => {
             navigator.clipboard.writeText(listaMateriaisTexto());
             alert("Lista copiada!");
           }}
-          style={{
-            width: "100%",
-            padding: "14px",
-            background: "#333",
-            color: "#fff",
-            border: "none",
-            borderRadius: "12px",
-            fontWeight: "800",
-            cursor: "pointer"
-          }}
+          className="btn btn-secondary"
+          style={{ width: "100%" }}
         >
           Copiar lista de materiais
         </button>

@@ -20,8 +20,7 @@ export default function CardReceita({
   return (
     <div
       onClick={() => abrirReceita && abrirReceita(receita)}
-      className="card card-receita"
-      style={{ position: "relative", overflow: "hidden", cursor: "pointer" }}
+      className="card card-receita card-clickable"
     >
       {/* IMAGEM */}
       <img
@@ -29,22 +28,11 @@ export default function CardReceita({
         alt={receita?.nome || "Receita"}
         loading="lazy"
         decoding="async"
-        style={{
-          width: "100%",
-          height: "160px",
-          objectFit: "cover"
-        }}
+        className="card-receita-img"
       />
 
       {/* OVERLAY */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          background:
-            "linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.1))"
-        }}
-      />
+      <div className="card-overlay" />
 
       {/* FAVORITO */}
       <div
@@ -52,17 +40,7 @@ export default function CardReceita({
           e.stopPropagation();
           toggleFavorito && toggleFavorito(receita.id);
         }}
-        className="flex-center"
-        style={{
-          position: "absolute",
-          top: "8px",
-          right: "8px",
-          width: "36px",
-          height: "36px",
-          borderRadius: "50%",
-          background: "rgba(255,255,255,0.9)",
-          zIndex: 2
-        }}
+        className="card-favorito flex-center"
       >
         <img
           src={
@@ -71,42 +49,21 @@ export default function CardReceita({
               : IMAGES.icons.favoritos.inactive
           }
           alt="Favorito"
-          style={{ width: "24px" }}
+          className="card-favorito-icon"
         />
       </div>
 
       {/* CONTEÚDO */}
-      <div
-        style={{
-          position: "absolute",
-          bottom: "10px",
-          left: "10px",
-          right: "10px",
-          color: "#fff",
-          zIndex: 2
-        }}
-      >
+      <div className="card-content">
         <strong className="small">
           {receita?.nome || "Receita"}
         </strong>
 
         {/* PROGRESSO */}
-        <div
-          style={{
-            width: "100%",
-            height: "5px",
-            background: "rgba(255,255,255,0.3)",
-            borderRadius: "5px",
-            overflow: "hidden",
-            marginTop: "4px"
-          }}
-        >
+        <div className="progress-bar">
           <div
-            style={{
-              width: `${progresso}%`,
-              height: "100%",
-              background: "var(--color-accent)"
-            }}
+            className="progress-fill"
+            style={{ width: `${progresso}%` }}
           />
         </div>
 

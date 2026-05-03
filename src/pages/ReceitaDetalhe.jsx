@@ -15,7 +15,7 @@ export default function ReceitaDetalhe({
 
   if (!receita) {
     return (
-      <div style={{ padding: "20px" }}>
+      <div className="p-md">
         <h2>Nenhuma receita selecionada</h2>
       </div>
     );
@@ -32,7 +32,6 @@ export default function ReceitaDetalhe({
     return agora < dataLiberacao;
   }
 
-  // 🔥 DETECTA TRANSIÇÃO CORRETA
   React.useEffect(() => {
     const atual = percentual(receita);
 
@@ -51,16 +50,8 @@ export default function ReceitaDetalhe({
   return (
     <div>
       {/* VOLTAR */}
-      <div style={{ marginTop: "10px" }}>
-        <button
-          onClick={voltar}
-          style={{
-            background: "transparent",
-            border: "none",
-            padding: 0,
-            cursor: "pointer"
-          }}
-        >
+      <div className="mt-sm">
+        <button onClick={voltar}>
           <img src={IMAGES.icons.anterior.active} style={{ width: "25px" }} />
         </button>
       </div>
@@ -69,41 +60,34 @@ export default function ReceitaDetalhe({
       <img
         src={receita.imagem}
         alt={receita.nome}
+        className="mt-sm"
         style={{
           width: "100%",
           height: "180px",
           objectFit: "cover",
-          borderRadius: "14px",
-          marginTop: "12px"
+          borderRadius: "14px"
         }}
       />
 
       {/* TÍTULO */}
-      <h2 style={{ marginTop: "12px" }}>{receita.nome}</h2>
+      <h2 className="mt-sm">{receita.nome}</h2>
 
       {/* DESCRIÇÃO */}
-      <p style={{ color: "#666" }}>{receita.descricao}</p>
+      <p className="text-muted">{receita.descricao}</p>
 
       {/* BOTÃO MATERIAIS */}
-      <div style={{ marginTop: "10px" }}>
+      <div className="mt-sm">
         <button
           onClick={() => irPara("materiais")}
-          style={{
-            width: "100%",
-            padding: "14px",
-            background: "#ffd400",
-            border: "none",
-            borderRadius: "12px",
-            fontWeight: "800",
-            cursor: "pointer"
-          }}
+          className="btn btn-primary"
+          style={{ width: "100%" }}
         >
           Ver materiais
         </button>
       </div>
 
       {/* PROGRESSO */}
-      <div style={{ margin: "15px 0" }}>
+      <div className="mt-md">
         <strong>{percentual(receita)}% concluído</strong>
 
         <div
@@ -111,7 +95,7 @@ export default function ReceitaDetalhe({
             marginTop: "8px",
             width: "100%",
             height: "10px",
-            background: "#ddd",
+            background: "var(--color-surface)",
             borderRadius: "10px",
             overflow: "hidden"
           }}
@@ -120,14 +104,14 @@ export default function ReceitaDetalhe({
             style={{
               width: `${percentual(receita)}%`,
               height: "100%",
-              background: "#35a853"
+              background: "var(--color-success)"
             }}
           />
         </div>
       </div>
 
       {/* VÍDEOS */}
-      <div style={{ display: "grid", gap: "10px" }}>
+      <div className="grid gap-sm mt-md">
         {receita.videos?.map((video, index) => {
           const vistos = progresso[receita.id]?.vistos || [];
           const visto = vistos.includes(index);
@@ -135,7 +119,6 @@ export default function ReceitaDetalhe({
           const podeMarcar =
             index === 0 || vistos.includes(index - 1);
 
-          // 🔥 NOVA REGRA (DESMARCAR)
           const podeDesmarcar =
             !vistos.includes(index + 1);
 
@@ -146,22 +129,14 @@ export default function ReceitaDetalhe({
           const bloqueado = aindaEhMembro(video);
 
           return (
-            <div
-              key={index}
-              style={{
-                background: "#fff",
-                border: "1px solid #ddd",
-                padding: "12px",
-                borderRadius: "12px"
-              }}
-            >
+            <div key={index} className="card">
               <strong>
                 {visto ? "✅" : "▶"} {video.titulo}
               </strong>
 
               {bloqueado && (
                 <>
-                  <div style={{ height: "8px" }} />
+                  <div className="mt-sm" />
 
                   <button
                     onClick={() =>
@@ -170,28 +145,25 @@ export default function ReceitaDetalhe({
                         "_blank"
                       )
                     }
+                    className="btn"
                     style={{
-                      background: "#e53935",
+                      background: "var(--color-danger)",
                       color: "#fff",
-                      border: "none",
-                      padding: "8px 10px",
-                      borderRadius: "8px",
                       fontSize: "12px",
                       fontWeight: "700",
-                      cursor: "pointer",
                       width: "fit-content"
                     }}
                   >
                     Seja Membro e veja todos os vídeos
                   </button>
 
-                  <div style={{ fontSize: "12px", marginTop: "6px", fontWeight: "600" }}>
+                  <div className="small mt-sm">
                     Liberado para todos dia {video.liberacao} às 16:30
                   </div>
                 </>
               )}
 
-              <div style={{ display: "flex", gap: "10px", marginTop: "10px" }}>
+              <div className="flex gap-sm mt-sm">
                 <button
                   onClick={() =>
                     window.open(
@@ -199,15 +171,8 @@ export default function ReceitaDetalhe({
                       "_blank"
                     )
                   }
-                  style={{
-                    flex: 1,
-                    padding: "12px",
-                    background: "#ffd400",
-                    border: "none",
-                    borderRadius: "10px",
-                    fontWeight: "700",
-                    cursor: "pointer"
-                  }}
+                  className="btn btn-primary"
+                  style={{ flex: 1 }}
                 >
                   {bloqueado ? "Liberado para Membros" : "Assistir"}
                 </button>
@@ -222,15 +187,15 @@ export default function ReceitaDetalhe({
                       marcarVideo(receita.id, index);
                     }
                   }}
+                  className="btn"
                   style={{
                     width: "60px",
-                    background: visto ? "#35a853" : "#ddd",
-                    border: "none",
-                    borderRadius: "10px",
+                    background: visto
+                      ? "var(--color-success)"
+                      : "var(--color-surface)",
                     color: "#fff",
-                    fontWeight: "700",
-                    cursor: ativo ? "pointer" : "not-allowed",
-                    opacity: ativo ? 1 : 0.3
+                    opacity: ativo ? 1 : 0.3,
+                    cursor: ativo ? "pointer" : "not-allowed"
                   }}
                 >
                   ✓

@@ -58,36 +58,26 @@ export default function Favoritos({
 
   return (
     <>
-      <h2 style={{ marginBottom: "10px" }}>
+      <h2 className="mb-sm">
         Minhas receitas favoritas
       </h2>
 
       {/* SEM FAVORITOS */}
       {listaBase.length === 0 ? (
-        <div
-          style={{
-            marginTop: "20px",
-            background: "#fff",
-            padding: "30px 20px",
-            borderRadius: "16px",
-            textAlign: "center",
-            boxShadow: "0 3px 10px rgba(0,0,0,0.08)"
-          }}
-        >
+        <div className="card text-center mt-md">
           <img
             src={IMAGES.icons.favoritos.active}
             loading="lazy"
             decoding="async"
             style={{
               width: "60px",
-              opacity: 0.6,
-              marginBottom: "10px"
+              opacity: 0.6
             }}
           />
 
-          <h3>Nenhuma favorita ainda</h3>
+          <h3 className="mt-sm">Nenhuma favorita ainda</h3>
 
-          <p style={{ fontSize: "14px", color: "#666" }}>
+          <p className="small text-muted mt-sm">
             Toque no coração das receitas para salvar aqui ❤️
           </p>
         </div>
@@ -95,29 +85,17 @@ export default function Favoritos({
         <>
           {/* BUSCA */}
           <input
+            className="input mb-sm"
             placeholder="Buscar favorita..."
             value={buscaNome}
             onChange={(e) => setBuscaNome(e.target.value)}
-            style={{
-              width: "100%",
-              padding: "12px",
-              marginBottom: "10px",
-              borderRadius: "10px",
-              border: "1px solid #ddd"
-            }}
           />
 
           {/* CATEGORIA */}
           <select
+            className="input mb-sm"
             value={buscaCategoria}
             onChange={(e) => setBuscaCategoria(e.target.value)}
-            style={{
-              width: "100%",
-              padding: "12px",
-              marginBottom: "10px",
-              borderRadius: "10px",
-              border: "1px solid #ddd"
-            }}
           >
             <option value="">Todas as categorias</option>
             {categorias.map((c) => (
@@ -128,39 +106,17 @@ export default function Favoritos({
           </select>
 
           {/* CONTROLES */}
-          <div
-            style={{
-              display: "flex",
-              gap: "10px",
-              marginBottom: "12px",
-              alignItems: "center"
-            }}
-          >
-            <button
-              onClick={() => setModoExibicao("grid")}
-              style={{
-                background: "transparent",
-                border: "none",
-                padding: 0,
-                cursor: "pointer"
-              }}
-            >
+          <div className="flex gap-sm mb-md flex-center">
+            <button onClick={() => setModoExibicao("grid")}>
               <img src={IMAGES.icons.grid.active} style={{ width: "28px" }} />
             </button>
 
-            <button
-              onClick={() => setModoExibicao("lista")}
-              style={{
-                background: "transparent",
-                border: "none",
-                padding: 0,
-                cursor: "pointer"
-              }}
-            >
+            <button onClick={() => setModoExibicao("lista")}>
               <img src={IMAGES.icons.lista.active} style={{ width: "28px" }} />
             </button>
 
             <select
+              className="input"
               value={limite}
               onChange={(e) => setLimite(Number(e.target.value))}
             >
@@ -172,13 +128,7 @@ export default function Favoritos({
 
           {/* GRID */}
           {modoExibicao === "grid" && (
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: "10px"
-              }}
-            >
+            <div className="grid gap-sm">
               {listaPaginada.map((r) => (
                 <CardReceita
                   key={r.id}
@@ -194,26 +144,20 @@ export default function Favoritos({
 
           {/* LISTA */}
           {modoExibicao === "lista" && (
-            <div style={{ display: "grid", gap: "10px" }}>
+            <div className="grid gap-sm">
               {listaPaginada.map((r) => (
                 <div
                   key={r.id}
                   onClick={() => abrirReceita(r)}
-                  style={{
-                    background: "#fff",
-                    padding: "12px",
-                    borderRadius: "12px",
-                    boxShadow: "0 3px 8px rgba(0,0,0,0.1)",
-                    cursor: "pointer"
-                  }}
+                  className="card"
+                  style={{ cursor: "pointer" }}
                 >
                   <strong>{r.nome}</strong>
 
-                  <p style={{ fontSize: "13px", color: "#666" }}>
+                  <p className="small text-muted">
                     {r.categoria}
                   </p>
 
-                  {/* 🔥 IMAGEM COM LAZY */}
                   <img
                     src={r.imagem}
                     alt={r.nome}
@@ -231,7 +175,7 @@ export default function Favoritos({
                   <div
                     style={{
                       height: "6px",
-                      background: "#ddd",
+                      background: "var(--color-surface)",
                       borderRadius: "6px",
                       overflow: "hidden",
                       marginTop: "8px"
@@ -241,12 +185,12 @@ export default function Favoritos({
                       style={{
                         width: `${percentual(r)}%`,
                         height: "100%",
-                        background: "#ffd400"
+                        background: "var(--color-accent)"
                       }}
                     />
                   </div>
 
-                  <p style={{ fontSize: "12px", marginTop: "4px" }}>
+                  <p className="small mt-sm">
                     {percentual(r)}%
                   </p>
                 </div>
@@ -256,24 +200,10 @@ export default function Favoritos({
 
           {/* PAGINAÇÃO */}
           {listaFiltrada.length > 0 && (
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                gap: "10px",
-                marginTop: "15px"
-              }}
-            >
+            <div className="flex-center gap-sm mt-md">
               <button
                 disabled={paginaAtual === 1}
                 onClick={() => setPaginaAtual((p) => p - 1)}
-                style={{
-                  background: "transparent",
-                  border: "none",
-                  padding: 0,
-                  cursor: "pointer"
-                }}
               >
                 <img
                   src={IMAGES.icons.anterior.active}
@@ -291,12 +221,6 @@ export default function Favoritos({
               <button
                 disabled={paginaAtual === totalPaginas}
                 onClick={() => setPaginaAtual((p) => p + 1)}
-                style={{
-                  background: "transparent",
-                  border: "none",
-                  padding: 0,
-                  cursor: "pointer"
-                }}
               >
                 <img
                   src={IMAGES.icons.proxima.active}

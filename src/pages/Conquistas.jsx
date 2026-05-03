@@ -8,13 +8,9 @@ export default function Conquistas({ voltar, progresso, receitas, favoritos }) {
     { id: "iniciante", imgOn: IMAGES.conquistas.iniciante.active, imgOff: IMAGES.conquistas.iniciante.inactive },
     { id: "dedicado", imgOn: IMAGES.conquistas.dedicado.active, imgOff: IMAGES.conquistas.dedicado.inactive },
     { id: "primeira_receita", imgOn: IMAGES.conquistas.primeiraReceita.active, imgOff: IMAGES.conquistas.primeiraReceita.inactive },
-
     { id: "criador", imgOn: IMAGES.conquistas.criadorIniciante.active, imgOff: IMAGES.conquistas.criadorIniciante.inactive },
-
     { id: "artesao", imgOn: IMAGES.conquistas.artesaoDedicado.active, imgOff: IMAGES.conquistas.artesaoDedicado.inactive },
-
     { id: "mestre", imgOn: IMAGES.conquistas.mestreDoAmigurumi.active, imgOff: IMAGES.conquistas.mestreDoAmigurumi.inactive },
-
     { id: "explorador", imgOn: IMAGES.conquistas.explorador.active, imgOff: IMAGES.conquistas.explorador.inactive },
     { id: "colecionador", imgOn: IMAGES.conquistas.colecionador.active, imgOff: IMAGES.conquistas.colecionador.inactive },
     { id: "persistente", imgOn: IMAGES.conquistas.persistente.active, imgOff: IMAGES.conquistas.persistente.inactive },
@@ -50,27 +46,20 @@ export default function Conquistas({ voltar, progresso, receitas, favoritos }) {
   return (
     <div>
 
-      <div style={{ marginBottom: "10px" }}>
-        <button
-          onClick={voltar}
-          style={{ background: "transparent", border: "none", padding: 0 }}
-        >
+      {/* VOLTAR */}
+      <div className="mb-sm">
+        <button onClick={voltar}>
           <img src={IMAGES.icons.anterior.active} style={{ width: "25px" }} />
         </button>
       </div>
 
-      <h2>Conquistas</h2>
-      <p style={{ color: "#666", marginBottom: "15px" }}>
+      <h2 className="mb-sm">Conquistas</h2>
+
+      <p className="text-muted mb-md">
         Acompanhe sua evolução no app 💛
       </p>
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
-          gap: "12px"
-        }}
-      >
+      <div className="grid gap-md" style={{ gridTemplateColumns: "repeat(3, 1fr)" }}>
         {conquistas.map((c) => {
 
           let conquistado = false;
@@ -117,16 +106,8 @@ export default function Conquistas({ voltar, progresso, receitas, favoritos }) {
           return (
             <div
               key={c.id}
-              style={{
-                background: "#fff",
-                borderRadius: "14px",
-                padding: "10px",
-                textAlign: "center",
-                height: "140px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center"
-              }}
+              className="card flex-center"
+              style={{ height: "140px" }}
             >
               <img
                 src={conquistado ? c.imgOn : c.imgOff}

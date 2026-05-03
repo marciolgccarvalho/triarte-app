@@ -2,43 +2,28 @@ import React from "react";
 
 export default function InstallGate({ instalarApp }) {
   return (
-    <div style={estilo}>
+    <div className="flex-center full-height text-center p-md">
       <div>
+
         <h2>Instale o aplicativo</h2>
 
-        <p style={{ marginTop: "10px" }}>
+        <p className="mt-sm text-muted">
           Para uma melhor experiência, instale o app no seu dispositivo
         </p>
 
-        <button onClick={instalarApp} style={botao}>
+        <button
+          onClick={instalarApp}
+          className="btn btn-primary mt-md w-full"
+        >
           📱 Instalar App
         </button>
 
-        <p style={{ marginTop: "20px", fontSize: "14px", color: "#666" }}>
+        <p className="small text-muted mt-md">
           Caso o botão não funcione, use o menu do navegador (⋮) e toque em
           "Instalar aplicativo"
         </p>
+
       </div>
     </div>
   );
 }
-
-const estilo = {
-  height: "100vh",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  textAlign: "center",
-  background: "#fff",
-  padding: "20px"
-};
-
-const botao = {
-  marginTop: "20px",
-  padding: "14px",
-  background: "#FFD400",
-  border: "none",
-  borderRadius: "12px",
-  fontWeight: "bold",
-  cursor: "pointer"
-};

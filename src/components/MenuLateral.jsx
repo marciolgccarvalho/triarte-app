@@ -7,35 +7,24 @@ export default function MenuLateral({ aberto, fechar = () => {}, irPara = () => 
   return (
     <div
       onClick={fechar}
-      style={{
-        position: "fixed",
-        inset: 0,
-        background: "rgba(0,0,0,0.5)",
-        zIndex: 1000
-      }}
+      className="modal-overlay"
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        style={{
-          width: "260px",
-          height: "100%",
-          background: "#f5f5f5",
-          padding: "20px",
-          boxShadow: "2px 0 10px rgba(0,0,0,0.2)"
-        }}
+        className="sidebar"
       >
         {/* LOGO */}
-        <div style={{ textAlign: "center", marginBottom: "20px" }}>
+        <div className="text-center mb-md">
           <img
             src={IMAGES.ui.logo}
             alt="Logo"
             style={{ width: "70px", borderRadius: "50%" }}
           />
-          <h3 style={{ marginTop: "10px" }}>Real Triarte</h3>
+          <h3 className="mt-sm">Real Triarte</h3>
         </div>
 
         {/* MENU */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+        <div className="list">
           <Item icone={IMAGES.icons.home.active} texto="Home" onClick={() => irPara("home")} />
           <Item icone={IMAGES.icons.receitas.active} texto="Receitas" onClick={() => irPara("receitas")} />
           <Item icone={IMAGES.icons.favoritos.active} texto="Favoritos" onClick={() => irPara("favoritos")} />
@@ -54,24 +43,15 @@ function Item({ icone, texto, onClick = () => {} }) {
   return (
     <div
       onClick={onClick}
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: "12px",
-        cursor: "pointer",
-        padding: "10px",
-        borderRadius: "10px",
-        transition: "background 0.2s"
-      }}
-      onMouseEnter={(e) => (e.currentTarget.style.background = "#eaeaea")}
-      onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+      className="sidebar-item flex"
+      style={{ alignItems: "center", gap: "12px" }}
     >
       <img
         src={icone || IMAGES.ui.logo}
         alt={texto}
         style={{ width: "28px" }}
       />
-      <span style={{ fontSize: "15px", fontWeight: "600", color: "#333" }}>
+      <span className="title">
         {texto || ""}
       </span>
     </div>

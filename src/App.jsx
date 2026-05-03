@@ -4,41 +4,41 @@ import InstallGate from "./InstallGate";
 
 function App() {
   // =========================
-  // DETECÇÃO STANDALONE (REAL)
+  // DETECÇÃO STANDALONE
   // =========================
   const [isStandalone, setIsStandalone] = React.useState(false);
+  const [isDesktop, setIsDesktop] = React.useState(false);
 
   React.useEffect(() => {
-    const checkStandalone = () => {
+    const check = () => {
       const standalone =
         window.matchMedia("(display-mode: standalone)").matches ||
         window.navigator.standalone === true;
 
       setIsStandalone(standalone);
+      setIsDesktop(window.innerWidth > 768);
     };
 
-    checkStandalone();
+    check();
 
-    // 🔥 revalidação (ajuda pós-instalação Android)
-    setTimeout(checkStandalone, 1000);
-    setTimeout(checkStandalone, 2500);
+    setTimeout(check, 1000);
+    setTimeout(check, 2500);
   }, []);
 
   // =========================
-  // 🔓 LIBERAÇÃO TEMPORÁRIA NO PC (REMOVER DEPOIS)
+  // CONFIG
   // =========================
-  const liberarNoPC = true; // ⬅️ MUDAR PARA false quando publicar
-  const isDesktop = window.innerWidth > 768;
+  const liberarNoPC = true; // 🔥 mudar depois pra false
 
   // =========================
-  // ESTADOS INSTALAÇÃO
+  // ESTADOS
   // =========================
   const [instalando, setInstalando] = React.useState(false);
   const [promptInstalar, setPromptInstalar] = React.useState(null);
   const [foiInstalado, setFoiInstalado] = React.useState(false);
 
   // =========================
-  // CAPTURA EVENTO INSTALL
+  // EVENTO INSTALL
   // =========================
   React.useEffect(() => {
     const handler = (e) => {
@@ -54,7 +54,7 @@ function App() {
   }, []);
 
   // =========================
-  // QUANDO INSTALA
+  // APP INSTALADO
   // =========================
   React.useEffect(() => {
     const handleInstalled = () => {
@@ -74,7 +74,7 @@ function App() {
   }, []);
 
   // =========================
-  // FUNÇÃO INSTALAR
+  // INSTALAR APP
   // =========================
   const instalarApp = async () => {
     if (!promptInstalar) {
@@ -92,62 +92,50 @@ function App() {
   };
 
   // =========================
-  // TELA INSTALANDO
+  // TELA PADRÃO (REUTILIZÁVEL)
+  // =========================
+  const TelaCentro = ({ titulo, texto }) => (
+    <div className="flex-center full-height text-center p-md">
+      <div>
+        <h2>{titulo}</h2>
+        <p className="small text-muted mt-sm">{texto}</p>
+      </div>
+    </div>
+  );
+
+  // =========================
+  // INSTALANDO
   // =========================
   if (!isStandalone && instalando) {
     return (
-      <div
-        style={{
-          height: "100vh",
-          background: "#ffffff",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          textAlign: "center",
-          padding: "20px"
-        }}
-      >
-        <div>
-          <h2>⏳ Instalando aplicativo...</h2>
-          <p>Aguarde alguns segundos</p>
-        </div>
-      </div>
+      <TelaCentro
+        titulo="⏳ Instalando aplicativo..."
+        texto="Aguarde alguns segundos"
+      />
     );
   }
 
   // =========================
-  // ACESSO PELO APP INSTALADO OU PC (TEMPORÁRIO)
+  // ACESSO LIBERADO
   // =========================
   if (isStandalone || (liberarNoPC && isDesktop)) {
     return <MainApp />;
   }
 
   // =========================
-  // INSTALOU AGORA (feedback)
+  // INSTALADO AGORA
   // =========================
   if (foiInstalado) {
     return (
-      <div
-        style={{
-          height: "100vh",
-          background: "#ffffff",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          textAlign: "center",
-          padding: "20px"
-        }}
-      >
-        <div>
-          <h2>✅ App instalado</h2>
-          <p>Feche esta página e abra o app pela tela inicial</p>
-        </div>
-      </div>
+      <TelaCentro
+        titulo="✅ App instalado"
+        texto="Feche esta página e abra o app pela tela inicial"
+      />
     );
   }
 
   // =========================
-  // NAVEGADOR → MOSTRA INSTALAÇÃO
+  // MOSTRA INSTALL
   // =========================
   return <InstallGate instalarApp={instalarApp} />;
 }
