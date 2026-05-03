@@ -4,11 +4,8 @@
   <meta charset="UTF-8" />
   <title>Sem conexão</title>
 
-  <!-- 🔥 ESSENCIAL PARA PWA -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#ffffff" />
-
-  <!-- 🔥 evita cache quebrado -->
   <meta http-equiv="Cache-Control" content="no-store" />
 
   <style>
@@ -61,8 +58,7 @@
 <body>
   <div class="box">
     
-    <!-- 🔥 ALT ADICIONADO (ACESSIBILIDADE + SEO) -->
-    <img src="/images/logo/logo.webp" alt="Real Triarte" />
+    <img src="/logo.webp" alt="Real Triarte" />
 
     <h2>Sem conexão</h2>
 
@@ -78,11 +74,9 @@
 
   <script>
     function tentarReconectar() {
-      // 🔥 força nova tentativa de conexão real
       window.location.href = "/";
     }
 
-    // 🔥 tenta reconectar automaticamente
     window.addEventListener("online", () => {
       window.location.href = "/";
     });

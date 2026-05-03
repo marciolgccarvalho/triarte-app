@@ -1,4 +1,5 @@
 import React from "react";
+import { IMAGES } from "../assets/images";
 
 export default function Materiais({
   receita,
@@ -28,7 +29,7 @@ export default function Materiais({
           }}
         >
           <img
-            src="/images/icons/anterior.png"
+            src={IMAGES.icons.anterior.active}
             style={{ width: "25px" }}
           />
         </button>

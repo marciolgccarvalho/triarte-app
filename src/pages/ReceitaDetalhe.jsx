@@ -1,5 +1,6 @@
 import React from "react";
 import ParabensModal from "../components/ParabensModal";
+import { IMAGES } from "../assets/images";
 
 export default function ReceitaDetalhe({
   receita,
@@ -60,7 +61,7 @@ export default function ReceitaDetalhe({
             cursor: "pointer"
           }}
         >
-          <img src="/images/icons/anterior.png" style={{ width: "25px" }} />
+          <img src={IMAGES.icons.anterior.active} style={{ width: "25px" }} />
         </button>
       </div>
 

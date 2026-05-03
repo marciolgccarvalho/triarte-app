@@ -1,0 +1,82 @@
+/* =========================
+   FLEX / GRID
+========================= */
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid {
+  display: grid;
+}
+
+/* =========================
+   GAP
+========================= */
+.gap-sm {
+  gap: var(--space-sm);
+}
+
+.gap-md {
+  gap: var(--space-md);
+}
+
+/* =========================
+   MARGENS
+========================= */
+.mt-sm {
+  margin-top: var(--space-sm);
+}
+
+.mt-md {
+  margin-top: var(--space-md);
+}
+
+/* =========================
+   PADDING
+========================= */
+.p-sm {
+  padding: var(--space-sm);
+}
+
+.p-md {
+  padding: var(--space-md);
+}
+
+/* =========================
+   TEXTO
+========================= */
+.text-center {
+  text-align: center;
+}
+
+.small {
+  font-size: 14px;
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+.bg-surface {
+  background: var(--color-surface);
+}
+
+.bg-light {
+  background: var(--color-bg-light);
+}
+
+/* =========================
+   ALTURA
+========================= */
+.full-height {
+  min-height: 100vh;
+}

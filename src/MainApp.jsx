@@ -1,6 +1,7 @@
 import React from "react";
-import receitas from "./data/receitas.json";
+import { getReceitas } from "./services/receitasService";
 import mensagens from "./data/mensagens.json";
+import { IMAGES } from "./assets/images";
 
 // COMPONENTES
 import MenuLateral from "./components/MenuLateral";
@@ -187,7 +188,7 @@ function MainApp() {
   // DADOS
   // =========================
   const receitasAtivas = React.useMemo(() => {
-    return (receitas || []).filter((r) => r && r.ativo);
+    return getReceitas().filter((r) => r && r.ativo);
   }, []);
 
   const hoje = React.useMemo(() => new Date(), []);
@@ -323,7 +324,7 @@ function MainApp() {
           }}
         >
           <img
-            src="/images/logo/logo.webp"
+            src={IMAGES.ui.logo}
             style={{
               width: "44px",
               height: "44px",
@@ -343,7 +344,7 @@ function MainApp() {
           </strong>
 
           <img
-            src="/images/icons/menu.png"
+            src={IMAGES.icons.menu.active}
             style={{
               width: "38px",
               height: "38px",
@@ -483,7 +484,7 @@ function MainApp() {
             }}
           >
             <img
-              src="/images/icons/receitas.png"
+              src={IMAGES.icons.receitas.active}
               style={{ width: "27px" }}
             />
             <span style={{ fontSize: "10px", color: "#fff" }}>
@@ -501,7 +502,7 @@ function MainApp() {
             }}
           >
             <img
-              src="/images/icons/favoritos.png"
+              src={IMAGES.icons.favoritos.active}
               style={{ width: "27px" }}
             />
             <span style={{ fontSize: "10px", color: "#fff" }}>
@@ -519,7 +520,7 @@ function MainApp() {
             }}
           >
             <img
-              src="/images/icons/conquistas.png"
+              src={IMAGES.icons.conquistas.active}
               style={{ width: "27px" }}
             />
             <span style={{ fontSize: "10px", color: "#fff" }}>
@@ -537,7 +538,7 @@ function MainApp() {
             }}
           >
             <img
-              src="/images/icons/calculo.png"
+              src={IMAGES.icons.calculo.active}
               style={{ width: "27px" }}
             />
             <span style={{ fontSize: "10px", color: "#fff" }}>
@@ -555,7 +556,7 @@ function MainApp() {
             }}
           >
             <img
-              src="/images/icons/menu.png"
+              src={IMAGES.icons.menu.active}
               style={{ width: "27px" }}
             />
             <span style={{ fontSize: "10px", color: "#fff" }}>

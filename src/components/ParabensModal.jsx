@@ -1,5 +1,6 @@
 import React from "react";
 import html2canvas from "html2canvas";
+import { IMAGES } from "../assets/images";
 
 export default function ParabensModal({ aberto, fechar = () => {}, receita }) {
   if (!aberto) return null;
@@ -82,7 +83,7 @@ export default function ParabensModal({ aberto, fechar = () => {}, receita }) {
           }}
         >
           <img
-            src={receita?.imagem || "/images/logo/logo.webp"}
+            src={receita?.imagem || IMAGES.ui.logo}
             style={{
               position: "absolute",
               width: "100%",
@@ -94,7 +95,7 @@ export default function ParabensModal({ aberto, fechar = () => {}, receita }) {
           />
 
           <img
-            src={receita?.imagem || "/images/logo/logo.webp"}
+            src={receita?.imagem || IMAGES.ui.logo}
             alt="receita"
             style={{
               position: "relative",
@@ -110,7 +111,7 @@ export default function ParabensModal({ aberto, fechar = () => {}, receita }) {
           
           {/* 🔥 LOGO CORRIGIDO */}
           <img
-            src="/images/logo/logo.webp"
+            src={IMAGES.ui.logo}
             style={{
               position: "absolute",
               top: "-32px",

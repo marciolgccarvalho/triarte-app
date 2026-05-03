@@ -1,25 +1,26 @@
 import React from "react";
+import { IMAGES } from "../assets/images";
 
 export default function Conquistas({ voltar, progresso, receitas, favoritos }) {
 
   const conquistas = [
-    { id: "primeiro_passo", imgOn: "/images/conquistas/primeiropasso2.png", imgOff: "/images/conquistas/primeiropasso1.png" },
-    { id: "iniciante", imgOn: "/images/conquistas/iniciante2.png", imgOff: "/images/conquistas/iniciante1.png" },
-    { id: "dedicado", imgOn: "/images/conquistas/dedicado2.png", imgOff: "/images/conquistas/dedicado1.png" },
-    { id: "primeira_receita", imgOn: "/images/conquistas/primeirareceita2.png", imgOff: "/images/conquistas/primeirareceita1.png" },
-    { id: "criador", imgOn: "/images/conquistas/criadoriniciante2.png", imgOff: "/images/conquistas/criadoriniciante1.png" },
-    { id: "artesao", imgOn: "/images/conquistas/artesaodedicado2.png", imgOff: "/images/conquistas/artesaodedicado1.png" },
-    { id: "mestre", imgOn: "/images/conquistas/mestredoamigurumi2.png", imgOff: "/images/conquistas/mestredoamigurumi1.png" },
-    { id: "explorador", imgOn: "/images/conquistas/explorador2.png", imgOff: "/images/conquistas/explorador1.png" },
-    { id: "colecionador", imgOn: "/images/conquistas/colecionador2.png", imgOff: "/images/conquistas/colecionador1.png" },
-    { id: "persistente", imgOn: "/images/conquistas/persistente2.png", imgOff: "/images/conquistas/persistente1.png" },
-    { id: "focado", imgOn: "/images/conquistas/focado2.png", imgOff: "/images/conquistas/focado1.png" },
-    { id: "imparavel", imgOn: "/images/conquistas/imparavel2.png", imgOff: "/images/conquistas/imparavel1.png" }
-  ];
+    { id: "primeiro_passo", imgOn: IMAGES.conquistas.primeiroPasso.active, imgOff: IMAGES.conquistas.primeiroPasso.inactive },
+    { id: "iniciante", imgOn: IMAGES.conquistas.iniciante.active, imgOff: IMAGES.conquistas.iniciante.inactive },
+    { id: "dedicado", imgOn: IMAGES.conquistas.dedicado.active, imgOff: IMAGES.conquistas.dedicado.inactive },
+    { id: "primeira_receita", imgOn: IMAGES.conquistas.primeiraReceita.active, imgOff: IMAGES.conquistas.primeiraReceita.inactive },
 
-  // =========================
-  // CÁLCULOS
-  // =========================
+    { id: "criador", imgOn: IMAGES.conquistas.criadorIniciante.active, imgOff: IMAGES.conquistas.criadorIniciante.inactive },
+
+    { id: "artesao", imgOn: IMAGES.conquistas.artesaoDedicado.active, imgOff: IMAGES.conquistas.artesaoDedicado.inactive },
+
+    { id: "mestre", imgOn: IMAGES.conquistas.mestreDoAmigurumi.active, imgOff: IMAGES.conquistas.mestreDoAmigurumi.inactive },
+
+    { id: "explorador", imgOn: IMAGES.conquistas.explorador.active, imgOff: IMAGES.conquistas.explorador.inactive },
+    { id: "colecionador", imgOn: IMAGES.conquistas.colecionador.active, imgOff: IMAGES.conquistas.colecionador.inactive },
+    { id: "persistente", imgOn: IMAGES.conquistas.persistente.active, imgOff: IMAGES.conquistas.persistente.inactive },
+    { id: "focado", imgOn: IMAGES.conquistas.focado.active, imgOff: IMAGES.conquistas.focado.inactive },
+    { id: "imparavel", imgOn: IMAGES.conquistas.imparavel.active, imgOff: IMAGES.conquistas.imparavel.inactive }
+  ];
 
   const totalVideosAssistidos = Object.values(progresso).reduce(
     (total, r) => total + (r.vistos?.length || 0),
@@ -49,13 +50,12 @@ export default function Conquistas({ voltar, progresso, receitas, favoritos }) {
   return (
     <div>
 
-      {/* BOTÃO VOLTAR */}
       <div style={{ marginBottom: "10px" }}>
         <button
           onClick={voltar}
           style={{ background: "transparent", border: "none", padding: 0 }}
         >
-          <img src="/images/icons/anterior.png" style={{ width: "25px" }} />
+          <img src={IMAGES.icons.anterior.active} style={{ width: "25px" }} />
         </button>
       </div>
 
@@ -64,7 +64,6 @@ export default function Conquistas({ voltar, progresso, receitas, favoritos }) {
         Acompanhe sua evolução no app 💛
       </p>
 
-      {/* GRID */}
       <div
         style={{
           display: "grid",
@@ -123,7 +122,7 @@ export default function Conquistas({ voltar, progresso, receitas, favoritos }) {
                 borderRadius: "14px",
                 padding: "10px",
                 textAlign: "center",
-                height: "140px", // 🔥 TAMANHO FIXO
+                height: "140px",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center"
@@ -134,7 +133,7 @@ export default function Conquistas({ voltar, progresso, receitas, favoritos }) {
                 style={{
                   width: "100%",
                   height: "100%",
-                  objectFit: "contain" // 🔥 GARANTE PROPORÇÃO
+                  objectFit: "contain"
                 }}
               />
             </div>

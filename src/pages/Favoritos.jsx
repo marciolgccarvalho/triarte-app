@@ -1,5 +1,6 @@
 import React from "react";
 import CardReceita from "../components/CardReceita";
+import { IMAGES } from "../assets/images";
 
 export default function Favoritos({
   receitas = [],
@@ -74,7 +75,7 @@ export default function Favoritos({
           }}
         >
           <img
-            src="/images/icons/favoritos2.png"
+            src={IMAGES.icons.favoritos.active}
             loading="lazy"
             decoding="async"
             style={{
@@ -144,7 +145,7 @@ export default function Favoritos({
                 cursor: "pointer"
               }}
             >
-              <img src="/images/icons/grid.png" style={{ width: "28px" }} />
+              <img src={IMAGES.icons.grid.active} style={{ width: "28px" }} />
             </button>
 
             <button
@@ -156,7 +157,7 @@ export default function Favoritos({
                 cursor: "pointer"
               }}
             >
-              <img src="/images/icons/lista.png" style={{ width: "28px" }} />
+              <img src={IMAGES.icons.lista.active} style={{ width: "28px" }} />
             </button>
 
             <select
@@ -275,7 +276,7 @@ export default function Favoritos({
                 }}
               >
                 <img
-                  src="/images/icons/anterior.png"
+                  src={IMAGES.icons.anterior.active}
                   style={{
                     width: "28px",
                     opacity: paginaAtual === 1 ? 0.3 : 1
@@ -298,7 +299,7 @@ export default function Favoritos({
                 }}
               >
                 <img
-                  src="/images/icons/proxima.png"
+                  src={IMAGES.icons.proxima.active}
                   style={{
                     width: "28px",
                     opacity: paginaAtual === totalPaginas ? 0.3 : 1

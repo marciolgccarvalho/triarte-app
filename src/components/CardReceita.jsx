@@ -1,4 +1,5 @@
 import React from "react";
+import { IMAGES } from "../assets/images";
 
 export default function CardReceita({
   receita,
@@ -19,16 +20,12 @@ export default function CardReceita({
   return (
     <div
       onClick={() => abrirReceita && abrirReceita(receita)}
-      style={{
-        position: "relative",
-        borderRadius: "16px",
-        overflow: "hidden",
-        cursor: "pointer"
-      }}
+      className="card card-receita"
+      style={{ position: "relative", overflow: "hidden", cursor: "pointer" }}
     >
       {/* IMAGEM */}
       <img
-        src={receita?.imagem || "/images/logo/logo.webp"}
+        src={receita?.imagem || IMAGES.ui.logo}
         alt={receita?.nome || "Receita"}
         loading="lazy"
         decoding="async"
@@ -39,7 +36,7 @@ export default function CardReceita({
         }}
       />
 
-      {/* OVERLAY ESCURO */}
+      {/* OVERLAY */}
       <div
         style={{
           position: "absolute",
@@ -55,6 +52,7 @@ export default function CardReceita({
           e.stopPropagation();
           toggleFavorito && toggleFavorito(receita.id);
         }}
+        className="flex-center"
         style={{
           position: "absolute",
           top: "8px",
@@ -63,24 +61,21 @@ export default function CardReceita({
           height: "36px",
           borderRadius: "50%",
           background: "rgba(255,255,255,0.9)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
           zIndex: 2
         }}
       >
         <img
           src={
             isFavorito
-              ? "/images/icons/favoritos.png"
-              : "/images/icons/favoritos2.png"
+              ? IMAGES.icons.favoritos.active
+              : IMAGES.icons.favoritos.inactive
           }
           alt="Favorito"
           style={{ width: "24px" }}
         />
       </div>
 
-      {/* CONTEÚDO SOBRE A IMAGEM */}
+      {/* CONTEÚDO */}
       <div
         style={{
           position: "absolute",
@@ -91,36 +86,31 @@ export default function CardReceita({
           zIndex: 2
         }}
       >
-        <strong
-          style={{
-            display: "block",
-            fontSize: "14px",
-            marginBottom: "4px"
-          }}
-        >
+        <strong className="small">
           {receita?.nome || "Receita"}
         </strong>
 
-        {/* BARRA DE PROGRESSO */}
+        {/* PROGRESSO */}
         <div
           style={{
             width: "100%",
             height: "5px",
             background: "rgba(255,255,255,0.3)",
             borderRadius: "5px",
-            overflow: "hidden"
+            overflow: "hidden",
+            marginTop: "4px"
           }}
         >
           <div
             style={{
               width: `${progresso}%`,
               height: "100%",
-              background: "#ffd400"
+              background: "var(--color-accent)"
             }}
           />
         </div>
 
-        <span style={{ fontSize: "11px" }}>
+        <span className="small">
           {progresso}% concluído
         </span>
       </div>

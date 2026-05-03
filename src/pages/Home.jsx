@@ -1,5 +1,6 @@
 import React from "react";
 import CardReceita from "../components/CardReceita";
+import { IMAGES } from "../assets/images";
 
 export default function Home({
   mensagemAtual,
@@ -65,8 +66,8 @@ export default function Home({
   return (
     <>
       {/* MENSAGEM */}
-      <div style={{ marginBottom: "10px", textAlign: "center" }}>
-        <strong style={{ fontSize: "15px", color: "#333" }}>
+      <div className="text-center mb-sm">
+        <strong className="title">
           💛 {mensagemAtual?.titulo || "Seu próximo amigurumi começa agora"}
         </strong>
       </div>
@@ -75,46 +76,33 @@ export default function Home({
       {ultimaReceita && (
         <div
           onClick={() => abrirReceita(ultimaReceita)}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            background: "#fff",
-            border: "1.5px solid #f4c542",
-            borderRadius: "12px",
-            padding: "10px",
-            marginBottom: "10px",
-            cursor: "pointer"
-          }}
+          className="flex card mb-sm"
+          style={{ cursor: "pointer", alignItems: "center" }}
         >
           <img
-            src={ultimaReceita?.imagem || "/images/logo/logo.webp"}
+            src={ultimaReceita?.imagem || IMAGES.ui.logo}
             loading="lazy"
             decoding="async"
             style={{ width: "44px", height: "44px", borderRadius: "8px" }}
           />
 
-          <div style={{ marginLeft: "10px" }}>
+          <div className="ml-sm">
             <strong>{ultimaReceita?.nome || "Receita"}</strong>
-            <div style={{ fontSize: "11px" }}>Continuar</div>
+            <div className="small">Continuar</div>
           </div>
         </div>
       )}
 
       {/* CARROSSEL */}
       {receitaAtual && (
-        <div style={{ marginBottom: "20px" }}>
+        <div className="mb-lg">
           <div
             onClick={() => abrirReceita(receitaAtual)}
-            style={{
-              position: "relative",
-              borderRadius: "16px",
-              overflow: "hidden",
-              cursor: "pointer"
-            }}
+            className="card"
+            style={{ position: "relative", overflow: "hidden", cursor: "pointer", borderRadius: "16px" }}
           >
-            {/* IMAGEM PRINCIPAL (SEM LAZY) */}
             <img
-              src={receitaAtual?.imagem || "/images/logo/logo.webp"}
+              src={receitaAtual?.imagem || IMAGES.ui.logo}
               style={{
                 width: "100%",
                 height: "200px",
@@ -124,7 +112,7 @@ export default function Home({
 
             {receitasDestaque.length > 1 && (
               <img
-                src="/images/icons/anterior.png"
+                src={IMAGES.icons.anterior.active}
                 onClick={anterior}
                 style={{
                   position: "absolute",
@@ -141,7 +129,7 @@ export default function Home({
 
             {receitasDestaque.length > 1 && (
               <img
-                src="/images/icons/proxima.png"
+                src={IMAGES.icons.proxima.active}
                 onClick={proximo}
                 style={{
                   position: "absolute",
@@ -174,11 +162,11 @@ export default function Home({
                 color: "#fff"
               }}
             >
-              <strong style={{ fontSize: "18px" }}>
+              <strong className="title">
                 {receitaAtual?.nome}
               </strong>
 
-              <p style={{ margin: "4px 0", fontSize: "13px" }}>
+              <p className="small">
                 Toque para assistir a receita
               </p>
 
@@ -195,12 +183,12 @@ export default function Home({
                   style={{
                     width: `${percentual(receitaAtual)}%`,
                     height: "100%",
-                    background: "#ffd400"
+                    background: "var(--color-accent)"
                   }}
                 />
               </div>
 
-              <span style={{ fontSize: "11px" }}>
+              <span className="small">
                 {percentual(receitaAtual)}% concluído
               </span>
             </div>
@@ -208,9 +196,9 @@ export default function Home({
         </div>
       )}
 
-      <h2>Receitas para você hoje</h2>
+      <h2 className="mb-sm">Receitas para você hoje</h2>
 
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
+      <div className="grid gap-sm">
         {(Array.isArray(receitasRandom) ? receitasRandom : [])
           .slice(0, 8)
           .filter(Boolean)

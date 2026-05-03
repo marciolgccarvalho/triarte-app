@@ -1,4 +1,5 @@
 import React from "react";
+import { IMAGES } from "../assets/images";
 
 export default function MenuLateral({ aberto, fechar = () => {}, irPara = () => {} }) {
   if (!aberto) return null;
@@ -26,7 +27,7 @@ export default function MenuLateral({ aberto, fechar = () => {}, irPara = () => 
         {/* LOGO */}
         <div style={{ textAlign: "center", marginBottom: "20px" }}>
           <img
-            src="/images/logo/logo.webp"
+            src={IMAGES.ui.logo}
             alt="Logo"
             style={{ width: "70px", borderRadius: "50%" }}
           />
@@ -35,14 +36,14 @@ export default function MenuLateral({ aberto, fechar = () => {}, irPara = () => 
 
         {/* MENU */}
         <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-          <Item icone="/images/icons/home.png" texto="Home" onClick={() => irPara("home")} />
-          <Item icone="/images/icons/receitas.png" texto="Receitas" onClick={() => irPara("receitas")} />
-          <Item icone="/images/icons/favoritos.png" texto="Favoritos" onClick={() => irPara("favoritos")} />
-          <Item icone="/images/icons/calculo.png" texto="Simulador" onClick={() => irPara("simulador")} />
-          <Item icone="/images/icons/conquistas.png" texto="Conquistas" onClick={() => irPara("conquistas")} />
-          <Item icone="/images/icons/abreviacao.png" texto="Abreviações" onClick={() => irPara("abreviatura")} />
-          <Item icone="/images/icons/sobre.png" texto="Sobre" onClick={() => irPara("sobre")} />
-          <Item icone="/images/icons/contato.png" texto="Contato" onClick={() => irPara("contato")} />
+          <Item icone={IMAGES.icons.home.active} texto="Home" onClick={() => irPara("home")} />
+          <Item icone={IMAGES.icons.receitas.active} texto="Receitas" onClick={() => irPara("receitas")} />
+          <Item icone={IMAGES.icons.favoritos.active} texto="Favoritos" onClick={() => irPara("favoritos")} />
+          <Item icone={IMAGES.icons.calculo.active} texto="Simulador" onClick={() => irPara("simulador")} />
+          <Item icone={IMAGES.icons.conquistas.active} texto="Conquistas" onClick={() => irPara("conquistas")} />
+          <Item icone={IMAGES.icons.abreviacao.active} texto="Abreviações" onClick={() => irPara("abreviatura")} />
+          <Item icone={IMAGES.icons.sobre.active} texto="Sobre" onClick={() => irPara("sobre")} />
+          <Item icone={IMAGES.icons.contato.active} texto="Contato" onClick={() => irPara("contato")} />
         </div>
       </div>
     </div>
@@ -66,7 +67,7 @@ function Item({ icone, texto, onClick = () => {} }) {
       onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
     >
       <img
-        src={icone || "/images/logo/logo.webp"}
+        src={icone || IMAGES.ui.logo}
         alt={texto}
         style={{ width: "28px" }}
       />

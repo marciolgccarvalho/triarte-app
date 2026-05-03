@@ -1,11 +1,11 @@
-const CACHE_NAME = "real-triarte-v3"; // 🔥 ALTERE versão quando atualizar app
+const CACHE_NAME = "real-triarte-v4"; // 🔥 alterei versão (IMPORTANTE)
 
 // Arquivos essenciais
 const STATIC_ASSETS = [
   "/",
   "/index.html",
   "/offline.html",
-  "/images/logo/logo.webp"
+  "/logo.webp"
 ];
 
 // =========================
@@ -46,10 +46,9 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   const req = event.request;
 
-  // 🔥 IGNORA REQUESTS NÃO-GET (evita erro silencioso)
   if (req.method !== "GET") return;
 
-  // 🔥 HTML → NETWORK FIRST + OFFLINE FALLBACK
+  // HTML → NETWORK FIRST + OFFLINE
   if (req.mode === "navigate") {
     event.respondWith(
       fetch(req)
@@ -63,7 +62,7 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // 🔥 IMAGENS → CACHE FIRST
+  // IMAGENS → CACHE FIRST
   if (req.destination === "image") {
     event.respondWith(
       caches.match(req).then((cached) => {
@@ -75,14 +74,14 @@ self.addEventListener("fetch", (event) => {
               caches.open(CACHE_NAME).then((cache) => cache.put(req, copy));
               return res;
             })
-            .catch(() => caches.match("/images/logo/logo.webp")) // fallback leve
+            .catch(() => caches.match("/logo.webp")) // 🔥 corrigido
         );
       })
     );
     return;
   }
 
-  // 🔥 JS/CSS → STALE WHILE REVALIDATE
+  // JS/CSS → STALE WHILE REVALIDATE
   if (
     req.destination === "script" ||
     req.destination === "style"
@@ -104,7 +103,7 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // 🔥 DEFAULT
+  // DEFAULT
   event.respondWith(
     caches.match(req).then((cached) => {
       return (

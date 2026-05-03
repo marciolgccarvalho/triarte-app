@@ -1,4 +1,5 @@
 import React from "react";
+import { IMAGES } from "../assets/images";
 
 export default function Abreviatura({ voltar }) {
 
@@ -40,7 +41,7 @@ export default function Abreviatura({ voltar }) {
             cursor: "pointer"
           }}
         >
-          <img src="/images/icons/anterior.png" style={{ width: "25px" }} />
+          <img src={IMAGES.icons.anterior.active} style={{ width: "25px" }} />
         </button>
       </div>
 

@@ -1,3 +1,4 @@
+import { IMAGES } from "../assets/images";
 export default function Contato() {
   return (
     <>
@@ -28,7 +29,7 @@ export default function Contato() {
             cursor: "pointer"
           }}
         >
-          <img src="/images/icons/email.png" style={{ width: "32px" }} />
+          <img src={IMAGES.icons.email.active} style={{ width: "32px" }} />
           <span>contato@triarte.com.br</span>
         </div>
 
@@ -45,7 +46,7 @@ export default function Contato() {
             cursor: "pointer"
           }}
         >
-          <img src="/images/icons/site.png" style={{ width: "32px" }} />
+          <img src={IMAGES.icons.site.active} style={{ width: "32px" }} />
           <span>Site Oficial</span>
         </div>
 
@@ -62,7 +63,7 @@ export default function Contato() {
             cursor: "pointer"
           }}
         >
-          <img src="/images/icons/youtube.png" style={{ width: "32px" }} />
+          <img src={IMAGES.icons.youtube.active} style={{ width: "32px" }} />
           <span>YouTube</span>
         </div>
 
@@ -79,7 +80,7 @@ export default function Contato() {
             cursor: "pointer"
           }}
         >
-          <img src="/images/icons/instagram.png" style={{ width: "32px" }} />
+          <img src={IMAGES.icons.instagram.active} style={{ width: "32px" }} />
           <span>Instagram</span>
         </div>
 
@@ -96,7 +97,7 @@ export default function Contato() {
             cursor: "pointer"
           }}
         >
-          <img src="/images/icons/facebook.png" style={{ width: "32px" }} />
+          <img src={IMAGES.icons.facebook.active} style={{ width: "32px" }} />
           <span>Facebook</span>
         </div>
 
@@ -113,7 +114,7 @@ export default function Contato() {
             cursor: "pointer"
           }}
         >
-          <img src="/images/icons/tiktok.png" style={{ width: "32px" }} />
+          <img src={IMAGES.icons.tiktok.active} style={{ width: "32px" }} />
           <span>TikTok</span>
         </div>
 

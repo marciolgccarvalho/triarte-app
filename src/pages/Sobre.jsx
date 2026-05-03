@@ -1,4 +1,5 @@
 import React from "react";
+import { IMAGES } from "../assets/images";
 
 export default function Sobre() {
   const [sobreAberto, setSobreAberto] = React.useState(null);
@@ -73,7 +74,7 @@ export default function Sobre() {
         <div>
           <div style={{ textAlign: "center", marginBottom: "18px" }}>
             <img
-              src="/images/logo/logo.webp"
+              src={IMAGES.ui.logo}
               alt="Real Triarte"
               style={{
                 width: "96px",
