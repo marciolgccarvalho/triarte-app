@@ -17,35 +17,15 @@ export default function Home({
   const hoje = React.useMemo(() => new Date(), []);
 
   const receitasDestaque = React.useMemo(() => {
-    return (Array.isArray(receitas) ? receitas : []).filter((r) => {
-      if (!r || !r.destaqueInicio || !r.destaqueFim) return false;
+    return receitas.filter((r) => {
+      if (!r?.destaqueInicio || !r?.destaqueFim) return false;
 
       const inicio = new Date(r.destaqueInicio);
       const fim = new Date(r.destaqueFim);
 
-      if (isNaN(inicio) || isNaN(fim)) return false;
-
       return hoje >= inicio && hoje <= fim;
     });
   }, [receitas, hoje]);
-
-  React.useEffect(() => {
-    if (indexCarrossel >= receitasDestaque.length) {
-      setIndexCarrossel(0);
-    }
-  }, [indexCarrossel, receitasDestaque.length]);
-
-  React.useEffect(() => {
-    if (receitasDestaque.length <= 1) return;
-
-    const intervalo = setInterval(() => {
-      setIndexCarrossel((i) =>
-        i === receitasDestaque.length - 1 ? 0 : i + 1
-      );
-    }, 6000);
-
-    return () => clearInterval(intervalo);
-  }, [receitasDestaque.length]);
 
   const receitaAtual = receitasDestaque[indexCarrossel] || null;
 
@@ -66,103 +46,121 @@ export default function Home({
   return (
     <div className="page-container">
 
-      {/* MENSAGEM */}
-      <div className="text-center mb-sm">
+      {/* =========================
+         TOPO (MENSAGEM)
+      ========================= */}
+      <div className="home-top">
         <strong className="title">
-          💛 {mensagemAtual?.titulo || "Seu próximo amigurumi começa agora"}
+          💛 {mensagemAtual?.titulo || "Hora de criar algo incrível ✨"}
         </strong>
+
+        <p className="small text-muted">
+          {mensagemAtual?.subtitulo || "Seu próximo amigurumi está te esperando!"}
+        </p>
       </div>
 
-      {/* CONTINUAR */}
+      {/* =========================
+         CONTINUAR
+      ========================= */}
       {ultimaReceita && (
-        <div
-          onClick={() => abrirReceita(ultimaReceita)}
-          className="card flex home-continue"
-        >
+        <div className="card home-continue">
           <img
-            src={ultimaReceita?.imagem || IMAGES.ui.logo}
-            loading="lazy"
-            decoding="async"
+            src={ultimaReceita.imagem}
             className="home-continue-img"
           />
 
-          <div className="ml-sm">
-            <strong>{ultimaReceita?.nome || "Receita"}</strong>
-            <div className="small">Continuar</div>
+          <div className="home-continue-info">
+            <strong>{ultimaReceita.nome}</strong>
+
+            <span className="small text-muted">
+              Continue de onde parou
+            </span>
+
+            <div className="progress-bar mt-xs">
+              <div
+                className="progress-fill"
+                style={{ "--progress": `${percentual(ultimaReceita)}%` }}
+              />
+            </div>
+
+            <span className="small">
+              {percentual(ultimaReceita)}% concluído
+            </span>
           </div>
+
+          <button
+            onClick={() => abrirReceita(ultimaReceita)}
+            className="btn btn-primary home-continue-btn"
+          >
+            ▶ Continuar
+          </button>
         </div>
       )}
 
-      {/* CARROSSEL */}
+      {/* =========================
+         CARROSSEL
+      ========================= */}
       {receitaAtual && (
-        <div className="mb-lg">
+        <div className="home-carousel-wrapper">
+
           <div
             onClick={() => abrirReceita(receitaAtual)}
-            className="card home-carousel"
+            className="home-carousel"
           >
             <img
-              src={receitaAtual?.imagem || IMAGES.ui.logo}
+              src={receitaAtual.imagem}
               className="home-carousel-img"
             />
 
-            {receitasDestaque.length > 1 && (
-              <img
-                src={IMAGES.icons.anterior.active}
-                onClick={anterior}
-                className="carousel-arrow left"
-              />
-            )}
+            {/* PLAY CENTRAL */}
+            <div className="carousel-play">
+              ▶
+            </div>
 
+            {/* SETAS */}
             {receitasDestaque.length > 1 && (
-              <img
-                src={IMAGES.icons.proxima.active}
-                onClick={proximo}
-                className="carousel-arrow right"
-              />
+              <>
+                <div className="carousel-arrow left" onClick={anterior}>←</div>
+                <div className="carousel-arrow right" onClick={proximo}>→</div>
+              </>
             )}
 
             <div className="carousel-overlay" />
 
             <div className="carousel-content">
-              <strong className="title">
-                {receitaAtual?.nome}
-              </strong>
+              <strong>{receitaAtual.nome}</strong>
 
               <p className="small">
-                Toque para assistir a receita
+                Veja como ficará seu amigurumi
               </p>
-
-              <div className="progress-bar">
-                <div
-                  className="progress-fill"
-                  style={{ "--progress": `${percentual(receitaAtual)}%` }}
-                />
-              </div>
-
-              <span className="small">
-                {percentual(receitaAtual)}% concluído
-              </span>
             </div>
           </div>
+
         </div>
       )}
 
-      <h2 className="mb-sm">Receitas para você hoje</h2>
+      {/* =========================
+         LISTA
+      ========================= */}
+      <div className="home-section">
+        <h3>Receitas para você hoje</h3>
+
+        <p className="small text-muted">
+          Baseado no seu progresso
+        </p>
+      </div>
 
       <div className="grid gap-sm">
-        {(Array.isArray(receitasRandom) ? receitasRandom : [])
-          .slice(0, 8)
-          .filter(Boolean)
-          .map((r) => (
-            <CardReceita
-              key={r.id}
-              receita={r}
-              abrirReceita={abrirReceita}
-              toggleFavorito={toggleFavorito}
-              favoritos={favoritos}
-              percentual={percentual}
-            />
-          ))}
+        {receitasRandom.slice(0, 4).map((r) => (
+          <CardReceita
+            key={r.id}
+            receita={r}
+            abrirReceita={abrirReceita}
+            toggleFavorito={toggleFavorito}
+            favoritos={favoritos}
+            percentual={percentual}
+          />
+        ))}
       </div>
 
     </div>

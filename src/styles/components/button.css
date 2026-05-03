@@ -1,21 +1,97 @@
 .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
   padding: var(--space-sm) var(--space-md);
   border: none;
-  border-radius: var(--radius-md);
+  border-radius: 30px;
+
+  font-weight: 600;
+  font-size: 14px;
+
   cursor: pointer;
   transition: var(--transition-fast);
+
+  background: transparent;
 }
 
+/* =========================
+   PRIMARY (amarelo)
+========================= */
 .btn-primary {
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  background: var(--color-primary);
+  color: #000;
 }
 
+.btn-primary:hover {
+  background: var(--color-primary-dark);
+}
+
+/* =========================
+   SECONDARY
+========================= */
 .btn-secondary {
   background: var(--color-surface);
   color: var(--color-text);
 }
 
+/* =========================
+   FULL WIDTH
+========================= */
 .btn-full {
   width: 100%;
+}
+
+/* =========================
+   ICON BUTTON
+========================= */
+.btn-icon {
+  background: transparent;
+  border: none;
+  padding: 6px;
+  border-radius: 50%;
+}
+
+/* =========================
+   SMALL BUTTON
+========================= */
+.btn-small {
+  font-size: 12px;
+  padding: 6px 10px;
+}
+
+/* =========================
+   FLEX (expand dentro de row)
+========================= */
+.btn-flex {
+  flex: 1;
+}
+
+/* =========================
+   CHECK BUTTON (usado nos vídeos)
+========================= */
+.btn-check {
+  width: 60px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  border-radius: var(--radius-sm);
+}
+
+.btn-check.checked {
+  background: var(--color-success);
+  color: #fff;
+}
+
+.btn-check:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* =========================
+   DANGER (ex: botão membro)
+========================= */
+.btn-danger {
+  background: var(--color-danger);
+  color: #fff;
 }

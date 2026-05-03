@@ -1,19 +1,39 @@
+.home-top {
+  margin-bottom: var(--space-md);
+}
+
+/* CONTINUE */
 .home-continue {
-  cursor: pointer;
+  display: flex;
   align-items: center;
+  gap: var(--space-sm);
 }
 
 .home-continue-img {
-  width: 44px;
-  height: 44px;
+  width: 70px;
+  height: 70px;
   border-radius: var(--radius-sm);
+  object-fit: cover;
+}
+
+.home-continue-info {
+  flex: 1;
+}
+
+.home-continue-btn {
+  border-radius: 30px;
+}
+
+/* CARROSSEL */
+.home-carousel-wrapper {
+  margin: var(--space-md) 0;
 }
 
 .home-carousel {
   position: relative;
+  border-radius: var(--radius-lg);
   overflow: hidden;
   cursor: pointer;
-  border-radius: var(--radius-lg);
 }
 
 .home-carousel-img {
@@ -22,14 +42,39 @@
   object-fit: cover;
 }
 
+.carousel-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+}
+
+.carousel-content {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: #fff;
+}
+
+.carousel-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  color: #000;
+  border-radius: 50%;
+  padding: 12px;
+  font-weight: bold;
+}
+
 .carousel-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
+  background: var(--color-primary);
+  padding: 8px;
+  border-radius: 50%;
   cursor: pointer;
-  z-index: 5;
 }
 
 .carousel-arrow.left {
@@ -40,20 +85,7 @@
   right: 10px;
 }
 
-.carousel-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0,0,0,0.8),
-    rgba(0,0,0,0.1)
-  );
-}
-
-.carousel-content {
-  position: absolute;
-  bottom: 12px;
-  left: 12px;
-  right: 12px;
-  color: #fff;
+/* SEÇÃO */
+.home-section {
+  margin-top: var(--space-md);
 }
