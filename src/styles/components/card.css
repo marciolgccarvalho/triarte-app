@@ -1,0 +1,70 @@
+.card {
+  background-color: var(--color-surface);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+.card-clickable {
+  cursor: pointer;
+}
+
+.card-receita {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-receita-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.6),
+    transparent
+  );
+}
+
+.card-favorito {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-surface);
+}
+
+.card-favorito-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.card-content {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: var(--space-md);
+  color: var(--color-text-inverse);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin: var(--space-xs) 0;
+}
+
+.progress-fill {
+  height: 100%;
+  width: var(--progress);
+  background: var(--color-primary);
+  transition: width 0.3s ease;
+}

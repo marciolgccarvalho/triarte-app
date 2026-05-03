@@ -57,22 +57,19 @@ export default function Favoritos({
   }, [totalPaginas]);
 
   return (
-    <>
+    <div className="page-container">
       <h2 className="mb-sm">
         Minhas receitas favoritas
       </h2>
 
       {/* SEM FAVORITOS */}
       {listaBase.length === 0 ? (
-        <div className="card text-center mt-md">
+        <div className="card text-center mt-md favoritos-empty">
           <img
             src={IMAGES.icons.favoritos.active}
             loading="lazy"
             decoding="async"
-            style={{
-              width: "60px",
-              opacity: 0.6
-            }}
+            className="favoritos-empty-icon"
           />
 
           <h3 className="mt-sm">Nenhuma favorita ainda</h3>
@@ -107,12 +104,12 @@ export default function Favoritos({
 
           {/* CONTROLES */}
           <div className="flex gap-sm mb-md flex-center">
-            <button onClick={() => setModoExibicao("grid")}>
-              <img src={IMAGES.icons.grid.active} style={{ width: "28px" }} />
+            <button onClick={() => setModoExibicao("grid")} className="btn-icon">
+              <img src={IMAGES.icons.grid.active} className="icon-md" />
             </button>
 
-            <button onClick={() => setModoExibicao("lista")}>
-              <img src={IMAGES.icons.lista.active} style={{ width: "28px" }} />
+            <button onClick={() => setModoExibicao("lista")} className="btn-icon">
+              <img src={IMAGES.icons.lista.active} className="icon-md" />
             </button>
 
             <select
@@ -149,8 +146,7 @@ export default function Favoritos({
                 <div
                   key={r.id}
                   onClick={() => abrirReceita(r)}
-                  className="card"
-                  style={{ cursor: "pointer" }}
+                  className="card favoritos-item"
                 >
                   <strong>{r.nome}</strong>
 
@@ -163,30 +159,13 @@ export default function Favoritos({
                     alt={r.nome}
                     loading="lazy"
                     decoding="async"
-                    style={{
-                      width: "100%",
-                      height: "140px",
-                      objectFit: "cover",
-                      borderRadius: "10px",
-                      marginTop: "8px"
-                    }}
+                    className="favoritos-img"
                   />
 
-                  <div
-                    style={{
-                      height: "6px",
-                      background: "var(--color-surface)",
-                      borderRadius: "6px",
-                      overflow: "hidden",
-                      marginTop: "8px"
-                    }}
-                  >
+                  <div className="progress-bar mt-sm">
                     <div
-                      style={{
-                        width: `${percentual(r)}%`,
-                        height: "100%",
-                        background: "var(--color-accent)"
-                      }}
+                      className="progress-fill"
+                      style={{ "--progress": `${percentual(r)}%` }}
                     />
                   </div>
 
@@ -204,13 +183,11 @@ export default function Favoritos({
               <button
                 disabled={paginaAtual === 1}
                 onClick={() => setPaginaAtual((p) => p - 1)}
+                className="btn-icon"
               >
                 <img
                   src={IMAGES.icons.anterior.active}
-                  style={{
-                    width: "28px",
-                    opacity: paginaAtual === 1 ? 0.3 : 1
-                  }}
+                  className="icon-md"
                 />
               </button>
 
@@ -221,19 +198,17 @@ export default function Favoritos({
               <button
                 disabled={paginaAtual === totalPaginas}
                 onClick={() => setPaginaAtual((p) => p + 1)}
+                className="btn-icon"
               >
                 <img
                   src={IMAGES.icons.proxima.active}
-                  style={{
-                    width: "28px",
-                    opacity: paginaAtual === totalPaginas ? 0.3 : 1
-                  }}
+                  className="icon-md"
                 />
               </button>
             </div>
           )}
         </>
       )}
-    </>
+    </div>
   );
 }

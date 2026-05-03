@@ -1,0 +1,9 @@
+.conquista-card {
+  height: 140px;
+}
+
+.conquista-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

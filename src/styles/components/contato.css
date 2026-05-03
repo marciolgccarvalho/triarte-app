@@ -1,0 +1,14 @@
+.contato-item {
+  align-items: center;
+  gap: var(--space-sm);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.contato-item:hover {
+  opacity: 0.8;
+}
+
+.contato-icon {
+  width: 32px;
+}

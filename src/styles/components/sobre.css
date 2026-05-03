@@ -1,0 +1,19 @@
+.sobre-logo {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+}
+
+.sobre-header {
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.sobre-highlight {
+  background: var(--color-accent);
+}
+
+.sobre-footer {
+  background: var(--color-surface);
+}

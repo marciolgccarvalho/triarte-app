@@ -3,9 +3,6 @@ import MainApp from "./MainApp";
 import InstallGate from "./InstallGate";
 
 function App() {
-  // =========================
-  // DETECÇÃO STANDALONE
-  // =========================
   const [isStandalone, setIsStandalone] = React.useState(false);
   const [isDesktop, setIsDesktop] = React.useState(false);
 
@@ -25,21 +22,12 @@ function App() {
     setTimeout(check, 2500);
   }, []);
 
-  // =========================
-  // CONFIG
-  // =========================
-  const liberarNoPC = true; // 🔥 mudar depois pra false
+  const liberarNoPC = true;
 
-  // =========================
-  // ESTADOS
-  // =========================
   const [instalando, setInstalando] = React.useState(false);
   const [promptInstalar, setPromptInstalar] = React.useState(null);
   const [foiInstalado, setFoiInstalado] = React.useState(false);
 
-  // =========================
-  // EVENTO INSTALL
-  // =========================
   React.useEffect(() => {
     const handler = (e) => {
       e.preventDefault();
@@ -53,9 +41,6 @@ function App() {
     };
   }, []);
 
-  // =========================
-  // APP INSTALADO
-  // =========================
   React.useEffect(() => {
     const handleInstalled = () => {
       setInstalando(true);
@@ -73,9 +58,6 @@ function App() {
     };
   }, []);
 
-  // =========================
-  // INSTALAR APP
-  // =========================
   const instalarApp = async () => {
     if (!promptInstalar) {
       alert("Use o menu do navegador para instalar");
@@ -91,11 +73,8 @@ function App() {
     }
   };
 
-  // =========================
-  // TELA PADRÃO (REUTILIZÁVEL)
-  // =========================
   const TelaCentro = ({ titulo, texto }) => (
-    <div className="flex-center full-height text-center p-md">
+    <div className="screen-center">
       <div>
         <h2>{titulo}</h2>
         <p className="small text-muted mt-sm">{texto}</p>
@@ -103,9 +82,6 @@ function App() {
     </div>
   );
 
-  // =========================
-  // INSTALANDO
-  // =========================
   if (!isStandalone && instalando) {
     return (
       <TelaCentro
@@ -115,16 +91,10 @@ function App() {
     );
   }
 
-  // =========================
-  // ACESSO LIBERADO
-  // =========================
   if (isStandalone || (liberarNoPC && isDesktop)) {
     return <MainApp />;
   }
 
-  // =========================
-  // INSTALADO AGORA
-  // =========================
   if (foiInstalado) {
     return (
       <TelaCentro
@@ -134,9 +104,6 @@ function App() {
     );
   }
 
-  // =========================
-  // MOSTRA INSTALL
-  // =========================
   return <InstallGate instalarApp={instalarApp} />;
 }
 

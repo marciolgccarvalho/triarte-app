@@ -48,11 +48,16 @@ export default function ReceitaDetalhe({
   }, [progresso, receita]);
 
   return (
-    <div>
+    <div className="page-container">
+
       {/* VOLTAR */}
       <div className="mt-sm">
-        <button onClick={voltar}>
-          <img src={IMAGES.icons.anterior.active} style={{ width: "25px" }} />
+        <button onClick={voltar} className="btn-icon">
+          <img
+            src={IMAGES.icons.anterior.active}
+            alt="Voltar"
+            className="icon-sm"
+          />
         </button>
       </div>
 
@@ -60,13 +65,7 @@ export default function ReceitaDetalhe({
       <img
         src={receita.imagem}
         alt={receita.nome}
-        className="mt-sm"
-        style={{
-          width: "100%",
-          height: "180px",
-          objectFit: "cover",
-          borderRadius: "14px"
-        }}
+        className="receita-img mt-sm"
       />
 
       {/* TÍTULO */}
@@ -79,8 +78,7 @@ export default function ReceitaDetalhe({
       <div className="mt-sm">
         <button
           onClick={() => irPara("materiais")}
-          className="btn btn-primary"
-          style={{ width: "100%" }}
+          className="btn btn-primary btn-full"
         >
           Ver materiais
         </button>
@@ -90,22 +88,10 @@ export default function ReceitaDetalhe({
       <div className="mt-md">
         <strong>{percentual(receita)}% concluído</strong>
 
-        <div
-          style={{
-            marginTop: "8px",
-            width: "100%",
-            height: "10px",
-            background: "var(--color-surface)",
-            borderRadius: "10px",
-            overflow: "hidden"
-          }}
-        >
+        <div className="progress-bar mt-sm">
           <div
-            style={{
-              width: `${percentual(receita)}%`,
-              height: "100%",
-              background: "var(--color-success)"
-            }}
+            className="progress-fill"
+            style={{ "--progress": `${percentual(receita)}%` }}
           />
         </div>
       </div>
@@ -145,14 +131,7 @@ export default function ReceitaDetalhe({
                         "_blank"
                       )
                     }
-                    className="btn"
-                    style={{
-                      background: "var(--color-danger)",
-                      color: "#fff",
-                      fontSize: "12px",
-                      fontWeight: "700",
-                      width: "fit-content"
-                    }}
+                    className="btn btn-danger btn-small"
                   >
                     Seja Membro e veja todos os vídeos
                   </button>
@@ -171,8 +150,7 @@ export default function ReceitaDetalhe({
                       "_blank"
                     )
                   }
-                  className="btn btn-primary"
-                  style={{ flex: 1 }}
+                  className="btn btn-primary btn-flex"
                 >
                   {bloqueado ? "Liberado para Membros" : "Assistir"}
                 </button>
@@ -187,16 +165,8 @@ export default function ReceitaDetalhe({
                       marcarVideo(receita.id, index);
                     }
                   }}
-                  className="btn"
-                  style={{
-                    width: "60px",
-                    background: visto
-                      ? "var(--color-success)"
-                      : "var(--color-surface)",
-                    color: "#fff",
-                    opacity: ativo ? 1 : 0.3,
-                    cursor: ativo ? "pointer" : "not-allowed"
-                  }}
+                  className={`btn btn-check ${visto ? "checked" : ""}`}
+                  disabled={!ativo}
                 >
                   ✓
                 </button>

@@ -2,7 +2,7 @@ import React from "react";
 
 export default function InstallGate({ instalarApp }) {
   return (
-    <div className="flex-center full-height text-center p-md">
+    <div className="screen-center">
       <div>
 
         <h2>Instale o aplicativo</h2>
@@ -13,7 +13,7 @@ export default function InstallGate({ instalarApp }) {
 
         <button
           onClick={instalarApp}
-          className="btn btn-primary mt-md w-full"
+          className="btn btn-primary mt-md btn-full"
         >
           📱 Instalar App
         </button>

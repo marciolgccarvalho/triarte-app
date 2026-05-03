@@ -64,7 +64,8 @@ export default function Home({
   };
 
   return (
-    <>
+    <div className="page-container">
+
       {/* MENSAGEM */}
       <div className="text-center mb-sm">
         <strong className="title">
@@ -76,14 +77,13 @@ export default function Home({
       {ultimaReceita && (
         <div
           onClick={() => abrirReceita(ultimaReceita)}
-          className="flex card mb-sm"
-          style={{ cursor: "pointer", alignItems: "center" }}
+          className="card flex home-continue"
         >
           <img
             src={ultimaReceita?.imagem || IMAGES.ui.logo}
             loading="lazy"
             decoding="async"
-            style={{ width: "44px", height: "44px", borderRadius: "8px" }}
+            className="home-continue-img"
           />
 
           <div className="ml-sm">
@@ -98,32 +98,18 @@ export default function Home({
         <div className="mb-lg">
           <div
             onClick={() => abrirReceita(receitaAtual)}
-            className="card"
-            style={{ position: "relative", overflow: "hidden", cursor: "pointer", borderRadius: "16px" }}
+            className="card home-carousel"
           >
             <img
               src={receitaAtual?.imagem || IMAGES.ui.logo}
-              style={{
-                width: "100%",
-                height: "200px",
-                objectFit: "cover"
-              }}
+              className="home-carousel-img"
             />
 
             {receitasDestaque.length > 1 && (
               <img
                 src={IMAGES.icons.anterior.active}
                 onClick={anterior}
-                style={{
-                  position: "absolute",
-                  left: "10px",
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                  width: "40px",
-                  height: "40px",
-                  cursor: "pointer",
-                  zIndex: 5
-                }}
+                className="carousel-arrow left"
               />
             )}
 
@@ -131,37 +117,13 @@ export default function Home({
               <img
                 src={IMAGES.icons.proxima.active}
                 onClick={proximo}
-                style={{
-                  position: "absolute",
-                  right: "10px",
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                  width: "40px",
-                  height: "40px",
-                  cursor: "pointer",
-                  zIndex: 5
-                }}
+                className="carousel-arrow right"
               />
             )}
 
-            <div
-              style={{
-                position: "absolute",
-                inset: 0,
-                background:
-                  "linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.1))"
-              }}
-            />
+            <div className="carousel-overlay" />
 
-            <div
-              style={{
-                position: "absolute",
-                bottom: "12px",
-                left: "12px",
-                right: "12px",
-                color: "#fff"
-              }}
-            >
+            <div className="carousel-content">
               <strong className="title">
                 {receitaAtual?.nome}
               </strong>
@@ -170,21 +132,10 @@ export default function Home({
                 Toque para assistir a receita
               </p>
 
-              <div
-                style={{
-                  width: "100%",
-                  height: "6px",
-                  background: "rgba(255,255,255,0.3)",
-                  borderRadius: "6px",
-                  overflow: "hidden"
-                }}
-              >
+              <div className="progress-bar">
                 <div
-                  style={{
-                    width: `${percentual(receitaAtual)}%`,
-                    height: "100%",
-                    background: "var(--color-accent)"
-                  }}
+                  className="progress-fill"
+                  style={{ "--progress": `${percentual(receitaAtual)}%` }}
                 />
               </div>
 
@@ -213,6 +164,7 @@ export default function Home({
             />
           ))}
       </div>
-    </>
+
+    </div>
   );
 }

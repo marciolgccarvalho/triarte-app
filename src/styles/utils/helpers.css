@@ -1,0 +1,14 @@
+.text-justify {
+  text-align: justify;
+  line-height: 1.5;
+}
+
+.icon-sm {
+  width: 25px;
+}
+
+.btn-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+}

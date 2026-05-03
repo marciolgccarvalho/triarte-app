@@ -27,12 +27,16 @@ export default function Abreviatura({ voltar }) {
   };
 
   return (
-    <div>
+    <div className="page-container">
 
       {/* VOLTAR */}
       <div className="mb-sm">
-        <button onClick={voltar}>
-          <img src={IMAGES.icons.anterior.active} style={{ width: "25px" }} />
+        <button onClick={voltar} className="btn-icon">
+          <img
+            src={IMAGES.icons.anterior.active}
+            alt="Voltar"
+            className="icon-sm"
+          />
         </button>
       </div>
 
@@ -40,14 +44,14 @@ export default function Abreviatura({ voltar }) {
       <h2 className="mb-sm">Abreviações</h2>
 
       {/* TEXTO */}
-      <p className="small text-muted mb-sm" style={{ lineHeight: "1.5", textAlign: "justify" }}>
+      <p className="small text-muted mb-sm text-justify">
         As abreviações ajudam a deixar as receitas de crochê, amigurumi e tricô mais rápidas e organizadas. Elas podem variar um pouco, mas seguem um padrão que você aprende com a prática. Use este guia como apoio 💛
       </p>
 
       {/* LISTA */}
       <div className="grid gap-sm">
         {lista.map(([abrev, desc], i) => (
-          <div key={i} className="card flex" style={{ justifyContent: "space-between", alignItems: "center" }}>
+          <div key={i} className="card flex card-between">
             <div className="title">
               {abrev}
             </div>
@@ -66,8 +70,7 @@ export default function Abreviatura({ voltar }) {
             navigator.clipboard.writeText(textoParaCopiar());
             alert("Lista copiada! Agora é só colar no WhatsApp 💛");
           }}
-          className="btn btn-secondary"
-          style={{ width: "100%" }}
+          className="btn btn-secondary btn-full"
         >
           Copiar abreviações
         </button>

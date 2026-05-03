@@ -18,7 +18,8 @@ export default function Simulador() {
   const precoFinal = custoTotal * (1 + margem / 100);
 
   return (
-    <>
+    <div className="page-container">
+
       {/* TÍTULO */}
       <h2 className="mb-sm">Simulador de Preço</h2>
 
@@ -64,8 +65,7 @@ export default function Simulador() {
       {/* BOTÃO */}
       <button
         onClick={() => setMostrarResultado(true)}
-        className="btn btn-primary mb-md"
-        style={{ width: "100%" }}
+        className="btn btn-primary mb-md btn-full"
       >
         Calcular preço
       </button>
@@ -85,14 +85,7 @@ export default function Simulador() {
             <strong>Custo total: R$ {custoTotal.toFixed(2)}</strong>
           </p>
 
-          <div
-            className="mt-md text-center"
-            style={{
-              padding: "12px",
-              background: "var(--color-accent)",
-              borderRadius: "var(--radius-md)"
-            }}
-          >
+          <div className="mt-md text-center simulador-resultado">
             <p className="small text-muted">
               Preço sugerido
             </p>
@@ -103,6 +96,6 @@ export default function Simulador() {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }

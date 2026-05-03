@@ -36,7 +36,8 @@ export default function Contato() {
   ];
 
   return (
-    <>
+    <div className="page-container">
+
       <h2 className="mb-sm">Contato</h2>
 
       <p className="small text-muted mb-md">
@@ -49,19 +50,19 @@ export default function Contato() {
           <div
             key={index}
             onClick={item.action}
-            className="card flex"
-            style={{ alignItems: "center", gap: "12px", cursor: "pointer" }}
+            className="card flex contato-item"
           >
             <img
               src={item.icon}
               alt={item.label}
-              style={{ width: "32px" }}
+              className="contato-icon"
             />
             <span>{item.label}</span>
           </div>
         ))}
 
       </div>
-    </>
+
+    </div>
   );
 }

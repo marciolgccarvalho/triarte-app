@@ -2,7 +2,11 @@ import React from "react";
 import html2canvas from "html2canvas";
 import { IMAGES } from "../assets/images";
 
-export default function ParabensModal({ aberto, fechar = () => {}, receita }) {
+export default function ParabensModal({
+  aberto,
+  fechar = () => {},
+  receita
+}) {
   if (!aberto) return null;
 
   const dataHoje = new Date().toLocaleDateString("pt-BR");
@@ -29,73 +33,38 @@ export default function ParabensModal({ aberto, fechar = () => {}, receita }) {
 
   return (
     <div className="modal-overlay">
+      <div id="print-area" className="modal modal-parabens">
 
-      <div
-        id="print-area"
-        className="modal"
-        style={{
-          maxWidth: "360px",
-          borderRadius: "22px",
-          overflow: "hidden",
-          textAlign: "center"
-        }}
-      >
         {/* HEADER */}
-        <div className="flex" style={{ justifyContent: "flex-start" }}>
-          <button onClick={fechar}>
+        <div className="flex modal-header">
+          <button onClick={fechar} className="btn-close">
             ✕
           </button>
         </div>
 
         {/* IMAGEM */}
-        <div
-          style={{
-            width: "100%",
-            height: "220px",
-            position: "relative",
-            overflow: "hidden"
-          }}
-        >
+        <div className="parabens-image-container">
           <img
             src={receita?.imagem || IMAGES.ui.logo}
-            style={{
-              position: "absolute",
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              filter: "blur(18px) brightness(0.7)",
-              transform: "scale(1.2)"
-            }}
+            className="parabens-image-bg"
+            alt=""
           />
 
           <img
             src={receita?.imagem || IMAGES.ui.logo}
             alt="receita"
-            style={{
-              position: "relative",
-              maxWidth: "90%",
-              maxHeight: "100%",
-              objectFit: "contain"
-            }}
+            className="parabens-image-main"
           />
         </div>
 
         {/* CONTEÚDO */}
-        <div className="p-md" style={{ position: "relative" }}>
+        <div className="p-md parabens-content">
           
           {/* LOGO */}
           <img
             src={IMAGES.ui.logo}
-            style={{
-              position: "absolute",
-              top: "-32px",
-              left: "50%",
-              transform: "translateX(-50%)",
-              width: "65px",
-              borderRadius: "50%",
-              border: "4px solid var(--color-bg-light)",
-              background: "var(--color-bg-light)"
-            }}
+            alt="logo"
+            className="parabens-logo"
           />
 
           <div className="mt-md">
@@ -116,14 +85,12 @@ export default function ParabensModal({ aberto, fechar = () => {}, receita }) {
 
           <button
             onClick={salvarImagem}
-            className="btn btn-primary mt-md"
-            style={{ width: "100%", borderRadius: "30px" }}
+            className="btn btn-primary mt-md btn-full"
           >
             📸 Salve este momento
           </button>
         </div>
       </div>
-
     </div>
   );
 }

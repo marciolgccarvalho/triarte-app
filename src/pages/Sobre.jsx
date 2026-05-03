@@ -14,11 +14,7 @@ export default function Sobre() {
             <img
               src={IMAGES.ui.logo}
               alt="Real Triarte"
-              style={{
-                width: "96px",
-                height: "96px",
-                borderRadius: "50%"
-              }}
+              className="sobre-logo"
             />
 
             <h3 className="mt-sm">Real Triarte</h3>
@@ -54,10 +50,7 @@ export default function Sobre() {
             </p>
           </div>
 
-          <div
-            className="card text-center"
-            style={{ background: "var(--color-accent)" }}
-          >
+          <div className="card text-center sobre-highlight">
             <strong>Obrigado por fazer parte 💛</strong>
           </div>
         </div>
@@ -95,8 +88,7 @@ export default function Sobre() {
               onClick={() =>
                 (window.location.href = "mailto:contato@triarte.com.br")
               }
-              className="btn btn-primary mt-sm"
-              style={{ width: "100%" }}
+              className="btn btn-primary mt-sm btn-full"
             >
               📧 contato@triarte.com.br
             </button>
@@ -164,7 +156,8 @@ export default function Sobre() {
   ];
 
   return (
-    <>
+    <div className="page-container">
+
       <h2 className="mb-sm">Sobre</h2>
 
       <p className="small text-muted mb-md">
@@ -178,12 +171,7 @@ export default function Sobre() {
             onClick={() =>
               setSobreAberto(sobreAberto === item.id ? null : item.id)
             }
-            className="flex"
-            style={{
-              justifyContent: "space-between",
-              alignItems: "center",
-              cursor: "pointer"
-            }}
+            className="flex sobre-header"
           >
             <strong>{item.titulo}</strong>
             <span>{sobreAberto === item.id ? "−" : "+"}</span>
@@ -197,12 +185,7 @@ export default function Sobre() {
         </div>
       ))}
 
-      <div
-        className="card text-center mt-md"
-        style={{
-          background: "var(--color-surface)"
-        }}
-      >
+      <div className="card text-center mt-md sobre-footer">
         <strong>Versão do App</strong>
 
         <p className="small mt-sm">
@@ -213,6 +196,7 @@ export default function Sobre() {
           Desenvolvido no Brasil
         </p>
       </div>
-    </>
+
+    </div>
   );
 }

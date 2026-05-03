@@ -63,7 +63,7 @@ export default function CardReceita({
         <div className="progress-bar">
           <div
             className="progress-fill"
-            style={{ width: `${progresso}%` }}
+            style={{ "--progress": `${progresso}%` }}
           />
         </div>
 

@@ -1,7 +1,12 @@
 import React from "react";
 import { IMAGES } from "../assets/images";
 
-export default function Conquistas({ voltar, progresso, receitas, favoritos }) {
+export default function Conquistas({
+  voltar,
+  progresso,
+  receitas,
+  favoritos
+}) {
 
   const conquistas = [
     { id: "primeiro_passo", imgOn: IMAGES.conquistas.primeiroPasso.active, imgOff: IMAGES.conquistas.primeiroPasso.inactive },
@@ -44,12 +49,16 @@ export default function Conquistas({ voltar, progresso, receitas, favoritos }) {
   );
 
   return (
-    <div>
+    <div className="page-container">
 
       {/* VOLTAR */}
       <div className="mb-sm">
-        <button onClick={voltar}>
-          <img src={IMAGES.icons.anterior.active} style={{ width: "25px" }} />
+        <button onClick={voltar} className="btn-icon">
+          <img
+            src={IMAGES.icons.anterior.active}
+            alt="Voltar"
+            className="icon-sm"
+          />
         </button>
       </div>
 
@@ -59,7 +68,7 @@ export default function Conquistas({ voltar, progresso, receitas, favoritos }) {
         Acompanhe sua evolução no app 💛
       </p>
 
-      <div className="grid gap-md" style={{ gridTemplateColumns: "repeat(3, 1fr)" }}>
+      <div className="grid grid-3 gap-md">
         {conquistas.map((c) => {
 
           let conquistado = false;
@@ -106,16 +115,12 @@ export default function Conquistas({ voltar, progresso, receitas, favoritos }) {
           return (
             <div
               key={c.id}
-              className="card flex-center"
-              style={{ height: "140px" }}
+              className="card flex-center conquista-card"
             >
               <img
                 src={conquistado ? c.imgOn : c.imgOff}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "contain"
-                }}
+                alt="conquista"
+                className="conquista-img"
               />
             </div>
           );

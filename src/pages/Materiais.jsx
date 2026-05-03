@@ -15,14 +15,15 @@ export default function Materiais({
   }
 
   return (
-    <div>
+    <div className="page-container">
 
       {/* VOLTAR */}
       <div className="mb-sm">
-        <button onClick={voltar}>
+        <button onClick={voltar} className="btn-icon">
           <img
             src={IMAGES.icons.anterior.active}
-            style={{ width: "25px" }}
+            alt="Voltar"
+            className="icon-sm"
           />
         </button>
       </div>
@@ -39,8 +40,7 @@ export default function Materiais({
         onClick={() =>
           window.open("https://mercadolivre.com/sec/1AW2X78", "_blank")
         }
-        className="btn btn-primary mb-md"
-        style={{ width: "100%" }}
+        className="btn btn-primary mb-md btn-full"
       >
         Comprar no Mercado Livre
       </button>
@@ -52,11 +52,7 @@ export default function Materiais({
         {(receita.materiais?.linhas || []).map((item, index) => (
           <div
             key={index}
-            className="card"
-            style={{
-              fontWeight: "600",
-              background: "var(--color-accent)"
-            }}
+            className="card material-highlight"
           >
             🧶 {item}
           </div>
@@ -81,8 +77,7 @@ export default function Materiais({
             navigator.clipboard.writeText(listaMateriaisTexto());
             alert("Lista copiada!");
           }}
-          className="btn btn-secondary"
-          style={{ width: "100%" }}
+          className="btn btn-secondary btn-full"
         >
           Copiar lista de materiais
         </button>

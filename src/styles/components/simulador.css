@@ -1,0 +1,5 @@
+.simulador-resultado {
+  padding: var(--space-sm);
+  background: var(--color-accent);
+  border-radius: var(--radius-md);
+}
