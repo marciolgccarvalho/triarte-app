@@ -62,12 +62,30 @@
   object-fit: cover;
 }
 
+/* 🔥 TRANSIÇÃO SUAVE */
+.carousel-fade {
+  animation: carouselFade 0.5s ease-in-out;
+}
+
+@keyframes carouselFade {
+  from {
+    opacity: 0.4;
+    transform: scale(1.01);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* OVERLAY */
 .carousel-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
 }
 
+/* TEXTO */
 .carousel-content {
   position: absolute;
   bottom: 12px;
@@ -75,22 +93,10 @@
   color: #fff;
 }
 
-.carousel-play {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(0,0,0,0.6);
-  color: #fff;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-}
+/* 🔥 REMOVIDO PLAY (não usar mais) */
+/* .carousel-play { ... } */
 
+/* SETAS */
 .carousel-arrow {
   position: absolute;
   top: 50%;
@@ -100,6 +106,8 @@
   padding: 8px;
   border-radius: 50%;
   cursor: pointer;
+  z-index: 5;
+  border: none;
 }
 
 .carousel-arrow.left {

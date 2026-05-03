@@ -26,6 +26,24 @@ export default function Home({
     });
   }, [receitas, hoje]);
 
+  React.useEffect(() => {
+    if (indexCarrossel > receitasDestaque.length - 1) {
+      setIndexCarrossel(0);
+    }
+  }, [indexCarrossel, receitasDestaque.length]);
+
+  React.useEffect(() => {
+    if (receitasDestaque.length <= 1) return;
+
+    const intervalo = setInterval(() => {
+      setIndexCarrossel((i) =>
+        i === receitasDestaque.length - 1 ? 0 : i + 1
+      );
+    }, 5000);
+
+    return () => clearInterval(intervalo);
+  }, [receitasDestaque.length]);
+
   const receitaAtual = receitasDestaque[indexCarrossel] || null;
 
   const proximo = (e) => {
@@ -44,7 +62,6 @@ export default function Home({
 
   return (
     <div className="page-container">
-
       {/* TOPO */}
       <div className="home-top">
         <strong className="title">
@@ -59,7 +76,6 @@ export default function Home({
       {/* CONTINUAR */}
       {ultimaReceita && (
         <div className="home-continue-card">
-
           <img
             src={ultimaReceita.imagem}
             alt={ultimaReceita.nome}
@@ -97,23 +113,36 @@ export default function Home({
       {/* CARROSSEL */}
       {receitaAtual && (
         <div className="home-carousel-wrapper">
-
           <div
-            onClick={() => abrirReceita(receitaAtual)}
             className="home-carousel"
+            onClick={() => abrirReceita(receitaAtual)}
           >
             <img
+              key={receitaAtual.id}
               src={receitaAtual.imagem}
               alt={receitaAtual.nome}
-              className="home-carousel-img"
+              className="home-carousel-img carousel-fade"
             />
-
-            <div className="carousel-play">▶</div>
 
             {receitasDestaque.length > 1 && (
               <>
-                <div className="carousel-arrow left" onClick={anterior}>‹</div>
-                <div className="carousel-arrow right" onClick={proximo}>›</div>
+                <button
+                  type="button"
+                  className="carousel-arrow left"
+                  onClick={anterior}
+                  aria-label="Imagem anterior"
+                >
+                  ‹
+                </button>
+
+                <button
+                  type="button"
+                  className="carousel-arrow right"
+                  onClick={proximo}
+                  aria-label="Próxima imagem"
+                >
+                  ›
+                </button>
               </>
             )}
 
@@ -126,7 +155,6 @@ export default function Home({
               </p>
             </div>
 
-            {/* DOTS */}
             {receitasDestaque.length > 1 && (
               <div className="carousel-dots">
                 {receitasDestaque.map((_, i) => (
@@ -137,7 +165,6 @@ export default function Home({
                 ))}
               </div>
             )}
-
           </div>
         </div>
       )}
@@ -164,7 +191,6 @@ export default function Home({
           />
         ))}
       </div>
-
     </div>
   );
 }
