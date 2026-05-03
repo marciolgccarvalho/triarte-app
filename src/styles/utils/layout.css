@@ -1,31 +1,50 @@
-.flex { display: flex; }
+.flex { 
+  display: flex; 
+}
+
 .flex-center {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.grid { display: grid; }
+.grid { 
+  display: grid; 
+}
 
+/* GRID PADRÃO APP */
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* CONTAINER */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: var(--space-md);
 }
 
+/* GAPS */
 .gap-sm {
   gap: var(--space-sm);
 }
 
+.gap-md {
+  gap: var(--space-md);
+}
+
+/* ALIGN */
 .card-between {
   justify-content: space-between;
   align-items: center;
 }
 
+/* GRID 3 (mantido) */
 .grid-3 {
   grid-template-columns: repeat(3, 1fr);
 }
 
+/* CENTRALIZAÇÃO */
 .screen-center {
   display: flex;
   align-items: center;

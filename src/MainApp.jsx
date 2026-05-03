@@ -259,21 +259,31 @@ export default function MainApp() {
     <div className={`app-wrapper ${liberarNoPC ? "desktop" : ""}`}>
       <div className={`app-container ${liberarNoPC ? "desktop" : ""}`}>
         <div className="app-header">
-          <img
-            src={IMAGES.ui.logo}
-            alt="Real Triarte"
-            className="app-logo"
+          <button
+            type="button"
+            className="app-logo-button"
             onClick={() => irPara("home")}
-          />
+            aria-label="Ir para o início"
+          >
+            <img
+              src={IMAGES.ui.logo}
+              alt="Real Triarte"
+              className="app-logo"
+            />
+          </button>
 
-          <strong className="app-title">Real Triarte</strong>
-
-          <img
-            src={IMAGES.icons.menu.active}
-            alt="Menu"
-            className="app-menu-icon"
+          <button
+            type="button"
+            className="app-menu-button"
             onClick={() => setMenuAberto(true)}
-          />
+            aria-label="Abrir menu"
+          >
+            <img
+              src={IMAGES.icons.menu.active}
+              alt=""
+              className="app-menu-icon"
+            />
+          </button>
         </div>
 
         <MenuLateral
@@ -288,32 +298,21 @@ export default function MainApp() {
 
         <div className="app-footer">
           {[
+            ["home", IMAGES.icons.home?.active || IMAGES.icons.receitas.active, "Início"],
             ["receitas", IMAGES.icons.receitas.active, "Receitas"],
             ["favoritos", IMAGES.icons.favoritos.active, "Favoritos"],
             ["conquistas", IMAGES.icons.conquistas.active, "Conquistas"],
-            ["simulador", IMAGES.icons.calculo.active, "Simulador"]
+            ["simulador", IMAGES.icons.calculo.active, "Mais"]
           ].map(([page, icon, label]) => (
             <div
               key={page}
               onClick={() => irPara(page)}
-              className="app-footer-item"
+              className={`app-footer-item ${pagina === page ? "active" : ""}`}
             >
               <img src={icon} alt={label} className="app-footer-icon" />
               <span className="app-footer-text">{label}</span>
             </div>
           ))}
-
-          <div
-            onClick={() => setMenuAberto(true)}
-            className="app-footer-item"
-          >
-            <img
-              src={IMAGES.icons.menu.active}
-              alt="Menu"
-              className="app-footer-icon"
-            />
-            <span className="app-footer-text">Menu</span>
-          </div>
         </div>
       </div>
     </div>

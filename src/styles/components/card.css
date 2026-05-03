@@ -21,15 +21,15 @@
 }
 
 /* =========================
-   CARD RECEITA (IMAGEM)
+   CARD RECEITA
 ========================= */
 .card-receita {
   position: relative;
   overflow: hidden;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
 }
 
-/* 🔥 IMPORTANTE: altura fixa para padrão visual */
+/* IMAGEM */
 .card-receita-img {
   width: 100%;
   height: 160px;
@@ -38,69 +38,85 @@
 }
 
 /* =========================
-   OVERLAY (ESCURO SUAVE)
+   OVERLAY
 ========================= */
-.card-overlay {
+.card-receita-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.65),
-    rgba(0, 0, 0, 0.1)
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0.15)
   );
 }
 
 /* =========================
-   FAVORITO (CORAÇÃO)
+   FAVORITO
 ========================= */
 .card-favorito {
   position: absolute;
   top: var(--space-sm);
   right: var(--space-sm);
 
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
 
   border-radius: 50%;
-  background: var(--color-bg-light);
-  box-shadow: var(--shadow-sm);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(4px);
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  border: none;
+  cursor: pointer;
 }
 
 .card-favorito-icon {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
 }
 
 /* =========================
-   CONTEÚDO DO CARD
+   CONTEÚDO
 ========================= */
-.card-content {
+.card-receita-content {
   position: absolute;
   bottom: 0;
   width: 100%;
-  padding: var(--space-md);
+  padding: var(--space-sm);
   color: #ffffff;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.card-receita-title {
+  font-size: 13px;
+  font-weight: 600;
 }
 
 /* =========================
-   PROGRESS BAR
+   PROGRESSO
 ========================= */
 .progress-bar {
   width: 100%;
-  height: 6px;
+  height: 5px;
   background: rgba(255, 255, 255, 0.25);
   border-radius: var(--radius-sm);
   overflow: hidden;
-  margin: var(--space-xs) 0;
 }
 
 .progress-fill {
   height: 100%;
-  width: var(--progress, 0%);
+  width: 0%;
   background: var(--color-primary);
   transition: width var(--transition-normal);
+}
+
+.card-receita-progress {
+  font-size: 11px;
+  opacity: 0.9;
 }

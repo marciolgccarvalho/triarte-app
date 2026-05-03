@@ -11,7 +11,8 @@ import "./styles/utils/spacing.css";
 import "./styles/utils/layout.css";
 import "./styles/utils/helpers.css";
 
-// COMPONENTS
+// COMPONENTS (ORDEM IMPORTANTE)
+import "./styles/components/app-layout.css"; // 🔥 NECESSÁRIO PARA O HEADER FUNCIONAR
 import "./styles/components/button.css";
 import "./styles/components/card.css";
 import "./styles/components/sidebar.css";
@@ -53,11 +54,13 @@ if ("serviceWorker" in navigator && import.meta.env.PROD) {
       registration.addEventListener("updatefound", () => {
         const newWorker = registration.installing;
 
-        newWorker.addEventListener("statechange", () => {
-          if (newWorker.state === "installed") {
-            console.log("🔄 Nova versão disponível");
-          }
-        });
+        if (newWorker) {
+          newWorker.addEventListener("statechange", () => {
+            if (newWorker.state === "installed") {
+              console.log("🔄 Nova versão disponível");
+            }
+          });
+        }
       });
 
     } catch (err) {

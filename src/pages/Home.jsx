@@ -1,6 +1,5 @@
 import React from "react";
 import CardReceita from "../components/CardReceita";
-import { IMAGES } from "../assets/images";
 
 export default function Home({
   mensagemAtual,
@@ -46,9 +45,7 @@ export default function Home({
   return (
     <div className="page-container">
 
-      {/* =========================
-         TOPO (MENSAGEM)
-      ========================= */}
+      {/* TOPO */}
       <div className="home-top">
         <strong className="title">
           💛 {mensagemAtual?.titulo || "Hora de criar algo incrível ✨"}
@@ -59,13 +56,13 @@ export default function Home({
         </p>
       </div>
 
-      {/* =========================
-         CONTINUAR
-      ========================= */}
+      {/* CONTINUAR */}
       {ultimaReceita && (
-        <div className="card home-continue">
+        <div className="home-continue-card">
+
           <img
             src={ultimaReceita.imagem}
+            alt={ultimaReceita.nome}
             className="home-continue-img"
           />
 
@@ -76,10 +73,10 @@ export default function Home({
               Continue de onde parou
             </span>
 
-            <div className="progress-bar mt-xs">
+            <div className="progress-bar">
               <div
                 className="progress-fill"
-                style={{ "--progress": `${percentual(ultimaReceita)}%` }}
+                style={{ width: `${percentual(ultimaReceita)}%` }}
               />
             </div>
 
@@ -90,16 +87,14 @@ export default function Home({
 
           <button
             onClick={() => abrirReceita(ultimaReceita)}
-            className="btn btn-primary home-continue-btn"
+            className="btn-continue"
           >
             ▶ Continuar
           </button>
         </div>
       )}
 
-      {/* =========================
-         CARROSSEL
-      ========================= */}
+      {/* CARROSSEL */}
       {receitaAtual && (
         <div className="home-carousel-wrapper">
 
@@ -109,19 +104,16 @@ export default function Home({
           >
             <img
               src={receitaAtual.imagem}
+              alt={receitaAtual.nome}
               className="home-carousel-img"
             />
 
-            {/* PLAY CENTRAL */}
-            <div className="carousel-play">
-              ▶
-            </div>
+            <div className="carousel-play">▶</div>
 
-            {/* SETAS */}
             {receitasDestaque.length > 1 && (
               <>
-                <div className="carousel-arrow left" onClick={anterior}>←</div>
-                <div className="carousel-arrow right" onClick={proximo}>→</div>
+                <div className="carousel-arrow left" onClick={anterior}>‹</div>
+                <div className="carousel-arrow right" onClick={proximo}>›</div>
               </>
             )}
 
@@ -129,19 +121,28 @@ export default function Home({
 
             <div className="carousel-content">
               <strong>{receitaAtual.nome}</strong>
-
               <p className="small">
                 Veja como ficará seu amigurumi
               </p>
             </div>
-          </div>
 
+            {/* DOTS */}
+            {receitasDestaque.length > 1 && (
+              <div className="carousel-dots">
+                {receitasDestaque.map((_, i) => (
+                  <span
+                    key={i}
+                    className={`dot ${i === indexCarrossel ? "active" : ""}`}
+                  />
+                ))}
+              </div>
+            )}
+
+          </div>
         </div>
       )}
 
-      {/* =========================
-         LISTA
-      ========================= */}
+      {/* SEÇÃO */}
       <div className="home-section">
         <h3>Receitas para você hoje</h3>
 
@@ -150,7 +151,8 @@ export default function Home({
         </p>
       </div>
 
-      <div className="grid gap-sm">
+      {/* GRID */}
+      <div className="home-grid">
         {receitasRandom.slice(0, 4).map((r) => (
           <CardReceita
             key={r.id}

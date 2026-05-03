@@ -14,24 +14,35 @@ export default function MenuLateral({
         onClick={(e) => e.stopPropagation()}
         className="sidebar"
       >
-        {/* LOGO */}
-        <div className="sidebar-header text-center mb-md">
+        {/* HEADER */}
+        <div className="sidebar-header">
           <img
             src={IMAGES.ui.logo}
-            alt="Logo"
+            alt="Real Triarte"
             className="sidebar-logo"
           />
-          <h3 className="mt-sm">Real Triarte</h3>
+
+          <div className="sidebar-header-text">
+            <strong>Real Triarte</strong>
+            <span className="small text-muted">Menu principal</span>
+          </div>
         </div>
 
         {/* MENU */}
-        <div className="list">
-          <Item icone={IMAGES.icons.home.active} texto="Home" onClick={() => irPara("home")} />
+        <div className="sidebar-list">
+          <Item icone={IMAGES.icons.home.active} texto="Início" onClick={() => irPara("home")} />
           <Item icone={IMAGES.icons.receitas.active} texto="Receitas" onClick={() => irPara("receitas")} />
           <Item icone={IMAGES.icons.favoritos.active} texto="Favoritos" onClick={() => irPara("favoritos")} />
           <Item icone={IMAGES.icons.calculo.active} texto="Simulador" onClick={() => irPara("simulador")} />
           <Item icone={IMAGES.icons.conquistas.active} texto="Conquistas" onClick={() => irPara("conquistas")} />
           <Item icone={IMAGES.icons.abreviacao.active} texto="Abreviações" onClick={() => irPara("abreviatura")} />
+        </div>
+
+        {/* DIVISOR */}
+        <div className="sidebar-divider" />
+
+        {/* EXTRA */}
+        <div className="sidebar-list">
           <Item icone={IMAGES.icons.sobre.active} texto="Sobre" onClick={() => irPara("sobre")} />
           <Item icone={IMAGES.icons.contato.active} texto="Contato" onClick={() => irPara("contato")} />
         </div>
@@ -42,18 +53,19 @@ export default function MenuLateral({
 
 function Item({ icone, texto, onClick = () => {} }) {
   return (
-    <div
+    <button
       onClick={onClick}
-      className="sidebar-item flex sidebar-item-layout"
+      className="sidebar-item"
     >
       <img
         src={icone || IMAGES.ui.logo}
         alt={texto}
         className="sidebar-item-icon"
       />
-      <span className="title">
-        {texto || ""}
+
+      <span className="sidebar-item-text">
+        {texto}
       </span>
-    </div>
+    </button>
   );
 }

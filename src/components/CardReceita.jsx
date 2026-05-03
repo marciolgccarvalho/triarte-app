@@ -20,7 +20,7 @@ export default function CardReceita({
   return (
     <div
       onClick={() => abrirReceita && abrirReceita(receita)}
-      className="card card-receita card-clickable"
+      className="card-receita"
     >
       {/* IMAGEM */}
       <img
@@ -32,15 +32,15 @@ export default function CardReceita({
       />
 
       {/* OVERLAY */}
-      <div className="card-overlay" />
+      <div className="card-receita-overlay" />
 
       {/* FAVORITO */}
-      <div
+      <button
         onClick={(e) => {
           e.stopPropagation();
           toggleFavorito && toggleFavorito(receita.id);
         }}
-        className="card-favorito flex-center"
+        className="card-favorito"
       >
         <img
           src={
@@ -51,11 +51,11 @@ export default function CardReceita({
           alt="Favorito"
           className="card-favorito-icon"
         />
-      </div>
+      </button>
 
       {/* CONTEÚDO */}
-      <div className="card-content">
-        <strong className="small">
+      <div className="card-receita-content">
+        <strong className="card-receita-title">
           {receita?.nome || "Receita"}
         </strong>
 
@@ -63,11 +63,11 @@ export default function CardReceita({
         <div className="progress-bar">
           <div
             className="progress-fill"
-            style={{ "--progress": `${progresso}%` }}
+            style={{ width: `${progresso}%` }}
           />
         </div>
 
-        <span className="small">
+        <span className="card-receita-progress">
           {progresso}% concluído
         </span>
       </div>

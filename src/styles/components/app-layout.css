@@ -1,5 +1,5 @@
 /* =========================
-   WRAPPER (FUNDO DO APP)
+   WRAPPER
 ========================= */
 .app-wrapper {
   width: 100%;
@@ -11,7 +11,7 @@
 }
 
 /* =========================
-   CONTAINER (APP MOBILE)
+   CONTAINER
 ========================= */
 .app-container {
   width: 100%;
@@ -25,7 +25,6 @@
   flex-direction: column;
 }
 
-/* DESKTOP MODE (efeito celular) */
 .app-container.desktop {
   height: 90vh;
   border-radius: var(--radius-lg);
@@ -34,17 +33,18 @@
 }
 
 /* =========================
-   HEADER (FIXO NO TOPO)
+   HEADER (CORRIGIDO)
 ========================= */
 .app-header {
-  height: 64px;
+  height: 56px;
+  min-height: 56px;
   background: var(--color-bg-light);
 
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  padding: 0 var(--space-sm);
+  padding: 0 14px;
 
   position: sticky;
   top: 0;
@@ -53,45 +53,61 @@
   border-bottom: 1px solid var(--color-surface);
 }
 
-/* LOGO */
-.app-logo {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
+/* BOTÕES HEADER */
+.app-logo-button,
+.app-menu-button {
+  width: 36px;
+  height: 36px;
+
+  background: transparent;
+  border: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   cursor: pointer;
+  padding: 0;
+}
+
+/* LOGO (FIX DEFINITIVO) */
+.app-logo {
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+  max-width: 30px;
+
+  border-radius: 50%;
   object-fit: cover;
 }
 
-/* TÍTULO */
-.app-title {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--color-text);
+/* BOTÃO MENU (ESTILO DA IMAGEM) */
+.app-menu-button {
+  background: var(--color-primary);
+  border-radius: 50%;
+  box-shadow: var(--shadow-sm);
 }
 
-/* MENU ICON */
+/* ÍCONE MENU */
 .app-menu-icon {
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
 }
 
 /* =========================
-   CONTENT (SCROLL)
+   CONTENT
 ========================= */
 .app-content {
   flex: 1;
   overflow-y: auto;
 
   padding: var(--space-sm);
-
-  /* evita conteúdo colar no header/footer */
-  padding-top: var(--space-sm);
-  padding-bottom: var(--space-md);
+  padding-bottom: 80px;
 }
 
 /* =========================
-   FOOTER (MENU INFERIOR FIXO)
+   FOOTER
 ========================= */
 .app-footer {
   height: 66px;
@@ -124,9 +140,19 @@
   opacity: 0.7;
 }
 
+/* ATIVO */
+.app-footer-item.active {
+  transform: translateY(-2px);
+}
+
+.app-footer-item.active .app-footer-text {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
 /* ÍCONE */
 .app-footer-icon {
-  width: 24px;
+  width: 22px;
 }
 
 /* TEXTO */
