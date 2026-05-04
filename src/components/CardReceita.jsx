@@ -23,36 +23,35 @@ export default function CardReceita({
       className="card-receita card-clickable"
     >
       {/* IMAGEM */}
-      <img
-        src={receita?.imagem || IMAGES.ui.logo}
-        alt={receita?.nome || "Receita"}
-        loading="lazy"
-        decoding="async"
-        className="card-receita-img"
-      />
-
-      {/* OVERLAY */}
-      <div className="card-overlay" />
-
-      {/* FAVORITO */}
-      <button
-        onClick={(e) => {
-          e.stopPropagation();
-          toggleFavorito && toggleFavorito(receita.id);
-        }}
-        className={`card-favorito ${isFavorito ? "ativo" : ""}`}
-        aria-label="Favoritar receita"
-      >
+      <div className="card-receita-img-wrapper">
         <img
-          src={IMAGES.icons.favoritos.active}
-          alt="Favorito"
-          className="card-favorito-icon"
+          src={receita?.imagem || IMAGES.ui.logo}
+          alt={receita?.nome || "Receita"}
+          loading="lazy"
+          decoding="async"
+          className="card-receita-img"
         />
-      </button>
+
+        {/* FAVORITO */}
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            toggleFavorito && toggleFavorito(receita.id);
+          }}
+          className={`card-favorito ${isFavorito ? "ativo" : ""}`}
+          aria-label="Favoritar receita"
+        >
+          <img
+            src={IMAGES.icons.favoritos.active}
+            alt="Favorito"
+            className="card-favorito-icon"
+          />
+        </button>
+      </div>
 
       {/* CONTEÚDO */}
-      <div className="card-content">
-        <strong className="small">
+      <div className="card-body">
+        <strong className="card-title">
           {receita?.nome || "Receita"}
         </strong>
 
@@ -64,7 +63,7 @@ export default function CardReceita({
           />
         </div>
 
-        <span className="small">
+        <span className="card-progress">
           {progresso}% concluído
         </span>
       </div>

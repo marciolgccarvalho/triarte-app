@@ -21,9 +21,7 @@ html {
 body {
   width: 100%;
   min-height: 100vh;
-  margin: 0;              /* 🔥 REMOVE espaço padrão */
-  padding: 0;             /* 🔥 GARANTE zero espaçamento */
-  
+
   font-family: var(--font-base);
   background-color: var(--color-bg);
   color: var(--color-text);
@@ -39,8 +37,10 @@ body {
 #root {
   width: 100%;
   min-height: 100vh;
+
   display: flex;
   justify-content: center;
+
   background: var(--color-bg);
 }
 
@@ -74,14 +74,12 @@ button {
   cursor: pointer;
 }
 
-/* 🔥 MELHORIA: UX melhor em inputs */
 input,
 textarea,
 select {
   outline: none;
 }
 
-/* 🔥 MELHORIA: evita zoom estranho no mobile */
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -95,18 +93,26 @@ ol {
 
 /* =========================
    LAYOUT BASE DO APP
+   ⚠️ CORRIGIDO PARA NÃO CONFLITAR
 ========================= */
 .app-container {
   width: 100%;
   max-width: 480px;
   min-height: 100vh;
+
   background: var(--color-bg-light);
+
   display: flex;
   flex-direction: column;
+
   position: relative;
   overflow-x: hidden;
-  box-shadow: var(--shadow-lg);
 }
+
+/* 🔥 IMPORTANTE:
+   removido box-shadow aqui
+   → quem controla layout agora é app-layout.css
+*/
 
 /* =========================
    ACESSIBILIDADE
@@ -136,6 +142,10 @@ ol {
   background: var(--color-primary);
 }
 
-html, body {
+/* =========================
+   MOBILE BEHAVIOR
+========================= */
+html,
+body {
   overscroll-behavior-y: none;
 }

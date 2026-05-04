@@ -158,6 +158,7 @@ export default function MainApp() {
             percentual={percentual}
             toggleFavorito={toggleFavorito}
             favoritos={favoritos}
+            irPara={irPara} // ✅ CORREÇÃO AQUI
           />
         );
 
@@ -305,7 +306,7 @@ export default function MainApp() {
             ["receitas", IMAGES.icons.receitas.active, "Receitas"],
             ["favoritos", IMAGES.icons.favoritos.active, "Favoritos"],
             ["conquistas", IMAGES.icons.conquistas.active, "Conquistas"],
-            ["mais", IMAGES.icons.menu.active, "Mais"] // 🔥 agora correto
+            ["mais", IMAGES.icons.menu.active, "Mais"]
           ].map(([page, icon, label]) => (
             <div
               key={page}

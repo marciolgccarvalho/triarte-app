@@ -9,15 +9,13 @@ export default function Home({
   abrirReceita = () => {},
   percentual = () => 0,
   toggleFavorito = () => {},
-  favoritos = []
+  favoritos = [],
+  irPara = () => {}
 }) {
   const [indexCarrossel, setIndexCarrossel] = React.useState(0);
 
   const hoje = React.useMemo(() => new Date(), []);
 
-  /* =========================
-     MENSAGEM RANDOM
-  ========================= */
   const mensagem = React.useMemo(() => {
     if (!mensagensData || mensagensData.length === 0) {
       return {
@@ -33,9 +31,6 @@ export default function Home({
     return lista[index];
   }, []);
 
-  /* =========================
-     CARROSSEL
-  ========================= */
   const receitasDestaque = React.useMemo(() => {
     return receitas.filter((r) => {
       if (!r?.destaqueInicio || !r?.destaqueFim) return false;
@@ -81,9 +76,8 @@ export default function Home({
     );
   };
 
-  /* =========================
-     LISTA RANDOM
-  ========================= */
+  const isFavorito = favoritos?.includes(receitaAtual?.id);
+
   const receitasLista = React.useMemo(() => {
     const idsDestaque = new Set(receitasDestaque.map(r => r.id));
     const filtradas = receitas.filter(r => !idsDestaque.has(r.id));
@@ -94,7 +88,6 @@ export default function Home({
   return (
     <div className="page-container">
 
-      {/* TOPO */}
       <div className="home-top">
         <strong className="home-title">
           💛 {mensagem.titulo}
@@ -104,7 +97,6 @@ export default function Home({
         </p>
       </div>
 
-      {/* CONTINUAR */}
       {ultimaReceita && (
         <div className="home-continue-card">
           <img
@@ -146,77 +138,67 @@ export default function Home({
       {/* CARROSSEL */}
       {receitaAtual && (
         <div className="home-carousel-wrapper">
-          <div
-            className="home-carousel"
-            onClick={() => abrirReceita(receitaAtual)}
-          >
+          <div className="home-carousel">
+
+            {receitasDestaque.length > 1 && (
+              <>
+                <div className="carousel-nav left" onClick={anterior}>‹</div>
+                <div className="carousel-nav right" onClick={proximo}>›</div>
+              </>
+            )}
+
             <img
               key={receitaAtual.id}
               src={receitaAtual.imagem}
               alt={receitaAtual.nome}
-              className="home-carousel-img carousel-fade"
+              className="home-carousel-img"
+              onClick={() => abrirReceita(receitaAtual)}
             />
 
-            {/* 🔥 FAVORITO (AGORA EXISTE) */}
             <button
               onClick={(e) => {
                 e.stopPropagation();
                 toggleFavorito(receitaAtual.id);
               }}
-              className={`carousel-favorito ${
-                favoritos?.includes(receitaAtual.id) ? "ativo" : ""
-              }`}
+              className={`card-favorito ${isFavorito ? "ativo" : ""}`}
             >
               <img
                 src={IMAGES.icons.favoritos.active}
                 alt="Favorito"
-                className="carousel-favorito-icon"
+                className="card-favorito-icon"
               />
             </button>
-
-            {receitasDestaque.length > 1 && (
-              <>
-                <button className="carousel-arrow left" onClick={anterior}>‹</button>
-                <button className="carousel-arrow right" onClick={proximo}>›</button>
-              </>
-            )}
 
             <div className="carousel-overlay" />
 
             <div className="carousel-content">
               <strong>{receitaAtual.nome}</strong>
+              <p>Veja como ficará seu amigurumi</p>
 
-              <p className="small">
-                Veja como ficará seu amigurumi
-              </p>
-
-              <div className="progress-bar carousel-progress">
+              <div className="progress-bar">
                 <div
                   className="progress-fill"
                   style={{ width: `${percentual(receitaAtual)}%` }}
                 />
               </div>
 
-              <span className="carousel-progress-text">
-                {percentual(receitaAtual)}% concluído
-              </span>
+              <span>{percentual(receitaAtual)}% concluído</span>
             </div>
-
-            {receitasDestaque.length > 1 && (
-              <div className="carousel-dots">
-                {receitasDestaque.map((_, i) => (
-                  <span
-                    key={i}
-                    className={`dot ${i === indexCarrossel ? "active" : ""}`}
-                  />
-                ))}
-              </div>
-            )}
           </div>
         </div>
       )}
 
-      {/* GRID */}
+      <div className="home-section-header">
+        <strong>✨ Outras receitas para você</strong>
+
+        <button
+          className="home-ver-todas-inline"
+          onClick={() => irPara("receitas")}
+        >
+          Ver todas
+        </button>
+      </div>
+
       <div className="home-grid">
         {receitasLista.map((r) => (
           <CardReceita
@@ -228,6 +210,28 @@ export default function Home({
             percentual={percentual}
           />
         ))}
+      </div>
+
+      {/* CTA FINAL CORRIGIDO */}
+      <div
+        className="home-cta-card"
+        onClick={() => irPara("receitas")}
+      >
+        <div className="home-cta-left">
+          <img
+            src={IMAGES.icons.lista.home} // 🔥 AQUI ESTÁ A CORREÇÃO
+            alt="Receitas"
+          />
+        </div>
+
+        <div className="home-cta-content">
+          <div className="home-cta-text">
+            <strong>Ver todas as receitas</strong>
+            <span>Explore todas as receitas disponíveis</span>
+          </div>
+        </div>
+
+        <div className="home-cta-arrow">›</div>
       </div>
 
     </div>
