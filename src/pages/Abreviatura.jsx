@@ -1,80 +1,86 @@
 import React from "react";
 import { IMAGES } from "../assets/images";
 
-export default function Abreviatura({ voltar }) {
+export default function Abreviacoes({ irPara }) {
 
   const lista = [
-    ["pb.", "Ponto Baixo"],
-    ["pa.", "Ponto Alto"],
-    ["mpa.", "Meio Ponto Alto"],
-    ["pbx.", "Ponto Baixíssimo"],
-    ["corr.", "Correntinha"],
-    ["aum.", "Aumento"],
-    ["dim.", "Diminuição"],
-    ["AM", "Anel Mágico"],
-    ["carr.", "Carreira"],
-    ["rep.", "Repetir"],
-    ["nov.", "Novelo"],
-    ["ag.", "Agulha"]
+    { abrev: "pb.", nome: "Ponto Baixo" },
+    { abrev: "pa.", nome: "Ponto Alto" },
+    { abrev: "mpa.", nome: "Meio Ponto Alto" },
+    { abrev: "pbx.", nome: "Ponto Baixíssimo" },
+    { abrev: "corr.", nome: "Correntinha" },
+    { abrev: "aum.", nome: "Aumento" },
+    { abrev: "dim.", nome: "Diminuição" },
+    { abrev: "AM", nome: "Anel Mágico" },
+    { abrev: "carr.", nome: "Carreira" },
+    { abrev: "rep.", nome: "Repetir" },
+    { abrev: "nov.", nome: "Novelo" },
+    { abrev: "ag.", nome: "Agulha" }
   ];
 
-  const textoParaCopiar = () => {
-    return (
-      "🧶 Abreviações Crochê / Amigurumi\n\n" +
-      lista.map(([a, d]) => `${a} - ${d}`).join("\n") +
-      "\n\nReal Triarte 💛"
-    );
+  const [copiado, setCopiado] = React.useState(false);
+
+  const copiar = async () => {
+    const texto = lista
+      .map((item) => `${item.abrev} - ${item.nome}`)
+      .join("\n");
+
+    try {
+      await navigator.clipboard.writeText(texto);
+      setCopiado(true);
+    } catch {
+      setCopiado(false);
+    }
   };
 
   return (
     <div className="page-container">
 
-      {/* VOLTAR */}
-      <div className="mb-sm">
-        <button onClick={voltar} className="btn-icon">
-          <img
-            src={IMAGES.icons.anterior.active}
-            alt="Voltar"
-            className="icon-sm"
-          />
+      {/* HEADER */}
+      <div className="abreviacoes-header">
+
+        <button
+          className="btn-icon"
+          onClick={() => irPara("mais")}
+        >
+          <img src={IMAGES.icons.anterior.active} />
         </button>
+
+        <div>
+          <h2>Abreviações</h2>
+          <p>
+            Guia rápido para entender receitas de crochê e amigurumi.
+          </p>
+        </div>
+
       </div>
-
-      {/* TÍTULO */}
-      <h2 className="mb-sm">Abreviações</h2>
-
-      {/* TEXTO */}
-      <p className="small text-muted mb-sm text-justify">
-        As abreviações ajudam a deixar as receitas de crochê, amigurumi e tricô mais rápidas e organizadas. Elas podem variar um pouco, mas seguem um padrão que você aprende com a prática. Use este guia como apoio 💛
-      </p>
 
       {/* LISTA */}
-      <div className="grid gap-sm">
-        {lista.map(([abrev, desc], i) => (
-          <div key={i} className="card flex card-between">
-            <div className="title">
-              {abrev}
-            </div>
+      <div className="abreviacoes-lista">
 
-            <div className="small text-muted">
-              {desc}
-            </div>
+        {lista.map((item, index) => (
+          <div key={index} className="abreviacao-item">
+
+            <span className="abreviacao-chave">
+              {item.abrev}
+            </span>
+
+            <span className="abreviacao-valor">
+              {item.nome}
+            </span>
+
           </div>
         ))}
+
       </div>
 
-      {/* BOTÃO COPIAR */}
-      <div className="mt-md">
-        <button
-          onClick={() => {
-            navigator.clipboard.writeText(textoParaCopiar());
-            alert("Lista copiada! Agora é só colar no WhatsApp 💛");
-          }}
-          className="btn btn-secondary btn-full"
-        >
-          Copiar abreviações
-        </button>
-      </div>
+      {/* BOTÃO */}
+      <button
+        className="btn-primary abreviacoes-btn"
+        onClick={copiar}
+      >
+        {copiado ? "Copiado!" : "Copiar abreviações"}
+      </button>
 
     </div>
   );
