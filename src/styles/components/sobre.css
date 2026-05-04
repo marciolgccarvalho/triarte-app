@@ -1,19 +1,98 @@
-.sobre-logo {
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
+/* =========================
+   HERO
+========================= */
+.sobre-hero {
+  margin-bottom: 20px;
 }
 
-.sobre-header {
-  justify-content: space-between;
+/* BLOCO LOGO + TEXTO */
+.sobre-brand {
+  display: flex;
   align-items: center;
-  cursor: pointer;
+  gap: 14px;
+
+  padding: 16px;
+  border-radius: 16px;
+
+  background: #fff;
+  border: 1px solid #eee;
 }
 
+/* LOGO */
+.sobre-logo {
+  width: 60px;
+  flex-shrink: 0;
+}
+
+/* TEXTO */
+.sobre-brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.sobre-title {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.sobre-subtitle {
+  font-size: 14px;
+  color: #555;
+  margin-top: 4px;
+}
+
+/* =========================
+   CARDS
+========================= */
+.card {
+  background: #fff;
+  border-radius: 16px;
+
+  padding: 18px;
+  margin-bottom: 18px;
+
+  border: 1px solid #eee;
+}
+
+.card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #444;
+}
+
+/* =========================
+   LISTA
+========================= */
+.sobre-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  font-size: 15px;
+  color: #444;
+}
+
+/* =========================
+   DESTAQUE
+========================= */
 .sobre-highlight {
-  background: var(--color-accent);
+  background: #fff8e1;
+  border: 1px solid #ffe0b2;
+  border-radius: 16px;
 }
 
+/* =========================
+   FOOTER
+========================= */
 .sobre-footer {
-  background: var(--color-surface);
+  text-align: center;
+  margin-top: 20px;
+
+  font-size: 13px;
+  color: #777;
 }

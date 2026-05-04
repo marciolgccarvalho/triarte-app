@@ -62,6 +62,9 @@ import calculoInactive from './icons/calculo-inactive.png'
 import abreviacaoActive from './icons/abreviacao-active.png'
 import abreviacaoInactive from './icons/abreviacao-inactive.png'
 
+// 🔥 NOVO ÍCONE CONFIGURAÇÕES
+import configuracoesActive from './icons/configuracao.png'
+
 // ==========================
 // CONQUISTAS
 // ==========================
@@ -107,7 +110,7 @@ import primeiroPassoInactive from './conquistas/primeiro-passo-inactive.png'
 import logo from './ui/logo.webp'
 import emptyFavoritos from './ui/empty-favoritos.png'
 import simuladorPreco from './ui/simulador-preco.png'
-import abreviacoes from './ui/abreviacoes.png' // 🔥 NOVO
+import abreviacoes from './ui/abreviacoes.png'
 
 // ==========================
 // EXPORTAÇÃO CENTRAL
@@ -164,7 +167,10 @@ export const IMAGES = {
 
     calculo: { active: calculoActive, inactive: calculoInactive },
 
-    abreviacao: { active: abreviacaoActive, inactive: abreviacaoInactive }
+    abreviacao: { active: abreviacaoActive, inactive: abreviacaoInactive },
+
+    // 🔥 NOVO
+    configuracoes: { active: configuracoesActive }
   },
 
   conquistas: {
@@ -186,6 +192,6 @@ export const IMAGES = {
     logo,
     emptyFavoritos,
     simuladorPreco,
-    abreviacoes // 🔥 AQUI FINAL
+    abreviacoes
   }
 }

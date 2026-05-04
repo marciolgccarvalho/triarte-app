@@ -1,20 +1,14 @@
 import React from "react";
-import { IMAGES } from "./assets/images";
 import { getReceitas } from "./services/receitasService";
 import mensagens from "./data/mensagens.json";
+import { useStorage } from "./hooks/useStorage";
+import { useListas } from "./hooks/useListas";
 
 import MenuLateral from "./components/MenuLateral";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
-import Home from "./pages/Home";
-import Receitas from "./pages/Receitas";
-import Favoritos from "./pages/Favoritos";
-import Conquistas from "./pages/Conquistas";
-import Simulador from "./pages/Simulador";
-import Abreviatura from "./pages/Abreviatura";
-import Sobre from "./pages/Sobre";
-import Contato from "./pages/Contato";
-import ReceitaDetalhe from "./pages/ReceitaDetalhe";
-import Materiais from "./pages/Materiais";
+import { renderPagina } from "./navigation/renderPagina";
 
 export default function MainApp() {
   const liberarNoPC = true;
@@ -24,7 +18,6 @@ export default function MainApp() {
   const [receitaSelecionada, setReceitaSelecionada] = React.useState(null);
   const [rotacionado, setRotacionado] = React.useState(false);
 
-  // 🔥 ESTADOS GLOBAIS (serão reutilizados em favoritos)
   const [buscaNome, setBuscaNome] = React.useState("");
   const [buscaCategoria, setBuscaCategoria] = React.useState("");
   const [modoExibicao, setModoExibicao] = React.useState("grid");
@@ -33,21 +26,31 @@ export default function MainApp() {
 
   const receitas = React.useMemo(() => getReceitas(), []);
 
-  const [favoritos, setFavoritos] = React.useState(() => {
-    return JSON.parse(localStorage.getItem("favoritos") || "[]");
+  // STORAGE (ATUALIZADO)
+  const {
+    favoritos,
+    progresso,
+    toggleFavorito,
+    marcarVideo,
+    ultimaReceitaId,
+    setUltimaReceitaId
+  } = useStorage();
+
+  // LISTAS
+  const {
+    receitasFiltradas,
+    favoritosFiltrados,
+    receitasPage,
+    favoritosPage,
+    categorias
+  } = useListas({
+    receitas,
+    favoritos,
+    buscaNome,
+    buscaCategoria,
+    limite,
+    paginaAtual
   });
-
-  const [progresso, setProgresso] = React.useState(() => {
-    return JSON.parse(localStorage.getItem("progresso") || "{}");
-  });
-
-  React.useEffect(() => {
-    localStorage.setItem("favoritos", JSON.stringify(favoritos));
-  }, [favoritos]);
-
-  React.useEffect(() => {
-    localStorage.setItem("progresso", JSON.stringify(progresso));
-  }, [progresso]);
 
   React.useEffect(() => {
     const check = () => {
@@ -63,35 +66,14 @@ export default function MainApp() {
   const irPara = (destino) => {
     setPagina(destino);
     setMenuAberto(false);
-    setPaginaAtual(1); // 🔥 evita bug ao trocar de tela
+    setPaginaAtual(1);
   };
 
+  // ✅ CORRIGIDO — agora salva a última receita
   const abrirReceita = (receita) => {
     setReceitaSelecionada(receita);
+    setUltimaReceitaId(receita.id);
     setPagina("receita");
-  };
-
-  const toggleFavorito = (id) => {
-    setFavoritos((atual) =>
-      atual.includes(id)
-        ? atual.filter((item) => item !== id)
-        : [...atual, id]
-    );
-  };
-
-  const marcarVideo = (receitaId, index) => {
-    setProgresso((atual) => {
-      const vistos = atual[receitaId]?.vistos || [];
-
-      const novosVistos = vistos.includes(index)
-        ? vistos.filter((v) => v !== index)
-        : [...vistos, index];
-
-      return {
-        ...atual,
-        [receitaId]: { vistos: novosVistos }
-      };
-    });
   };
 
   const percentual = (receita) => {
@@ -101,195 +83,18 @@ export default function MainApp() {
     return Math.round((vistos / receita.videos.length) * 100);
   };
 
-  /* =========================
-     🔥 FILTROS BASE
-  ========================= */
-
-  const filtrarLista = (lista) => {
-    const nome = buscaNome.toLowerCase();
-
-    return lista.filter((r) => {
-      return (
-        (nome.length < 3 || r.nome.toLowerCase().includes(nome)) &&
-        (buscaCategoria === "" || r.categoria === buscaCategoria)
-      );
-    });
-  };
-
-  /* =========================
-     🔥 RECEITAS
-  ========================= */
-
-  const receitasFiltradas = filtrarLista(receitas);
-
-  /* =========================
-     🔥 FAVORITOS (NOVO)
-  ========================= */
-
-  const receitasFavoritas = receitas.filter((r) =>
-    favoritos.includes(r.id)
+  // ✅ CORRIGIDO — usa storage real
+  const ultimaReceita = receitas.find(
+    (r) => r.id === ultimaReceitaId
   );
-
-  const favoritosFiltrados = filtrarLista(receitasFavoritas);
-
-  /* =========================
-     🔥 PAGINAÇÃO (GENÉRICA)
-  ========================= */
-
-  const paginar = (lista) => {
-    const totalPaginas = Math.max(1, Math.ceil(lista.length / limite));
-
-    const itens = lista.slice(
-      (paginaAtual - 1) * limite,
-      paginaAtual * limite
-    );
-
-    return { itens, totalPaginas };
-  };
-
-  const receitasPage = paginar(receitasFiltradas);
-  const favoritosPage = paginar(favoritosFiltrados);
-
-  const categorias = [...new Set(receitas.map((r) => r.categoria))];
-
-  const ultimaReceitaId = Object.keys(progresso).find(
-    (id) => progresso[id]?.vistos?.length > 0
-  );
-
-  const ultimaReceita = receitas.find((r) => r.id === ultimaReceitaId);
 
   const mensagemAtual = mensagens[0];
-  const receitasRandom = receitas.slice(0, 8);
 
-  /* =========================
-     RENDER
-  ========================= */
-
-  const renderPagina = () => {
-    switch (pagina) {
-      case "home":
-        return (
-          <Home
-            mensagemAtual={mensagemAtual}
-            ultimaReceita={ultimaReceita}
-            receitas={receitas}
-            receitasRandom={receitasRandom}
-            abrirReceita={abrirReceita}
-            percentual={percentual}
-            toggleFavorito={toggleFavorito}
-            favoritos={favoritos}
-            irPara={irPara}
-          />
-        );
-
-      case "receitas":
-        return (
-          <Receitas
-            receitasFiltradas={receitasFiltradas}
-            receitasPaginadas={receitasPage.itens}
-            totalPaginas={receitasPage.totalPaginas}
-
-            buscaNome={buscaNome}
-            setBuscaNome={setBuscaNome}
-            buscaCategoria={buscaCategoria}
-            setBuscaCategoria={setBuscaCategoria}
-
-            categorias={categorias}
-
-            modoExibicao={modoExibicao}
-            setModoExibicao={setModoExibicao}
-
-            limite={limite}
-            setLimite={setLimite}
-
-            paginaAtual={paginaAtual}
-            setPaginaAtual={setPaginaAtual}
-
-            abrirReceita={abrirReceita}
-            toggleFavorito={toggleFavorito}
-            favoritos={favoritos}
-            percentual={percentual}
-          />
-        );
-
-      case "favoritos":
-      return (
-        <Favoritos
-          receitasFiltradas={favoritosFiltrados}
-          receitasPaginadas={favoritosPage.itens}
-          totalPaginas={favoritosPage.totalPaginas}
-
-          buscaNome={buscaNome}
-          setBuscaNome={setBuscaNome}
-          buscaCategoria={buscaCategoria}
-          setBuscaCategoria={setBuscaCategoria}
-
-          categorias={categorias}
-
-          modoExibicao={modoExibicao}
-          setModoExibicao={setModoExibicao}
-
-          limite={limite}
-          setLimite={setLimite}
-
-          paginaAtual={paginaAtual}
-          setPaginaAtual={setPaginaAtual}
-
-          abrirReceita={abrirReceita}
-          toggleFavorito={toggleFavorito}
-          favoritos={favoritos}
-          percentual={percentual}
-
-          irPara={irPara} // 🔥 ESSENCIAL
-        />
-      );
-
-      case "receita":
-        return (
-          <ReceitaDetalhe
-            receita={receitaSelecionada}
-            marcarVideo={marcarVideo}
-            percentual={percentual}
-            progresso={progresso}
-            voltar={() => irPara("home")}
-            irPara={irPara}
-          />
-        );
-
-      case "conquistas":
-        return (
-          <Conquistas
-            voltar={() => irPara("home")}
-            progresso={progresso}
-            receitas={receitas}
-            favoritos={favoritos}
-          />
-        );
-
-      case "simulador":
-        return <Simulador />;
-
-      case "abreviatura":
-        return <Abreviatura voltar={() => irPara("home")} />;
-
-      case "sobre":
-        return <Sobre />;
-
-      case "contato":
-        return <Contato />;
-
-      case "materiais":
-        return (
-          <Materiais
-            receita={receitaSelecionada}
-            voltar={() => irPara("receita")}
-          />
-        );
-
-      default:
-        return null;
-    }
-  };
+  // ✅ RANDOM CORRETO
+  const receitasRandom = React.useMemo(() => {
+    const embaralhado = [...receitas].sort(() => Math.random() - 0.5);
+    return embaralhado.slice(0, 8);
+  }, [receitas]);
 
   if (rotacionado && !liberarNoPC) {
     return (
@@ -305,17 +110,10 @@ export default function MainApp() {
       <div className={`app-container ${liberarNoPC ? "desktop" : ""}`}>
 
         {/* HEADER */}
-        <div className="app-header">
-          <button onClick={() => irPara("home")}>
-            <img src={IMAGES.ui.logo} className="app-logo" />
-          </button>
-
-          <strong className="app-title-center">Real Triarte</strong>
-
-          <button onClick={() => setMenuAberto(true)}>
-            <img src={IMAGES.icons.menu.active} className="app-menu-icon" />
-          </button>
-        </div>
+        <Header
+          irPara={irPara}
+          abrirMenu={() => setMenuAberto(true)}
+        />
 
         <MenuLateral
           aberto={menuAberto}
@@ -324,32 +122,52 @@ export default function MainApp() {
         />
 
         <div className="app-content">
-          {renderPagina()}
+          {renderPagina({
+            pagina,
+            mensagemAtual,
+            ultimaReceita,
+            receitas,
+            receitasRandom,
+            abrirReceita,
+            percentual,
+            toggleFavorito,
+            favoritos,
+            irPara,
+
+            receitasFiltradas,
+            receitasPage,
+
+            buscaNome,
+            setBuscaNome,
+            buscaCategoria,
+            setBuscaCategoria,
+
+            categorias,
+
+            modoExibicao,
+            setModoExibicao,
+
+            limite,
+            setLimite,
+
+            paginaAtual,
+            setPaginaAtual,
+
+            favoritosFiltrados,
+            favoritosPage,
+
+            receitaSelecionada,
+            marcarVideo,
+            progresso
+          })}
         </div>
 
         {/* FOOTER */}
-        <div className="app-footer">
-          {[
-            ["home", IMAGES.icons.home.active, "Início"],
-            ["receitas", IMAGES.icons.receitas.active, "Receitas"],
-            ["favoritos", IMAGES.icons.favoritos.active, "Favoritos"],
-            ["conquistas", IMAGES.icons.conquistas.active, "Conquistas"],
-            ["mais", IMAGES.icons.menu.active, "Mais"]
-          ].map(([page, icon, label]) => (
-            <div
-              key={page}
-              onClick={() =>
-                page === "mais"
-                  ? setMenuAberto(true)
-                  : irPara(page)
-              }
-              className={`app-footer-item ${pagina === page ? "active" : ""}`}
-            >
-              <img src={icon} className="app-footer-icon" />
-              <span className="app-footer-text">{label}</span>
-            </div>
-          ))}
-        </div>
+        <Footer
+          pagina={pagina}
+          irPara={irPara}
+          abrirMenu={() => setMenuAberto(true)}
+        />
 
       </div>
     </div>

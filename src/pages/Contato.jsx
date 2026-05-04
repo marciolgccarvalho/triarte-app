@@ -1,13 +1,9 @@
 import { IMAGES } from "../assets/images";
+import "../styles/components/contato.css";
 
 export default function Contato() {
 
   const itens = [
-    {
-      icon: IMAGES.icons.email.active,
-      label: "contato@triarte.com.br",
-      action: () => window.location.href = "mailto:contato@triarte.com.br"
-    },
     {
       icon: IMAGES.icons.site.active,
       label: "Site Oficial",
@@ -36,29 +32,50 @@ export default function Contato() {
   ];
 
   return (
-    <div className="page-container">
+    <div className="page">
 
-      <h2 className="mb-sm">Contato</h2>
+      <h2 className="page-title">Contato</h2>
 
-      <p className="small text-muted mb-md">
-        Entre em contato ou acesse nossas redes:
+      <p className="text-muted mb-md">
+        Fale conosco ou acompanhe nossos conteúdos:
       </p>
 
-      <div className="grid gap-sm">
+      {/* EMAIL DESTAQUE */}
+      <div
+        className="contato-destaque"
+        onClick={() => window.location.href = "mailto:contato@triarte.com.br"}
+      >
+        <img
+          src={IMAGES.icons.email.active}
+          alt="Email"
+          className="contato-icon"
+        />
+
+        <div>
+          <strong>Enviar email</strong>
+          <p>contato@triarte.com.br</p>
+        </div>
+      </div>
+
+      {/* REDES */}
+      <div className="contato-list">
 
         {itens.map((item, index) => (
-          <div
+          <button
             key={index}
             onClick={item.action}
-            className="card flex contato-item"
+            className="contato-item"
           >
             <img
               src={item.icon}
               alt={item.label}
               className="contato-icon"
             />
+
             <span>{item.label}</span>
-          </div>
+
+            <span className="contato-arrow">›</span>
+          </button>
         ))}
 
       </div>

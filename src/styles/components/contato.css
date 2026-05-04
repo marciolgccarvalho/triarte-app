@@ -1,14 +1,78 @@
-.contato-item {
+/* =========================
+   DESTAQUE (EMAIL)
+========================= */
+.contato-destaque {
+  display: flex;
   align-items: center;
-  gap: var(--space-sm);
+  gap: 14px;
+
+  padding: 16px;
+  border-radius: 16px;
+
+  background: #fff8e1;
+  border: 1px solid #ffe0b2;
+
+  margin-bottom: 20px;
   cursor: pointer;
-  transition: var(--transition-fast);
 }
 
+/* =========================
+   LISTA
+========================= */
+.contato-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* =========================
+   ITEM (AGORA É BOTÃO REAL)
+========================= */
+.contato-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+
+  width: 100%;
+  padding: 16px;
+
+  border-radius: 16px;
+  border: 1px solid #eee;
+  background: #fff;
+
+  font-size: 15px;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+/* LADO ESQUERDO */
+.contato-item img {
+  width: 28px;
+}
+
+/* TEXTO CENTRAL */
+.contato-item span {
+  flex: 1;
+  text-align: left;
+}
+
+/* SETA */
+.contato-arrow {
+  font-size: 20px;
+  color: #bbb;
+}
+
+/* HOVER (leve) */
 .contato-item:hover {
-  opacity: 0.8;
+  background: #f9f9f9;
 }
 
+/* =========================
+   ICONES
+========================= */
 .contato-icon {
-  width: 32px;
+  width: 28px;
 }

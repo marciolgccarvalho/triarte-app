@@ -78,8 +78,11 @@ input,
 textarea,
 select {
   outline: none;
+  background: transparent;
+  color: inherit;
 }
 
+/* Remove spinner number input */
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -93,7 +96,6 @@ ol {
 
 /* =========================
    LAYOUT BASE DO APP
-   ⚠️ CORRIGIDO PARA NÃO CONFLITAR
 ========================= */
 .app-container {
   width: 100%;
@@ -109,10 +111,59 @@ ol {
   overflow-x: hidden;
 }
 
-/* 🔥 IMPORTANTE:
-   removido box-shadow aqui
-   → quem controla layout agora é app-layout.css
-*/
+/* =========================
+   PADRÕES DE PÁGINA
+========================= */
+.page {
+  padding: 16px;
+  flex: 1;
+}
+
+.page-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+/* =========================
+   CARD PADRÃO
+========================= */
+.card {
+  background: #fff;
+  border: 1px solid var(--color-surface);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* =========================
+   CONFIGURAÇÕES (NOVO)
+========================= */
+.config-item {
+  border-bottom: 1px solid var(--color-surface);
+}
+
+.config-item:last-child {
+  border-bottom: none;
+}
+
+.config-header {
+  width: 100%;
+  padding: 12px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.config-content {
+  padding: 12px;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
 
 /* =========================
    ACESSIBILIDADE

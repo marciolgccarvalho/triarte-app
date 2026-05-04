@@ -1,200 +1,87 @@
 import React from "react";
 import { IMAGES } from "../assets/images";
+import "../styles/components/sobre.css";
 
 export default function Sobre() {
-  const [sobreAberto, setSobreAberto] = React.useState(null);
-
-  const secoes = [
-    {
-      id: "quemSomos",
-      titulo: "Quem Somos",
-      conteudo: (
-        <div>
-          <div className="text-center mb-md">
-            <img
-              src={IMAGES.ui.logo}
-              alt="Real Triarte"
-              className="sobre-logo"
-            />
-
-            <h3 className="mt-sm">Real Triarte</h3>
-
-            <p className="small text-muted">
-              Amigurumi com carinho, criatividade e passo a passo organizado.
-            </p>
-          </div>
-
-          <div className="card mb-sm">
-            <h4 className="mb-sm">Nossa história</h4>
-            <p className="small text-muted">
-              O Real Triarte nasceu para compartilhar receitas de amigurumi de forma simples, acessível e acolhedora.
-            </p>
-          </div>
-
-          <div className="card mb-sm">
-            <h4 className="mb-sm">O que você encontra aqui</h4>
-            <ul className="small text-muted">
-              <li>Receitas organizadas</li>
-              <li>Vídeos passo a passo</li>
-              <li>Lista de materiais</li>
-              <li>Favoritos</li>
-              <li>Progresso</li>
-              <li>Simulador de preço</li>
-            </ul>
-          </div>
-
-          <div className="card mb-sm">
-            <h4 className="mb-sm">Nossa missão</h4>
-            <p className="small text-muted">
-              Tornar o aprendizado do amigurumi mais leve, prático e organizado.
-            </p>
-          </div>
-
-          <div className="card text-center sobre-highlight">
-            <strong>Obrigado por fazer parte 💛</strong>
-          </div>
-        </div>
-      )
-    },
-
-    {
-      id: "privacidade",
-      titulo: "Política de Privacidade",
-      conteudo: (
-        <div>
-          <div className="card mb-sm">
-            <strong>Política de Privacidade</strong>
-            <p className="small text-muted">Última atualização: 2026</p>
-          </div>
-
-          <div className="card mb-sm">
-            <h4>Coleta de dados</h4>
-            <p className="small text-muted">
-              Não coletamos dados pessoais sensíveis.
-            </p>
-          </div>
-
-          <div className="card mb-sm">
-            <h4>Dados locais</h4>
-            <p className="small text-muted">
-              Progresso e favoritos ficam no dispositivo.
-            </p>
-          </div>
-
-          <div className="card text-center">
-            <strong>Dúvidas?</strong>
-
-            <button
-              onClick={() =>
-                (window.location.href = "mailto:contato@triarte.com.br")
-              }
-              className="btn btn-primary mt-sm btn-full"
-            >
-              📧 contato@triarte.com.br
-            </button>
-          </div>
-        </div>
-      )
-    },
-
-    {
-      id: "termos",
-      titulo: "Termos de Uso",
-      conteudo: (
-        <div>
-          <div className="card mb-sm">
-            <h4>Uso do aplicativo</h4>
-            <p className="small text-muted">
-              Voltado para aprendizado de amigurumi.
-            </p>
-          </div>
-
-          <div className="card mb-sm">
-            <h4>Conteúdo</h4>
-            <p className="small text-muted">
-              Inclui receitas, vídeos e ferramentas.
-            </p>
-          </div>
-
-          <div className="card mb-sm">
-            <h4>Uso pessoal</h4>
-            <p className="small text-muted">
-              Conteúdo para uso educacional.
-            </p>
-          </div>
-        </div>
-      )
-    },
-
-    {
-      id: "dados",
-      titulo: "Política de Dados",
-      conteudo: (
-        <div>
-          <div className="card mb-sm">
-            <p className="small text-muted">
-              Dados ficam apenas no dispositivo.
-            </p>
-          </div>
-        </div>
-      )
-    },
-
-    {
-      id: "aviso",
-      titulo: "Aviso Legal",
-      conteudo: (
-        <div>
-          <div className="card">
-            <p className="small text-muted">
-              O app não possui vínculo com marcas externas.
-            </p>
-          </div>
-        </div>
-      )
-    }
-  ];
-
   return (
-    <div className="page-container">
+    <div className="page">
 
-      <h2 className="mb-sm">Sobre</h2>
+      {/* HERO */}
+      <div className="sobre-hero">
+        <div className="sobre-brand">
+          <img
+            src={IMAGES.ui.logo}
+            alt="Real Triarte"
+            className="sobre-logo"
+          />
 
-      <p className="small text-muted mb-md">
-        Conheça o Real Triarte e informações do app.
-      </p>
+          <div className="sobre-brand-text">
+            <h1 className="sobre-title">Real Triarte</h1>
 
-      {secoes.map((item) => (
-        <div key={item.id} className="card mb-sm">
-
-          <div
-            onClick={() =>
-              setSobreAberto(sobreAberto === item.id ? null : item.id)
-            }
-            className="flex sobre-header"
-          >
-            <strong>{item.titulo}</strong>
-            <span>{sobreAberto === item.id ? "−" : "+"}</span>
+            <p className="sobre-subtitle">
+              Aprenda amigurumi de forma simples e no seu tempo
+            </p>
           </div>
-
-          {sobreAberto === item.id && (
-            <div className="mt-sm">
-              {item.conteudo}
-            </div>
-          )}
         </div>
-      ))}
+      </div>
 
-      <div className="card text-center mt-md sobre-footer">
-        <strong>Versão do App</strong>
+      {/* QUEM SOMOS */}
+      <div className="card">
+        <h3>Quem somos</h3>
 
-        <p className="small mt-sm">
-          Real Triarte v1.0.0
+        <p>
+          O Real Triarte foi criado para ajudar você a aprender amigurumi
+          de forma clara e sem complicação.
         </p>
 
-        <p className="small text-muted">
-          Desenvolvido no Brasil
+        <p className="mt-sm">
+          Aqui você encontra receitas organizadas e um caminho fácil
+          de seguir, mesmo que esteja começando agora.
         </p>
+      </div>
+
+      {/* O QUE VOCÊ ENCONTRA */}
+      <div className="card">
+        <h3>O que você encontra aqui</h3>
+
+        <ul className="sobre-list">
+          <li>✔ Receitas passo a passo</li>
+          <li>✔ Vídeos fáceis de acompanhar</li>
+          <li>✔ Controle do seu progresso</li>
+          <li>✔ Lista de materiais</li>
+          <li>✔ Receitas favoritas</li>
+          <li>✔ Simulador de preço</li>
+        </ul>
+      </div>
+
+      {/* DIFERENCIAL */}
+      <div className="card">
+        <h3>Por que usar o Real Triarte?</h3>
+
+        <p>
+          Tudo foi pensado para facilitar sua vida. Você não precisa
+          ficar procurando informações em vários lugares.
+        </p>
+
+        <p className="mt-sm">
+          Aqui você encontra tudo organizado, em um só lugar,
+          de forma simples e prática.
+        </p>
+      </div>
+
+      {/* DESTAQUE */}
+      <div className="card sobre-highlight">
+        <strong>Você consegue aprender no seu ritmo 💛</strong>
+
+        <p className="mt-sm">
+          Sem pressa, sem dificuldade, do seu jeito.
+        </p>
+      </div>
+
+      {/* FOOTER */}
+      <div className="sobre-footer">
+        <p>Real Triarte v1.0.0</p>
+        <p>Desenvolvido no Brasil</p>
       </div>
 
     </div>

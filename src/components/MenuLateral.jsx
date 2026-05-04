@@ -8,6 +8,12 @@ export default function MenuLateral({
 }) {
   if (!aberto) return null;
 
+  // 🔥 melhora UX: fecha menu ao navegar
+  const handleClick = (destino) => {
+    irPara(destino);
+    fechar();
+  };
+
   return (
     <div onClick={fechar} className="modal-overlay">
       <div
@@ -28,23 +34,31 @@ export default function MenuLateral({
           </div>
         </div>
 
-        {/* MENU */}
+        {/* MENU PRINCIPAL */}
         <div className="sidebar-list">
-          <Item icone={IMAGES.icons.home.active} texto="Início" onClick={() => irPara("home")} />
-          <Item icone={IMAGES.icons.receitas.active} texto="Receitas" onClick={() => irPara("receitas")} />
-          <Item icone={IMAGES.icons.favoritos.active} texto="Favoritos" onClick={() => irPara("favoritos")} />
-          <Item icone={IMAGES.icons.calculo.active} texto="Simulador" onClick={() => irPara("simulador")} />
-          <Item icone={IMAGES.icons.conquistas.active} texto="Conquistas" onClick={() => irPara("conquistas")} />
-          <Item icone={IMAGES.icons.abreviacao.active} texto="Abreviações" onClick={() => irPara("abreviatura")} />
+          <Item icone={IMAGES.icons.home.active} texto="Início" onClick={() => handleClick("home")} />
+          <Item icone={IMAGES.icons.receitas.active} texto="Receitas" onClick={() => handleClick("receitas")} />
+          <Item icone={IMAGES.icons.favoritos.active} texto="Favoritos" onClick={() => handleClick("favoritos")} />
+          <Item icone={IMAGES.icons.calculo.active} texto="Simulador" onClick={() => handleClick("simulador")} />
+          <Item icone={IMAGES.icons.conquistas.active} texto="Conquistas" onClick={() => handleClick("conquistas")} />
+          <Item icone={IMAGES.icons.abreviacao.active} texto="Abreviações" onClick={() => handleClick("abreviatura")} />
         </div>
 
         {/* DIVISOR */}
         <div className="sidebar-divider" />
 
-        {/* EXTRA */}
+        {/* MENU SECUNDÁRIO */}
         <div className="sidebar-list">
-          <Item icone={IMAGES.icons.sobre.active} texto="Sobre" onClick={() => irPara("sobre")} />
-          <Item icone={IMAGES.icons.contato.active} texto="Contato" onClick={() => irPara("contato")} />
+          <Item icone={IMAGES.icons.sobre.active} texto="Sobre" onClick={() => handleClick("sobre")} />
+
+          {/* CONFIGURAÇÕES (CORRETO) */}
+          <Item
+            icone={IMAGES.icons.configuracoes.active}
+            texto="Configurações"
+            onClick={() => handleClick("configuracoes")}
+          />
+
+          <Item icone={IMAGES.icons.contato.active} texto="Contato" onClick={() => handleClick("contato")} />
         </div>
       </div>
     </div>
@@ -58,7 +72,7 @@ function Item({ icone, texto, onClick = () => {} }) {
       className="sidebar-item"
     >
       <img
-        src={icone || IMAGES.ui.logo}
+        src={icone}
         alt={texto}
         className="sidebar-item-icon"
       />

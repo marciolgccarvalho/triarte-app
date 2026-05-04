@@ -1,12 +1,15 @@
 import React from "react";
 import ParabensModal from "../components/ParabensModal";
 import { IMAGES } from "../assets/images";
+import "../styles/components/receita-detalhe.css";
 
 export default function ReceitaDetalhe({
   receita,
   marcarVideo,
   percentual,
   progresso,
+  favoritos = [],            // 🔥 evita crash
+  toggleFavorito = () => {}, // 🔥 evita crash
   voltar,
   irPara
 }) {
@@ -15,7 +18,7 @@ export default function ReceitaDetalhe({
 
   if (!receita) {
     return (
-      <div className="p-md">
+      <div className="page">
         <h2>Nenhuma receita selecionada</h2>
       </div>
     );
@@ -48,34 +51,43 @@ export default function ReceitaDetalhe({
   }, [progresso, receita]);
 
   return (
-    <div className="page-container">
+    <div className="page">
 
-      {/* VOLTAR */}
-      <div className="mt-sm">
-        <button onClick={voltar} className="btn-icon">
+      {/* BOTÃO VOLTAR */}
+      <button onClick={voltar} className="btn-voltar">
+        <img
+          src={IMAGES.icons.anterior.active}
+          alt="Voltar"
+        />
+      </button>
+
+      {/* IMAGEM + FAVORITO */}
+      <div className="receita-hero-wrapper">
+        <img
+          src={receita.imagem}
+          alt={receita.nome}
+          className="receita-hero"
+        />
+
+        <button
+          className={`receita-fav ${favoritos.includes(receita.id) ? "ativo" : ""}`}
+          onClick={() => toggleFavorito(receita.id)}
+        >
           <img
-            src={IMAGES.icons.anterior.active}
-            alt="Voltar"
-            className="icon-sm"
+            src={IMAGES.icons.favoritos.active}
+            alt="Favoritar"
           />
         </button>
       </div>
 
-      {/* IMAGEM */}
-      <img
-        src={receita.imagem}
-        alt={receita.nome}
-        className="receita-img mt-sm"
-      />
-
       {/* TÍTULO */}
-      <h2 className="mt-sm">{receita.nome}</h2>
+      <h2 className="receita-titulo">{receita.nome}</h2>
 
       {/* DESCRIÇÃO */}
-      <p className="text-muted">{receita.descricao}</p>
+      <p className="receita-sub">{receita.descricao}</p>
 
       {/* BOTÃO MATERIAIS */}
-      <div className="mt-sm">
+      <div className="acoes">
         <button
           onClick={() => irPara("materiais")}
           className="btn btn-primary btn-full"
@@ -85,19 +97,19 @@ export default function ReceitaDetalhe({
       </div>
 
       {/* PROGRESSO */}
-      <div className="mt-md">
+      <div className="progresso-card">
         <strong>{percentual(receita)}% concluído</strong>
 
         <div className="progress-bar mt-sm">
           <div
             className="progress-fill"
-            style={{ "--progress": `${percentual(receita)}%` }}
+            style={{ width: `${percentual(receita)}%` }}
           />
         </div>
       </div>
 
       {/* VÍDEOS */}
-      <div className="grid gap-sm mt-md">
+      <div className="etapas">
         {receita.videos?.map((video, index) => {
           const vistos = progresso[receita.id]?.vistos || [];
           const visto = vistos.includes(index);
@@ -115,34 +127,17 @@ export default function ReceitaDetalhe({
           const bloqueado = aindaEhMembro(video);
 
           return (
-            <div key={index} className="card">
-              <strong>
-                {visto ? "✅" : "▶"} {video.titulo}
-              </strong>
+            <div key={index} className="etapa-item">
+              <div className="etapa-left">
+                <span className="etapa-icon">
+                  {visto ? "✔" : "▶"}
+                </span>
 
-              {bloqueado && (
-                <>
-                  <div className="mt-sm" />
+                <span>{video.titulo}</span>
+              </div>
 
-                  <button
-                    onClick={() =>
-                      window.open(
-                        "https://www.youtube.com/channel/UCCw427skU7og9hPNGIcPbrQ/join",
-                        "_blank"
-                      )
-                    }
-                    className="btn btn-danger btn-small"
-                  >
-                    Seja Membro e veja todos os vídeos
-                  </button>
+              <div className="flex gap-sm">
 
-                  <div className="small mt-sm">
-                    Liberado para todos dia {video.liberacao} às 16:30
-                  </div>
-                </>
-              )}
-
-              <div className="flex gap-sm mt-sm">
                 <button
                   onClick={() =>
                     window.open(
@@ -150,9 +145,9 @@ export default function ReceitaDetalhe({
                       "_blank"
                     )
                   }
-                  className="btn btn-primary btn-flex"
+                  className="btn btn-primary"
                 >
-                  {bloqueado ? "Liberado para Membros" : "Assistir"}
+                  {bloqueado ? "Membros" : "Assistir"}
                 </button>
 
                 <button
@@ -170,6 +165,7 @@ export default function ReceitaDetalhe({
                 >
                   ✓
                 </button>
+
               </div>
             </div>
           );
