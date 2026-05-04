@@ -1,3 +1,258 @@
+/* =========================
+   HEADER
+========================= */
+.receitas-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-sm);
+}
+
+.receitas-header h2 {
+  margin: 0;
+}
+
+.receitas-total {
+  font-size: 12px;
+  color: var(--color-text-light);
+}
+
+/* =========================
+   BUSCA
+========================= */
+.receitas-busca {
+  margin-bottom: var(--space-sm);
+}
+
+.receitas-busca input {
+  width: 100%;
+  height: 42px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1px solid var(--color-surface);
+  background: #fff;
+}
+
+/* =========================
+   FILTROS
+========================= */
+.receitas-filtros {
+  display: flex;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+}
+
+.receitas-filtros select {
+  flex: 1;
+  height: 42px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1px solid var(--color-surface);
+  background: #fff;
+  appearance: none;
+}
+
+/* =========================
+   CONTROLES
+========================= */
+.receitas-controles {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--space-sm);
+}
+
+.receitas-view {
+  display: flex;
+  gap: 8px;
+}
+
+.receitas-view .btn-icon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 10px;
+}
+
+.receitas-view .btn-icon span {
+  display: inline-block;
+}
+
+.btn-icon.ativo {
+  background: var(--color-primary);
+}
+
+/* =========================
+   GRID
+========================= */
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+/* =========================
+   LISTA COMPACTA PREMIUM
+========================= */
+.receitas-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.receita-list-card {
+  width: 100%;
+  min-height: 82px;
+
+  display: grid;
+  grid-template-columns: 76px 1fr 30px;
+  align-items: center;
+  gap: 10px;
+
+  padding: 8px;
+
+  border-radius: 14px;
+  border: 1px solid var(--color-surface);
+  background: #fff;
+
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.receita-list-card:hover {
+  background: #fafafa;
+}
+
+.receita-list-thumb {
+  width: 76px;
+  height: 66px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+.receita-list-info {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.receita-list-title {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--color-text);
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.receita-list-category {
+  font-size: 10px;
+  color: var(--color-text-light);
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.receita-list-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 3px;
+}
+
+.receita-list-progress .progress-bar {
+  width: 100%;
+  height: 4px;
+  background: #e9e9e9;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.receita-list-progress .progress-fill {
+  height: 100%;
+  background: var(--color-primary);
+  border-radius: 999px;
+}
+
+.receita-list-progress span {
+  font-size: 9px;
+  color: var(--color-text-light);
+}
+
+.receita-list-fav {
+  width: 28px;
+  height: 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  border: 1px solid #e0e0e0;
+  background: #fff;
+
+  box-shadow: var(--shadow-sm);
+}
+
+.receita-list-fav.ativo {
+  background: var(--color-primary);
+  border: none;
+}
+
+.receita-list-fav img {
+  width: 15px;
+  height: 15px;
+}
+
+.receita-list-fav.ativo img {
+  filter: brightness(0);
+}
+
+/* =========================
+   PAGINAÇÃO
+========================= */
+.receitas-paginacao {
+  margin-top: var(--space-md);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.receitas-paginacao .btn-icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  background: var(--color-primary);
+
+  border: none;
+}
+
+.receitas-paginacao .btn-icon img {
+  width: 18px;
+  height: 18px;
+}
+
+.receitas-paginacao .btn-icon:disabled {
+  opacity: 0.4;
+}
+
+/* =========================
+   IMAGEM PADRÃO
+========================= */
 .receita-img {
   width: 100%;
   height: 180px;
@@ -5,6 +260,9 @@
   border-radius: var(--radius-md);
 }
 
+/* =========================
+   BOTÕES AUXILIARES
+========================= */
 .btn-flex {
   flex: 1;
 }

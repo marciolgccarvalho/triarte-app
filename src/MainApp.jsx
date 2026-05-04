@@ -117,6 +117,7 @@ export default function MainApp() {
     );
   };
 
+  /* 🔥 FILTRO CORRETO */
   const receitasFiltradas = receitas.filter((r) => {
     const nome = buscaNome.toLowerCase();
 
@@ -158,7 +159,7 @@ export default function MainApp() {
             percentual={percentual}
             toggleFavorito={toggleFavorito}
             favoritos={favoritos}
-            irPara={irPara} // ✅ CORREÇÃO AQUI
+            irPara={irPara}
           />
         );
 
@@ -166,6 +167,7 @@ export default function MainApp() {
         return (
           <Receitas
             receitas={receitas}
+            receitasFiltradas={receitasFiltradas} 
             buscaNome={buscaNome}
             setBuscaNome={setBuscaNome}
             buscaCategoria={buscaCategoria}

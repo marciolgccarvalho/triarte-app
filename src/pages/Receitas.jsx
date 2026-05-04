@@ -4,6 +4,7 @@ import { IMAGES } from "../assets/images";
 
 export default function Receitas({
   receitas,
+  receitasFiltradas,
   buscaNome,
   setBuscaNome,
   buscaCategoria,
@@ -22,73 +23,81 @@ export default function Receitas({
   favoritos,
   percentual
 }) {
-
   React.useEffect(() => {
     if (paginaAtual > totalPaginas && totalPaginas > 0) {
       setPaginaAtual(1);
     }
-  }, [totalPaginas]);
+  }, [paginaAtual, totalPaginas, setPaginaAtual]);
 
   return (
     <div className="page-container">
+      <div className="receitas-header">
+        <h2>Todas as receitas</h2>
+        <span className="receitas-total">
+          {receitasFiltradas.length} receitas encontradas
+        </span>
+      </div>
 
-      <h2 className="mb-sm">Todas as receitas</h2>
+      <div className="receitas-busca">
+        <input
+          placeholder="Buscar receita..."
+          value={buscaNome}
+          onChange={(e) => {
+            setBuscaNome(e.target.value);
+            setPaginaAtual(1);
+          }}
+        />
+      </div>
 
-      {/* BUSCA */}
-      <input
-        className="input mb-sm"
-        placeholder="Buscar receita..."
-        value={buscaNome}
-        onChange={(e) => {
-          setBuscaNome(e.target.value);
-          setPaginaAtual(1);
-        }}
-      />
-
-      {/* CATEGORIA */}
-      <select
-        className="input mb-sm"
-        value={buscaCategoria}
-        onChange={(e) => {
-          setBuscaCategoria(e.target.value);
-          setPaginaAtual(1);
-        }}
-      >
-        <option value="">Todas as categorias</option>
-        {categorias.map((c) => (
-          <option key={c} value={c}>
-            {c}
-          </option>
-        ))}
-      </select>
-
-      {/* CONTROLES */}
-      <div className="flex gap-sm mb-md flex-center">
-        <button onClick={() => setModoExibicao("grid")} className="btn-icon">
-          <img src={IMAGES.icons.grid.active} className="icon-md" />
-        </button>
-
-        <button onClick={() => setModoExibicao("lista")} className="btn-icon">
-          <img src={IMAGES.icons.lista.active} className="icon-md" />
-        </button>
+      <div className="receitas-filtros">
+        <select
+          value={buscaCategoria}
+          onChange={(e) => {
+            setBuscaCategoria(e.target.value);
+            setPaginaAtual(1);
+          }}
+        >
+          <option value="">Todas as categorias</option>
+          {categorias.map((c) => (
+            <option key={c} value={c}>{c}</option>
+          ))}
+        </select>
 
         <select
-          className="input"
           value={limite}
           onChange={(e) => {
             setLimite(Number(e.target.value));
             setPaginaAtual(1);
           }}
         >
-          <option value={10}>10</option>
-          <option value={20}>20</option>
-          <option value={30}>30</option>
+          <option value={10}>10 por página</option>
+          <option value={20}>20 por página</option>
+          <option value={30}>30 por página</option>
         </select>
       </div>
 
-      {/* GRID */}
+      <div className="receitas-controles">
+        <div className="receitas-view">
+          <button
+            onClick={() => setModoExibicao("grid")}
+            className={`btn-icon ${modoExibicao === "grid" ? "ativo" : ""}`}
+          >
+            <img src={IMAGES.icons.grid.active} className="icon-md" alt="" />
+            <span>Grid</span>
+          </button>
+
+          <button
+            onClick={() => setModoExibicao("lista")}
+            className={`btn-icon ${modoExibicao === "lista" ? "ativo" : ""}`}
+          >
+            <img src={IMAGES.icons.lista.active} className="icon-md" alt="" />
+            <span>Lista</span>
+          </button>
+        </div>
+      </div>
+
       {modoExibicao === "grid" && (
-        <div className="grid gap-sm">
+        <div className="home-grid">
           {receitasPaginadas.map((r) => (
             <CardReceita
               key={r.id}
@@ -102,75 +111,78 @@ export default function Receitas({
         </div>
       )}
 
-      {/* LISTA */}
       {modoExibicao === "lista" && (
-        <div className="grid gap-sm">
-          {receitasPaginadas.map((r) => (
-            <div
-              key={r.id}
-              onClick={() => abrirReceita(r)}
-              className="card receita-list-item"
-            >
-              <strong>{r.nome}</strong>
+        <div className="receitas-lista">
+          {receitasPaginadas.map((r) => {
+            const pct = percentual(r);
+            const favoritoAtivo = favoritos?.includes(r.id);
 
-              <p className="small text-muted">
-                {r.categoria}
-              </p>
-
-              <img
-                src={r.imagem}
-                alt={r.nome}
-                loading="lazy"
-                decoding="async"
-                className="receita-list-img"
-              />
-
-              <div className="progress-bar mt-sm">
-                <div
-                  className="progress-fill"
-                  style={{ "--progress": `${percentual(r)}%` }}
+            return (
+              <div
+                key={r.id}
+                onClick={() => abrirReceita(r)}
+                className="receita-list-card"
+              >
+                <img
+                  src={r.imagem}
+                  alt={r.nome}
+                  className="receita-list-thumb"
                 />
-              </div>
 
-              <p className="small mt-sm">
-                {percentual(r)}%
-              </p>
-            </div>
-          ))}
+                <div className="receita-list-info">
+                  <strong className="receita-list-title">{r.nome}</strong>
+                  <span className="receita-list-category">{r.categoria}</span>
+
+                  <div className="receita-list-progress">
+                    <div className="progress-bar">
+                      <div
+                        className="progress-fill"
+                        style={{ width: `${pct}%` }}
+                      />
+                    </div>
+                    <span>{pct}% concluído</span>
+                  </div>
+                </div>
+
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleFavorito(r.id);
+                  }}
+                  className={`receita-list-fav ${favoritoAtivo ? "ativo" : ""}`}
+                >
+                  <img
+                    src={IMAGES.icons.favoritos.active}
+                    alt="Favoritar"
+                  />
+                </button>
+              </div>
+            );
+          })}
         </div>
       )}
 
-      {/* PAGINAÇÃO */}
       {totalPaginas > 0 && (
-        <div className="flex-center gap-sm mt-md">
+        <div className="receitas-paginacao">
           <button
             disabled={paginaAtual === 1}
             onClick={() => setPaginaAtual((p) => p - 1)}
             className="btn-icon"
           >
-            <img
-              src={IMAGES.icons.anterior.active}
-              className="icon-md"
-            />
+            <img src={IMAGES.icons.anterior.active} className="icon-md" alt="" />
           </button>
 
-          <span>
-            {paginaAtual} / {totalPaginas}
-          </span>
+          <span>{paginaAtual} / {totalPaginas}</span>
 
           <button
             disabled={paginaAtual === totalPaginas}
             onClick={() => setPaginaAtual((p) => p + 1)}
             className="btn-icon"
           >
-            <img
-              src={IMAGES.icons.proxima.active}
-              className="icon-md"
-            />
+            <img src={IMAGES.icons.proxima.active} className="icon-md" alt="" />
           </button>
         </div>
       )}
-
     </div>
   );
 }
