@@ -20,7 +20,7 @@ export default function CardReceita({
   return (
     <div
       onClick={() => abrirReceita && abrirReceita(receita)}
-      className="card-receita"
+      className="card-receita card-clickable"
     >
       {/* IMAGEM */}
       <img
@@ -32,7 +32,7 @@ export default function CardReceita({
       />
 
       {/* OVERLAY */}
-      <div className="card-receita-overlay" />
+      <div className="card-overlay" />
 
       {/* FAVORITO */}
       <button
@@ -40,22 +40,19 @@ export default function CardReceita({
           e.stopPropagation();
           toggleFavorito && toggleFavorito(receita.id);
         }}
-        className="card-favorito"
+        className={`card-favorito ${isFavorito ? "ativo" : ""}`}
+        aria-label="Favoritar receita"
       >
         <img
-          src={
-            isFavorito
-              ? IMAGES.icons.favoritos.active
-              : IMAGES.icons.favoritos.inactive
-          }
+          src={IMAGES.icons.favoritos.active}
           alt="Favorito"
           className="card-favorito-icon"
         />
       </button>
 
       {/* CONTEÚDO */}
-      <div className="card-receita-content">
-        <strong className="card-receita-title">
+      <div className="card-content">
+        <strong className="small">
           {receita?.nome || "Receita"}
         </strong>
 
@@ -67,7 +64,7 @@ export default function CardReceita({
           />
         </div>
 
-        <span className="card-receita-progress">
+        <span className="small">
           {progresso}% concluído
         </span>
       </div>

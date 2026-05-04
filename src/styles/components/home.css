@@ -1,5 +1,5 @@
 /* =========================
-   TOPO (CORRIGIDO)
+   TOPO
 ========================= */
 .home-top {
   margin-bottom: var(--space-md);
@@ -7,65 +7,60 @@
 }
 
 .home-title {
-  font-size: 18px;
+  font-size: var(--font-lg); /* 🔥 usa variável */
   font-weight: 600;
   display: block;
 }
 
 .home-subtitle {
-  font-size: 14px;
+  font-size: var(--font-md);
   color: var(--color-text-muted);
   margin-top: 4px;
 }
 
 /* =========================
-   CONTINUE (ESTILO IMAGEM)
+   CONTINUE
 ========================= */
 .home-continue-card {
   display: flex;
   align-items: center;
   gap: 12px;
 
-  background: #f5f5f5;
+  background: var(--color-bg-light);
   padding: 12px;
   border-radius: 16px;
 
-  border: 1px solid #e6e6e6;
+  border: 1px solid var(--color-surface);
 }
 
-/* IMAGEM */
 .home-continue-img {
-  width: 60px;
-  height: 60px;
+  width: 64px; /* 🔥 levemente maior */
+  height: 64px;
   border-radius: 12px;
   object-fit: cover;
 }
 
-/* INFO */
 .home-continue-info {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 4px;
 }
 
-/* TÍTULO */
 .home-continue-title {
-  font-size: 15px;
+  font-size: var(--font-md);
   font-weight: 600;
-  color: #000;
+  color: var(--color-text);
 }
 
-/* SUBTÍTULO */
 .home-continue-sub {
-  font-size: 12px;
-  color: #666;
+  font-size: var(--font-sm);
+  color: var(--color-text-muted);
 }
 
-/* PROGRESSO */
 .home-continue-progress {
-  font-size: 11px;
-  color: #666;
+  font-size: var(--font-sm);
+  color: var(--color-text-muted);
 }
 
 /* BOTÃO */
@@ -76,10 +71,10 @@
   border: none;
   border-radius: 10px;
 
-  padding: 8px 12px;
+  padding: 10px 14px; /* 🔥 melhor toque */
 
-  font-size: 13px;
-  font-weight: 600;
+  font-size: var(--font-sm);
+  font-weight: 700;
 
   display: flex;
   align-items: center;
@@ -124,11 +119,17 @@
   }
 }
 
-/* OVERLAY */
+/* =========================
+   OVERLAY (CORRIGIDO)
+========================= */
 .carousel-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.85),  /* 🔥 mais contraste */
+    rgba(0,0,0,0.25)
+  );
 }
 
 /* TEXTO */
@@ -136,17 +137,67 @@
   position: absolute;
   bottom: 12px;
   left: 12px;
+  right: 12px;
   color: #fff;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
-/* SETAS */
+/* =========================
+   FAVORITO NO CARROSSEL
+========================= */
+.carousel-favorito {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  width: 38px;
+  height: 38px;
+
+  border-radius: 50%;
+  background: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #ddd;
+  cursor: pointer;
+
+  z-index: 6;
+  box-shadow: var(--shadow-sm);
+}
+
+.carousel-favorito-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.carousel-favorito.ativo {
+  background: var(--color-primary);
+  border: none;
+}
+
+.carousel-favorito.ativo .carousel-favorito-icon {
+  filter: brightness(0);
+}
+
+/* =========================
+   SETAS (MELHORADAS)
+========================= */
 .carousel-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.5);
   color: #fff;
-  padding: 8px;
+
+  padding: 12px; /* 🔥 maior área de toque */
+  font-size: 18px;
+
   border-radius: 50%;
   cursor: pointer;
   z-index: 5;
@@ -161,25 +212,44 @@
   right: 10px;
 }
 
-/* DOTS */
+/* =========================
+   DOTS (MELHORADOS)
+========================= */
 .carousel-dots {
   position: absolute;
   bottom: 8px;
   width: 100%;
   display: flex;
   justify-content: center;
-  gap: 6px;
+  gap: 8px;
 }
 
 .dot {
-  width: 6px;
-  height: 6px;
-  background: #bbb;
+  width: 8px;  /* 🔥 maior */
+  height: 8px;
+  background: #ccc;
   border-radius: 50%;
 }
 
 .dot.active {
   background: var(--color-primary);
+}
+
+/* =========================
+   PROGRESSO CARROSSEL
+========================= */
+.carousel-progress {
+  margin-top: 6px;
+  background: rgba(255,255,255,0.4); /* 🔥 mais visível */
+}
+
+.carousel-progress .progress-fill {
+  background: var(--color-primary);
+}
+
+.carousel-progress-text {
+  font-size: var(--font-sm);
+  color: #fff;
 }
 
 /* =========================
@@ -191,6 +261,7 @@
 
 .home-section h3 {
   margin-bottom: 4px;
+  font-size: var(--font-md);
 }
 
 /* =========================
@@ -199,11 +270,11 @@
 .home-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-sm);
+  gap: 12px; /* 🔥 melhor espaçamento */
 }
 
 /* =========================
-   PROGRESS
+   PROGRESS GLOBAL
 ========================= */
 .progress-bar {
   width: 100%;
@@ -218,19 +289,4 @@
   background: var(--color-primary);
   width: 0%;
   transition: width 0.3s;
-}
-
-/* PROGRESSO NO CARROSSEL */
-.carousel-progress {
-  margin-top: 6px;
-  background: rgba(255,255,255,0.3);
-}
-
-.carousel-progress .progress-fill {
-  background: var(--color-primary);
-}
-
-.carousel-progress-text {
-  font-size: 11px;
-  color: #fff;
 }

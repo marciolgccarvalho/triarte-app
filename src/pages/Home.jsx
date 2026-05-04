@@ -1,6 +1,7 @@
 import React from "react";
 import CardReceita from "../components/CardReceita";
 import mensagensData from "../data/mensagens.json";
+import { IMAGES } from "../assets/images";
 
 export default function Home({
   ultimaReceita,
@@ -15,7 +16,7 @@ export default function Home({
   const hoje = React.useMemo(() => new Date(), []);
 
   /* =========================
-     MENSAGEM RANDOM (JSON)
+     MENSAGEM RANDOM
   ========================= */
   const mensagem = React.useMemo(() => {
     if (!mensagensData || mensagensData.length === 0) {
@@ -33,7 +34,7 @@ export default function Home({
   }, []);
 
   /* =========================
-     CARROSSEL (DESTAQUE)
+     CARROSSEL
   ========================= */
   const receitasDestaque = React.useMemo(() => {
     return receitas.filter((r) => {
@@ -81,7 +82,7 @@ export default function Home({
   };
 
   /* =========================
-     LISTA (8 RANDOM SEM DESTAQUE)
+     LISTA RANDOM
   ========================= */
   const receitasLista = React.useMemo(() => {
     const idsDestaque = new Set(receitasDestaque.map(r => r.id));
@@ -98,7 +99,6 @@ export default function Home({
         <strong className="home-title">
           💛 {mensagem.titulo}
         </strong>
-
         <p className="home-subtitle">
           {mensagem.subtitulo}
         </p>
@@ -107,7 +107,6 @@ export default function Home({
       {/* CONTINUAR */}
       {ultimaReceita && (
         <div className="home-continue-card">
-
           <img
             src={ultimaReceita.imagem}
             alt={ultimaReceita.nome}
@@ -115,7 +114,6 @@ export default function Home({
           />
 
           <div className="home-continue-info">
-
             <strong className="home-continue-title">
               {ultimaReceita.nome}
             </strong>
@@ -142,7 +140,6 @@ export default function Home({
           >
             ▶ Continuar
           </button>
-
         </div>
       )}
 
@@ -160,6 +157,23 @@ export default function Home({
               className="home-carousel-img carousel-fade"
             />
 
+            {/* 🔥 FAVORITO (AGORA EXISTE) */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                toggleFavorito(receitaAtual.id);
+              }}
+              className={`carousel-favorito ${
+                favoritos?.includes(receitaAtual.id) ? "ativo" : ""
+              }`}
+            >
+              <img
+                src={IMAGES.icons.favoritos.active}
+                alt="Favorito"
+                className="carousel-favorito-icon"
+              />
+            </button>
+
             {receitasDestaque.length > 1 && (
               <>
                 <button className="carousel-arrow left" onClick={anterior}>‹</button>
@@ -176,7 +190,6 @@ export default function Home({
                 Veja como ficará seu amigurumi
               </p>
 
-              {/* 🔥 PROGRESSO IGUAL AOS CARDS */}
               <div className="progress-bar carousel-progress">
                 <div
                   className="progress-fill"
@@ -202,12 +215,6 @@ export default function Home({
           </div>
         </div>
       )}
-
-      {/* SEÇÃO */}
-      <div className="home-section">
-        <h3>💛 Receitas para você hoje</h3>
-        
-      </div>
 
       {/* GRID */}
       <div className="home-grid">

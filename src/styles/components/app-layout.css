@@ -54,12 +54,12 @@
   border-bottom: 1px solid var(--color-surface);
 }
 
-/* CENTRALIZAÇÃO DO TÍTULO */
+/* TÍTULO CENTRAL */
 .app-title-center {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 16px;
+  font-size: var(--font-md);
   font-weight: 600;
   color: var(--color-text);
   pointer-events: none;
@@ -68,8 +68,8 @@
 /* BOTÕES HEADER */
 .app-logo-button,
 .app-menu-button {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
 
   background: transparent;
   border: none;
@@ -98,8 +98,8 @@
 
 /* ÍCONE MENU */
 .app-menu-icon {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   object-fit: contain;
 }
 
@@ -133,44 +133,50 @@
 
 /* ITEM */
 .app-footer-item {
+  position: relative;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  gap: 4px;
+  gap: 6px;
   cursor: pointer;
 
-  position: relative;
+  padding-top: 6px; /* espaço para o círculo */
 }
 
 /* ÍCONE */
 .app-footer-icon {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   object-fit: contain;
   z-index: 2;
+  opacity: 0.85;
 }
 
 /* TEXTO */
 .app-footer-text {
-  font-size: 10px;
-  color: var(--color-text-muted);
+  font-size: 11px;
+  color: #555;
   z-index: 2;
 }
 
 /* =========================
-   CÍRCULO BASE
+   CÍRCULO (CORRIGIDO)
 ========================= */
 .app-footer-item::before {
   content: "";
   position: absolute;
 
-  width: 35px;
-  height: 35px;
+  width: 40px;
+  height: 40px;
 
   border-radius: 50%;
-  top: -8px;
+
+  top: 0px; /* 🔥 alinhado com o ícone */
+  left: 50%;
+  transform: translateX(-50%);
 
   background: transparent;
   transition: var(--transition-fast);
@@ -196,6 +202,7 @@
 .app-footer-item.active .app-footer-icon,
 .app-footer-item:hover .app-footer-icon {
   filter: brightness(0);
+  opacity: 1;
 }
 
 /* TEXTO ATIVO */
