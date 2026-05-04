@@ -1,4 +1,11 @@
 /* =========================
+   RESET IMPORTANTE (🔥 ESSENCIAL)
+========================= */
+.simulador-page * {
+  box-sizing: border-box;
+}
+
+/* =========================
    PAGE
 ========================= */
 .simulador-page {
@@ -8,7 +15,7 @@
 }
 
 /* =========================
-   HEADER (🔥 COM IMAGEM)
+   HEADER
 ========================= */
 .simulador-header {
   display: flex;
@@ -17,8 +24,8 @@
 }
 
 .simulador-header-img {
-  width: 108px;
-  height: 108px;
+  width: 48px;
+  height: 48px;
   object-fit: contain;
   flex-shrink: 0;
 }
@@ -45,33 +52,36 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-}
 
-.simulador-card h3 {
-  margin: 0;
-  font-size: 14px;
+  width: 100%;
 }
 
 /* =========================
-   GRID DE INPUTS
+   GRID (🔥 CORRIGIDO)
 ========================= */
 .simulador-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
+  width: 100%;
 }
 
 /* =========================
-   INPUTS (🔥 ACESSÍVEL)
+   LABEL
 ========================= */
 .simulador-card label {
   display: flex;
   flex-direction: column;
   font-size: 12px;
   gap: 6px;
+  width: 100%;
 }
 
+/* =========================
+   INPUT (🔥 CORRIGIDO)
+========================= */
 .simulador-card input {
+  width: 100%;
   height: 46px;
   padding: 0 12px;
 
@@ -80,26 +90,19 @@
 
   font-size: 15px;
   background: #fff;
-
-  transition: var(--transition-fast);
 }
 
 /* foco */
 .simulador-card input:focus {
   outline: none;
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 2px rgba(255, 200, 0, 0.2);
 }
 
 /* =========================
-   LUCRO (DESTAQUE)
+   LUCRO
 ========================= */
 .simulador-lucro {
   border: 2px solid var(--color-primary);
-}
-
-.simulador-lucro input {
-  font-weight: 700;
 }
 
 .simulador-lucro p {
@@ -109,7 +112,7 @@
 }
 
 /* =========================
-   RESULTADO (🔥 PRINCIPAL)
+   RESULTADO
 ========================= */
 .simulador-resultado {
   background: #fff;
@@ -124,19 +127,13 @@
   text-align: center;
 }
 
-.simulador-resultado span {
-  font-size: 12px;
-  color: var(--color-text-light);
-}
-
 .simulador-resultado strong {
-  font-size: 28px;
+  font-size: 26px;
   margin-top: 6px;
-  letter-spacing: 0.5px;
 }
 
 /* =========================
-   BOTÃO COPIAR
+   BOTÃO
 ========================= */
 .simulador-resultado button {
   margin-top: 14px;
@@ -152,33 +149,13 @@
 
   font-size: 14px;
   font-weight: 700;
-
-  transition: var(--transition-fast);
-}
-
-.simulador-resultado button:active {
-  transform: scale(0.97);
-}
-
-.simulador-resultado button:disabled {
-  opacity: 0.4;
-  transform: none;
 }
 
 /* =========================
-   RESPONSIVO
+   RESPONSIVO (🔥 CRUCIAL)
 ========================= */
-@media (max-width: 360px) {
+@media (max-width: 480px) {
   .simulador-grid {
     grid-template-columns: 1fr;
-  }
-
-  .simulador-header {
-    align-items: flex-start;
-  }
-
-  .simulador-header-img {
-    width: 40px;
-    height: 40px;
   }
 }
