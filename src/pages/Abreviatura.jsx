@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/components/abreviacoes.css";
 import { IMAGES } from "../assets/images";
 
 export default function Abreviacoes({ irPara }) {
@@ -21,20 +22,14 @@ export default function Abreviacoes({ irPara }) {
   const [copiado, setCopiado] = React.useState(false);
 
   const copiar = async () => {
-    const texto = lista
-      .map((item) => `${item.abrev} - ${item.nome}`)
-      .join("\n");
+    const texto = lista.map(i => `${i.abrev} - ${i.nome}`).join("\n");
 
-    try {
-      await navigator.clipboard.writeText(texto);
-      setCopiado(true);
-    } catch {
-      setCopiado(false);
-    }
+    await navigator.clipboard.writeText(texto);
+    setCopiado(true);
   };
 
   return (
-    <div className="page-container">
+    <div className="page-container abreviacoes-page">
 
       {/* HEADER */}
       <div className="abreviacoes-header">
@@ -48,24 +43,22 @@ export default function Abreviacoes({ irPara }) {
 
         <div>
           <h2>Abreviações</h2>
-          <p>
-            Guia rápido para entender receitas de crochê e amigurumi.
-          </p>
+          <p>Guia rápido para receitas de crochê e amigurumi</p>
         </div>
 
       </div>
 
-      {/* LISTA */}
-      <div className="abreviacoes-lista">
+      {/* CARD LISTA */}
+      <div className="abreviacoes-card">
 
         {lista.map((item, index) => (
-          <div key={index} className="abreviacao-item">
+          <div key={index} className="abreviacao-row">
 
-            <span className="abreviacao-chave">
+            <span className="abreviacao-tag">
               {item.abrev}
             </span>
 
-            <span className="abreviacao-valor">
+            <span className="abreviacao-desc">
               {item.nome}
             </span>
 
@@ -76,7 +69,7 @@ export default function Abreviacoes({ irPara }) {
 
       {/* BOTÃO */}
       <button
-        className="btn-primary abreviacoes-btn"
+        className="btn-primary abreviacoes-copy"
         onClick={copiar}
       >
         {copiado ? "Copiado!" : "Copiar abreviações"}

@@ -1,12 +1,19 @@
 /* =========================
+   PAGE
+========================= */
+.abreviacoes-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* =========================
    HEADER
 ========================= */
 .abreviacoes-header {
   display: flex;
   align-items: flex-start;
   gap: 12px;
-
-  margin-bottom: var(--space-md);
 }
 
 .abreviacoes-header h2 {
@@ -20,12 +27,9 @@
 }
 
 /* =========================
-   LISTA
+   CARD
 ========================= */
-.abreviacoes-lista {
-  display: flex;
-  flex-direction: column;
-
+.abreviacoes-card {
   background: #fff;
   border: 1px solid var(--color-surface);
   border-radius: 16px;
@@ -34,64 +38,50 @@
 }
 
 /* =========================
-   ITEM
+   ROW
 ========================= */
-.abreviacao-item {
+.abreviacao-row {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 12px;
 
   padding: 14px;
 
   border-bottom: 1px solid var(--color-surface);
-
-  font-size: 14px;
 }
 
-/* remove linha do último */
-.abreviacao-item:last-child {
+.abreviacao-row:last-child {
   border-bottom: none;
 }
 
 /* =========================
-   CHAVE (ESQUERDA)
+   TAG (🔥 DESTAQUE)
 ========================= */
-.abreviacao-chave {
+.abreviacao-tag {
+  background: var(--color-primary);
+  padding: 6px 10px;
+
+  border-radius: 8px;
+
   font-weight: 700;
-  min-width: 60px;
+  font-size: 12px;
+
+  min-width: 50px;
+  text-align: center;
 }
 
 /* =========================
-   VALOR (DIREITA)
+   DESCRIÇÃO
 ========================= */
-.abreviacao-valor {
-  text-align: right;
-  color: var(--color-text-light);
+.abreviacao-desc {
+  font-size: 14px;
 }
 
 /* =========================
    BOTÃO
 ========================= */
-.abreviacoes-btn {
-  margin-top: var(--space-md);
-
+.abreviacoes-copy {
   height: 46px;
   border-radius: 14px;
-
   font-weight: 700;
-}
-
-/* =========================
-   RESPONSIVO
-========================= */
-@media (max-width: 360px) {
-  .abreviacao-item {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
-  }
-
-  .abreviacao-valor {
-    text-align: left;
-  }
 }
