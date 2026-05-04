@@ -8,14 +8,25 @@
 }
 
 /* =========================
-   HEADER
+   HEADER (🔥 LADO A LADO)
 ========================= */
 .abreviacoes-header {
   display: flex;
-  align-items: flex-start;
+  align-items: center;      /* 🔥 alinha vertical */
   gap: 12px;
+
+  text-align: left;         /* 🔥 texto alinhado à esquerda */
 }
 
+/* IMAGEM */
+.abreviacoes-header-img {
+  width: 60px;              /* 🔥 menor e proporcional */
+  height: auto;
+
+  flex-shrink: 0;           /* 🔥 não deixa a imagem encolher */
+}
+
+/* TEXTO */
 .abreviacoes-header h2 {
   margin: 0;
 }
@@ -25,7 +36,6 @@
   color: var(--color-text-light);
   margin-top: 4px;
 }
-
 /* =========================
    CARD
 ========================= */
@@ -33,19 +43,18 @@
   background: #fff;
   border: 1px solid var(--color-surface);
   border-radius: 16px;
-
   overflow: hidden;
 }
 
 /* =========================
-   ROW
+   ROW (🔥 COMPACTADO)
 ========================= */
 .abreviacao-row {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 
-  padding: 14px;
+  padding: 10px 12px;
 
   border-bottom: 1px solid var(--color-surface);
 }
@@ -59,29 +68,72 @@
 ========================= */
 .abreviacao-tag {
   background: var(--color-primary);
-  padding: 6px 10px;
 
-  border-radius: 8px;
+  padding: 4px 8px;
+
+  border-radius: 6px;
 
   font-weight: 700;
-  font-size: 12px;
+  font-size: 11px;
 
-  min-width: 50px;
+  min-width: 44px;
   text-align: center;
 }
 
 /* =========================
-   DESCRIÇÃO
+   TEXTO
 ========================= */
 .abreviacao-desc {
-  font-size: 14px;
+  font-size: 13px;
 }
 
 /* =========================
-   BOTÃO
+   BOTÃO (🔥 CORRIGIDO)
 ========================= */
 .abreviacoes-copy {
+  margin-top: 12px;
+
   height: 46px;
+  width: 100%;
+
   border-radius: 14px;
+  border: none;
+
+  background: var(--color-primary);
+  color: #000;
+
+  font-size: 14px;
   font-weight: 700;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+.abreviacoes-copy:active {
+  transform: scale(0.98);
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+@media (max-width: 360px) {
+  .abreviacao-row {
+    padding: 9px 10px;
+  }
+
+  .abreviacao-tag {
+    min-width: 40px;
+    font-size: 10px;
+  }
+
+  .abreviacao-desc {
+    font-size: 12px;
+  }
+
+  .abreviacoes-header-img {
+    width: 100px;
+  }
 }

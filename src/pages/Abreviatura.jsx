@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/components/abreviacoes.css";
 import { IMAGES } from "../assets/images";
 
-export default function Abreviacoes({ irPara }) {
+export default function Abreviatura() {
 
   const lista = [
     { abrev: "pb.", nome: "Ponto Baixo" },
@@ -22,7 +22,9 @@ export default function Abreviacoes({ irPara }) {
   const [copiado, setCopiado] = React.useState(false);
 
   const copiar = async () => {
-    const texto = lista.map(i => `${i.abrev} - ${i.nome}`).join("\n");
+    const texto = lista
+      .map((item) => `${item.abrev} - ${item.nome}`)
+      .join("\n");
 
     await navigator.clipboard.writeText(texto);
     setCopiado(true);
@@ -31,15 +33,14 @@ export default function Abreviacoes({ irPara }) {
   return (
     <div className="page-container abreviacoes-page">
 
-      {/* HEADER */}
+      {/* HEADER COM IMAGEM */}
       <div className="abreviacoes-header">
 
-        <button
-          className="btn-icon"
-          onClick={() => irPara("mais")}
-        >
-          <img src={IMAGES.icons.anterior.active} />
-        </button>
+        <img
+          src={IMAGES.ui.abreviacoes}
+          alt="Abreviações"
+          className="abreviacoes-header-img"
+        />
 
         <div>
           <h2>Abreviações</h2>
@@ -48,7 +49,7 @@ export default function Abreviacoes({ irPara }) {
 
       </div>
 
-      {/* CARD LISTA */}
+      {/* LISTA */}
       <div className="abreviacoes-card">
 
         {lista.map((item, index) => (

@@ -106,7 +106,8 @@ import primeiroPassoInactive from './conquistas/primeiro-passo-inactive.png'
 // ==========================
 import logo from './ui/logo.webp'
 import emptyFavoritos from './ui/empty-favoritos.png'
-import simuladorPreco from './ui/simulador-preco.png' // 🔥 NOVO
+import simuladorPreco from './ui/simulador-preco.png'
+import abreviacoes from './ui/abreviacoes.png' // 🔥 NOVO
 
 // ==========================
 // EXPORTAÇÃO CENTRAL
@@ -184,6 +185,7 @@ export const IMAGES = {
   ui: {
     logo,
     emptyFavoritos,
-    simuladorPreco // 🔥 AQUI
+    simuladorPreco,
+    abreviacoes // 🔥 AQUI FINAL
   }
 }
