@@ -1,5 +1,184 @@
+/* =========================
+   PAGE
+========================= */
+.simulador-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* =========================
+   HEADER (🔥 COM IMAGEM)
+========================= */
+.simulador-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.simulador-header-img {
+  width: 108px;
+  height: 108px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.simulador-header h2 {
+  margin: 0;
+}
+
+.simulador-header p {
+  font-size: 13px;
+  color: var(--color-text-light);
+  margin-top: 4px;
+}
+
+/* =========================
+   CARDS
+========================= */
+.simulador-card {
+  background: #fff;
+  border: 1px solid var(--color-surface);
+  border-radius: 16px;
+  padding: 14px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.simulador-card h3 {
+  margin: 0;
+  font-size: 14px;
+}
+
+/* =========================
+   GRID DE INPUTS
+========================= */
+.simulador-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* =========================
+   INPUTS (🔥 ACESSÍVEL)
+========================= */
+.simulador-card label {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  gap: 6px;
+}
+
+.simulador-card input {
+  height: 46px;
+  padding: 0 12px;
+
+  border-radius: 12px;
+  border: 1px solid var(--color-surface);
+
+  font-size: 15px;
+  background: #fff;
+
+  transition: var(--transition-fast);
+}
+
+/* foco */
+.simulador-card input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(255, 200, 0, 0.2);
+}
+
+/* =========================
+   LUCRO (DESTAQUE)
+========================= */
+.simulador-lucro {
+  border: 2px solid var(--color-primary);
+}
+
+.simulador-lucro input {
+  font-weight: 700;
+}
+
+.simulador-lucro p {
+  font-size: 11px;
+  color: var(--color-text-light);
+  margin: 0;
+}
+
+/* =========================
+   RESULTADO (🔥 PRINCIPAL)
+========================= */
 .simulador-resultado {
-  padding: var(--space-sm);
-  background: var(--color-accent);
-  border-radius: var(--radius-md);
+  background: #fff;
+  border: 2px solid var(--color-primary);
+  border-radius: 18px;
+
+  padding: 18px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.simulador-resultado span {
+  font-size: 12px;
+  color: var(--color-text-light);
+}
+
+.simulador-resultado strong {
+  font-size: 28px;
+  margin-top: 6px;
+  letter-spacing: 0.5px;
+}
+
+/* =========================
+   BOTÃO COPIAR
+========================= */
+.simulador-resultado button {
+  margin-top: 14px;
+
+  height: 44px;
+  padding: 0 18px;
+
+  border-radius: 12px;
+  border: none;
+
+  background: var(--color-primary);
+  color: #000;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  transition: var(--transition-fast);
+}
+
+.simulador-resultado button:active {
+  transform: scale(0.97);
+}
+
+.simulador-resultado button:disabled {
+  opacity: 0.4;
+  transform: none;
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+@media (max-width: 360px) {
+  .simulador-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .simulador-header {
+    align-items: flex-start;
+  }
+
+  .simulador-header-img {
+    width: 40px;
+    height: 40px;
+  }
 }

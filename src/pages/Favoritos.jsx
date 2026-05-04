@@ -3,212 +3,257 @@ import CardReceita from "../components/CardReceita";
 import { IMAGES } from "../assets/images";
 
 export default function Favoritos({
-  receitas = [],
-  favoritos = [],
+  receitasFiltradas = [],
+  receitasPaginadas = [],
+  totalPaginas = 1,
+
+  buscaNome,
+  setBuscaNome,
+  buscaCategoria,
+  setBuscaCategoria,
+
+  categorias = [],
+
+  modoExibicao,
+  setModoExibicao,
+
+  limite,
+  setLimite,
+
+  paginaAtual,
+  setPaginaAtual,
+
   abrirReceita,
+  toggleFavorito,
+  favoritos = [],
   percentual,
-  toggleFavorito
+  irPara // 🔥 importante pro botão
 }) {
-  const [buscaNome, setBuscaNome] = React.useState("");
-  const [buscaCategoria, setBuscaCategoria] = React.useState("");
-  const [modoExibicao, setModoExibicao] = React.useState("grid");
-  const [limite, setLimite] = React.useState(10);
-  const [paginaAtual, setPaginaAtual] = React.useState(1);
 
-  const listaBase = (receitas || []).filter((r) =>
-    (favoritos || []).includes(r.id)
-  );
+  /* =========================
+     EMPTY STATE (🔥 PREMIUM)
+  ========================= */
+  if (receitasFiltradas.length === 0) {
+    return (
+      <div className="page-container">
 
-  const categorias = [
-    ...new Set(listaBase.map((r) => r.categoria))
-  ];
+        <h2 className="mb-sm">
+          Minhas receitas favoritas
+        </h2>
 
-  const listaFiltrada = React.useMemo(() => {
-    const nome = buscaNome.toLowerCase();
+        <div className="favoritos-empty">
 
-    return listaBase.filter((r) => {
-      return (
-        (nome.length < 3 || r.nome.toLowerCase().includes(nome)) &&
-        (buscaCategoria === "" || r.categoria === buscaCategoria)
-      );
-    });
-  }, [listaBase, buscaNome, buscaCategoria]);
-
-  const totalPaginas = Math.max(
-    1,
-    Math.ceil(listaFiltrada.length / limite)
-  );
-
-  const listaPaginada = React.useMemo(() => {
-    return listaFiltrada.slice(
-      (paginaAtual - 1) * limite,
-      paginaAtual * limite
-    );
-  }, [listaFiltrada, paginaAtual, limite]);
-
-  React.useEffect(() => {
-    setPaginaAtual(1);
-  }, [buscaNome, buscaCategoria, limite]);
-
-  React.useEffect(() => {
-    if (paginaAtual > totalPaginas) {
-      setPaginaAtual(1);
-    }
-  }, [totalPaginas]);
-
-  return (
-    <div className="page-container">
-      <h2 className="mb-sm">
-        Minhas receitas favoritas
-      </h2>
-
-      {/* SEM FAVORITOS */}
-      {listaBase.length === 0 ? (
-        <div className="card text-center mt-md favoritos-empty">
           <img
-            src={IMAGES.icons.favoritos.active}
-            loading="lazy"
-            decoding="async"
+            src={IMAGES.ui.emptyFavoritos}
+            alt="Sem favoritos"
             className="favoritos-empty-icon"
           />
 
-          <h3 className="mt-sm">Nenhuma favorita ainda</h3>
+          <h3>
+            Nada por aqui ainda 💛
+          </h3>
 
-          <p className="small text-muted mt-sm">
-            Toque no coração das receitas para salvar aqui ❤️
+          <p>
+            Toque no coração das receitas que você gosta
+            e monte sua lista favorita.
           </p>
-        </div>
-      ) : (
-        <>
-          {/* BUSCA */}
-          <input
-            className="input mb-sm"
-            placeholder="Buscar favorita..."
-            value={buscaNome}
-            onChange={(e) => setBuscaNome(e.target.value)}
-          />
 
-          {/* CATEGORIA */}
-          <select
-            className="input mb-sm"
-            value={buscaCategoria}
-            onChange={(e) => setBuscaCategoria(e.target.value)}
+          <button
+            className="btn-primary"
+            onClick={() => irPara("receitas")}
           >
-            <option value="">Todas as categorias</option>
-            {categorias.map((c) => (
-              <option key={c} value={c}>
-                {c}
-              </option>
-            ))}
-          </select>
+            Ver receitas
+          </button>
 
-          {/* CONTROLES */}
-          <div className="flex gap-sm mb-md flex-center">
-            <button onClick={() => setModoExibicao("grid")} className="btn-icon">
-              <img src={IMAGES.icons.grid.active} className="icon-md" />
-            </button>
+        </div>
 
-            <button onClick={() => setModoExibicao("lista")} className="btn-icon">
-              <img src={IMAGES.icons.lista.active} className="icon-md" />
-            </button>
+      </div>
+    );
+  }
 
-            <select
-              className="input"
-              value={limite}
-              onChange={(e) => setLimite(Number(e.target.value))}
-            >
-              <option value={10}>10</option>
-              <option value={20}>20</option>
-              <option value={30}>30</option>
-            </select>
-          </div>
+  return (
+    <div className="page-container">
 
-          {/* GRID */}
-          {modoExibicao === "grid" && (
-            <div className="grid gap-sm">
-              {listaPaginada.map((r) => (
-                <CardReceita
-                  key={r.id}
-                  receita={r}
-                  abrirReceita={abrirReceita}
-                  toggleFavorito={toggleFavorito}
-                  favoritos={favoritos}
-                  percentual={percentual}
+      {/* HEADER */}
+      <div className="receitas-header">
+        <h2>Minhas receitas favoritas</h2>
+
+        <span className="receitas-total">
+          {receitasFiltradas.length} receitas encontradas
+        </span>
+      </div>
+
+      {/* BUSCA */}
+      <div className="receitas-busca">
+        <input
+          placeholder="Buscar receita..."
+          value={buscaNome}
+          onChange={(e) => {
+            setBuscaNome(e.target.value);
+            setPaginaAtual(1);
+          }}
+        />
+      </div>
+
+      {/* FILTROS */}
+      <div className="receitas-filtros">
+
+        <select
+          value={buscaCategoria}
+          onChange={(e) => {
+            setBuscaCategoria(e.target.value);
+            setPaginaAtual(1);
+          }}
+        >
+          <option value="">Todas as categorias</option>
+          {categorias.map((c) => (
+            <option key={c} value={c}>{c}</option>
+          ))}
+        </select>
+
+        <select
+          value={limite}
+          onChange={(e) => {
+            setLimite(Number(e.target.value));
+            setPaginaAtual(1);
+          }}
+        >
+          <option value={10}>10 por página</option>
+          <option value={20}>20 por página</option>
+          <option value={30}>30 por página</option>
+        </select>
+
+      </div>
+
+      {/* CONTROLES */}
+      <div className="receitas-controles">
+        <div className="receitas-view">
+
+          <button
+            onClick={() => setModoExibicao("grid")}
+            className={`btn-icon ${modoExibicao === "grid" ? "ativo" : ""}`}
+          >
+            <img src={IMAGES.icons.grid.active} className="icon-md" />
+            <span>Grid</span>
+          </button>
+
+          <button
+            onClick={() => setModoExibicao("lista")}
+            className={`btn-icon ${modoExibicao === "lista" ? "ativo" : ""}`}
+          >
+            <img src={IMAGES.icons.lista.active} className="icon-md" />
+            <span>Lista</span>
+          </button>
+
+        </div>
+      </div>
+
+      {/* GRID */}
+      {modoExibicao === "grid" && (
+        <div className="home-grid">
+          {receitasPaginadas.map((r) => (
+            <CardReceita
+              key={r.id}
+              receita={r}
+              abrirReceita={abrirReceita}
+              toggleFavorito={toggleFavorito}
+              favoritos={favoritos}
+              percentual={percentual}
+            />
+          ))}
+        </div>
+      )}
+
+      {/* LISTA */}
+      {modoExibicao === "lista" && (
+        <div className="receitas-lista">
+          {receitasPaginadas.map((r) => {
+
+            const pct = percentual(r);
+
+            return (
+              <div
+                key={r.id}
+                onClick={() => abrirReceita(r)}
+                className="receita-list-card"
+              >
+
+                <img
+                  src={r.imagem}
+                  alt={r.nome}
+                  className="receita-list-thumb"
                 />
-              ))}
-            </div>
-          )}
 
-          {/* LISTA */}
-          {modoExibicao === "lista" && (
-            <div className="grid gap-sm">
-              {listaPaginada.map((r) => (
-                <div
-                  key={r.id}
-                  onClick={() => abrirReceita(r)}
-                  className="card favoritos-item"
-                >
-                  <strong>{r.nome}</strong>
+                <div className="receita-list-info">
 
-                  <p className="small text-muted">
+                  <strong className="receita-list-title">
+                    {r.nome}
+                  </strong>
+
+                  <span className="receita-list-category">
                     {r.categoria}
-                  </p>
+                  </span>
 
-                  <img
-                    src={r.imagem}
-                    alt={r.nome}
-                    loading="lazy"
-                    decoding="async"
-                    className="favoritos-img"
-                  />
+                  <div className="receita-list-progress">
 
-                  <div className="progress-bar mt-sm">
-                    <div
-                      className="progress-fill"
-                      style={{ "--progress": `${percentual(r)}%` }}
-                    />
+                    <div className="progress-bar">
+                      <div
+                        className="progress-fill"
+                        style={{ width: `${pct}%` }}
+                      />
+                    </div>
+
+                    <span>{pct}% concluído</span>
+
                   </div>
 
-                  <p className="small mt-sm">
-                    {percentual(r)}%
-                  </p>
                 </div>
-              ))}
-            </div>
-          )}
 
-          {/* PAGINAÇÃO */}
-          {listaFiltrada.length > 0 && (
-            <div className="flex-center gap-sm mt-md">
-              <button
-                disabled={paginaAtual === 1}
-                onClick={() => setPaginaAtual((p) => p - 1)}
-                className="btn-icon"
-              >
-                <img
-                  src={IMAGES.icons.anterior.active}
-                  className="icon-md"
-                />
-              </button>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleFavorito(r.id);
+                  }}
+                  className={`receita-list-fav ${
+                    favoritos.includes(r.id) ? "ativo" : ""
+                  }`}
+                >
+                  <img src={IMAGES.icons.favoritos.active} />
+                </button>
 
-              <span>
-                {paginaAtual} / {totalPaginas}
-              </span>
-
-              <button
-                disabled={paginaAtual === totalPaginas}
-                onClick={() => setPaginaAtual((p) => p + 1)}
-                className="btn-icon"
-              >
-                <img
-                  src={IMAGES.icons.proxima.active}
-                  className="icon-md"
-                />
-              </button>
-            </div>
-          )}
-        </>
+              </div>
+            );
+          })}
+        </div>
       )}
+
+      {/* PAGINAÇÃO */}
+      {totalPaginas > 0 && (
+        <div className="receitas-paginacao">
+
+          <button
+            disabled={paginaAtual === 1}
+            onClick={() => setPaginaAtual((p) => p - 1)}
+            className="btn-icon"
+          >
+            <img src={IMAGES.icons.anterior.active} className="icon-md" />
+          </button>
+
+          <span>
+            {paginaAtual} / {totalPaginas}
+          </span>
+
+          <button
+            disabled={paginaAtual === totalPaginas}
+            onClick={() => setPaginaAtual((p) => p + 1)}
+            className="btn-icon"
+          >
+            <img src={IMAGES.icons.proxima.active} className="icon-md" />
+          </button>
+
+        </div>
+      )}
+
     </div>
   );
 }

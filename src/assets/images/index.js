@@ -34,7 +34,7 @@ import menuActive from './icons/menu-active.png'
 
 import listaActive from './icons/lista-active.png'
 import listaInactive from './icons/lista-inactive.png'
-import listaActiveHome from './icons/lista-active-home.png' // 🔥 NOVO
+import listaActiveHome from './icons/lista-active-home.png'
 
 import instagramActive from './icons/instagram-active.png'
 
@@ -105,6 +105,8 @@ import primeiroPassoInactive from './conquistas/primeiro-passo-inactive.png'
 // UI
 // ==========================
 import logo from './ui/logo.webp'
+import emptyFavoritos from './ui/empty-favoritos.png'
+import simuladorPreco from './ui/simulador-preco.png' // 🔥 NOVO
 
 // ==========================
 // EXPORTAÇÃO CENTRAL
@@ -141,7 +143,7 @@ export const IMAGES = {
     lista: {
       active: listaActive,
       inactive: listaInactive,
-      home: listaActiveHome // 🔥 NOVO
+      home: listaActiveHome
     },
 
     instagram: { active: instagramActive },
@@ -180,6 +182,8 @@ export const IMAGES = {
   },
 
   ui: {
-    logo
+    logo,
+    emptyFavoritos,
+    simuladorPreco // 🔥 AQUI
   }
 }

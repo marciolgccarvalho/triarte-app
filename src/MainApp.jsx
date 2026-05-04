@@ -24,6 +24,7 @@ export default function MainApp() {
   const [receitaSelecionada, setReceitaSelecionada] = React.useState(null);
   const [rotacionado, setRotacionado] = React.useState(false);
 
+  // 🔥 ESTADOS GLOBAIS (serão reutilizados em favoritos)
   const [buscaNome, setBuscaNome] = React.useState("");
   const [buscaCategoria, setBuscaCategoria] = React.useState("");
   const [modoExibicao, setModoExibicao] = React.useState("grid");
@@ -62,6 +63,7 @@ export default function MainApp() {
   const irPara = (destino) => {
     setPagina(destino);
     setMenuAberto(false);
+    setPaginaAtual(1); // 🔥 evita bug ao trocar de tela
   };
 
   const abrirReceita = (receita) => {
@@ -87,9 +89,7 @@ export default function MainApp() {
 
       return {
         ...atual,
-        [receitaId]: {
-          vistos: novosVistos
-        }
+        [receitaId]: { vistos: novosVistos }
       };
     });
   };
@@ -101,40 +101,56 @@ export default function MainApp() {
     return Math.round((vistos / receita.videos.length) * 100);
   };
 
-  const listaMateriaisTexto = () => {
-    if (!receitaSelecionada) return "";
+  /* =========================
+     🔥 FILTROS BASE
+  ========================= */
 
-    const linhas = receitaSelecionada.materiais?.linhas || [];
-    const itens = receitaSelecionada.materiais?.itens || [];
-
-    return (
-      `🧶 Materiais - ${receitaSelecionada.nome}\n\n` +
-      "Linhas:\n" +
-      linhas.map((item) => `- ${item}`).join("\n") +
-      "\n\nOutros materiais:\n" +
-      itens.map((item) => `- ${item}`).join("\n") +
-      "\n\nReal Triarte 💛"
-    );
-  };
-
-  /* 🔥 FILTRO CORRETO */
-  const receitasFiltradas = receitas.filter((r) => {
+  const filtrarLista = (lista) => {
     const nome = buscaNome.toLowerCase();
 
-    return (
-      (nome.length < 3 || r.nome.toLowerCase().includes(nome)) &&
-      (buscaCategoria === "" || r.categoria === buscaCategoria)
+    return lista.filter((r) => {
+      return (
+        (nome.length < 3 || r.nome.toLowerCase().includes(nome)) &&
+        (buscaCategoria === "" || r.categoria === buscaCategoria)
+      );
+    });
+  };
+
+  /* =========================
+     🔥 RECEITAS
+  ========================= */
+
+  const receitasFiltradas = filtrarLista(receitas);
+
+  /* =========================
+     🔥 FAVORITOS (NOVO)
+  ========================= */
+
+  const receitasFavoritas = receitas.filter((r) =>
+    favoritos.includes(r.id)
+  );
+
+  const favoritosFiltrados = filtrarLista(receitasFavoritas);
+
+  /* =========================
+     🔥 PAGINAÇÃO (GENÉRICA)
+  ========================= */
+
+  const paginar = (lista) => {
+    const totalPaginas = Math.max(1, Math.ceil(lista.length / limite));
+
+    const itens = lista.slice(
+      (paginaAtual - 1) * limite,
+      paginaAtual * limite
     );
-  });
+
+    return { itens, totalPaginas };
+  };
+
+  const receitasPage = paginar(receitasFiltradas);
+  const favoritosPage = paginar(favoritosFiltrados);
 
   const categorias = [...new Set(receitas.map((r) => r.categoria))];
-
-  const totalPaginas = Math.max(1, Math.ceil(receitasFiltradas.length / limite));
-
-  const receitasPaginadas = receitasFiltradas.slice(
-    (paginaAtual - 1) * limite,
-    paginaAtual * limite
-  );
 
   const ultimaReceitaId = Object.keys(progresso).find(
     (id) => progresso[id]?.vistos?.length > 0
@@ -143,8 +159,11 @@ export default function MainApp() {
   const ultimaReceita = receitas.find((r) => r.id === ultimaReceitaId);
 
   const mensagemAtual = mensagens[0];
-
   const receitasRandom = receitas.slice(0, 8);
+
+  /* =========================
+     RENDER
+  ========================= */
 
   const renderPagina = () => {
     switch (pagina) {
@@ -166,21 +185,26 @@ export default function MainApp() {
       case "receitas":
         return (
           <Receitas
-            receitas={receitas}
-            receitasFiltradas={receitasFiltradas} 
+            receitasFiltradas={receitasFiltradas}
+            receitasPaginadas={receitasPage.itens}
+            totalPaginas={receitasPage.totalPaginas}
+
             buscaNome={buscaNome}
             setBuscaNome={setBuscaNome}
             buscaCategoria={buscaCategoria}
             setBuscaCategoria={setBuscaCategoria}
+
             categorias={categorias}
-            receitasPaginadas={receitasPaginadas}
+
             modoExibicao={modoExibicao}
             setModoExibicao={setModoExibicao}
+
             limite={limite}
             setLimite={setLimite}
+
             paginaAtual={paginaAtual}
             setPaginaAtual={setPaginaAtual}
-            totalPaginas={totalPaginas}
+
             abrirReceita={abrirReceita}
             toggleFavorito={toggleFavorito}
             favoritos={favoritos}
@@ -189,13 +213,46 @@ export default function MainApp() {
         );
 
       case "favoritos":
+      return (
+        <Favoritos
+          receitasFiltradas={favoritosFiltrados}
+          receitasPaginadas={favoritosPage.itens}
+          totalPaginas={favoritosPage.totalPaginas}
+
+          buscaNome={buscaNome}
+          setBuscaNome={setBuscaNome}
+          buscaCategoria={buscaCategoria}
+          setBuscaCategoria={setBuscaCategoria}
+
+          categorias={categorias}
+
+          modoExibicao={modoExibicao}
+          setModoExibicao={setModoExibicao}
+
+          limite={limite}
+          setLimite={setLimite}
+
+          paginaAtual={paginaAtual}
+          setPaginaAtual={setPaginaAtual}
+
+          abrirReceita={abrirReceita}
+          toggleFavorito={toggleFavorito}
+          favoritos={favoritos}
+          percentual={percentual}
+
+          irPara={irPara} // 🔥 ESSENCIAL
+        />
+      );
+
+      case "receita":
         return (
-          <Favoritos
-            receitas={receitas}
-            favoritos={favoritos}
-            abrirReceita={abrirReceita}
+          <ReceitaDetalhe
+            receita={receitaSelecionada}
+            marcarVideo={marcarVideo}
             percentual={percentual}
-            toggleFavorito={toggleFavorito}
+            progresso={progresso}
+            voltar={() => irPara("home")}
+            irPara={irPara}
           />
         );
 
@@ -226,19 +283,6 @@ export default function MainApp() {
           <Materiais
             receita={receitaSelecionada}
             voltar={() => irPara("receita")}
-            listaMateriaisTexto={listaMateriaisTexto}
-          />
-        );
-
-      case "receita":
-        return (
-          <ReceitaDetalhe
-            receita={receitaSelecionada}
-            marcarVideo={marcarVideo}
-            percentual={percentual}
-            progresso={progresso}
-            voltar={() => irPara("home")}
-            irPara={irPara}
           />
         );
 
@@ -250,10 +294,8 @@ export default function MainApp() {
   if (rotacionado && !liberarNoPC) {
     return (
       <div className="screen-center">
-        <div>
-          <h2>📱 Gire o celular</h2>
-          <p className="text-muted">Use o app na vertical</p>
-        </div>
+        <h2>📱 Gire o celular</h2>
+        <p className="text-muted">Use o app na vertical</p>
       </div>
     );
   }
@@ -264,30 +306,14 @@ export default function MainApp() {
 
         {/* HEADER */}
         <div className="app-header">
-          <button
-            className="app-logo-button"
-            onClick={() => irPara("home")}
-          >
-            <img
-              src={IMAGES.ui.logo}
-              alt="Real Triarte"
-              className="app-logo"
-            />
+          <button onClick={() => irPara("home")}>
+            <img src={IMAGES.ui.logo} className="app-logo" />
           </button>
 
-          <strong className="app-title-center">
-            Real Triarte
-          </strong>
+          <strong className="app-title-center">Real Triarte</strong>
 
-          <button
-            className="app-menu-button"
-            onClick={() => setMenuAberto(true)}
-          >
-            <img
-              src={IMAGES.icons.menu.active}
-              alt="Menu"
-              className="app-menu-icon"
-            />
+          <button onClick={() => setMenuAberto(true)}>
+            <img src={IMAGES.icons.menu.active} className="app-menu-icon" />
           </button>
         </div>
 
@@ -319,11 +345,7 @@ export default function MainApp() {
               }
               className={`app-footer-item ${pagina === page ? "active" : ""}`}
             >
-              <img
-                src={icon}
-                alt={label}
-                className="app-footer-icon"
-              />
+              <img src={icon} className="app-footer-icon" />
               <span className="app-footer-text">{label}</span>
             </div>
           ))}

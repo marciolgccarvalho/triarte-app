@@ -1,101 +1,227 @@
-import React, { useState } from "react";
+import React from "react";
+import { IMAGES } from "../assets/images";
 
 export default function Simulador() {
-  const [linha, setLinha] = useState(0);
-  const [olhos, setOlhos] = useState(0);
-  const [enchimento, setEnchimento] = useState(0);
-  const [outros, setOutros] = useState(0);
+  const [dados, setDados] = React.useState({
+    linha: "",
+    olhos: "",
+    enchimento: "",
+    outros: "",
+    horas: "",
+    valorHora: "",
+    lucro: "100"
+  });
 
-  const [horas, setHoras] = useState(0);
-  const [valorHora, setValorHora] = useState(0);
+  const [copiado, setCopiado] = React.useState(false);
 
-  const [margem, setMargem] = useState(100);
-  const [mostrarResultado, setMostrarResultado] = useState(false);
+  const moedaParaNumero = (valor) => {
+    if (!valor) return 0;
 
-  const custoMaterial = linha + olhos + enchimento + outros;
-  const custoMaoObra = horas * valorHora;
-  const custoTotal = custoMaterial + custoMaoObra;
-  const precoFinal = custoTotal * (1 + margem / 100);
+    return Number(
+      String(valor)
+        .replace("R$", "")
+        .replace(/\./g, "")
+        .replace(",", ".")
+        .replace(/[^\d.]/g, "")
+    ) || 0;
+  };
+
+  const atualizarCampo = (campo, valor) => {
+    setDados((atual) => ({
+      ...atual,
+      [campo]: valor
+    }));
+
+    setCopiado(false);
+  };
+
+  const formatarMoeda = (valor) => {
+    return valor.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL"
+    });
+  };
+
+  /* =========================
+     CÁLCULO AUTOMÁTICO
+  ========================= */
+
+  const custoMateriais =
+    moedaParaNumero(dados.linha) +
+    moedaParaNumero(dados.olhos) +
+    moedaParaNumero(dados.enchimento) +
+    moedaParaNumero(dados.outros);
+
+  const custoMaoObra =
+    moedaParaNumero(dados.horas) * moedaParaNumero(dados.valorHora);
+
+  const custoTotal = custoMateriais + custoMaoObra;
+
+  const percentualLucro = moedaParaNumero(dados.lucro);
+
+  const valorLucro = custoTotal * (percentualLucro / 100);
+
+  const precoSugerido = custoTotal + valorLucro;
+
+  /* =========================
+     COPIAR
+  ========================= */
+
+  const copiarValor = async () => {
+    const valor = formatarMoeda(precoSugerido);
+
+    try {
+      await navigator.clipboard.writeText(valor);
+      setCopiado(true);
+    } catch {
+      setCopiado(false);
+    }
+  };
 
   return (
-    <div className="page-container">
+    <div className="page-container simulador-page">
 
-      {/* TÍTULO */}
-      <h2 className="mb-sm">Simulador de Preço</h2>
+      {/* HEADER COM IMAGEM */}
+      <div className="simulador-header">
 
-      <p className="small text-muted mb-md">
-        Descubra quanto cobrar pelo seu amigurumi 🧶
-      </p>
+        <img
+          src={IMAGES.ui.simuladorPreco}
+          alt="Simulador"
+          className="simulador-header-img"
+        />
+
+        <div>
+          <h2>Simulador de Preço</h2>
+          <p>
+            Preencha as informações e veja o valor sugerido mudar automaticamente.
+          </p>
+        </div>
+
+      </div>
 
       {/* MATERIAIS */}
-      <div className="card mb-sm">
-        <strong>Materiais</strong>
+      <div className="simulador-card">
+        <h3>Custos do produto</h3>
 
-        <div className="grid gap-sm mt-sm">
-          <input className="input" placeholder="Linha (R$)" type="number" onChange={(e) => setLinha(Number(e.target.value))} />
-          <input className="input" placeholder="Olhos / acessórios (R$)" type="number" onChange={(e) => setOlhos(Number(e.target.value))} />
-          <input className="input" placeholder="Enchimento (R$)" type="number" onChange={(e) => setEnchimento(Number(e.target.value))} />
-          <input className="input" placeholder="Outros custos (R$)" type="number" onChange={(e) => setOutros(Number(e.target.value))} />
+        <div className="simulador-grid">
+
+          <label>
+            Linha
+            <input
+              type="number"
+              inputMode="decimal"
+              placeholder="R$ 0,00"
+              value={dados.linha}
+              onChange={(e) => atualizarCampo("linha", e.target.value)}
+            />
+          </label>
+
+          <label>
+            Olhos / acessórios
+            <input
+              type="number"
+              inputMode="decimal"
+              placeholder="R$ 0,00"
+              value={dados.olhos}
+              onChange={(e) => atualizarCampo("olhos", e.target.value)}
+            />
+          </label>
+
+          <label>
+            Enchimento
+            <input
+              type="number"
+              inputMode="decimal"
+              placeholder="R$ 0,00"
+              value={dados.enchimento}
+              onChange={(e) => atualizarCampo("enchimento", e.target.value)}
+            />
+          </label>
+
+          <label>
+            Outros custos
+            <input
+              type="number"
+              inputMode="decimal"
+              placeholder="R$ 0,00"
+              value={dados.outros}
+              onChange={(e) => atualizarCampo("outros", e.target.value)}
+            />
+          </label>
+
         </div>
       </div>
 
       {/* MÃO DE OBRA */}
-      <div className="card mb-sm">
-        <strong>Mão de obra</strong>
+      <div className="simulador-card">
+        <h3>Mão de obra</h3>
 
-        <div className="grid gap-sm mt-sm">
-          <input className="input" placeholder="Horas de trabalho" type="number" onChange={(e) => setHoras(Number(e.target.value))} />
-          <input className="input" placeholder="Valor por hora (R$)" type="number" onChange={(e) => setValorHora(Number(e.target.value))} />
+        <div className="simulador-grid">
+
+          <label>
+            Horas de trabalho
+            <input
+              type="number"
+              inputMode="decimal"
+              placeholder="Ex: 6"
+              value={dados.horas}
+              onChange={(e) => atualizarCampo("horas", e.target.value)}
+            />
+          </label>
+
+          <label>
+            Valor por hora
+            <input
+              type="number"
+              inputMode="decimal"
+              placeholder="R$ 0,00"
+              value={dados.valorHora}
+              onChange={(e) => atualizarCampo("valorHora", e.target.value)}
+            />
+          </label>
+
         </div>
       </div>
 
       {/* LUCRO */}
-      <div className="card mb-sm">
-        <strong>Lucro</strong>
+      <div className="simulador-card simulador-lucro">
 
-        <input
-          className="input mt-sm"
-          placeholder="Margem de lucro (%)"
-          type="number"
-          value={margem}
-          onChange={(e) => setMargem(Number(e.target.value))}
-        />
+        <label>
+          Lucro desejado (%)
+          <input
+            type="number"
+            inputMode="decimal"
+            placeholder="Ex: 100"
+            value={dados.lucro}
+            onChange={(e) => atualizarCampo("lucro", e.target.value)}
+          />
+        </label>
+
+        <p>
+          Exemplo: 100% dobra o custo total para formar o preço de venda.
+        </p>
+
       </div>
 
-      {/* BOTÃO */}
-      <button
-        onClick={() => setMostrarResultado(true)}
-        className="btn btn-primary mb-md btn-full"
-      >
-        Calcular preço
-      </button>
-
       {/* RESULTADO */}
-      {mostrarResultado && (
-        <div className="card">
-          <p className="small text-muted">
-            Materiais: <strong>R$ {custoMaterial.toFixed(2)}</strong>
-          </p>
+      <div className="simulador-resultado">
 
-          <p className="small text-muted">
-            Mão de obra: <strong>R$ {custoMaoObra.toFixed(2)}</strong>
-          </p>
+        <span>Preço sugerido</span>
 
-          <p className="mt-sm">
-            <strong>Custo total: R$ {custoTotal.toFixed(2)}</strong>
-          </p>
+        <strong>
+          {formatarMoeda(precoSugerido)}
+        </strong>
 
-          <div className="mt-md text-center simulador-resultado">
-            <p className="small text-muted">
-              Preço sugerido
-            </p>
+        <button
+          type="button"
+          onClick={copiarValor}
+          disabled={precoSugerido <= 0}
+        >
+          {copiado ? "Valor copiado!" : "Copiar valor"}
+        </button>
 
-            <p className="title">
-              R$ {precoFinal.toFixed(2)}
-            </p>
-          </div>
-        </div>
-      )}
+      </div>
+
     </div>
   );
 }
