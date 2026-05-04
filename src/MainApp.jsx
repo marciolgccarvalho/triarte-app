@@ -258,12 +258,12 @@ export default function MainApp() {
   return (
     <div className={`app-wrapper ${liberarNoPC ? "desktop" : ""}`}>
       <div className={`app-container ${liberarNoPC ? "desktop" : ""}`}>
+
+        {/* HEADER */}
         <div className="app-header">
           <button
-            type="button"
             className="app-logo-button"
             onClick={() => irPara("home")}
-            aria-label="Ir para o início"
           >
             <img
               src={IMAGES.ui.logo}
@@ -272,15 +272,17 @@ export default function MainApp() {
             />
           </button>
 
+          <strong className="app-title-center">
+            Real Triarte
+          </strong>
+
           <button
-            type="button"
             className="app-menu-button"
             onClick={() => setMenuAberto(true)}
-            aria-label="Abrir menu"
           >
             <img
               src={IMAGES.icons.menu.active}
-              alt=""
+              alt="Menu"
               className="app-menu-icon"
             />
           </button>
@@ -296,24 +298,34 @@ export default function MainApp() {
           {renderPagina()}
         </div>
 
+        {/* FOOTER */}
         <div className="app-footer">
           {[
-            ["home", IMAGES.icons.home?.active || IMAGES.icons.receitas.active, "Início"],
+            ["home", IMAGES.icons.home.active, "Início"],
             ["receitas", IMAGES.icons.receitas.active, "Receitas"],
             ["favoritos", IMAGES.icons.favoritos.active, "Favoritos"],
             ["conquistas", IMAGES.icons.conquistas.active, "Conquistas"],
-            ["simulador", IMAGES.icons.calculo.active, "Mais"]
+            ["mais", IMAGES.icons.menu.active, "Mais"] // 🔥 agora correto
           ].map(([page, icon, label]) => (
             <div
               key={page}
-              onClick={() => irPara(page)}
+              onClick={() =>
+                page === "mais"
+                  ? setMenuAberto(true)
+                  : irPara(page)
+              }
               className={`app-footer-item ${pagina === page ? "active" : ""}`}
             >
-              <img src={icon} alt={label} className="app-footer-icon" />
+              <img
+                src={icon}
+                alt={label}
+                className="app-footer-icon"
+              />
               <span className="app-footer-text">{label}</span>
             </div>
           ))}
         </div>
+
       </div>
     </div>
   );

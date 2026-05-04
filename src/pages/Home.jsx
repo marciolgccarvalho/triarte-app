@@ -1,11 +1,10 @@
 import React from "react";
 import CardReceita from "../components/CardReceita";
+import mensagensData from "../data/mensagens.json";
 
 export default function Home({
-  mensagemAtual,
   ultimaReceita,
   receitas = [],
-  receitasRandom = [],
   abrirReceita = () => {},
   percentual = () => 0,
   toggleFavorito = () => {},
@@ -15,6 +14,27 @@ export default function Home({
 
   const hoje = React.useMemo(() => new Date(), []);
 
+  /* =========================
+     MENSAGEM RANDOM (JSON)
+  ========================= */
+  const mensagem = React.useMemo(() => {
+    if (!mensagensData || mensagensData.length === 0) {
+      return {
+        titulo: "Bem-vindo ao Real Triarte",
+        subtitulo: "Explore o app"
+      };
+    }
+
+    const boasVindas = mensagensData.filter(m => m.tipo === "boasvindas");
+    const lista = boasVindas.length > 0 ? boasVindas : mensagensData;
+
+    const index = Math.floor(Math.random() * lista.length);
+    return lista[index];
+  }, []);
+
+  /* =========================
+     CARROSSEL (DESTAQUE)
+  ========================= */
   const receitasDestaque = React.useMemo(() => {
     return receitas.filter((r) => {
       if (!r?.destaqueInicio || !r?.destaqueFim) return false;
@@ -60,22 +80,34 @@ export default function Home({
     );
   };
 
+  /* =========================
+     LISTA (8 RANDOM SEM DESTAQUE)
+  ========================= */
+  const receitasLista = React.useMemo(() => {
+    const idsDestaque = new Set(receitasDestaque.map(r => r.id));
+    const filtradas = receitas.filter(r => !idsDestaque.has(r.id));
+    const embaralhadas = [...filtradas].sort(() => Math.random() - 0.5);
+    return embaralhadas.slice(0, 8);
+  }, [receitas, receitasDestaque]);
+
   return (
     <div className="page-container">
+
       {/* TOPO */}
       <div className="home-top">
-        <strong className="title">
-          💛 {mensagemAtual?.titulo || "Hora de criar algo incrível ✨"}
+        <strong className="home-title">
+          💛 {mensagem.titulo}
         </strong>
 
-        <p className="small text-muted">
-          {mensagemAtual?.subtitulo || "Seu próximo amigurumi está te esperando!"}
+        <p className="home-subtitle">
+          {mensagem.subtitulo}
         </p>
       </div>
 
       {/* CONTINUAR */}
       {ultimaReceita && (
         <div className="home-continue-card">
+
           <img
             src={ultimaReceita.imagem}
             alt={ultimaReceita.nome}
@@ -83,9 +115,12 @@ export default function Home({
           />
 
           <div className="home-continue-info">
-            <strong>{ultimaReceita.nome}</strong>
 
-            <span className="small text-muted">
+            <strong className="home-continue-title">
+              {ultimaReceita.nome}
+            </strong>
+
+            <span className="home-continue-sub">
               Continue de onde parou
             </span>
 
@@ -96,17 +131,18 @@ export default function Home({
               />
             </div>
 
-            <span className="small">
+            <span className="home-continue-progress">
               {percentual(ultimaReceita)}% concluído
             </span>
           </div>
 
           <button
+            className="home-continue-btn"
             onClick={() => abrirReceita(ultimaReceita)}
-            className="btn-continue"
           >
             ▶ Continuar
           </button>
+
         </div>
       )}
 
@@ -126,23 +162,8 @@ export default function Home({
 
             {receitasDestaque.length > 1 && (
               <>
-                <button
-                  type="button"
-                  className="carousel-arrow left"
-                  onClick={anterior}
-                  aria-label="Imagem anterior"
-                >
-                  ‹
-                </button>
-
-                <button
-                  type="button"
-                  className="carousel-arrow right"
-                  onClick={proximo}
-                  aria-label="Próxima imagem"
-                >
-                  ›
-                </button>
+                <button className="carousel-arrow left" onClick={anterior}>‹</button>
+                <button className="carousel-arrow right" onClick={proximo}>›</button>
               </>
             )}
 
@@ -150,9 +171,22 @@ export default function Home({
 
             <div className="carousel-content">
               <strong>{receitaAtual.nome}</strong>
+
               <p className="small">
                 Veja como ficará seu amigurumi
               </p>
+
+              {/* 🔥 PROGRESSO IGUAL AOS CARDS */}
+              <div className="progress-bar carousel-progress">
+                <div
+                  className="progress-fill"
+                  style={{ width: `${percentual(receitaAtual)}%` }}
+                />
+              </div>
+
+              <span className="carousel-progress-text">
+                {percentual(receitaAtual)}% concluído
+              </span>
             </div>
 
             {receitasDestaque.length > 1 && (
@@ -171,16 +205,13 @@ export default function Home({
 
       {/* SEÇÃO */}
       <div className="home-section">
-        <h3>Receitas para você hoje</h3>
-
-        <p className="small text-muted">
-          Baseado no seu progresso
-        </p>
+        <h3>💛 Receitas para você hoje</h3>
+        
       </div>
 
       {/* GRID */}
       <div className="home-grid">
-        {receitasRandom.slice(0, 4).map((r) => (
+        {receitasLista.map((r) => (
           <CardReceita
             key={r.id}
             receita={r}
@@ -191,6 +222,7 @@ export default function Home({
           />
         ))}
       </div>
+
     </div>
   );
 }

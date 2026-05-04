@@ -1,50 +1,96 @@
+/* =========================
+   TOPO (CORRIGIDO)
+========================= */
 .home-top {
   margin-bottom: var(--space-md);
+  text-align: center;
 }
 
-.home-top .title {
+.home-title {
   font-size: 18px;
+  font-weight: 600;
   display: block;
 }
 
-.home-top p {
+.home-subtitle {
+  font-size: 14px;
+  color: var(--color-text-muted);
   margin-top: 4px;
 }
 
-/* CONTINUE */
+/* =========================
+   CONTINUE (ESTILO IMAGEM)
+========================= */
 .home-continue-card {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
-  background: var(--color-surface, #1e1e1e);
-  padding: var(--space-sm);
-  border-radius: var(--radius-lg);
+  gap: 12px;
+
+  background: #f5f5f5;
+  padding: 12px;
+  border-radius: 16px;
+
+  border: 1px solid #e6e6e6;
 }
 
+/* IMAGEM */
 .home-continue-img {
-  width: 70px;
-  height: 70px;
-  border-radius: var(--radius-md);
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
   object-fit: cover;
 }
 
+/* INFO */
 .home-continue-info {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 3px;
 }
 
-.btn-continue {
-  border-radius: 30px;
-  padding: 6px 12px;
-  font-weight: bold;
+/* TÍTULO */
+.home-continue-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #000;
+}
+
+/* SUBTÍTULO */
+.home-continue-sub {
+  font-size: 12px;
+  color: #666;
+}
+
+/* PROGRESSO */
+.home-continue-progress {
+  font-size: 11px;
+  color: #666;
+}
+
+/* BOTÃO */
+.home-continue-btn {
   background: var(--color-primary);
   color: #000;
+
   border: none;
+  border-radius: 10px;
+
+  padding: 8px 12px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  cursor: pointer;
 }
 
-/* CARROSSEL */
+/* =========================
+   CARROSSEL
+========================= */
 .home-carousel-wrapper {
   margin: var(--space-md) 0;
 }
@@ -62,7 +108,7 @@
   object-fit: cover;
 }
 
-/* 🔥 TRANSIÇÃO SUAVE */
+/* TRANSIÇÃO */
 .carousel-fade {
   animation: carouselFade 0.5s ease-in-out;
 }
@@ -92,9 +138,6 @@
   left: 12px;
   color: #fff;
 }
-
-/* 🔥 REMOVIDO PLAY (não usar mais) */
-/* .carousel-play { ... } */
 
 /* SETAS */
 .carousel-arrow {
@@ -139,7 +182,9 @@
   background: var(--color-primary);
 }
 
-/* SEÇÃO */
+/* =========================
+   SEÇÃO
+========================= */
 .home-section {
   margin-top: var(--space-md);
 }
@@ -148,18 +193,22 @@
   margin-bottom: 4px;
 }
 
-/* GRID */
+/* =========================
+   GRID
+========================= */
 .home-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--space-sm);
 }
 
-/* PROGRESS */
+/* =========================
+   PROGRESS
+========================= */
 .progress-bar {
   width: 100%;
   height: 6px;
-  background: #333;
+  background: #ddd;
   border-radius: 999px;
   overflow: hidden;
 }
@@ -169,4 +218,19 @@
   background: var(--color-primary);
   width: 0%;
   transition: width 0.3s;
+}
+
+/* PROGRESSO NO CARROSSEL */
+.carousel-progress {
+  margin-top: 6px;
+  background: rgba(255,255,255,0.3);
+}
+
+.carousel-progress .progress-fill {
+  background: var(--color-primary);
+}
+
+.carousel-progress-text {
+  font-size: 11px;
+  color: #fff;
 }
