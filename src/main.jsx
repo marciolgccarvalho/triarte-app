@@ -1,44 +1,69 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
+import App from "./App.jsx";
 
-// BASE
+/* =========================
+   BASE (sempre primeiro)
+========================= */
 import "./styles/base/variables.css";
 import "./styles/base/global.css";
 
-// UTILS
+/* =========================
+   UTILS
+========================= */
 import "./styles/utils/spacing.css";
 import "./styles/utils/layout.css";
 import "./styles/utils/helpers.css";
 
-// COMPONENTS (ORDEM IMPORTANTE)
-import "./styles/components/app-layout.css"; // 🔥 NECESSÁRIO PARA O HEADER FUNCIONAR
+/* =========================
+   COMPONENTS (ordem importa)
+========================= */
+import "./styles/components/app-layout.css";
+
+// UI
 import "./styles/components/button.css";
 import "./styles/components/card.css";
-import "./styles/components/sidebar.css";
 import "./styles/components/modal.css";
-import "./styles/components/parabens.css";
-import "./styles/components/conquista.css";
-import "./styles/components/contato.css";
-import "./styles/components/favoritos.css";
+
+// estrutura
+import "./styles/components/sidebar.css";
+
+// telas
 import "./styles/components/home.css";
-import "./styles/components/materiais.css";
-import "./styles/components/receita.css";
-import "./styles/components/receitas.css";
-import "./styles/components/simulador.css";
 import "./styles/components/sobre.css";
+import "./styles/components/contato.css";
+
+// features
+import "./styles/components/favoritos.css";
+import "./styles/components/materiais.css";
+import "./styles/components/simulador.css";
+import "./styles/components/abreviacoes.css"; // ✅ EXISTE na tua pasta
+
+// receitas
+import "./styles/components/receitas.css";
+import "./styles/components/receita-detalhe.css";
+
+// conquistas
+import "./styles/components/conquista.css";
+import "./styles/components/parabens.css";
 
 /* =========================
    RENDER APP
 ========================= */
-ReactDOM.createRoot(document.getElementById("root")).render(
+const rootElement = document.getElementById("root");
+
+if (!rootElement) {
+  throw new Error("❌ Elemento #root não encontrado");
+}
+
+ReactDOM.createRoot(rootElement).render(
   <React.StrictMode>
     <App />
   </React.StrictMode>
 );
 
 /* =========================
-   SERVICE WORKER
+   SERVICE WORKER (PWA)
 ========================= */
 if ("serviceWorker" in navigator && import.meta.env.PROD) {
   window.addEventListener("load", async () => {
@@ -47,6 +72,7 @@ if ("serviceWorker" in navigator && import.meta.env.PROD) {
 
       console.log("✅ Service Worker registrado");
 
+      // força atualização imediata
       if (registration.waiting) {
         registration.waiting.postMessage({ type: "SKIP_WAITING" });
       }
@@ -54,17 +80,17 @@ if ("serviceWorker" in navigator && import.meta.env.PROD) {
       registration.addEventListener("updatefound", () => {
         const newWorker = registration.installing;
 
-        if (newWorker) {
-          newWorker.addEventListener("statechange", () => {
-            if (newWorker.state === "installed") {
-              console.log("🔄 Nova versão disponível");
-            }
-          });
-        }
+        if (!newWorker) return;
+
+        newWorker.addEventListener("statechange", () => {
+          if (newWorker.state === "installed") {
+            console.log("🔄 Nova versão disponível");
+          }
+        });
       });
 
-    } catch (err) {
-      console.error("❌ Erro ao registrar SW:", err);
+    } catch (error) {
+      console.error("❌ Erro ao registrar Service Worker:", error);
     }
   });
 }
