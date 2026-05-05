@@ -64,17 +64,31 @@
 .rd-btn-materiais {
   height: 28px;
   padding: 0 10px;
+
   border-radius: 14px;
   border: none;
-  background: #facc15;
+
+  background: linear-gradient(135deg, #facc15, #f59e0b); /* 🔥 degrade */
   color: #000;
+
   font-size: 11px;
   font-weight: 600;
+
   display: inline-flex;
   align-items: center;
   gap: 5px;
+
   white-space: nowrap;
   cursor: pointer;
+
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15); /* 🔥 leve profundidade */
+  transition: all 0.15s ease;
+}
+
+/* TOQUE (mobile) */
+.rd-btn-materiais:active {
+  transform: scale(0.95);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 
 .rd-materiais-icon {
@@ -367,7 +381,7 @@
   content: "Próximo";
   position: absolute;
   top: -10px;
-  left: 50%;
+  left: 70px; /* 🔥 alinhado à esquerda */
   transform: translateX(-50%);
   background: #fde68a;
   color: #92400e;
@@ -538,4 +552,8 @@
   100% {
     box-shadow: 0 0 0 rgba(250, 204, 21, 0);
   }
+}
+
+.rd-proximo {
+  margin-top: 14px; /* 🔥 cria espaço acima */
 }
