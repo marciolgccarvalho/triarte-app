@@ -1,226 +1,541 @@
-/* =========================
-   BOTÃO VOLTAR
-========================= */
-.btn-voltar {
-  width: 42px;
-  height: 42px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 50%;
-  background: var(--color-primary);
-
-  border: none;
-  margin-bottom: 8px;
-}
-
-.btn-voltar img {
-  width: 18px;
-  height: 18px;
-}
-
-/* =========================
-   HERO (IMAGEM + FAVORITO)
-========================= */
-.receita-hero-wrapper {
-  position: relative;
-}
-
-.receita-hero {
+/* ===== BASE ===== */
+.rd-page {
   width: 100%;
-  height: 170px; /* levemente menor */
-  border-radius: 16px;
-  object-fit: cover;
+  min-height: 100%;
+  background: #ffffff;
 }
 
-/* FAVORITO */
-.receita-fav {
-  position: absolute;
-  top: 8px;
-  right: 8px;
+/* ===== LAYOUT ===== */
+.rd-layout {
+  width: 100%;
+  padding-top: 16px;
+}
 
-  width: 34px;
-  height: 34px;
+/* ===== TOPO ===== */
+.rd-nome-area {
+  width: 100%;
+  margin-bottom: 16px;
+}
 
+.rd-nome-row {
+  display: grid;
+  grid-template-columns: 40px 1fr auto;
+  align-items: center;
+  gap: 8px;
+}
+
+.rd-nome {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.rd-col-left,
+.rd-col-right {
   display: flex;
   align-items: center;
   justify-content: center;
+}
 
+.rd-col-center {
+  display: flex;
+  align-items: center;
+}
+
+/* ===== BOTÃO VOLTAR ===== */
+.rd-btn-voltar {
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  background: #fff;
-  border: 1px solid #eee;
-
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-
+  border: none;
+  background: #facc15;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
 }
 
-.receita-fav img {
+.rd-btn-voltar img {
   width: 16px;
   height: 16px;
 }
 
-.receita-fav.ativo {
-  background: var(--color-primary);
+/* ===== BOTÃO MATERIAIS ===== */
+.rd-btn-materiais {
+  height: 28px;
+  padding: 0 10px;
+  border-radius: 14px;
   border: none;
+  background: #facc15;
+  color: #000;
+  font-size: 11px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  cursor: pointer;
 }
 
-.receita-fav.ativo img {
-  filter: brightness(0);
+.rd-materiais-icon {
+  width: 12px;
+  height: 12px;
 }
 
-/* =========================
-   TÍTULO / TEXTO
-========================= */
-.receita-titulo {
-  font-size: 19px;
-  margin-top: 8px;
-  font-weight: 700;
+/* ===== IMAGEM ===== */
+.rd-imagem-area {
+  width: 100%;
+  margin-bottom: 10px;
 }
 
-.receita-sub {
-  font-size: 13px;
-  color: var(--color-text-light);
-  margin-top: 2px;
+.rd-imagem-wrapper {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
 }
 
-/* =========================
-   AÇÕES (BOTÕES)
-========================= */
-.acoes {
+.rd-imagem {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.5s ease;
+}
+
+/* ZOOM (mobile-friendly) */
+.rd-imagem-wrapper:active .rd-imagem {
+  transform: scale(1.04);
+}
+
+/* OVERLAY PREMIUM */
+.rd-imagem-wrapper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.35),
+    rgba(0,0,0,0.05)
+  );
+
+  pointer-events: none;
+}
+
+/* ===== FAVORITO ===== */
+.rd-imagem-wrapper .card-favorito {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 6;
+}
+
+.card-favorito {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-top: 10px;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
 }
 
-/* =========================
-   PROGRESSO
-========================= */
-.progresso-card {
-  margin-top: 14px;
+.card-favorito.ativo {
+  background: #facc15;
 }
 
-.flex-between {
+/* ========================================= */
+/* 🚀 CARD DE PROGRESSO */
+/* ========================================= */
+
+.rd-progresso-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 14px;
+  margin: 10px 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.rd-descricao {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.rd-progresso-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 6px;
 }
 
-.progress-bar {
-  width: 100%;
-  height: 5px; /* mais fino */
-  background: #e9e9e9;
+.rd-progresso-titulo {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.rd-progresso-info {
+  font-size: 12px;
+  color: #666;
+}
+
+.rd-progress-bar {
+  height: 10px;
+  background: #e5e7eb;
   border-radius: 999px;
   overflow: hidden;
 }
 
-.progress-fill {
+.rd-progress-fill {
   height: 100%;
-  background: var(--color-primary);
-  border-radius: 999px;
+  background: linear-gradient(90deg, #facc15, #f59e0b);
 }
 
-.progress-text {
-  text-align: right;
-  font-size: 11px;
-  margin-top: 2px;
-  color: var(--color-text-light);
-}
-
-/* =========================
-   CONTINUAR
-========================= */
-.continuar-card {
-  margin-top: 14px;
-  background: #fff3cd;
-  border-radius: 14px;
-  padding: 12px;
-}
-
-.btn-continuar {
-  margin-top: 8px;
+/* ===== LISTA DE VÍDEOS ===== */
+.rd-videos-area {
   width: 100%;
+}
+
+.rd-videos-header {
+  margin: 16px 12px 8px;
+}
+
+.rd-videos-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111;
+}
+
+/* ===== LINHA DO VÍDEO ===== */
+.rd-video-row {
+  display: grid;
+  grid-template-columns: 150px 1fr 130px;
+  position: relative;
+}
+
+/* linha separadora */
+.rd-video-row::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 12px;
+  right: 12px;
+  height: 1px;
+  background: #e5e7eb;
+}
+
+/* ===== COLUNAS ===== */
+.rd-video-col {
   padding: 10px;
+  display: flex;
+  align-items: center;
+}
 
-  border-radius: 10px;
-  border: none;
+/* ===== THUMB ===== */
+.rd-col-thumb {
+  justify-content: center;
+}
 
-  background: #ffc107;
+.rd-video-thumb {
+  width: 160px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.rd-thumb-wrapper {
+  position: relative;
+}
+
+.rd-thumb-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: #fff;
+  background: rgba(0,0,0,0.35);
+  border-radius: 6px;
+}
+
+/* ===== INFO ===== */
+.rd-col-info {
+  align-items: flex-start;
+}
+
+.rd-video-info-box {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.rd-video-titulo {
+  font-size: 16px;
   font-weight: 600;
-
-  cursor: pointer;
 }
 
-/* =========================
-   ETAPAS (COMPACTO)
-========================= */
-.etapas {
-  margin-top: 18px;
-}
-
-.etapas h3 {
-  margin-bottom: 8px;
-  font-size: 15px;
-}
-
-/* 🔥 ITEM MAIS COMPACTO */
-.etapa-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  padding: 10px 12px; /* reduzido */
-  border-radius: 10px;
-
-  background: #fff;
-  border: 1px solid #eee;
-
-  margin-bottom: 6px; /* menos espaço */
-}
-
-.etapa-item.done {
-  opacity: 0.6;
-}
-
-/* LADO ESQUERDO */
-.etapa-left {
-  display: flex;
-  align-items: center;
-  gap: 8px; /* reduzido */
-}
-
-.etapa-icon {
-  font-size: 16px; /* menor */
-}
-
-/* BOTÕES */
-.btn {
-  padding: 6px 10px; /* mais compacto */
-  font-size: 13px;
-  border-radius: 10px;
-}
-
-/* CHECK */
-.btn-check {
-  padding: 6px 8px;
+.rd-video-status.liberado {
+  color: #16a34a;
   font-size: 12px;
 }
 
-/* GAP ENTRE BOTÕES */
-.flex.gap-sm {
+.rd-video-status.bloqueado {
+  color: #dc2626;
+  font-size: 12px;
+}
+
+.rd-video-data {
+  font-size: 12px;
+}
+
+/* ===== AÇÕES ===== */
+.rd-col-acoes {
+  justify-content: center;
+}
+
+.rd-acoes-box {
+  display: flex;
+  flex-direction: column;
   gap: 6px;
+  width: 100%;
 }
 
-/* =========================
-   UTILIDADES
-========================= */
-.mt-sm {
-  margin-top: 6px;
+.rd-btn-check {
+  height: 36px;
+  border-radius: 10px;
+
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.mt-md {
-  margin-top: 12px;
+/* HOVER / TOQUE */
+.rd-btn-check:active {
+  transform: scale(0.96);
+  background: #f9fafb;
+}
+
+.rd-btn-check.ativo {
+  background: #dcfce7;
+  border-color: #22c55e;
+  color: #166534;
+}
+
+.rd-btn-check:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.rd-btn-membro {
+  height: 32px;
+  border-radius: 8px;
+  background: #fee2e2;
+  color: #991b1b;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+/* ========================================= */
+/* 🎯 PRÓXIMO VÍDEO */
+/* ========================================= */
+
+.rd-proximo {
+  background: #fffbeb;
+  border: 1px solid #facc15;
+  border-radius: 10px;
+}
+
+.rd-proximo::before {
+  content: "Próximo";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fde68a;
+  color: #92400e;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+/* ========================================= */
+/* 🚀 CTA FINAL (AJUSTADO) */
+/* ========================================= */
+
+.rd-cta-membro {
+  padding: 14px 12px 28px;
+  margin-top: 14px;
+}
+
+.rd-cta-box {
+  border-radius: 16px;
+  border: 1px solid #facc15;
+  padding: 14px;
+
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  column-gap: 14px;
+
+  background: #fffbeb;
+}
+
+.rd-cta-text {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.rd-cta-text strong {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #000;
+}
+
+.rd-cta-text span {
+  font-size: 12px;
+  color: #555;
+  line-height: 1.35;
+}
+
+.rd-cta-button {
+  height: 42px;
+  padding: 0 18px;
+
+  border-radius: 999px;
+  background: linear-gradient(135deg, #facc15, #f59e0b);
+  color: #000;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-decoration: none;
+  white-space: nowrap;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+  transition: all 0.2s ease;
+}
+
+/* TOQUE / CLICK */
+.rd-cta-button:active {
+  transform: scale(0.96);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+
+/* ========================================= */
+/* 🖼️ IMAGEM PREMIUM (COM OVERLAY) */
+/* ========================================= */
+
+.rd-imagem-wrapper {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.rd-imagem {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+/* OVERLAY PREMIUM */
+.rd-imagem-wrapper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.35),
+    rgba(0,0,0,0.05)
+  );
+
+  pointer-events: none;
+}
+
+/* ========================================= */
+/* 🎯 ZEBRA NA LISTA (LEITURA MELHOR) */
+/* ========================================= */
+
+/* LINHAS PARES */
+.rd-video-row:nth-child(even) {
+  background: #fafafa;
+}
+
+/* LINHAS ÍMPARES */
+.rd-video-row:nth-child(odd) {
+  background: #ffffff;
+}
+
+/* ========================================= */
+/* 🎯 MICRO INTERAÇÃO - BOTÃO MARCAR */
+/* ========================================= */
+
+.rd-btn-check {
+  transition: all 0.15s ease;
+}
+
+.rd-btn-check:active {
+  transform: scale(0.94);
+  background: #f3f4f6;
+}
+
+/* ========================================= */
+/* 🚀 MICRO INTERAÇÃO - CTA */
+/* ========================================= */
+
+.rd-cta-button {
+  transition: all 0.2s ease;
+}
+
+.rd-cta-button:active {
+  transform: scale(0.95);
+}
+
+/* ========================================= */
+/* ✨ MICRO INTERAÇÃO - PRÓXIMO */
+/* ========================================= */
+
+.rd-proximo {
+  animation: destaqueLeve 2.5s ease-in-out infinite;
+}
+
+@keyframes destaqueLeve {
+  0% {
+    box-shadow: 0 0 0 rgba(250, 204, 21, 0);
+  }
+  50% {
+    box-shadow: 0 0 12px rgba(250, 204, 21, 0.25);
+  }
+  100% {
+    box-shadow: 0 0 0 rgba(250, 204, 21, 0);
+  }
 }

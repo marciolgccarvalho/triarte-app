@@ -48,7 +48,9 @@ export function renderPagina({
 
   receitaSelecionada,
   marcarVideo,
-  progresso
+  progresso,
+
+  origem // 🔥 NOVO
 }) {
   switch (pagina) {
     case "home":
@@ -135,9 +137,13 @@ export function renderPagina({
           marcarVideo={marcarVideo}
           percentual={percentual}
           progresso={progresso}
-          favoritos={favoritos}               // ✅ ADICIONADO
-          toggleFavorito={toggleFavorito}     // ✅ ADICIONADO
-          voltar={() => irPara("home")}
+          favoritos={favoritos}
+          toggleFavorito={toggleFavorito}
+
+          // 🔥 CORREÇÃO AQUI
+          origem={origem}
+          voltar={() => irPara(origem || "home")}
+
           irPara={irPara}
         />
       );

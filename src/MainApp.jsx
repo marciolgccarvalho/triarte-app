@@ -18,6 +18,9 @@ export default function MainApp() {
   const [receitaSelecionada, setReceitaSelecionada] = React.useState(null);
   const [rotacionado, setRotacionado] = React.useState(false);
 
+  // 🔥 NOVO (não interfere em nada existente)
+  const [origem, setOrigem] = React.useState("home");
+
   const [buscaNome, setBuscaNome] = React.useState("");
   const [buscaCategoria, setBuscaCategoria] = React.useState("");
   const [modoExibicao, setModoExibicao] = React.useState("grid");
@@ -26,7 +29,7 @@ export default function MainApp() {
 
   const receitas = React.useMemo(() => getReceitas(), []);
 
-  // STORAGE (ATUALIZADO)
+  // STORAGE
   const {
     favoritos,
     progresso,
@@ -69,10 +72,11 @@ export default function MainApp() {
     setPaginaAtual(1);
   };
 
-  // ✅ CORRIGIDO — agora salva a última receita
-  const abrirReceita = (receita) => {
+  // 🔥 CORRIGIDO (com origem, sem quebrar nada)
+  const abrirReceita = (receita, origemTela = pagina) => {
     setReceitaSelecionada(receita);
     setUltimaReceitaId(receita.id);
+    setOrigem(origemTela); // 🔥 NOVO
     setPagina("receita");
   };
 
@@ -83,14 +87,12 @@ export default function MainApp() {
     return Math.round((vistos / receita.videos.length) * 100);
   };
 
-  // ✅ CORRIGIDO — usa storage real
   const ultimaReceita = receitas.find(
     (r) => r.id === ultimaReceitaId
   );
 
   const mensagemAtual = mensagens[0];
 
-  // ✅ RANDOM CORRETO
   const receitasRandom = React.useMemo(() => {
     const embaralhado = [...receitas].sort(() => Math.random() - 0.5);
     return embaralhado.slice(0, 8);
@@ -158,7 +160,9 @@ export default function MainApp() {
 
             receitaSelecionada,
             marcarVideo,
-            progresso
+            progresso,
+
+            origem // 🔥 NOVO (não quebra nada)
           })}
         </div>
 

@@ -128,7 +128,7 @@ export default function Home({
 
           <button
             className="home-continue-btn"
-            onClick={() => abrirReceita(ultimaReceita)}
+            onClick={() => abrirReceita(ultimaReceita, "home")} // 🔥 CORRIGIDO
           >
             ▶ Continuar
           </button>
@@ -152,7 +152,7 @@ export default function Home({
               src={receitaAtual.imagem}
               alt={receitaAtual.nome}
               className="home-carousel-img"
-              onClick={() => abrirReceita(receitaAtual)}
+              onClick={() => abrirReceita(receitaAtual, "home")} // 🔥 CORRIGIDO
             />
 
             <button
@@ -204,7 +204,7 @@ export default function Home({
           <CardReceita
             key={r.id}
             receita={r}
-            abrirReceita={abrirReceita}
+            abrirReceita={(rec) => abrirReceita(rec, "home")} // 🔥 CORRIGIDO
             toggleFavorito={toggleFavorito}
             favoritos={favoritos}
             percentual={percentual}
@@ -212,14 +212,13 @@ export default function Home({
         ))}
       </div>
 
-      {/* CTA FINAL CORRIGIDO */}
       <div
         className="home-cta-card"
         onClick={() => irPara("receitas")}
       >
         <div className="home-cta-left">
           <img
-            src={IMAGES.icons.lista.home} // 🔥 AQUI ESTÁ A CORREÇÃO
+            src={IMAGES.icons.lista.home}
             alt="Receitas"
           />
         </div>

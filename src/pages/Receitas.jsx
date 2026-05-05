@@ -102,7 +102,7 @@ export default function Receitas({
             <CardReceita
               key={r.id}
               receita={r}
-              abrirReceita={abrirReceita}
+              abrirReceita={(receita) => abrirReceita(receita, "receitas")}
               toggleFavorito={toggleFavorito}
               favoritos={favoritos}
               percentual={percentual}
@@ -120,7 +120,7 @@ export default function Receitas({
             return (
               <div
                 key={r.id}
-                onClick={() => abrirReceita(r)}
+                onClick={() => abrirReceita(r, "receitas")}
                 className="receita-list-card"
               >
                 <img

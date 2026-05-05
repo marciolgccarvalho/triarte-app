@@ -1,3 +1,6 @@
+/* =========================
+   FLEX
+========================= */
 .flex { 
   display: flex; 
 }
@@ -8,23 +11,31 @@
   justify-content: center;
 }
 
-.grid { 
-  display: grid; 
-}
-
-/* GRID PADRÃO APP */
+/* =========================
+   GRID (ISOLADO E SEGURO)
+========================= */
 .grid-2 {
+  display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
 
-/* CONTAINER */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* =========================
+   CONTAINER
+========================= */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: var(--space-md);
 }
 
-/* GAPS */
+/* =========================
+   GAPS
+========================= */
 .gap-sm {
   gap: var(--space-sm);
 }
@@ -33,18 +44,18 @@
   gap: var(--space-md);
 }
 
-/* ALIGN */
+/* =========================
+   ALIGN
+========================= */
 .card-between {
+  display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/* GRID 3 (mantido) */
-.grid-3 {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-/* CENTRALIZAÇÃO */
+/* =========================
+   CENTRALIZAÇÃO
+========================= */
 .screen-center {
   display: flex;
   align-items: center;

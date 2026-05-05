@@ -27,11 +27,11 @@ export default function Favoritos({
   toggleFavorito,
   favoritos = [],
   percentual,
-  irPara // 🔥 importante pro botão
+  irPara
 }) {
 
   /* =========================
-     EMPTY STATE (🔥 PREMIUM)
+     EMPTY STATE
   ========================= */
   if (receitasFiltradas.length === 0) {
     return (
@@ -49,9 +49,7 @@ export default function Favoritos({
             className="favoritos-empty-icon"
           />
 
-          <h3>
-            Nada por aqui ainda 💛
-          </h3>
+          <h3>Nada por aqui ainda 💛</h3>
 
           <p>
             Toque no coração das receitas que você gosta
@@ -133,7 +131,7 @@ export default function Favoritos({
             onClick={() => setModoExibicao("grid")}
             className={`btn-icon ${modoExibicao === "grid" ? "ativo" : ""}`}
           >
-            <img src={IMAGES.icons.grid.active} className="icon-md" />
+            <img src={IMAGES.icons.grid.active} className="icon-md" alt="" />
             <span>Grid</span>
           </button>
 
@@ -141,7 +139,7 @@ export default function Favoritos({
             onClick={() => setModoExibicao("lista")}
             className={`btn-icon ${modoExibicao === "lista" ? "ativo" : ""}`}
           >
-            <img src={IMAGES.icons.lista.active} className="icon-md" />
+            <img src={IMAGES.icons.lista.active} className="icon-md" alt="" />
             <span>Lista</span>
           </button>
 
@@ -155,7 +153,7 @@ export default function Favoritos({
             <CardReceita
               key={r.id}
               receita={r}
-              abrirReceita={abrirReceita}
+              abrirReceita={(rec) => abrirReceita(rec, "favoritos")} // 🔥 CORRIGIDO
               toggleFavorito={toggleFavorito}
               favoritos={favoritos}
               percentual={percentual}
@@ -170,11 +168,12 @@ export default function Favoritos({
           {receitasPaginadas.map((r) => {
 
             const pct = percentual(r);
+            const favoritoAtivo = favoritos?.includes(r.id);
 
             return (
               <div
                 key={r.id}
-                onClick={() => abrirReceita(r)}
+                onClick={() => abrirReceita(r, "favoritos")} // 🔥 CORRIGIDO
                 className="receita-list-card"
               >
 
@@ -214,11 +213,12 @@ export default function Favoritos({
                     e.stopPropagation();
                     toggleFavorito(r.id);
                   }}
-                  className={`receita-list-fav ${
-                    favoritos.includes(r.id) ? "ativo" : ""
-                  }`}
+                  className={`receita-list-fav ${favoritoAtivo ? "ativo" : ""}`}
                 >
-                  <img src={IMAGES.icons.favoritos.active} />
+                  <img
+                    src={IMAGES.icons.favoritos.active}
+                    alt="Favoritar"
+                  />
                 </button>
 
               </div>
@@ -236,7 +236,7 @@ export default function Favoritos({
             onClick={() => setPaginaAtual((p) => p - 1)}
             className="btn-icon"
           >
-            <img src={IMAGES.icons.anterior.active} className="icon-md" />
+            <img src={IMAGES.icons.anterior.active} className="icon-md" alt="" />
           </button>
 
           <span>
@@ -248,7 +248,7 @@ export default function Favoritos({
             onClick={() => setPaginaAtual((p) => p + 1)}
             className="btn-icon"
           >
-            <img src={IMAGES.icons.proxima.active} className="icon-md" />
+            <img src={IMAGES.icons.proxima.active} className="icon-md" alt="" />
           </button>
 
         </div>
