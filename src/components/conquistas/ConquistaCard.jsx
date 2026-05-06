@@ -49,7 +49,13 @@ export default function ConquistaCard({ c }) {
     >
       <span className="cq-badge">{c.raridade}</span>
 
-      <div className="cq-icon">{c.icone}</div>
+      <div className="cq-icon">
+        <img
+          src={c.icone}
+          alt={c.titulo}
+          className="cq-icon-img"
+        />
+      </div>
 
       <h4 className="cq-card-title">{c.titulo}</h4>
       <p className="cq-card-description">{c.descricao}</p>

@@ -31,4 +31,4 @@ export default function Conquistas({ progresso, receitas, favoritos }) {
       <ConquistaPopup conquista={novaConquista} />
     </div>
   );
-}
+} 

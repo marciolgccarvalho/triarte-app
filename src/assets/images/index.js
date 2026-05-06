@@ -62,47 +62,32 @@ import calculoInactive from './icons/calculo-inactive.png'
 import abreviacaoActive from './icons/abreviacao-active.png'
 import abreviacaoInactive from './icons/abreviacao-inactive.png'
 
-// 🔥 NOVO ÍCONE CONFIGURAÇÕES
+// 🔥 CONFIGURAÇÕES
 import configuracoesActive from './icons/configuracao.png'
+
+// ==========================
+// TOPO CONQUISTAS
+// ==========================
+import topoConcluido from './conquistas/topo-concluido.webp'
+import topoConquistas from './conquistas/topo-conquistas.webp'
+import topoEmProgresso from './conquistas/topo-em-progresso.webp'
+import topoLendarias from './conquistas/topo-lendarias.webp'
 
 // ==========================
 // CONQUISTAS
 // ==========================
-import artesaoDedicadoActive from './conquistas/artesao-dedicado-active.png'
-import artesaoDedicadoInactive from './conquistas/artesao-dedicado-inactive.png'
-
-import colecionadorActive from './conquistas/colecionador-active.png'
-import colecionadorInactive from './conquistas/colecionador-inactive.png'
-
-import criadorInicianteActive from './conquistas/criador-iniciante-active.png'
-import criadorInicianteInactive from './conquistas/criador-iniciante-inactive.png'
-
-import dedicadoActive from './conquistas/dedicado-active.png'
-import dedicadoInactive from './conquistas/dedicado-inactive.png'
-
-import exploradorActive from './conquistas/explorador-active.png'
-import exploradorInactive from './conquistas/explorador-inactive.png'
-
-import focadoActive from './conquistas/focado-active.png'
-import focadoInactive from './conquistas/focado-inactive.png'
-
-import imparavelActive from './conquistas/imparavel-active.png'
-import imparavelInactive from './conquistas/imparavel-inactive.png'
-
-import inicianteActive from './conquistas/iniciante-active.png'
-import inicianteInactive from './conquistas/iniciante-inactive.png'
-
-import mestreDoAmigurumiActive from './conquistas/mestre-do-amigurumi-active.png'
-import mestreDoAmigurumiInactive from './conquistas/mestre-do-amigurumi-inactive.png'
-
-import persistenteActive from './conquistas/persistente-active.png'
-import persistenteInactive from './conquistas/persistente-inactive.png'
-
-import primeiraReceitaActive from './conquistas/primeira-receita-active.png'
-import primeiraReceitaInactive from './conquistas/primeira-receita-inactive.png'
-
-import primeiroPassoActive from './conquistas/primeiro-passo-active.png'
-import primeiroPassoInactive from './conquistas/primeiro-passo-inactive.png'
+import primeiroPassoActive from './conquistas/01-primeiro-passo.webp'
+import inicianteActive from './conquistas/02-iniciante.webp'
+import dedicadoActive from './conquistas/03-dedicado.webp'
+import imparavelActive from './conquistas/04-imparavel.webp'
+import primeiraReceitaActive from './conquistas/05-primeira-receita.webp'
+import criadorInicianteActive from './conquistas/06-criador-iniciante.webp'
+import artesaoDedicadoActive from './conquistas/07-artesao-dedicado.webp'
+import mestreDoAmigurumiActive from './conquistas/08-mestre-do-amigurumi.webp'
+import exploradorActive from './conquistas/09-explorador.webp'
+import colecionadorActive from './conquistas/10-colecionador.webp'
+import persistenteActive from './conquistas/11-persistente.webp'
+import focadoActive from './conquistas/12-focado.webp'
 
 // ==========================
 // UI
@@ -116,6 +101,7 @@ import abreviacoes from './ui/abreviacoes.png'
 // EXPORTAÇÃO CENTRAL
 // ==========================
 export const IMAGES = {
+
   personagens: {
     demogorgon,
     duncan,
@@ -131,18 +117,40 @@ export const IMAGES = {
   },
 
   icons: {
-    youtube: { active: youtubeActive },
-    tiktok: { active: tiktokActive },
 
-    sobre: { active: sobreActive, inactive: sobreInactive },
-    site: { active: siteActive },
+    youtube: {
+      active: youtubeActive
+    },
 
-    receitas: { active: receitasActive, inactive: receitasInactive },
+    tiktok: {
+      active: tiktokActive
+    },
 
-    proxima: { active: proximaActive },
-    anterior: { active: anteriorActive },
+    sobre: {
+      active: sobreActive,
+      inactive: sobreInactive
+    },
 
-    menu: { active: menuActive },
+    site: {
+      active: siteActive
+    },
+
+    receitas: {
+      active: receitasActive,
+      inactive: receitasInactive
+    },
+
+    proxima: {
+      active: proximaActive
+    },
+
+    anterior: {
+      active: anteriorActive
+    },
+
+    menu: {
+      active: menuActive
+    },
 
     lista: {
       active: listaActive,
@@ -150,42 +158,126 @@ export const IMAGES = {
       home: listaActiveHome
     },
 
-    instagram: { active: instagramActive },
+    instagram: {
+      active: instagramActive
+    },
 
-    home: { active: homeActive, inactive: homeInactive },
+    home: {
+      active: homeActive,
+      inactive: homeInactive
+    },
 
-    grid: { active: gridActive, inactive: gridInactive },
+    grid: {
+      active: gridActive,
+      inactive: gridInactive
+    },
 
-    favoritos: { active: favoritosActive, inactive: favoritosInactive },
+    favoritos: {
+      active: favoritosActive,
+      inactive: favoritosInactive
+    },
 
-    facebook: { active: facebookActive },
-    email: { active: emailActive },
+    facebook: {
+      active: facebookActive
+    },
 
-    contato: { active: contatoActive, inactive: contatoInactive },
+    email: {
+      active: emailActive
+    },
 
-    conquistas: { active: conquistasActive, inactive: conquistasInactive },
+    contato: {
+      active: contatoActive,
+      inactive: contatoInactive
+    },
 
-    calculo: { active: calculoActive, inactive: calculoInactive },
+    conquistas: {
+      active: conquistasActive,
+      inactive: conquistasInactive
+    },
 
-    abreviacao: { active: abreviacaoActive, inactive: abreviacaoInactive },
+    calculo: {
+      active: calculoActive,
+      inactive: calculoInactive
+    },
 
-    // 🔥 NOVO
-    configuracoes: { active: configuracoesActive }
+    abreviacao: {
+      active: abreviacaoActive,
+      inactive: abreviacaoInactive
+    },
+
+    configuracoes: {
+      active: configuracoesActive
+    }
+  },
+
+  topoConquistas: {
+
+    concluidas: {
+      active: topoConcluido
+    },
+
+    conquistas: {
+      active: topoConquistas
+    },
+
+    progresso: {
+      active: topoEmProgresso
+    },
+
+    lendarias: {
+      active: topoLendarias
+    }
   },
 
   conquistas: {
-    artesaoDedicado: { active: artesaoDedicadoActive, inactive: artesaoDedicadoInactive },
-    colecionador: { active: colecionadorActive, inactive: colecionadorInactive },
-    criadorIniciante: { active: criadorInicianteActive, inactive: criadorInicianteInactive },
-    dedicado: { active: dedicadoActive, inactive: dedicadoInactive },
-    explorador: { active: exploradorActive, inactive: exploradorInactive },
-    focado: { active: focadoActive, inactive: focadoInactive },
-    imparavel: { active: imparavelActive, inactive: imparavelInactive },
-    iniciante: { active: inicianteActive, inactive: inicianteInactive },
-    mestreDoAmigurumi: { active: mestreDoAmigurumiActive, inactive: mestreDoAmigurumiInactive },
-    persistente: { active: persistenteActive, inactive: persistenteInactive },
-    primeiraReceita: { active: primeiraReceitaActive, inactive: primeiraReceitaInactive },
-    primeiroPasso: { active: primeiroPassoActive, inactive: primeiroPassoInactive }
+
+    primeiroPasso: {
+      active: primeiroPassoActive
+    },
+
+    iniciante: {
+      active: inicianteActive
+    },
+
+    dedicado: {
+      active: dedicadoActive
+    },
+
+    imparavel: {
+      active: imparavelActive
+    },
+
+    primeiraReceita: {
+      active: primeiraReceitaActive
+    },
+
+    criadorIniciante: {
+      active: criadorInicianteActive
+    },
+
+    artesaoDedicado: {
+      active: artesaoDedicadoActive
+    },
+
+    mestreDoAmigurumi: {
+      active: mestreDoAmigurumiActive
+    },
+
+    explorador: {
+      active: exploradorActive
+    },
+
+    colecionador: {
+      active: colecionadorActive
+    },
+
+    persistente: {
+      active: persistenteActive
+    },
+
+    focado: {
+      active: focadoActive
+    }
   },
 
   ui: {

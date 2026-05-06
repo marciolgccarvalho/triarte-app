@@ -1,3 +1,9 @@
+import { IMAGES } from "../../assets/images"
+
+/* =========================
+   🏆 CONQUISTAS
+========================= */
+
 export const CONQUISTAS = [
 
   /* =========================
@@ -6,30 +12,33 @@ export const CONQUISTAS = [
   {
     id: "primeiro_passo",
     titulo: "Primeiro Passo",
-    descricao: "Assista seu primeiro vídeo",
-    tipo: "videos",
-    meta: 1,
-    raridade: "comum",
-    icone: "⭐"
-  },
-  {
-    id: "iniciante",
-    titulo: "Iniciante",
     descricao: "Assista 5 vídeos",
     tipo: "videos",
     meta: 5,
     raridade: "comum",
-    icone: "🎬"
+    icone: IMAGES.conquistas.primeiroPasso.active
   },
+
   {
-    id: "dedicado",
-    titulo: "Dedicado",
+    id: "iniciante",
+    titulo: "Iniciante",
     descricao: "Assista 20 vídeos",
     tipo: "videos",
     meta: 20,
     raridade: "raro",
-    icone: "🔥"
+    icone: IMAGES.conquistas.iniciante.active
   },
+
+  {
+    id: "dedicado",
+    titulo: "Dedicado",
+    descricao: "Assista 50 vídeos",
+    tipo: "videos",
+    meta: 50,
+    raridade: "epico",
+    icone: IMAGES.conquistas.dedicado.active
+  },
+
   {
     id: "imparavel",
     titulo: "Imparável",
@@ -37,7 +46,7 @@ export const CONQUISTAS = [
     tipo: "videos",
     meta: 100,
     raridade: "lendario",
-    icone: "💎"
+    icone: IMAGES.conquistas.imparavel.active
   },
 
   /* =========================
@@ -45,39 +54,42 @@ export const CONQUISTAS = [
   ========================= */
   {
     id: "primeira_receita",
-    titulo: "Primeira Receita",
-    descricao: "Complete 1 receita",
-    tipo: "receitas_completas",
-    meta: 1,
-    raridade: "comum",
-    icone: "🧶"
-  },
-  {
-    id: "criador",
-    titulo: "Criador Iniciante",
+    titulo: "Primeiras Receitas",
     descricao: "Complete 5 receitas",
     tipo: "receitas_completas",
     meta: 5,
-    raridade: "raro",
-    icone: "📘"
+    raridade: "comum",
+    icone: IMAGES.conquistas.primeiraReceita.active
   },
+
   {
-    id: "artesao",
-    titulo: "Artesão Dedicado",
+    id: "criador",
+    titulo: "Criador Iniciante",
     descricao: "Complete 10 receitas",
     tipo: "receitas_completas",
     meta: 10,
-    raridade: "epico",
-    icone: "🏅"
+    raridade: "raro",
+    icone: IMAGES.conquistas.criadorIniciante.active
   },
+
   {
-    id: "mestre",
-    titulo: "Mestre do Amigurumi",
+    id: "artesao",
+    titulo: "Artesão Dedicado",
     descricao: "Complete 25 receitas",
     tipo: "receitas_completas",
     meta: 25,
+    raridade: "epico",
+    icone: IMAGES.conquistas.artesaoDedicado.active
+  },
+
+  {
+    id: "mestre",
+    titulo: "Mestre do Amigurumi",
+    descricao: "Complete 50 receitas",
+    tipo: "receitas_completas",
+    meta: 50,
     raridade: "lendario",
-    icone: "👑"
+    icone: IMAGES.conquistas.mestreDoAmigurumi.active
   },
 
   /* =========================
@@ -86,20 +98,21 @@ export const CONQUISTAS = [
   {
     id: "explorador",
     titulo: "Explorador",
-    descricao: "Favorite 3 receitas",
+    descricao: "Favorite 5 receitas",
     tipo: "favoritos",
-    meta: 3,
+    meta: 5,
     raridade: "comum",
-    icone: "❤️"
+    icone: IMAGES.conquistas.explorador.active
   },
+
   {
     id: "colecionador",
     titulo: "Colecionador",
-    descricao: "Favorite 10 receitas",
+    descricao: "Favorite 15 receitas",
     tipo: "favoritos",
-    meta: 10,
+    meta: 15,
     raridade: "raro",
-    icone: "📦"
+    icone: IMAGES.conquistas.colecionador.active
   },
 
   /* =========================
@@ -108,12 +121,13 @@ export const CONQUISTAS = [
   {
     id: "persistente",
     titulo: "Persistente",
-    descricao: "Inicie 3 receitas",
+    descricao: "Inicie 5 receitas",
     tipo: "receitas_iniciadas",
     meta: 3,
     raridade: "comum",
-    icone: "🧭"
+    icone: IMAGES.conquistas.persistente.active
   },
+
   {
     id: "focado",
     titulo: "Focado",
@@ -121,7 +135,7 @@ export const CONQUISTAS = [
     tipo: "maior_progresso",
     meta: 50,
     raridade: "raro",
-    icone: "🎯"
+    icone: IMAGES.conquistas.focado.active
   }
 
-];
+]
