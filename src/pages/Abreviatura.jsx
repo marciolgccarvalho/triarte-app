@@ -1,5 +1,7 @@
 import React from "react";
+
 import "../styles/components/abreviacoes.css";
+
 import { IMAGES } from "../assets/images";
 
 export default function Abreviatura() {
@@ -19,56 +21,102 @@ export default function Abreviatura() {
     { abrev: "ag.", nome: "Agulha" }
   ];
 
-  const [copiado, setCopiado] = React.useState(false);
+  const [abvCopiado, setAbvCopiado] = React.useState(false);
 
   const copiar = async () => {
+
     const texto = lista
       .map((item) => `${item.abrev} - ${item.nome}`)
       .join("\n");
 
     await navigator.clipboard.writeText(texto);
-    setCopiado(true);
+
+    setAbvCopiado(true);
+
+    setTimeout(() => {
+      setAbvCopiado(false);
+    }, 1500);
+
   };
 
   return (
-    <div className="page-container abreviacoes-page">
 
-      <div className="abreviacoes-header">
-        <img
-          src={IMAGES.ui.abreviacoes}
-          alt="Abreviações"
-          className="abreviacoes-header-img"
-        />
+    <div className="page-container abv-page">
 
-        <div>
-          <h2>Abreviações</h2>
-          <p>Guia rápido para receitas de crochê e amigurumi</p>
+      {/* HEADER */}
+
+      <div className="abv-header">
+
+        <div className="abv-header-icon">
+
+          <img
+            src={IMAGES.ui.abreviacoes}
+            alt="Abreviações"
+            className="abv-header-image"
+          />
+
         </div>
+
+        <div className="abv-header-content">
+
+          <h2 className="abv-title">
+            Abreviações
+          </h2>
+
+          <p className="abv-subtitle">
+            Guia rápido para receitas de crochê e amigurumi
+          </p>
+
+        </div>
+
       </div>
 
-      <div className="abreviacoes-card">
+      {/* LISTA */}
+
+      <div className="abv-card">
+
         {lista.map((item, index) => (
-          <div key={index} className="abreviacao-row">
 
-            <span className="abreviacao-tag">
+          <div
+            key={index}
+            className="abv-row"
+          >
+
+            <div className="abv-tag">
               {item.abrev}
-            </span>
+            </div>
 
-            <span className="abreviacao-desc">
+            <div className="abv-desc">
               {item.nome}
-            </span>
+            </div>
 
           </div>
+
         ))}
+
       </div>
 
+      {/* BOTÃO */}
+
       <button
-        className="abreviacoes-copy btn btn-primary"
+        className={`
+          btn
+          btn-primary
+          btn-full
+          abv-copy-btn
+          ${abvCopiado ? "abv-copy-success" : ""}
+        `}
         onClick={copiar}
       >
-        {copiado ? "Copiado!" : "Copiar abreviações"}
+
+        {abvCopiado
+          ? "✔ Copiado!"
+          : "Copiar abreviações"}
+
       </button>
 
     </div>
+
   );
+
 }

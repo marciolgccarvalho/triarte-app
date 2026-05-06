@@ -1,24 +1,24 @@
 import "../styles/components/conquistas.css";
 
-import { gerarConquistas, gerarResumo } from "../features/conquistas/conquistasEngine";
+import {
+  gerarConquistas,
+  gerarResumo
+} from "../features/conquistas/conquistasEngine";
+
 import ConquistaCard from "../components/conquistas/ConquistaCard";
 import ConquistaHeader from "../components/conquistas/ConquistaHeader";
-import useConquistaNotifier from "../hooks/useConquistaNotifier";
 import ConquistaPopup from "../components/conquistas/ConquistaPopup";
+import useConquistaNotifier from "../hooks/useConquistaNotifier";
 
 export default function Conquistas({ progresso, receitas, favoritos }) {
-
   const lista = gerarConquistas({ progresso, receitas, favoritos });
   const resumo = gerarResumo(lista);
-
-  // 🔔 detecta nova conquista
   const novaConquista = useConquistaNotifier(lista);
 
   return (
     <div className="page-container cq-page">
-
-      <h2>Conquistas</h2>
-      <p className="text-muted">Acompanhe sua evolução 💛</p>
+      <h2 className="cq-page-title">Conquistas</h2>
+      <p className="cq-page-subtitle">Acompanhe sua evolução 💛</p>
 
       <ConquistaHeader resumo={resumo} />
 
@@ -28,9 +28,7 @@ export default function Conquistas({ progresso, receitas, favoritos }) {
         ))}
       </div>
 
-      {/* 🔥 POPUP DE CONQUISTA */}
       <ConquistaPopup conquista={novaConquista} />
-
     </div>
   );
 }

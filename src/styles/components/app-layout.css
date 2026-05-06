@@ -86,7 +86,7 @@
   justify-content: center;
 
   cursor: pointer;
-}
+} 
 
 /* LOGO */
 .app-logo {
@@ -131,112 +131,171 @@
   -webkit-overflow-scrolling: touch;
 }
 
-/* =========================
+/* =========================================
    FOOTER
-========================= */
-.app-footer {
-  height: 72px;
+========================================= */
 
-  background: var(--color-bg-light);
+.app-footer {
+  position: sticky;
+  bottom: 0;
+
+  z-index: 100;
 
   display: flex;
   justify-content: space-around;
   align-items: center;
 
-  border-top: 1px solid var(--color-surface);
+  padding:
+    10px
+    12px
+    calc(10px + env(safe-area-inset-bottom));
 
-  position: sticky;
-  bottom: 0;
-  z-index: 20;
+  background: rgba(255,255,255,0.88);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border-top: 1px solid rgba(255,255,255,0.35);
+
+  box-shadow:
+    0 -4px 24px rgba(0,0,0,0.06);
 }
 
-/* ITEM */
+/* =========================================
+   ITEM
+========================================= */
+
 .app-footer-item {
   position: relative;
+
+  border: none;
+  background: transparent;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  gap: 4px;
+  gap: 6px;
+
+  min-width: 68px;
+  min-height: 60px;
+
+  padding: 6px 10px;
+
+  border-radius: 18px;
 
   cursor: pointer;
 
-  padding-top: 8px;
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease;
 }
 
-/* ÍCONE */
-.app-footer-icon {
-  width: 24px;
-  height: 24px;
+/* tap mobile */
 
-  object-fit: contain;
-
-  z-index: 2;
-  opacity: 0.85;
-
-  transition: var(--transition-fast);
-
-  transform: translateY(-4px); /* 🔥 AQUI */
+.app-footer-item:active {
+  transform: scale(0.94);
 }
 
-/* TEXTO */
-.app-footer-text {
-  font-size: 11px;
-  color: #666;
+/* =========================================
+   ÍCONE
+========================================= */
 
-  z-index: 2;
-
-  transition: var(--transition-fast);
-}
-
-/* =========================
-   CÍRCULO
-========================= */
-.app-footer-item::before {
-  content: "";
-  position: absolute;
-
+.app-footer-icon-wrapper {
   width: 42px;
   height: 42px;
 
-  border-radius: 50%;
+  border-radius: 14px;
 
-  top: -5px;
-  left: 50%;
-  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  background: transparent;
-
-  transition: var(--transition-fast);
-
-  z-index: 1;
+  transition:
+    background 0.22s ease,
+    transform 0.22s ease,
+    box-shadow 0.22s ease;
 }
 
-/* =========================
-   HOVER (desktop)
-========================= */
-.app-footer-item:hover::before {
-  background: var(--color-primary);
+.app-footer-icon {
+  width: 22px;
+  height: 22px;
+
+  object-fit: contain;
+
+  opacity: 0.72;
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    filter 0.2s ease;
 }
 
-/* =========================
-   ATIVO
-========================= */
-.app-footer-item.active::before {
-  background: var(--color-primary);
+/* =========================================
+   TEXTO
+========================================= */
+
+.app-footer-text {
+  font-size: 11px;
+  font-weight: 500;
+
+  color: #777;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
-/* ÍCONE ATIVO */
-.app-footer-item.active .app-footer-icon,
+/* =========================================
+   HOVER
+========================================= */
+
+.app-footer-item:hover .app-footer-icon-wrapper {
+  background: rgba(250,204,21,0.14);
+}
+
 .app-footer-item:hover .app-footer-icon {
-  filter: brightness(0);
   opacity: 1;
 }
 
-/* TEXTO ATIVO */
-.app-footer-item.active .app-footer-text {
+/* =========================================
+   ATIVO
+========================================= */
+
+.app-footer-item-active .app-footer-icon-wrapper {
+  background: var(--color-primary);
+
+  box-shadow:
+    0 6px 16px rgba(250,204,21,0.35);
+
+  transform: translateY(-4px);
+}
+
+.app-footer-item-active .app-footer-icon {
+  opacity: 1;
+
+  filter: brightness(0);
+}
+
+.app-footer-item-active .app-footer-text {
   color: var(--color-primary);
-  font-weight: 600;
+
+  font-weight: 700;
+}
+
+/* =========================================
+   RESPONSIVO
+========================================= */
+
+@media (max-width: 360px) {
+
+  .app-footer-text {
+    font-size: 10px;
+  }
+
+  .app-footer-item {
+    min-width: 58px;
+  }
+
 }

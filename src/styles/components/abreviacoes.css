@@ -1,239 +1,162 @@
-/* =========================
-   PAGE
-========================= */
-.cq-page {
+/* =========================================
+   ROOT
+========================================= */
+
+.abv-page {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-/* =========================
-   HEADER / RESUMO
-========================= */
-.cq-header {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-}
+/* =========================================
+   HEADER
+========================================= */
 
-.cq-stat {
-  background: #fff;
-  border: 1px solid #eee;
-  border-radius: 14px;
-  padding: 10px 6px;
-  text-align: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-}
-
-.cq-stat span {
-  display: block;
-  font-size: 18px;
-  margin-bottom: 4px;
-}
-
-.cq-stat strong {
-  display: block;
-  font-size: 15px;
-  font-weight: 800;
-  color: #111;
-}
-
-.cq-stat p {
-  margin: 2px 0 0;
-  font-size: 10px;
-  color: #666;
-}
-
-/* =========================
-   GRID
-========================= */
-.cq-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+.abv-page .abv-header {
+  display: flex;
+  align-items: center;
   gap: 12px;
+
+  padding: 10px;
 }
 
-/* =========================
-   CARD
-========================= */
-.cq-card {
-  position: relative;
-  min-height: 190px;
+/* ícone */
 
-  background: #fff;
-  border: 1px solid #eee;
-  border-radius: 18px;
-  padding: 14px;
+.abv-page .abv-header-icon {
+  width: 68px;
+  height: 68px;
 
-  text-align: center;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  flex-shrink: 0;
 }
 
-.cq-card:active {
-  transform: scale(0.97);
-}
-
-.cq-card h4 {
-  font-size: 14px;
-  font-weight: 800;
-  margin: 6px 0 4px;
-}
-
-.cq-card p {
-  font-size: 12px;
-  color: #555;
-  margin: 0;
-  line-height: 1.35;
-}
-
-/* =========================
-   RARIDADE
-========================= */
-.cq-card.comum {
-  border-color: #e5e7eb;
-}
-
-.cq-card.raro {
-  border-color: #93c5fd;
-}
-
-.cq-card.epico {
-  border-color: #c4b5fd;
-}
-
-.cq-card.lendario {
-  border-color: #facc15;
-  box-shadow: 0 4px 16px rgba(250, 204, 21, 0.28);
-}
-
-/* =========================
-   STATUS VISUAL
-========================= */
-.cq-card.bloqueado {
-  opacity: 0.72;
-}
-
-.cq-card.concluido {
-  background: #fffbeb;
-}
-
-/* =========================
-   BADGE
-========================= */
-.cq-badge {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-
-  font-size: 9px;
-  font-weight: 800;
-  text-transform: uppercase;
-
-  padding: 4px 7px;
-  border-radius: 999px;
-
-  background: #f3f4f6;
-  color: #555;
-}
-
-.cq-card.raro .cq-badge {
-  background: #dbeafe;
-  color: #1d4ed8;
-}
-
-.cq-card.epico .cq-badge {
-  background: #ede9fe;
-  color: #6d28d9;
-}
-
-.cq-card.lendario .cq-badge {
-  background: #fef3c7;
-  color: #92400e;
-}
-
-/* =========================
-   ÍCONE
-========================= */
-.cq-icon {
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-
-  margin-top: 12px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 28px;
-
-  background: #f9fafb;
-}
-
-.cq-card.concluido .cq-icon {
-  background: linear-gradient(135deg, #facc15, #f59e0b);
-}
-
-/* =========================
-   PROGRESSO
-========================= */
-.cq-progress {
+.abv-page .abv-header-image {
   width: 100%;
-  height: 7px;
-  background: #e5e7eb;
-  border-radius: 999px;
-  overflow: hidden;
-  margin-top: auto;
-}
-
-.cq-progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, #facc15, #f59e0b);
-  border-radius: 999px;
+
+  object-fit: contain;
 }
 
-.cq-progress-info {
-  margin-top: 6px;
-  font-size: 11px;
+/* textos */
+
+.abv-page .abv-title {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.abv-page .abv-subtitle {
+  font-size: 13px;
   color: #666;
 }
 
-/* =========================
-   STATUS TEXTO
-========================= */
-.cq-status {
-  margin-top: 4px;
-  font-size: 11px;
-  font-weight: 700;
+/* =========================================
+   CARD
+========================================= */
+
+.abv-page .abv-card {
+  background: #fff;
+
+  border: 1px solid #eee;
+  border-radius: 16px;
+
+  overflow: hidden;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
-.cq-status.concluido {
-  color: #16a34a;
+/* =========================================
+   ROW
+========================================= */
+
+.abv-page .abv-row {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 12px;
+
+  transition: all 0.15s ease;
 }
 
-.cq-status.progresso {
-  color: #f59e0b;
+/* zebrado */
+
+.abv-page .abv-row:nth-child(even) {
+  background: rgba(0,0,0,0.025);
 }
 
-.cq-status.bloqueado {
-  color: #999;
+/* interação */
+
+.abv-page .abv-row:hover {
+  background: rgba(0,0,0,0.04);
 }
 
-/* =========================
-   RESPONSIVO
-========================= */
-@media (max-width: 380px) {
-  .cq-header {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.abv-page .abv-row:active {
+  transform: scale(0.975);
+}
 
-  .cq-grid {
-    grid-template-columns: 1fr;
-  }
+/* =========================================
+   TAG
+========================================= */
+
+.abv-page .abv-tag {
+  min-width: 54px;
+
+  text-align: center;
+
+  font-weight: 800;
+  font-size: 13px;
+
+  padding: 6px 8px;
+
+  border-radius: 999px;
+
+  background: #fffbeb;
+  border: 1px solid #facc15;
+
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease;
+}
+
+/* micro interação */
+
+.abv-page .abv-row:active .abv-tag {
+  transform: scale(0.94);
+}
+
+/* =========================================
+   DESCRIÇÃO
+========================================= */
+
+.abv-page .abv-desc {
+  font-size: 13px;
+  font-weight: 600;
+
+  color: #333;
+}
+
+/* =========================================
+   BOTÃO
+========================================= */
+
+.abv-page .abv-copy-btn {
+  margin-top: 10px;
+
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease;
+}
+
+.abv-page .abv-copy-btn:active {
+  transform: scale(0.97);
+
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+}
+
+/* feedback */
+
+.abv-page .abv-copy-success {
+  background: #22c55e;
 }

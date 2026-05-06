@@ -1,48 +1,235 @@
-/* =========================
+/* =========================================
+   TELA CONQUISTAS - CSS ISOLADO
+   Prefixo exclusivo: cq-
+========================================= */
+
+.cq-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cq-page .cq-page-title {
+  font-size: 22px;
+  font-weight: 800;
+  margin: 0;
+}
+
+.cq-page .cq-page-subtitle {
+  margin: -8px 0 0;
+  font-size: 13px;
+  color: #666;
+}
+
+/* =========================================
+   HEADER / RESUMO
+========================================= */
+
+.cq-page .cq-header {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.cq-page .cq-stat {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 16px;
+  padding: 12px 8px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.cq-page .cq-stat-icon {
+  display: block;
+  font-size: 22px;
+  margin-bottom: 4px;
+}
+
+.cq-page .cq-stat-value {
+  display: block;
+  font-size: 15px;
+  font-weight: 800;
+  color: #111;
+}
+
+.cq-page .cq-stat-label {
+  margin: 2px 0 0;
+  font-size: 11px;
+  color: #666;
+}
+
+/* =========================================
+   GRID
+========================================= */
+
+.cq-page .cq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+/* =========================================
+   CARD
+========================================= */
+
+.cq-page .cq-card {
+  position: relative;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 18px;
+  padding: 14px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.cq-page .cq-card:active {
+  transform: scale(0.98);
+}
+
+.cq-page .cq-card-title {
+  margin: 10px 0 4px;
+  font-size: 14px;
+  font-weight: 800;
+  color: #111;
+}
+
+.cq-page .cq-card-description {
+  min-height: 32px;
+  margin: 0 0 10px;
+  font-size: 12px;
+  line-height: 1.35;
+  color: #666;
+}
+
+/* =========================================
+   RARIDADE
+========================================= */
+
+.cq-page .cq-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #f9fafb;
+  border: 1px solid #eee;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #555;
+}
+
+.cq-page .cq-card.cq-raridade-comum .cq-badge {
+  background: #f9fafb;
+  color: #555;
+}
+
+.cq-page .cq-card.cq-raridade-raro .cq-badge {
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.cq-page .cq-card.cq-raridade-epico .cq-badge {
+  background: #faf5ff;
+  color: #7e22ce;
+}
+
+.cq-page .cq-card.cq-raridade-lendario .cq-badge {
+  background: #fffbeb;
+  color: #92400e;
+  border-color: #facc15;
+}
+
+/* =========================================
    ÍCONE
-========================= */
-.cq-icon {
+========================================= */
+
+.cq-page .cq-icon {
   width: 56px;
   height: 56px;
-
   border-radius: 50%;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   font-size: 30px;
-
   background: #f9fafb;
-
-  /* 🔥 suavidade premium */
   transition: all 0.2s ease;
 }
 
-/* CONCLUÍDO */
-.cq-card.concluido .cq-icon {
+.cq-page .cq-card.cq-status-concluido .cq-icon {
   background: linear-gradient(135deg, #facc15, #f59e0b);
   color: #000;
-
-  /* leve glow constante */
   box-shadow: 0 4px 12px rgba(250, 204, 21, 0.4);
 }
 
-/* BLOQUEADO */
-.cq-card.bloqueado .cq-icon {
+.cq-page .cq-card.cq-status-bloqueado .cq-icon {
   opacity: 0.35;
   filter: grayscale(100%);
 }
 
-/* =========================
-   ANIMAÇÃO DE DESBLOQUEIO
-========================= */
+/* =========================================
+   PROGRESSO
+========================================= */
 
-.cq-card.animar {
-  animation: conquistaPop 0.6s ease;
+.cq-page .cq-progress {
+  width: 100%;
+  height: 8px;
+  background: #f3f4f6;
+  border-radius: 999px;
+  overflow: hidden;
 }
 
-@keyframes conquistaPop {
+.cq-page .cq-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #facc15, #f59e0b);
+  border-radius: 999px;
+  transition: width 0.25s ease;
+}
+
+.cq-page .cq-progress-info {
+  margin-top: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #666;
+}
+
+/* =========================================
+   STATUS
+========================================= */
+
+.cq-page .cq-status {
+  margin-top: 8px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.cq-page .cq-status.cq-status-concluido {
+  color: #16a34a;
+}
+
+.cq-page .cq-status.cq-status-progresso {
+  color: #f59e0b;
+}
+
+.cq-page .cq-status.cq-status-bloqueado {
+  color: #999;
+}
+
+/* =========================================
+   ANIMAÇÃO DE DESBLOQUEIO
+========================================= */
+
+.cq-page .cq-card.cq-card-animando {
+  animation: cq-conquista-pop 0.6s ease;
+}
+
+.cq-page .cq-card.cq-card-animando .cq-icon {
+  animation: cq-brilho-icone 0.7s ease;
+}
+
+@keyframes cq-conquista-pop {
   0% {
     transform: scale(0.92);
     box-shadow: 0 0 0 rgba(250,204,21,0);
@@ -59,70 +246,78 @@
   }
 }
 
-/* brilho no ícone */
-.cq-card.animar .cq-icon {
-  animation: brilhoIcone 0.7s ease;
-}
-
-@keyframes brilhoIcone {
+@keyframes cq-brilho-icone {
   0% { transform: scale(0.85); }
   50% { transform: scale(1.25); }
   100% { transform: scale(1); }
 }
 
-/* =========================
+/* =========================================
    POPUP CONQUISTA
-========================= */
-.cq-popup {
+========================================= */
+
+.cq-page .cq-popup {
   position: fixed;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-
   z-index: 999;
-  pointer-events: none; /* 🔥 não bloqueia clique */
+  pointer-events: none;
 }
 
-.cq-popup-card {
+.cq-page .cq-popup-card {
   display: flex;
   align-items: center;
   gap: 12px;
-
   background: #111;
   color: #fff;
-
   padding: 14px 18px;
   border-radius: 16px;
-
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-
-  animation: popupEntrada 0.3s ease;
+  animation: cq-popup-entrada 0.3s ease;
 }
 
-/* ícone popup */
-.cq-popup-icon {
+.cq-page .cq-popup-icon {
   font-size: 26px;
 }
 
-/* textos */
-.cq-popup strong {
+.cq-page .cq-popup-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.cq-page .cq-popup-title {
   font-size: 13px;
 }
 
-.cq-popup p {
+.cq-page .cq-popup-text {
   margin: 2px 0 0;
   font-size: 12px;
   color: #ccc;
 }
 
-/* animação entrada */
-@keyframes popupEntrada {
+@keyframes cq-popup-entrada {
   from {
     transform: translateY(25px) scale(0.92);
     opacity: 0;
   }
+
   to {
     transform: translateY(0) scale(1);
     opacity: 1;
+  }
+}
+
+/* =========================================
+   RESPONSIVO
+========================================= */
+
+@media (max-width: 420px) {
+  .cq-page .cq-header {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cq-page .cq-grid {
+    grid-template-columns: 1fr;
   }
 }
