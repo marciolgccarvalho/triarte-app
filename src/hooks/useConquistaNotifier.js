@@ -1,29 +1,41 @@
-import { useEffect, useRef, useState } from "react";
-
-const audio = new Audio("/sounds/conquista.mp3");
+import { useEffect, useState } from "react";
 
 export default function useConquistaNotifier(lista) {
 
-  const anteriores = useRef([]);
   const [nova, setNova] = useState(null);
 
   useEffect(() => {
 
-    const novasConquistas = lista.filter(c =>
-      c.status === "concluido" &&
-      !anteriores.current.includes(c.id)
+    if (typeof window === "undefined") return;
+
+    // 📌 recupera conquistas já notificadas
+    const jaNotificadas = JSON.parse(
+      localStorage.getItem("conquistas_notificadas") || "[]"
     );
 
-    if (novasConquistas.length > 0) {
+    // 🔎 encontra novas conquistas concluídas
+    const novas = lista.filter(c =>
+      c.status === "concluido" &&
+      !jaNotificadas.includes(c.id)
+    );
 
-      const conquista = novasConquistas[0];
+    if (novas.length > 0) {
+
+      const conquista = novas[0];
 
       setNova(conquista);
 
-      // 🔊 SOM
+      // 💾 salva como já exibida
+      localStorage.setItem(
+        "conquistas_notificadas",
+        JSON.stringify([...jaNotificadas, conquista.id])
+      );
+
+      // 🔊 SOM (seguro)
       try {
+        const audio = new Audio("/sounds/conquista.mp3");
         audio.currentTime = 0;
-        audio.play();
+        audio.play().catch(() => {});
       } catch (e) {}
 
       // 📳 VIBRAÇÃO (mobile)
@@ -31,14 +43,11 @@ export default function useConquistaNotifier(lista) {
         navigator.vibrate(120);
       }
 
+      // ⏱️ remove popup
       setTimeout(() => {
         setNova(null);
       }, 2000);
     }
-
-    anteriores.current = lista
-      .filter(c => c.status === "concluido")
-      .map(c => c.id);
 
   }, [lista]);
 
