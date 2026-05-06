@@ -14,6 +14,7 @@ import "./styles/base/global.css";
 import "./styles/utils/spacing.css";
 import "./styles/utils/layout.css";
 import "./styles/utils/helpers.css";
+import "./styles/utils/progress.css";
 
 /* =========================
    COMPONENTS (ordem importa)

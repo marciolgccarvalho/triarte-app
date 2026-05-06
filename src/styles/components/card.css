@@ -123,9 +123,11 @@
 .progress-fill {
   height: 100%;
   width: 0%;
-  background: var(--color-primary);
 
-  transition: width var(--transition-normal);
+  background: linear-gradient(90deg, #facc15, #f59e0b);
+
+  border-radius: 999px;
+  transition: width 0.3s ease;
 }
 
 /* TEXTO */

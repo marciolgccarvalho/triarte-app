@@ -66,7 +66,7 @@ export default function ReceitaDetalhe({
 
             <div className="rd-col-right">
               <button
-                className="rd-btn-materiais"
+                className="rd-btn-materiais btn btn-secondary"
                 onClick={() => irPara && irPara("materiais")}
               >
                 <img
@@ -222,7 +222,7 @@ export default function ReceitaDetalhe({
                     <div className="rd-acoes-box">
 
                       <button
-                        className={`rd-btn-check ${isVisto ? "ativo" : ""}`}
+                        className={`rd-btn-check btn btn-outline ${isVisto ? "ativo" : ""}`}
                         disabled={!podeMarcar && !podeDesmarcar}
                         onClick={() => {
                           if (podeMarcar || podeDesmarcar) {
@@ -238,7 +238,7 @@ export default function ReceitaDetalhe({
                           href="https://www.youtube.com/channel/UCCw427skU7og9hPNGIcPbrQ/join"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="rd-btn-membro"
+                          className="rd-btn-membro btn btn-danger"
                         >
                            Seja membro
                         </a>
@@ -266,7 +266,7 @@ export default function ReceitaDetalhe({
               href="https://www.youtube.com/channel/UCCw427skU7og9hPNGIcPbrQ/join"
               target="_blank"
               rel="noopener noreferrer"
-              className="rd-cta-button"
+              className="rd-cta-button btn btn-primary"
             >
              Seja membro
             </a>

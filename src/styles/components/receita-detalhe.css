@@ -205,7 +205,10 @@
 
 .rd-progress-fill {
   height: 100%;
+
   background: linear-gradient(90deg, #facc15, #f59e0b);
+
+  border-radius: 999px;
 }
 
 /* ===== LISTA DE VÍDEOS ===== */
@@ -318,24 +321,6 @@
   width: 100%;
 }
 
-.rd-btn-check {
-  height: 36px;
-  border-radius: 10px;
-
-  border: 1px solid #d1d5db;
-  background: #ffffff;
-
-  font-size: 13px;
-  font-weight: 600;
-  color: #333;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
 
 /* HOVER / TOQUE */
 .rd-btn-check:active {
@@ -343,29 +328,12 @@
   background: #f9fafb;
 }
 
-.rd-btn-check.ativo {
-  background: #dcfce7;
-  border-color: #22c55e;
-  color: #166534;
-}
 
 .rd-btn-check:disabled {
   opacity: 0.4;
   cursor: not-allowed;
 }
 
-.rd-btn-membro {
-  height: 32px;
-  border-radius: 8px;
-  background: #fee2e2;
-  color: #991b1b;
-  font-size: 12px;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-}
 
 /* ========================================= */
 /* 🎯 PRÓXIMO VÍDEO */
@@ -433,27 +401,6 @@
   line-height: 1.35;
 }
 
-.rd-cta-button {
-  height: 42px;
-  padding: 0 18px;
-
-  border-radius: 999px;
-  background: linear-gradient(135deg, #facc15, #f59e0b);
-  color: #000;
-
-  font-size: 13px;
-  font-weight: 700;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  text-decoration: none;
-  white-space: nowrap;
-
-  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
-  transition: all 0.2s ease;
-}
 
 /* TOQUE / CLICK */
 .rd-cta-button:active {

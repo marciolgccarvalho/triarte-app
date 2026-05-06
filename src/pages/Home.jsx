@@ -127,7 +127,7 @@ export default function Home({
           </div>
 
           <button
-            className="home-continue-btn"
+            className="home-continue-btn btn btn-primary"
             onClick={() => abrirReceita(ultimaReceita, "home")} // 🔥 CORRIGIDO
           >
             ▶ Continuar
@@ -223,12 +223,12 @@ export default function Home({
           />
         </div>
 
-        <div className="home-cta-content">
-          <div className="home-cta-text">
-            <strong>Ver todas as receitas</strong>
-            <span>Explore todas as receitas disponíveis</span>
-          </div>
+     <div className="home-cta-content">
+        <div className="home-cta-text">
+          <strong>Ver todas as receitas</strong>
+          <span>Explore todas as receitas disponíveis</span>
         </div>
+      </div>
 
         <div className="home-cta-arrow">›</div>
       </div>
