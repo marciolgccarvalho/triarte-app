@@ -45,7 +45,7 @@ import "./styles/components/receitas.css";
 import "./styles/components/receita-detalhe.css";
 
 // conquistas
-import "./styles/components/conquista.css";
+import "./styles/components/conquistas.css";
 import "./styles/components/parabens.css";
 
 /* =========================
