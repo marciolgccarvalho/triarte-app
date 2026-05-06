@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/components/receita-detalhe.css";
 import { IMAGES } from "../assets/images";
 import ParabensModal from "../components/ParabensModal";
+import { isVideoLiberado } from '../services/receitasService';
 
 export default function ReceitaDetalhe({
   receita,
@@ -92,12 +93,12 @@ export default function ReceitaDetalhe({
                 e.stopPropagation();
                 toggleFavorito && toggleFavorito(receita.id);
               }}
-              className={`card-favorito ${isFavorito ? "ativo" : ""}`}
+              className={`rd-favorito ${isFavorito ? "ativo" : ""}`}
             >
               <img
                 src={IMAGES.icons.favoritos.active}
                 alt="Favorito"
-                className="card-favorito-icon"
+                className="rd-favorito-icon"
               />
             </button>
 
@@ -140,15 +141,7 @@ export default function ReceitaDetalhe({
           <div className="rd-videos-lista">
             {receita.videos?.map((video, index) => {
 
-              const agora = new Date();
-
-              let liberado = true;
-
-              if (video.liberacao) {
-                const dataLiberacao = new Date(`${video.liberacao}T16:30:00`);
-                liberado = agora >= dataLiberacao;
-              }
-
+              const liberado = isVideoLiberado(video);
               const vistosLista = progresso?.[receita.id]?.vistos || [];
 
               const ultimoVisto = vistosLista.length > 0

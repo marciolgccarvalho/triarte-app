@@ -216,6 +216,7 @@ export default function Simulador() {
           type="button"
           onClick={copiarValor}
           disabled={precoSugerido <= 0}
+          className="sim-btn btn btn-primary"
         >
           {copiado ? "Valor copiado!" : "Copiar valor"}
         </button>

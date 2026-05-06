@@ -1,131 +1,35 @@
-import React from "react";
-import { IMAGES } from "../assets/images";
+import "../styles/components/conquistas.css";
 
-export default function Conquistas({
-  voltar,
-  progresso,
-  receitas,
-  favoritos
-}) {
+import { gerarConquistas, gerarResumo } from "../features/conquistas/conquistasEngine";
+import ConquistaCard from "../components/conquistas/ConquistaCard";
+import ConquistaHeader from "../components/conquistas/ConquistaHeader";
+import useConquistaNotifier from "../hooks/useConquistaNotifier";
+import ConquistaPopup from "../components/conquistas/ConquistaPopup";
 
-  const conquistas = [
-    { id: "primeiro_passo", imgOn: IMAGES.conquistas.primeiroPasso.active, imgOff: IMAGES.conquistas.primeiroPasso.inactive },
-    { id: "iniciante", imgOn: IMAGES.conquistas.iniciante.active, imgOff: IMAGES.conquistas.iniciante.inactive },
-    { id: "dedicado", imgOn: IMAGES.conquistas.dedicado.active, imgOff: IMAGES.conquistas.dedicado.inactive },
-    { id: "primeira_receita", imgOn: IMAGES.conquistas.primeiraReceita.active, imgOff: IMAGES.conquistas.primeiraReceita.inactive },
-    { id: "criador", imgOn: IMAGES.conquistas.criadorIniciante.active, imgOff: IMAGES.conquistas.criadorIniciante.inactive },
-    { id: "artesao", imgOn: IMAGES.conquistas.artesaoDedicado.active, imgOff: IMAGES.conquistas.artesaoDedicado.inactive },
-    { id: "mestre", imgOn: IMAGES.conquistas.mestreDoAmigurumi.active, imgOff: IMAGES.conquistas.mestreDoAmigurumi.inactive },
-    { id: "explorador", imgOn: IMAGES.conquistas.explorador.active, imgOff: IMAGES.conquistas.explorador.inactive },
-    { id: "colecionador", imgOn: IMAGES.conquistas.colecionador.active, imgOff: IMAGES.conquistas.colecionador.inactive },
-    { id: "persistente", imgOn: IMAGES.conquistas.persistente.active, imgOff: IMAGES.conquistas.persistente.inactive },
-    { id: "focado", imgOn: IMAGES.conquistas.focado.active, imgOff: IMAGES.conquistas.focado.inactive },
-    { id: "imparavel", imgOn: IMAGES.conquistas.imparavel.active, imgOff: IMAGES.conquistas.imparavel.inactive }
-  ];
+export default function Conquistas({ progresso, receitas, favoritos }) {
 
-  const totalVideosAssistidos = Object.values(progresso).reduce(
-    (total, r) => total + (r.vistos?.length || 0),
-    0
-  );
+  const lista = gerarConquistas({ progresso, receitas, favoritos });
+  const resumo = gerarResumo(lista);
 
-  const receitasCompletas = receitas.filter((r) => {
-    const vistos = progresso[r.id]?.vistos?.length || 0;
-    const total = r.videos?.length || 0;
-    return total > 0 && vistos === total;
-  }).length;
-
-  const receitasIniciadas = receitas.filter((r) => {
-    const vistos = progresso[r.id]?.vistos?.length || 0;
-    return vistos > 0;
-  }).length;
-
-  const maiorProgresso = Math.max(
-    ...receitas.map((r) => {
-      const vistos = progresso[r.id]?.vistos?.length || 0;
-      const total = r.videos?.length || 0;
-      return total === 0 ? 0 : (vistos / total) * 100;
-    }),
-    0
-  );
+  // 🔔 detecta nova conquista
+  const novaConquista = useConquistaNotifier(lista);
 
   return (
-    <div className="page-container">
+    <div className="page-container cq-page">
 
-      {/* VOLTAR */}
-      <div className="mb-sm">
-        <button onClick={voltar} className="btn-icon">
-          <img
-            src={IMAGES.icons.anterior.active}
-            alt="Voltar"
-            className="icon-sm"
-          />
-        </button>
+      <h2>Conquistas</h2>
+      <p className="text-muted">Acompanhe sua evolução 💛</p>
+
+      <ConquistaHeader resumo={resumo} />
+
+      <div className="cq-grid">
+        {lista.map((c) => (
+          <ConquistaCard key={c.id} c={c} />
+        ))}
       </div>
 
-      <h2 className="mb-sm">Conquistas</h2>
-
-      <p className="text-muted mb-md">
-        Acompanhe sua evolução no app 💛
-      </p>
-
-      <div className="grid grid-3 gap-md">
-        {conquistas.map((c) => {
-
-          let conquistado = false;
-
-          switch (c.id) {
-            case "primeiro_passo":
-              conquistado = totalVideosAssistidos >= 1;
-              break;
-            case "iniciante":
-              conquistado = totalVideosAssistidos >= 5;
-              break;
-            case "dedicado":
-              conquistado = totalVideosAssistidos >= 20;
-              break;
-            case "imparavel":
-              conquistado = totalVideosAssistidos >= 100;
-              break;
-            case "primeira_receita":
-              conquistado = receitasCompletas >= 1;
-              break;
-            case "criador":
-              conquistado = receitasCompletas >= 5;
-              break;
-            case "artesao":
-              conquistado = receitasCompletas >= 10;
-              break;
-            case "mestre":
-              conquistado = receitasCompletas >= 25;
-              break;
-            case "explorador":
-              conquistado = favoritos.length >= 3;
-              break;
-            case "colecionador":
-              conquistado = favoritos.length >= 10;
-              break;
-            case "persistente":
-              conquistado = receitasIniciadas >= 3;
-              break;
-            case "focado":
-              conquistado = maiorProgresso >= 50;
-              break;
-          }
-
-          return (
-            <div
-              key={c.id}
-              className="card flex-center conquista-card"
-            >
-              <img
-                src={conquistado ? c.imgOn : c.imgOff}
-                alt="conquista"
-                className="conquista-img"
-              />
-            </div>
-          );
-        })}
-      </div>
+      {/* 🔥 POPUP DE CONQUISTA */}
+      <ConquistaPopup conquista={novaConquista} />
 
     </div>
   );

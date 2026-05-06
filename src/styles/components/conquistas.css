@@ -1,0 +1,128 @@
+/* =========================
+   ÍCONE
+========================= */
+.cq-icon {
+  width: 56px;
+  height: 56px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 30px;
+
+  background: #f9fafb;
+
+  /* 🔥 suavidade premium */
+  transition: all 0.2s ease;
+}
+
+/* CONCLUÍDO */
+.cq-card.concluido .cq-icon {
+  background: linear-gradient(135deg, #facc15, #f59e0b);
+  color: #000;
+
+  /* leve glow constante */
+  box-shadow: 0 4px 12px rgba(250, 204, 21, 0.4);
+}
+
+/* BLOQUEADO */
+.cq-card.bloqueado .cq-icon {
+  opacity: 0.35;
+  filter: grayscale(100%);
+}
+
+/* =========================
+   ANIMAÇÃO DE DESBLOQUEIO
+========================= */
+
+.cq-card.animar {
+  animation: conquistaPop 0.6s ease;
+}
+
+@keyframes conquistaPop {
+  0% {
+    transform: scale(0.92);
+    box-shadow: 0 0 0 rgba(250,204,21,0);
+  }
+
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 0 24px rgba(250,204,21,0.7);
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(250,204,21,0);
+  }
+}
+
+/* brilho no ícone */
+.cq-card.animar .cq-icon {
+  animation: brilhoIcone 0.7s ease;
+}
+
+@keyframes brilhoIcone {
+  0% { transform: scale(0.85); }
+  50% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+
+/* =========================
+   POPUP CONQUISTA
+========================= */
+.cq-popup {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  z-index: 999;
+  pointer-events: none; /* 🔥 não bloqueia clique */
+}
+
+.cq-popup-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  background: #111;
+  color: #fff;
+
+  padding: 14px 18px;
+  border-radius: 16px;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+
+  animation: popupEntrada 0.3s ease;
+}
+
+/* ícone popup */
+.cq-popup-icon {
+  font-size: 26px;
+}
+
+/* textos */
+.cq-popup strong {
+  font-size: 13px;
+}
+
+.cq-popup p {
+  margin: 2px 0 0;
+  font-size: 12px;
+  color: #ccc;
+}
+
+/* animação entrada */
+@keyframes popupEntrada {
+  from {
+    transform: translateY(25px) scale(0.92);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}

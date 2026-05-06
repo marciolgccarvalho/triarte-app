@@ -4,21 +4,21 @@ import "../styles/components/sobre.css";
 
 export default function Sobre() {
   return (
-    <div className="page">
+    <div className="page sb-page">
 
       {/* HERO */}
-      <div className="sobre-hero">
-        <div className="sobre-brand">
+      <div className="sb-hero">
+        <div className="sb-brand">
           <img
             src={IMAGES.ui.logo}
             alt="Real Triarte"
-            className="sobre-logo"
+            className="sb-logo"
           />
 
-          <div className="sobre-brand-text">
-            <h1 className="sobre-title">Real Triarte</h1>
+          <div className="sb-brand-text">
+            <h1 className="sb-title">Real Triarte</h1>
 
-            <p className="sobre-subtitle">
+            <p className="sb-subtitle">
               Aprenda amigurumi de forma simples e no seu tempo
             </p>
           </div>
@@ -26,7 +26,7 @@ export default function Sobre() {
       </div>
 
       {/* QUEM SOMOS */}
-      <div className="card">
+      <div className="sb-card">
         <h3>Quem somos</h3>
 
         <p>
@@ -41,21 +41,21 @@ export default function Sobre() {
       </div>
 
       {/* O QUE VOCÊ ENCONTRA */}
-      <div className="card">
+      <div className="sb-card">
         <h3>O que você encontra aqui</h3>
 
-        <ul className="sobre-list">
-          <li>✔ Receitas passo a passo</li>
-          <li>✔ Vídeos fáceis de acompanhar</li>
-          <li>✔ Controle do seu progresso</li>
-          <li>✔ Lista de materiais</li>
-          <li>✔ Receitas favoritas</li>
-          <li>✔ Simulador de preço</li>
+        <ul className="sb-list">
+          <li>Receitas passo a passo</li>
+          <li>Vídeos fáceis de acompanhar</li>
+          <li>Controle do seu progresso</li>
+          <li>Lista de materiais</li>
+          <li>Receitas favoritas</li>
+          <li>Simulador de preço</li>
         </ul>
       </div>
 
       {/* DIFERENCIAL */}
-      <div className="card">
+      <div className="sb-card">
         <h3>Por que usar o Real Triarte?</h3>
 
         <p>
@@ -70,7 +70,7 @@ export default function Sobre() {
       </div>
 
       {/* DESTAQUE */}
-      <div className="card sobre-highlight">
+      <div className="sb-card sb-highlight">
         <strong>Você consegue aprender no seu ritmo 💛</strong>
 
         <p className="mt-sm">
@@ -79,7 +79,7 @@ export default function Sobre() {
       </div>
 
       {/* FOOTER */}
-      <div className="sobre-footer">
+      <div className="sb-footer">
         <p>Real Triarte v1.0.0</p>
         <p>Desenvolvido no Brasil</p>
       </div>

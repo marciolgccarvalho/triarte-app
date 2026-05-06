@@ -33,9 +33,7 @@ export default function Abreviatura() {
   return (
     <div className="page-container abreviacoes-page">
 
-      {/* HEADER COM IMAGEM */}
       <div className="abreviacoes-header">
-
         <img
           src={IMAGES.ui.abreviacoes}
           alt="Abreviações"
@@ -46,12 +44,9 @@ export default function Abreviatura() {
           <h2>Abreviações</h2>
           <p>Guia rápido para receitas de crochê e amigurumi</p>
         </div>
-
       </div>
 
-      {/* LISTA */}
       <div className="abreviacoes-card">
-
         {lista.map((item, index) => (
           <div key={index} className="abreviacao-row">
 
@@ -65,12 +60,10 @@ export default function Abreviatura() {
 
           </div>
         ))}
-
       </div>
 
-      {/* BOTÃO */}
       <button
-        className="btn-primary abreviacoes-copy"
+        className="abreviacoes-copy btn btn-primary"
         onClick={copiar}
       >
         {copiado ? "Copiado!" : "Copiar abreviações"}

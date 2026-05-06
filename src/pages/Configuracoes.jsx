@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../styles/components/configuracoes.css";
 
 export default function Configuracoes() {
   const [aberto, setAberto] = useState(null);
@@ -8,20 +9,35 @@ export default function Configuracoes() {
   };
 
   return (
-    <div className="page">
-
+    <div className="page cfg-page">
       <h1 className="page-title">Configurações</h1>
 
-      {/* BLOCO: PRIVACIDADE */}
-      <div className="card">
-
+      <div className="cfg-card">
         <Item
           titulo="Política de Privacidade"
           aberto={aberto === "privacidade"}
           onClick={() => toggle("privacidade")}
         >
           <p>
-            Este app não coleta dados pessoais sensíveis. Informações como progresso e favoritos são armazenadas apenas no seu dispositivo.
+            Sua privacidade é importante para nós. O Real Triarte não coleta
+            dados pessoais sensíveis como nome, e-mail, localização ou
+            informações bancárias.
+          </p>
+
+          <p className="mt-sm">
+            Todas as informações relacionadas ao uso do aplicativo, como
+            progresso, favoritos e preferências, são armazenadas exclusivamente
+            no seu dispositivo.
+          </p>
+
+          <p className="mt-sm">
+            Não utilizamos sistemas de rastreamento, não compartilhamos dados
+            com terceiros e não realizamos qualquer tipo de monitoramento
+            externo.
+          </p>
+
+          <p className="mt-sm">
+            Ao utilizar o aplicativo, você concorda com esta política.
           </p>
         </Item>
 
@@ -31,7 +47,24 @@ export default function Configuracoes() {
           onClick={() => toggle("termos")}
         >
           <p>
-            O uso deste aplicativo é destinado a fins educacionais e recreativos relacionados ao amigurumi.
+            O Real Triarte é um aplicativo voltado ao aprendizado de amigurumi
+            com fins educacionais e recreativos.
+          </p>
+
+          <p className="mt-sm">
+            Todo o conteúdo disponibilizado, incluindo textos, receitas, vídeos
+            e materiais, é protegido por direitos autorais e não pode ser
+            reproduzido, distribuído ou comercializado sem autorização prévia.
+          </p>
+
+          <p className="mt-sm">
+            O uso do aplicativo é de responsabilidade do usuário, sendo vedado
+            qualquer uso indevido ou que viole direitos de terceiros.
+          </p>
+
+          <p className="mt-sm">
+            O aplicativo pode ser atualizado, modificado ou descontinuado a
+            qualquer momento, sem aviso prévio.
           </p>
         </Item>
 
@@ -41,7 +74,23 @@ export default function Configuracoes() {
           onClick={() => toggle("dados")}
         >
           <p>
-            Nenhuma informação é enviada para servidores externos. Todos os dados permanecem localmente no seu navegador.
+            O Real Triarte funciona de forma local, sem envio de dados para
+            servidores externos.
+          </p>
+
+          <p className="mt-sm">
+            Todas as informações geradas durante o uso do aplicativo permanecem
+            armazenadas no seu próprio dispositivo.
+          </p>
+
+          <p className="mt-sm">
+            Você pode apagar esses dados a qualquer momento, limpando o
+            armazenamento do navegador ou do aplicativo.
+          </p>
+
+          <p className="mt-sm">
+            Não realizamos backup em nuvem nem compartilhamento automático de
+            informações.
           </p>
         </Item>
 
@@ -51,29 +100,51 @@ export default function Configuracoes() {
           onClick={() => toggle("legal")}
         >
           <p>
-            O conteúdo apresentado é de responsabilidade do autor e pode ser alterado sem aviso prévio.
+            O conteúdo apresentado no Real Triarte tem caráter informativo e
+            educacional.
+          </p>
+
+          <p className="mt-sm">
+            Embora busquemos oferecer instruções claras e acessíveis, não
+            garantimos resultados específicos, pois o aprendizado depende de
+            fatores individuais.
+          </p>
+
+          <p className="mt-sm">
+            O uso das técnicas e orientações é de responsabilidade do usuário.
+          </p>
+
+          <p className="mt-sm">
+            O conteúdo pode ser atualizado, alterado ou removido a qualquer
+            momento, sem aviso prévio.
           </p>
         </Item>
-
       </div>
 
+      <div className="cfg-card cfg-futuro">
+        <strong>Configurações do usuário</strong>
+
+        <p>Em breve você poderá ajustar:</p>
+
+        <ul>
+          <li>Modo escuro</li>
+          <li>Tamanho da fonte</li>
+          <li>Preferências do app</li>
+        </ul>
+      </div>
     </div>
   );
 }
 
 function Item({ titulo, aberto, onClick, children }) {
   return (
-    <div className="config-item">
-      <button onClick={onClick} className="config-header">
+    <div className="cfg-item">
+      <button type="button" onClick={onClick} className="cfg-header">
         <strong>{titulo}</strong>
-        <span>{aberto ? "−" : "+"}</span>
+        <span className="cfg-icon">{aberto ? "−" : "+"}</span>
       </button>
 
-      {aberto && (
-        <div className="config-content">
-          {children}
-        </div>
-      )}
+      {aberto && <div className="cfg-content">{children}</div>}
     </div>
   );
 }

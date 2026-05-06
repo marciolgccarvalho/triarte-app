@@ -1,139 +1,239 @@
 /* =========================
    PAGE
 ========================= */
-.abreviacoes-page {
+.cq-page {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
 /* =========================
-   HEADER (🔥 LADO A LADO)
+   HEADER / RESUMO
 ========================= */
-.abreviacoes-header {
-  display: flex;
-  align-items: center;      /* 🔥 alinha vertical */
+.cq-header {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.cq-stat {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 14px;
+  padding: 10px 6px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.cq-stat span {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.cq-stat strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 800;
+  color: #111;
+}
+
+.cq-stat p {
+  margin: 2px 0 0;
+  font-size: 10px;
+  color: #666;
+}
+
+/* =========================
+   GRID
+========================= */
+.cq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 12px;
-
-  text-align: left;         /* 🔥 texto alinhado à esquerda */
 }
 
-/* IMAGEM */
-.abreviacoes-header-img {
-  width: 60px;              /* 🔥 menor e proporcional */
-  height: auto;
-
-  flex-shrink: 0;           /* 🔥 não deixa a imagem encolher */
-}
-
-/* TEXTO */
-.abreviacoes-header h2 {
-  margin: 0;
-}
-
-.abreviacoes-header p {
-  font-size: 13px;
-  color: var(--color-text-light);
-  margin-top: 4px;
-}
 /* =========================
    CARD
 ========================= */
-.abreviacoes-card {
+.cq-card {
+  position: relative;
+  min-height: 190px;
+
   background: #fff;
-  border: 1px solid var(--color-surface);
-  border-radius: 16px;
-  overflow: hidden;
-}
+  border: 1px solid #eee;
+  border-radius: 18px;
+  padding: 14px;
 
-/* =========================
-   ROW (🔥 COMPACTADO)
-========================= */
-.abreviacao-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-
-  padding: 10px 12px;
-
-  border-bottom: 1px solid var(--color-surface);
-}
-
-.abreviacao-row:last-child {
-  border-bottom: none;
-}
-
-/* =========================
-   TAG (🔥 DESTAQUE)
-========================= */
-.abreviacao-tag {
-  background: var(--color-primary);
-
-  padding: 4px 8px;
-
-  border-radius: 6px;
-
-  font-weight: 700;
-  font-size: 11px;
-
-  min-width: 44px;
   text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-/* =========================
-   TEXTO
-========================= */
-.abreviacao-desc {
-  font-size: 13px;
+.cq-card:active {
+  transform: scale(0.97);
 }
 
-/* =========================
-   BOTÃO (🔥 CORRIGIDO)
-========================= */
-.abreviacoes-copy {
-  margin-top: 12px;
-
-  height: 46px;
-  width: 100%;
-
-  border-radius: 14px;
-  border: none;
-
-  background: var(--color-primary);
-  color: #000;
-
+.cq-card h4 {
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 800;
+  margin: 6px 0 4px;
+}
+
+.cq-card p {
+  font-size: 12px;
+  color: #555;
+  margin: 0;
+  line-height: 1.35;
+}
+
+/* =========================
+   RARIDADE
+========================= */
+.cq-card.comum {
+  border-color: #e5e7eb;
+}
+
+.cq-card.raro {
+  border-color: #93c5fd;
+}
+
+.cq-card.epico {
+  border-color: #c4b5fd;
+}
+
+.cq-card.lendario {
+  border-color: #facc15;
+  box-shadow: 0 4px 16px rgba(250, 204, 21, 0.28);
+}
+
+/* =========================
+   STATUS VISUAL
+========================= */
+.cq-card.bloqueado {
+  opacity: 0.72;
+}
+
+.cq-card.concluido {
+  background: #fffbeb;
+}
+
+/* =========================
+   BADGE
+========================= */
+.cq-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+
+  padding: 4px 7px;
+  border-radius: 999px;
+
+  background: #f3f4f6;
+  color: #555;
+}
+
+.cq-card.raro .cq-badge {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.cq-card.epico .cq-badge {
+  background: #ede9fe;
+  color: #6d28d9;
+}
+
+.cq-card.lendario .cq-badge {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+/* =========================
+   ÍCONE
+========================= */
+.cq-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+
+  margin-top: 12px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  cursor: pointer;
+  font-size: 28px;
+
+  background: #f9fafb;
 }
 
-.abreviacoes-copy:active {
-  transform: scale(0.98);
+.cq-card.concluido .cq-icon {
+  background: linear-gradient(135deg, #facc15, #f59e0b);
+}
+
+/* =========================
+   PROGRESSO
+========================= */
+.cq-progress {
+  width: 100%;
+  height: 7px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: auto;
+}
+
+.cq-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #facc15, #f59e0b);
+  border-radius: 999px;
+}
+
+.cq-progress-info {
+  margin-top: 6px;
+  font-size: 11px;
+  color: #666;
+}
+
+/* =========================
+   STATUS TEXTO
+========================= */
+.cq-status {
+  margin-top: 4px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.cq-status.concluido {
+  color: #16a34a;
+}
+
+.cq-status.progresso {
+  color: #f59e0b;
+}
+
+.cq-status.bloqueado {
+  color: #999;
 }
 
 /* =========================
    RESPONSIVO
 ========================= */
-@media (max-width: 360px) {
-  .abreviacao-row {
-    padding: 9px 10px;
+@media (max-width: 380px) {
+  .cq-header {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .abreviacao-tag {
-    min-width: 40px;
-    font-size: 10px;
-  }
-
-  .abreviacao-desc {
-    font-size: 12px;
-  }
-
-  .abreviacoes-header-img {
-    width: 100px;
+  .cq-grid {
+    grid-template-columns: 1fr;
   }
 }

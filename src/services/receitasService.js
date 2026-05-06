@@ -1,6 +1,16 @@
 import receitas from '@/data/receitas.json'
 import { IMAGES } from '@/assets/images'
 
+// 🔒 REGRA ÚNICA DE LIBERAÇÃO (16:30 BR)
+export function isVideoLiberado(video) {
+  if (!video.liberacao) return true;
+
+  const dataLiberacao = new Date(video.liberacao);
+  dataLiberacao.setHours(16, 30, 0, 0);
+
+  return new Date() >= dataLiberacao;
+}
+
 export function getReceitas() {
   return receitas.map((r) => ({
     ...r,
@@ -18,7 +28,7 @@ export function getReceitas() {
     videos: (r.videos || []).map((v, index) => ({
       ...v,
       id: index + 1,
-      liberado: !v.liberacao || new Date(v.liberacao) <= new Date()
+      liberado: isVideoLiberado(v) // ✅ regra centralizada
     }))
   }))
 }

@@ -1,7 +1,16 @@
 /* =========================
-   DESTAQUE (EMAIL)
+   PAGE
 ========================= */
-.contato-destaque {
+.ct-page {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* =========================
+   EMAIL DESTAQUE
+========================= */
+.ct-destaque {
   display: flex;
   align-items: center;
   gap: 14px;
@@ -9,26 +18,40 @@
   padding: 16px;
   border-radius: 16px;
 
-  background: #fff8e1;
-  border: 1px solid #ffe0b2;
+  background: #fffbeb;
+  border: 1px solid #facc15;
 
-  margin-bottom: 20px;
   cursor: pointer;
+
+  /* 🔥 destaque premium */
+  box-shadow: 0 4px 14px rgba(250, 204, 21, 0.25);
+
+  transition: transform 0.15s ease;
+}
+
+.ct-destaque:active {
+  transform: scale(0.97);
+}
+
+.ct-destaque-text p {
+  margin: 2px 0 0;
+  font-size: 13px;
+  color: #555;
 }
 
 /* =========================
    LISTA
 ========================= */
-.contato-list {
+.ct-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 /* =========================
-   ITEM (AGORA É BOTÃO REAL)
+   ITEM (BOTÃO PREMIUM)
 ========================= */
-.contato-item {
+.ct-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -36,7 +59,7 @@
   gap: 12px;
 
   width: 100%;
-  padding: 16px;
+  padding: 14px;
 
   border-radius: 16px;
   border: 1px solid #eee;
@@ -45,34 +68,53 @@
   font-size: 15px;
 
   cursor: pointer;
-  transition: 0.2s;
+
+  /* 🔥 leve profundidade */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+
+  transition: all 0.15s ease;
 }
 
-/* LADO ESQUERDO */
-.contato-item img {
-  width: 28px;
-}
-
-/* TEXTO CENTRAL */
-.contato-item span {
-  flex: 1;
-  text-align: left;
-}
-
-/* SETA */
-.contato-arrow {
-  font-size: 20px;
-  color: #bbb;
-}
-
-/* HOVER (leve) */
-.contato-item:hover {
-  background: #f9f9f9;
+/* toque premium */
+.ct-item:active {
+  transform: scale(0.97);
+  background: #fafafa;
 }
 
 /* =========================
    ICONES
 ========================= */
-.contato-icon {
-  width: 28px;
+.ct-icon {
+  width: 26px;
+  flex-shrink: 0;
+}
+
+/* =========================
+   TEXTO
+========================= */
+.ct-label {
+  flex: 1;
+  text-align: left;
+}
+
+/* =========================
+   SETA
+========================= */
+.ct-arrow {
+  font-size: 18px;
+  color: #bbb;
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+@media (max-width: 360px) {
+  .ct-item {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .ct-icon {
+    width: 24px;
+  }
 }

@@ -32,7 +32,7 @@ export default function Contato() {
   ];
 
   return (
-    <div className="page">
+    <div className="page ct-page">
 
       <h2 className="page-title">Contato</h2>
 
@@ -42,39 +42,42 @@ export default function Contato() {
 
       {/* EMAIL DESTAQUE */}
       <div
-        className="contato-destaque"
+        className="ct-destaque"
         onClick={() => window.location.href = "mailto:contato@triarte.com.br"}
+        role="button"
+        aria-label="Enviar email"
       >
         <img
           src={IMAGES.icons.email.active}
           alt="Email"
-          className="contato-icon"
+          className="ct-icon"
         />
 
-        <div>
+        <div className="ct-destaque-text">
           <strong>Enviar email</strong>
           <p>contato@triarte.com.br</p>
         </div>
       </div>
 
       {/* REDES */}
-      <div className="contato-list">
+      <div className="ct-list">
 
         {itens.map((item, index) => (
           <button
             key={index}
             onClick={item.action}
-            className="contato-item"
+            className="ct-item"
+            aria-label={item.label}
           >
             <img
               src={item.icon}
               alt={item.label}
-              className="contato-icon"
+              className="ct-icon"
             />
 
-            <span>{item.label}</span>
+            <span className="ct-label">{item.label}</span>
 
-            <span className="contato-arrow">›</span>
+            <span className="ct-arrow">›</span>
           </button>
         ))}
 
