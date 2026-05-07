@@ -1,0 +1,1703 @@
+[
+  {
+    "Código": "2500",
+    "Nome": "Acqua",
+    "Categoria": "Azul",
+    "HEX escuro": "#5A86E8",
+    "HEX médio": "#3494E2",
+    "HEX claro": "#00A6D8",
+    "Descrição Nome": "Acqua"
+  },
+  {
+    "Código": "5311",
+    "Nome": "Água Fresca",
+    "Categoria": "Azul",
+    "HEX escuro": "#AEE6D7",
+    "HEX médio": "#B0E7D8",
+    "HEX claro": "#B2E8DA",
+    "Descrição Nome": "Água Fresca"
+  },
+  {
+    "Código": "6614",
+    "Nome": "Alfazema",
+    "Categoria": "Roxo/Vinho",
+    "HEX escuro": "#A22E9D",
+    "HEX médio": "#AD48B5",
+    "HEX claro": "#C15CB9",
+    "Descrição Nome": "Alfazema"
+  },
+  {
+    "Código": "2308",
+    "Nome": "Alga",
+    "Categoria": "Azul",
+    "HEX escuro": "#6D96A1",
+    "HEX médio": "#6E96A1",
+    "HEX claro": "#6F96A1",
+    "Descrição Nome": "Alga"
+  },
+  {
+    "Código": "1730",
+    "Nome": "Amarelo-Candy",
+    "Categoria": "Amarelo",
+    "HEX escuro": "#ECE15C",
+    "HEX médio": "#EDE35F",
+    "HEX claro": "#F4E36B",
+    "Descrição Nome": "Amarelo Candy"
+  },
+  {
+    "Código": "6024",
+    "Nome": "Ameixa",
+    "Categoria": "Roxo/Vinho",
+    "HEX escuro": "#7A3C91",
+    "HEX médio": "#7A3C91",
+    "HEX claro": "#7A3C91",
+    "Descrição Nome": "Ameixa"
+  },
+  {
+    "Código": "7650",
+    "Nome": "Amêndoa",
+    "Categoria": "Bege/Marrom",
+    "HEX escuro": "#B78C72",
+    "HEX médio": "#C9AB99",
+    "HEX claro": "#CDB1A0",
+    "Descrição Nome": "Amêndoa"
+  },
+  {
+    "Código": "7062",
+    "Nome": "Amendoim",
+    "Categoria": "Laranja",
+    "HEX escuro": "#B7A28C",
+    "HEX médio": "#B7A591",
+    "HEX claro": "#B7A896",
+    "Descrição Nome": "Amendoim"
+  },
+  {
+    "Código": "3542",
+    "Nome": "Amor",
+    "Categoria": "Vermelho",
+    "HEX escuro": "#B10A18",
+    "HEX médio": "#B20A16",
+    "HEX claro": "#B30A14",
+    "Descrição Nome": "Amor"
+  },
+  {
+    "Código": "2856",
+    "Nome": "Anil-Profundo",
+    "Categoria": "Azul",
+    "HEX escuro": "#0C0C4E",
+    "HEX médio": "#202482",
+    "HEX claro": "#5E79B8",
+    "Descrição Nome": "Anil Profundo"
+  },
+  {
+    "Código": "2401",
+    "Nome": "Anil-Profundo",
+    "Categoria": "Azul",
+    "HEX escuro": "#292342",
+    "HEX médio": "#2A2343",
+    "HEX claro": "#2A2344",
+    "Descrição Nome": "Anil-Profundo"
+  },
+  {
+    "Código": "1708",
+    "Nome": "Anjo",
+    "Categoria": "Branco/Neutro",
+    "HEX escuro": "#EEE6B4",
+    "HEX médio": "#EEE6B6",
+    "HEX claro": "#EFE6B7",
+    "Descrição Nome": "Anjo"
+  },
+  {
+    "Código": "2927",
+    "Nome": "Aquário",
+    "Categoria": "Azul",
+    "HEX escuro": "#8E9AB7",
+    "HEX médio": "#B0BDD4",
+    "HEX claro": "#BAC6DA",
+    "Descrição Nome": "Aquário"
+  },
+  {
+    "Código": "6399",
+    "Nome": "Azaleia",
+    "Categoria": "Roxo/Vinho",
+    "HEX escuro": "#7F4A95",
+    "HEX médio": "#9172B6",
+    "HEX claro": "#9B86C1",
+    "Descrição Nome": "Azaleia"
+  },
+  {
+    "Código": "2829",
+    "Nome": "Azul-Bic",
+    "Categoria": "Azul",
+    "HEX escuro": "#1239A1",
+    "HEX médio": "#1338D6",
+    "HEX claro": "#2142B7",
+    "Descrição Nome": "Azul Bic"
+  },
+  {
+    "Código": "2012",
+    "Nome": "Azul-Candy",
+    "Categoria": "Azul",
+    "HEX escuro": "#A9D9F7",
+    "HEX médio": "#B8E4F9",
+    "HEX claro": "#BDE8FA",
+    "Descrição Nome": "Azul Candy"
+  },
+  {
+    "Código": "2770",
+    "Nome": "Azul Clássico",
+    "Categoria": "Azul",
+    "HEX escuro": "#005A9C",
+    "HEX médio": "#005A9C",
+    "HEX claro": "#005A9C",
+    "Descrição Nome": "Azul Clássico"
+  },
+  {
+    "Código": "2858",
+    "Nome": "Azul Profundo",
+    "Categoria": "Azul",
+    "HEX escuro": "#111C52",
+    "HEX médio": "#111C52",
+    "HEX claro": "#111C52",
+    "Descrição Nome": "Azul Profundo"
+  },
+  {
+    "Código": "2236",
+    "Nome": "Azurita",
+    "Categoria": "Azul",
+    "HEX escuro": "#A8B8D0",
+    "HEX médio": "#A9B8D0",
+    "HEX claro": "#AAB9D0",
+    "Descrição Nome": "Azurita"
+  },
+  {
+    "Código": "5767",
+    "Nome": "Bandeira",
+    "Categoria": "Verde",
+    "HEX escuro": "#005C35",
+    "HEX médio": "#008444",
+    "HEX claro": "#008B4F",
+    "Descrição Nome": "Bandeira"
+  },
+  {
+    "Código": "3588",
+    "Nome": "Batom",
+    "Categoria": "Vermelho",
+    "HEX escuro": "#7B1227",
+    "HEX médio": "#7D1328",
+    "HEX claro": "#7F1429",
+    "Descrição Nome": "Batom"
+  },
+  {
+    "Código": "6655",
+    "Nome": "Berinjela",
+    "Categoria": "Roxo/Vinho",
+    "HEX escuro": "#866EA5",
+    "HEX médio": "#866EA5",
+    "HEX claro": "#866EA5",
+    "Descrição Nome": "Berinjela"
+  },
+  {
+    "Código": "3794",
+    "Nome": "Bordô",
+    "Categoria": "Vermelho",
+    "HEX escuro": "#6B2327",
+    "HEX médio": "#6B2327",
+    "HEX claro": "#6B2327",
+    "Descrição Nome": "Bordô"
+  },
+  {
+    "Código": "8001",
+    "Nome": "Branco",
+    "Categoria": "Branco/Neutro",
+    "HEX escuro": "#D8D6DA",
+    "HEX médio": "#EDEBED",
+    "HEX claro": "#F2F0EF",
+    "Descrição Nome": "Branco"
+  },
+  {
+    "Código": "7569",
+    "Nome": "Brigadeiro",
+    "Categoria": "Bege/Marrom",
+    "HEX escuro": "#4A2324",
+    "HEX médio": "#5E2F2C",
+    "HEX claro": "#A06E58",
+    "Descrição Nome": "Brigadeiro"
+  },
+  {
+    "Código": "7400",
+    "Nome": "Brownie",
+    "Categoria": "Bege/Marrom",
+    "HEX escuro": "#3E2B25",
+    "HEX médio": "#46312A",
+    "HEX claro": "#4A342D",
+    "Descrição Nome": "Brownie"
+  },
+  {
+    "Código": "7567",
+    "Nome": "Cacau",
+    "Categoria": "Bege/Marrom",
+    "HEX escuro": "#7D3138",
+    "HEX médio": "#7C3B3F",
+    "HEX claro": "#6E655C",
+    "Descrição Nome": "Cacau"
+  },
+  {
+    "Código": "3201",
+    "Nome": "Camafeu",
+    "Categoria": "Rosa",
+    "HEX escuro": "#A87485",
+    "HEX médio": "#B17F8F",
+    "HEX claro": "#B98F9F",
+    "Descrição Nome": "Camafeu"
+  },
+  {
+    "Código": "7214",
+    "Nome": "Camurça",
+    "Categoria": "Bege/Marrom",
+    "HEX escuro": "#B9A173",
+    "HEX médio": "#B9A173",
+    "HEX claro": "#B9A173",
+    "Descrição Nome": "Camurça"
+  },
+  {
+    "Código": "5270",
+    "Nome": "Cana",
+    "Categoria": "Verde",
+    "HEX escuro": "#A7B016",
+    "HEX médio": "#A8B018",
+    "HEX claro": "#A8B11B",
+    "Descrição Nome": "Cana"
+  },
+  {
+    "Código": "1289",
+    "Nome": "Canário",
+    "Categoria": "Amarelo",
+    "HEX escuro": "#E7B400",
+    "HEX médio": "#F3BE00",
+    "HEX claro": "#F5C100",
+    "Descrição Nome": "Canário"
+  },
+  {
+    "Código": "7076",
+    "Nome": "Caramelito",
+    "Categoria": "Bege/Marrom",
+    "HEX escuro": "#B49469",
+    "HEX médio": "#BEA377",
+    "HEX claro": "#C4A87A",
+    "Descrição Nome": "Caramelito"
+  },
+  {
+    "Código": "7148",
+    "Nome": "Craft",
+    "Categoria": "Bege/Marrom",
+    "HEX escuro": "#7A5A45",
+    "HEX médio": "#896644",
+    "HEX claro": "#8D6A49",
+    "Descrição Nome": "Caramelo"
+  },
+  {
+    "Código": "6780",
+    "Nome": "Cardo",
+    "Categoria": "Roxo/Vinho",
+    "HEX escuro": "#5E4A7B",
+    "HEX médio": "#5E4C7B",
+    "HEX claro": "#5E4D7B",
+    "Descrição Nome": "Cardo"
+  },
+  {
+    "Código": "3528",
+    "Nome": "Carmim",
+    "Categoria": "Vermelho",
+    "HEX escuro": "#8F1D2F",
+    "HEX médio": "#CD132F",
+    "HEX claro": "#B12B2D",
+    "Descrição Nome": "Carmim"
+  },
+  {
+    "Código": "7625",
+    "Nome": "Castanha",
+    "Categoria": "Bege/Marrom",
+    "HEX escuro": "#8B6B58",
+    "HEX médio": "#A27A5F",
+    "HEX claro": "#A98363",
+    "Descrição Nome": "Castanha"
+  },
+  {
+    "Código": "7603",
+    "Nome": "Castor",
+    "Categoria": "Bege/Marrom",
+    "HEX escuro": "#5C4C45",
+    "HEX médio": "#6A5A50",
+    "HEX claro": "#746258",
+    "Descrição Nome": "Castor"
+  },
+  {
+    "Código": "5091",
+    "Nome": "Celeste",
+    "Categoria": "Verde",
+    "HEX escuro": "#74D1C6",
+    "HEX médio": "#9CDCD4",
+    "HEX claro": "#AEE5DA",
+    "Descrição Nome": "Celeste"
+  },
+  {
+    "Código": "9091",
+    "Nome": "Celeste",
+    "Categoria": "Verde",
+    "HEX escuro": "#BFD8D3",
+    "HEX médio": "#BFD8D3",
+    "HEX claro": "#BFD8D3",
+    "Descrição Nome": "Celeste"
+  },
+  {
+    "Código": "7072",
+    "Nome": "Centeio",
+    "Categoria": "Bege/Marrom",
+    "HEX escuro": "#D4C1A5",
+    "HEX médio": "#D7C8AA",
+    "HEX claro": "#D7CDB1",
+    "Descrição Nome": "Centeio"
+  },
+  {
+    "Código": "4094",
+    "Nome": "Cetim",
+    "Categoria": "Rosa",
+    "HEX escuro": "#B97973",
+    "HEX médio": "#CC8D86",
+    "HEX claro": "#D89A97",
+    "Descrição Nome": "Cetim"
+  },
+  {
+    "Código": "4099",
+    "Nome": "Cetim",
+    "Categoria": "Rosa",
+    "HEX escuro": "#B87572",
+    "HEX médio": "#B87572",
+    "HEX claro": "#B87572",
+    "Descrição Nome": "Cetim"
+  },
+  {
+    "Código": "7563",
+    "Nome": "Chantilly",
+    "Categoria": "Bege/Marrom",
+    "HEX escuro": "#D6B29F",
+    "HEX médio": "#E3C2B3",
+    "HEX claro": "#E5C8BB",
+    "Descrição Nome": "Chantilly"
+  },
+  {
+    "Código": "3131",
+    "Nome": "Chiclete",
+    "Categoria": "Rosa",
+    "HEX escuro": "#F76BAE",
+    "HEX médio": "#F4A0CA",
+    "HEX claro": "#F5A9CF",
+    "Descrição Nome": "Chiclete"
+  },
+  {
+    "Código": "3331",
+    "Nome": "Chiclete",
+    "Categoria": "Rosa",
+    "HEX escuro": "#FF6CA8",
+    "HEX médio": "#FF6CA8",
+    "HEX claro": "#FF6CA8",
+    "Descrição Nome": "Chiclete"
+  },
+  {
+    "Código": "6274",
+    "Nome": "Choque",
+    "Categoria": "Rosa",
+    "HEX escuro": "#C7156B",
+    "HEX médio": "#C8156A",
+    "HEX claro": "#C9156A",
+    "Descrição Nome": "Choque"
+  },
+  {
+    "Código": "8464",
+    "Nome": "Cinzelado",
+    "Categoria": "Cinza",
+    "HEX escuro": "#A69FA7",
+    "HEX médio": "#A6A0A7",
+    "HEX claro": "#A7A0A7",
+    "Descrição Nome": "Cinzelado"
+  },
+  {
+    "Código": "4004",
+    "Nome": "Coral-Vivo",
+    "Categoria": "Laranja",
+    "HEX escuro": "#C95B61",
+    "HEX médio": "#D86062",
+    "HEX claro": "#E56A61",
+    "Descrição Nome": "Coral Vivo"
+  },
+  {
+    "Código": "1798",
+    "Nome": "Coroa",
+    "Categoria": "Amarelo",
+    "HEX escuro": "#D9B51B",
+    "HEX médio": "#DEBA1A",
+    "HEX claro": "#E4C019",
+    "Descrição Nome": "Coroa"
+  },
+  {
+    "Código": "7096",
+    "Nome": "Craft",
+    "Categoria": "Bege/Marrom",
+    "HEX escuro": "#9E8A76",
+    "HEX médio": "#A08E7A",
+    "HEX claro": "#A3927D",
+    "Descrição Nome": "Craft"
+  },
+  {
+    "Código": "1112",
+    "Nome": "Creme",
+    "Categoria": "Branco/Neutro",
+    "HEX escuro": "#F3E3A5",
+    "HEX médio": "#F4E6B0",
+    "HEX claro": "#F3E8B6",
+    "Descrição Nome": "Creme"
+  },
+  {
+    "Código": "8172",
+    "Nome": "Creme",
+    "Categoria": "Branco/Neutro",
+    "HEX escuro": "#E9C97E",
+    "HEX médio": "#E9C97E",
+    "HEX claro": "#E9C97E",
+    "Descrição Nome": "Creme"
+  },
+  {
+    "Código": "8212",
+    "Nome": "Cromado",
+    "Categoria": "Cinza",
+    "HEX escuro": "#B8B0BF",
+    "HEX médio": "#B8B0BF",
+    "HEX claro": "#B8B1BF",
+    "Descrição Nome": "Cromado"
+  },
+  {
+    "Código": "4168",
+    "Nome": "Dália",
+    "Categoria": "Laranja",
+    "HEX escuro": "#D38B6E",
+    "HEX médio": "#DD9A7C",
+    "HEX claro": "#E6A88F",
+    "Descrição Nome": "Dália"
+  },
+  {
+    "Código": "4131",
+    "Nome": "Dark Cheddar",
+    "Categoria": "Laranja",
+    "HEX escuro": "#A56B08",
+    "HEX médio": "#C17910",
+    "HEX claro": "#FF8A00",
+    "Descrição Nome": "Dark Cheddar"
+  },
+  {
+    "Código": "3146",
+    "Nome": "Desejo",
+    "Categoria": "Rosa",
+    "HEX escuro": "#C25A72",
+    "HEX médio": "#C15A72",
+    "HEX claro": "#C05B73",
+    "Descrição Nome": "Desejo"
+  },
+  {
+    "Código": "7077",
+    "Nome": "Doce de Leite",
+    "Categoria": "Bege/Marrom",
+    "HEX escuro": "#8A7824",
+    "HEX médio": "#988230",
+    "HEX claro": "#A88A43",
+    "Descrição Nome": "Doce de Leite"
+  },
+  {
+    "Código": "7237",
+    "Nome": "Doce de Leite",
+    "Categoria": "Bege/Marrom",
+    "HEX escuro": "#766224",
+    "HEX médio": "#766224",
+    "HEX claro": "#766224",
+    "Descrição Nome": "Doce de Leite"
+  },
+  {
+    "Código": "3046",
+    "Nome": "Doçura",
+    "Categoria": "Rosa",
+    "HEX escuro": "#9E7485",
+    "HEX médio": "#D7A8B8",
+    "HEX claro": "#E8B3BE",
+    "Descrição Nome": "Doçura"
+  },
+  {
+    "Código": "5083",
+    "Nome": "Eco",
+    "Categoria": "Verde",
+    "HEX escuro": "#708367",
+    "HEX médio": "#809275",
+    "HEX claro": "#8DA081",
+    "Descrição Nome": "Eco"
+  },
+  {
+    "Código": "6833",
+    "Nome": "Eco",
+    "Categoria": "Verde",
+    "HEX escuro": "#6D7567",
+    "HEX médio": "#6D7567",
+    "HEX claro": "#6D7567",
+    "Descrição Nome": "Eco"
+  },
+  {
+    "Código": "5745",
+    "Nome": "Eucalipto",
+    "Categoria": "Verde",
+    "HEX escuro": "#A7B6A2",
+    "HEX médio": "#AABCA5",
+    "HEX claro": "#B5C8B2",
+    "Descrição Nome": "Eucalipto"
+  },
+  {
+    "Código": "8178",
+    "Nome": "Eucalipto",
+    "Categoria": "Verde",
+    "HEX escuro": "#9AA897",
+    "HEX médio": "#9AA897",
+    "HEX claro": "#9AA897",
+    "Descrição Nome": "Eucalipto"
+  },
+  {
+    "Código": "3048",
+    "Nome": "Flamingo",
+    "Categoria": "Rosa",
+    "HEX escuro": "#B86C78",
+    "HEX médio": "#C27B8B",
+    "HEX claro": "#D889A4",
+    "Descrição Nome": "Flamingo"
+  },
+  {
+    "Código": "1706",
+    "Nome": "Flocos",
+    "Categoria": "Branco/Neutro",
+    "HEX escuro": "#DCD3C7",
+    "HEX médio": "#E0D8CC",
+    "HEX claro": "#E5DDD0",
+    "Descrição Nome": "Flocos"
+  },
+  {
+    "Código": "5994",
+    "Nome": "Folclore",
+    "Categoria": "Verde",
+    "HEX escuro": "#006C73",
+    "HEX médio": "#006E74",
+    "HEX claro": "#006F74",
+    "Descrição Nome": "Folclore"
+  },
+  {
+    "Código": "2198",
+    "Nome": "Fumaça",
+    "Categoria": "Cinza",
+    "HEX escuro": "#293B6A",
+    "HEX médio": "#9AA0B2",
+    "HEX claro": "#D4D4D7",
+    "Descrição Nome": "Fumaça"
+  },
+  {
+    "Código": "3061",
+    "Nome": "Gardênia",
+    "Categoria": "Branco/Neutro",
+    "HEX escuro": "#F2E9E3",
+    "HEX médio": "#F2ECE6",
+    "HEX claro": "#F3F1EE",
+    "Descrição Nome": "Gardênia"
+  },
+  {
+    "Código": "2427",
+    "Nome": "Gelo",
+    "Categoria": "Azul",
+    "HEX escuro": "#C9D3E3",
+    "HEX médio": "#C9D3E3",
+    "HEX claro": "#C9D3E3",
+    "Descrição Nome": "Gelo"
+  },
+  {
+    "Código": "4146",
+    "Nome": "Gema",
+    "Categoria": "Laranja",
+    "HEX escuro": "#C87B18",
+    "HEX médio": "#E29128",
+    "HEX claro": "#D49A8D",
+    "Descrição Nome": "Gema"
+  },
+  {
+    "Código": "8003",
+    "Nome": "Glacial",
+    "Categoria": "Cinza",
+    "HEX escuro": "#D3D5DC",
+    "HEX médio": "#D3D5DC",
+    "HEX claro": "#D3D5DC",
+    "Descrição Nome": "Glacial"
+  },
+  {
+    "Código": "8013",
+    "Nome": "Glacial",
+    "Categoria": "Cinza",
+    "HEX escuro": "#D7D8DE",
+    "HEX médio": "#E1E2EA",
+    "HEX claro": "#E5E5EE",
+    "Descrição Nome": "Glacial"
+  },
+  {
+    "Código": "5203",
+    "Nome": "Greenery",
+    "Categoria": "Verde",
+    "HEX escuro": "#7D8C2B",
+    "HEX médio": "#84B12F",
+    "HEX claro": "#92BC3B",
+    "Descrição Nome": "Greenery"
+  },
+  {
+    "Código": "5076",
+    "Nome": "Hera",
+    "Categoria": "Verde",
+    "HEX escuro": "#006341",
+    "HEX médio": "#006C49",
+    "HEX claro": "#00704A",
+    "Descrição Nome": "Hera"
+  },
+  {
+    "Código": "2137",
+    "Nome": "Hortênsia",
+    "Categoria": "Azul",
+    "HEX escuro": "#68B7F0",
+    "HEX médio": "#97C4F4",
+    "HEX claro": "#C8E4D5",
+    "Descrição Nome": "Hortênsia"
+  },
+  {
+    "Código": "2237",
+    "Nome": "Hortênsia",
+    "Categoria": "Azul",
+    "HEX escuro": "#9EC0FF",
+    "HEX médio": "#9EC0FF",
+    "HEX claro": "#9EC0FF",
+    "Descrição Nome": "Hortênsia"
+  },
+  {
+    "Código": "8736",
+    "Nome": "Índigo",
+    "Categoria": "Cinza",
+    "HEX escuro": "#4A5878",
+    "HEX médio": "#4A5878",
+    "HEX claro": "#4B5978",
+    "Descrição Nome": "Índigo"
+  },
+  {
+    "Código": "4456",
+    "Nome": "Laranja",
+    "Categoria": "Laranja",
+    "HEX escuro": "#A95C56",
+    "HEX médio": "#E87821",
+    "HEX claro": "#E69422",
+    "Descrição Nome": "Laranja"
+  },
+  {
+    "Código": "7713",
+    "Nome": "Lenha",
+    "Categoria": "Bege/Marrom",
+    "HEX escuro": "#5A4334",
+    "HEX médio": "#6E5C4C",
+    "HEX claro": "#9A9D74",
+    "Descrição Nome": "Lenha"
+  },
+  {
+    "Código": "4006",
+    "Nome": "Lilás Candy",
+    "Categoria": "Roxo/Vinho",
+    "HEX escuro": "#C5B9D8",
+    "HEX médio": "#C5B9D8",
+    "HEX claro": "#C5B9D8",
+    "Descrição Nome": "Lilás Candy"
+  },
+  {
+    "Código": "6006",
+    "Nome": "Lilás-Candy",
+    "Categoria": "Roxo/Vinho",
+    "HEX escuro": "#D7C3E6",
+    "HEX médio": "#D9C9E6",
+    "HEX claro": "#DCCFE9",
+    "Descrição Nome": "Lilás Candy"
+  },
+  {
+    "Código": "5806",
+    "Nome": "Limonada",
+    "Categoria": "Verde",
+    "HEX escuro": "#A9C83A",
+    "HEX médio": "#B6D049",
+    "HEX claro": "#C6D84E",
+    "Descrição Nome": "Limonada"
+  },
+  {
+    "Código": "6660",
+    "Nome": "Limonada",
+    "Categoria": "Verde",
+    "HEX escuro": "#A9B85D",
+    "HEX médio": "#A9B85D",
+    "HEX claro": "#A9B85D",
+    "Descrição Nome": "Limonada"
+  },
+  {
+    "Código": "3138",
+    "Nome": "Macadâmia",
+    "Categoria": "Rosa",
+    "HEX escuro": "#EBCFC8",
+    "HEX médio": "#EBCFC8",
+    "HEX claro": "#EBCFC8",
+    "Descrição Nome": "Macadâmia"
+  },
+  {
+    "Código": "3148",
+    "Nome": "Macadâmia",
+    "Categoria": "Rosa",
+    "HEX escuro": "#E9C9C2",
+    "HEX médio": "#F1DBD7",
+    "HEX claro": "#F4DEDB",
+    "Descrição Nome": "Macadâmia"
+  },
+  {
+    "Código": "7727",
+    "Nome": "Madeira",
+    "Categoria": "Bege/Marrom",
+    "HEX escuro": "#665247",
+    "HEX médio": "#7B6758",
+    "HEX claro": "#887767",
+    "Descrição Nome": "Madeira"
+  },
+  {
+    "Código": "1205",
+    "Nome": "Magnólia",
+    "Categoria": "Amarelo",
+    "HEX escuro": "#E4CC4D",
+    "HEX médio": "#E7D355",
+    "HEX claro": "#E7D47D",
+    "Descrição Nome": "Magnólia"
+  },
+  {
+    "Código": "6802",
+    "Nome": "Malva",
+    "Categoria": "Roxo/Vinho",
+    "HEX escuro": "#A884A6",
+    "HEX médio": "#C09EC4",
+    "HEX claro": "#C6A8CC",
+    "Descrição Nome": "Malva"
+  },
+  {
+    "Código": "2745",
+    "Nome": "Marinheiro",
+    "Categoria": "Azul",
+    "HEX escuro": "#24346A",
+    "HEX médio": "#273C77",
+    "HEX claro": "#343E71",
+    "Descrição Nome": "Marinheiro"
+  },
+  {
+    "Código": "7136",
+    "Nome": "Marsala",
+    "Categoria": "Vermelho",
+    "HEX escuro": "#4F1D1B",
+    "HEX médio": "#851528",
+    "HEX claro": "#B3122D",
+    "Descrição Nome": "Marsala"
+  },
+  {
+    "Código": "8048",
+    "Nome": "Matrix",
+    "Categoria": "Cinza",
+    "HEX escuro": "#555457",
+    "HEX médio": "#555457",
+    "HEX claro": "#555457",
+    "Descrição Nome": "Matrix"
+  },
+  {
+    "Código": "8069",
+    "Nome": "Matrix",
+    "Categoria": "Cinza",
+    "HEX escuro": "#565457",
+    "HEX médio": "#5A585E",
+    "HEX claro": "#5B5D66",
+    "Descrição Nome": "Matrix"
+  },
+  {
+    "Código": "3141",
+    "Nome": "Menina",
+    "Categoria": "Rosa",
+    "HEX escuro": "#D9BFC0",
+    "HEX médio": "#D8C0C0",
+    "HEX claro": "#D8C0C0",
+    "Descrição Nome": "Menina"
+  },
+  {
+    "Código": "5368",
+    "Nome": "Militar",
+    "Categoria": "Verde",
+    "HEX escuro": "#384727",
+    "HEX médio": "#516041",
+    "HEX claro": "#70836E",
+    "Descrição Nome": "Militar"
+  },
+  {
+    "Código": "6844",
+    "Nome": "Militar",
+    "Categoria": "Verde",
+    "HEX escuro": "#667064",
+    "HEX médio": "#667064",
+    "HEX claro": "#667064",
+    "Descrição Nome": "Militar"
+  },
+  {
+    "Código": "5072",
+    "Nome": "Mirante",
+    "Categoria": "Verde",
+    "HEX escuro": "#95A38E",
+    "HEX médio": "#96A48E",
+    "HEX claro": "#97A48F",
+    "Descrição Nome": "Mirante"
+  },
+  {
+    "Código": "6003",
+    "Nome": "Mistério",
+    "Categoria": "Roxo/Vinho",
+    "HEX escuro": "#3F2148",
+    "HEX médio": "#3F2148",
+    "HEX claro": "#3F2148",
+    "Descrição Nome": "Mistério"
+  },
+  {
+    "Código": "6030",
+    "Nome": "Místico",
+    "Categoria": "Roxo/Vinho",
+    "HEX escuro": "#401B58",
+    "HEX médio": "#4F246E",
+    "HEX claro": "#5B2E82",
+    "Descrição Nome": "Místico"
+  },
+  {
+    "Código": "2790",
+    "Nome": "Moderno",
+    "Categoria": "Azul",
+    "HEX escuro": "#284D6D",
+    "HEX médio": "#284D6C",
+    "HEX claro": "#294D6B",
+    "Descrição Nome": "Moderno"
+  },
+  {
+    "Código": "7030",
+    "Nome": "Mostarda",
+    "Categoria": "Laranja",
+    "HEX escuro": "#3E2B24",
+    "HEX médio": "#BA8B39",
+    "HEX claro": "#D29A3A",
+    "Descrição Nome": "Mostarda"
+  },
+  {
+    "Código": "7069",
+    "Nome": "Mostarda",
+    "Categoria": "Laranja",
+    "HEX escuro": "#A88317",
+    "HEX médio": "#AC8418",
+    "HEX claro": "#AF861A",
+    "Descrição Nome": "Mostarda"
+  },
+  {
+    "Código": "5398",
+    "Nome": "Musgo",
+    "Categoria": "Verde",
+    "HEX escuro": "#003C1E",
+    "HEX médio": "#0E5631",
+    "HEX claro": "#31563B",
+    "Descrição Nome": "Musgo"
+  },
+  {
+    "Código": "6868",
+    "Nome": "Musgo",
+    "Categoria": "Verde",
+    "HEX escuro": "#1E5A34",
+    "HEX médio": "#1E5A34",
+    "HEX claro": "#1E5A34",
+    "Descrição Nome": "Musgo"
+  },
+  {
+    "Código": "20",
+    "Nome": "Natural",
+    "Categoria": "Branco/Neutro",
+    "HEX escuro": "#DDD3C3",
+    "HEX médio": "#DDD3C3",
+    "HEX claro": "#DDD3C3",
+    "Descrição Nome": "Natural"
+  },
+  {
+    "Código": "5442",
+    "Nome": "Natureza",
+    "Categoria": "Verde",
+    "HEX escuro": "#4B5330",
+    "HEX médio": "#4C5431",
+    "HEX claro": "#4D5432",
+    "Descrição Nome": "Natureza"
+  },
+  {
+    "Código": "2911",
+    "Nome": "Náutico",
+    "Categoria": "Azul",
+    "HEX escuro": "#4E5D9A",
+    "HEX médio": "#4E5D9A",
+    "HEX claro": "#4E5D9A",
+    "Descrição Nome": "Náutico"
+  },
+  {
+    "Código": "2931",
+    "Nome": "Náutico",
+    "Categoria": "Azul",
+    "HEX escuro": "#233A69",
+    "HEX médio": "#405389",
+    "HEX claro": "#5A66A6",
+    "Descrição Nome": "Náutico"
+  },
+  {
+    "Código": "5743",
+    "Nome": "Neo Mint",
+    "Categoria": "Verde",
+    "HEX escuro": "#00A7A5",
+    "HEX médio": "#AAE5D4",
+    "HEX claro": "#C9F2DD",
+    "Descrição Nome": "Neo Mint"
+  },
+  {
+    "Código": "2928",
+    "Nome": "Netuno",
+    "Categoria": "Azul",
+    "HEX escuro": "#2E7A9A",
+    "HEX médio": "#2E7A9A",
+    "HEX claro": "#2E7A9A",
+    "Descrição Nome": "Netuno"
+  },
+  {
+    "Código": "2930",
+    "Nome": "Netuno",
+    "Categoria": "Azul",
+    "HEX escuro": "#4E7B9A",
+    "HEX médio": "#3C96BB",
+    "HEX claro": "#6CA6B7",
+    "Descrição Nome": "Netuno"
+  },
+  {
+    "Código": "2218",
+    "Nome": "Nuvem",
+    "Categoria": "Azul",
+    "HEX escuro": "#8FE4EA",
+    "HEX médio": "#91E4EA",
+    "HEX claro": "#93E5EA",
+    "Descrição Nome": "Nuvem"
+  },
+  {
+    "Código": "8176",
+    "Nome": "Off-White",
+    "Categoria": "Branco/Neutro",
+    "HEX escuro": "#D9CCBE",
+    "HEX médio": "#E5DCD1",
+    "HEX claro": "#E7DED5",
+    "Descrição Nome": "Off-White"
+  },
+  {
+    "Código": "4092",
+    "Nome": "Organza",
+    "Categoria": "Rosa",
+    "HEX escuro": "#F47B1D",
+    "HEX médio": "#F3B8AE",
+    "HEX claro": "#F8C4C8",
+    "Descrição Nome": "Organza"
+  },
+  {
+    "Código": "3068",
+    "Nome": "Orquídea",
+    "Categoria": "Roxo/Vinho",
+    "HEX escuro": "#D6A6BE",
+    "HEX médio": "#D6A6BE",
+    "HEX claro": "#D6A6BE",
+    "Descrição Nome": "Orquídea"
+  },
+  {
+    "Código": "6042",
+    "Nome": "Orquídea",
+    "Categoria": "Roxo/Vinho",
+    "HEX escuro": "#B28CB9",
+    "HEX médio": "#B28CBA",
+    "HEX claro": "#B38DBA",
+    "Descrição Nome": "Orquídea"
+  },
+  {
+    "Código": "1114",
+    "Nome": "Ouro",
+    "Categoria": "Amarelo",
+    "HEX escuro": "#F1C640",
+    "HEX médio": "#F1C640",
+    "HEX claro": "#F1C640",
+    "Descrição Nome": "Ouro"
+  },
+  {
+    "Código": "2855",
+    "Nome": "Paetê",
+    "Categoria": "Azul",
+    "HEX escuro": "#2A6AA3",
+    "HEX médio": "#2A6AA3",
+    "HEX claro": "#2A6AA3",
+    "Descrição Nome": "Paetê"
+  },
+  {
+    "Código": "3635",
+    "Nome": "Paixão",
+    "Categoria": "Vermelho",
+    "HEX escuro": "#A10F2E",
+    "HEX médio": "#9C112F",
+    "HEX claro": "#971330",
+    "Descrição Nome": "Paixão"
+  },
+  {
+    "Código": "5078",
+    "Nome": "Paraíso",
+    "Categoria": "Verde",
+    "HEX escuro": "#11A58B",
+    "HEX médio": "#11A68A",
+    "HEX claro": "#11A68A",
+    "Descrição Nome": "Paraíso"
+  },
+  {
+    "Código": "4224",
+    "Nome": "Peach Fuzz",
+    "Categoria": "Laranja",
+    "HEX escuro": "#F2C8B3",
+    "HEX médio": "#F2CBB7",
+    "HEX claro": "#F1D1BD",
+    "Descrição Nome": "Peach Fuzz"
+  },
+  {
+    "Código": "7066",
+    "Nome": "Pedra Quente",
+    "Categoria": "Bege/Marrom",
+    "HEX escuro": "#6D625C",
+    "HEX médio": "#736B65",
+    "HEX claro": "#7A716E",
+    "Descrição Nome": "Pedra Quente"
+  },
+  {
+    "Código": "8008",
+    "Nome": "Pedreira",
+    "Categoria": "Cinza",
+    "HEX escuro": "#B8AEB9",
+    "HEX médio": "#D1C9D1",
+    "HEX claro": "#D6CED8",
+    "Descrição Nome": "Pedreira"
+  },
+  {
+    "Código": "3112",
+    "Nome": "Penélope",
+    "Categoria": "Rosa",
+    "HEX escuro": "#C8A095",
+    "HEX médio": "#C8A095",
+    "HEX claro": "#C9A195",
+    "Descrição Nome": "Penélope"
+  },
+  {
+    "Código": "5741",
+    "Nome": "Periquito",
+    "Categoria": "Verde",
+    "HEX escuro": "#B4C989",
+    "HEX médio": "#C2D198",
+    "HEX claro": "#C9D6A3",
+    "Descrição Nome": "Periquito"
+  },
+  {
+    "Código": "4024",
+    "Nome": "Pêssego",
+    "Categoria": "Laranja",
+    "HEX escuro": "#F2C8B2",
+    "HEX médio": "#F2C8B2",
+    "HEX claro": "#F2C8B2",
+    "Descrição Nome": "Pêssego"
+  },
+  {
+    "Código": "3132",
+    "Nome": "Petala",
+    "Categoria": "Rosa",
+    "HEX escuro": "#FF5AA0",
+    "HEX médio": "#FF5AA0",
+    "HEX claro": "#FF5AA0",
+    "Descrição Nome": "Petala"
+  },
+  {
+    "Código": "5073",
+    "Nome": "Petróleo",
+    "Categoria": "Azul",
+    "HEX escuro": "#0E3043",
+    "HEX médio": "#044A66",
+    "HEX claro": "#005A83",
+    "Descrição Nome": "Petróleo"
+  },
+  {
+    "Código": "8937",
+    "Nome": "Petróleo",
+    "Categoria": "Azul",
+    "HEX escuro": "#1C2B38",
+    "HEX médio": "#1C2B38",
+    "HEX claro": "#1C2B38",
+    "Descrição Nome": "Petróleo"
+  },
+  {
+    "Código": "7078",
+    "Nome": "Pimenta Rosa",
+    "Categoria": "Vermelho",
+    "HEX escuro": "#6B322F",
+    "HEX médio": "#833A3A",
+    "HEX claro": "#8B3D3E",
+    "Descrição Nome": "Pimenta Rosa"
+  },
+  {
+    "Código": "7079",
+    "Nome": "Pimenta Rosa",
+    "Categoria": "Vermelho",
+    "HEX escuro": "#8A4840",
+    "HEX médio": "#8A4840",
+    "HEX claro": "#8A4840",
+    "Descrição Nome": "Pimenta Rosa"
+  },
+  {
+    "Código": "2286",
+    "Nome": "Piscina",
+    "Categoria": "Azul",
+    "HEX escuro": "#0098D7",
+    "HEX médio": "#0098D7",
+    "HEX claro": "#0099D7",
+    "Descrição Nome": "Piscina"
+  },
+  {
+    "Código": "5556",
+    "Nome": "Pistache",
+    "Categoria": "Verde",
+    "HEX escuro": "#8C981A",
+    "HEX médio": "#8C981A",
+    "HEX claro": "#8C981A",
+    "Descrição Nome": "Pistache"
+  },
+  {
+    "Código": "5800",
+    "Nome": "Pistache",
+    "Categoria": "Verde",
+    "HEX escuro": "#A7B425",
+    "HEX médio": "#ABBD18",
+    "HEX claro": "#B2C21F",
+    "Descrição Nome": "Pistache"
+  },
+  {
+    "Código": "3182",
+    "Nome": "Pitaya",
+    "Categoria": "Rosa",
+    "HEX escuro": "#7A003C",
+    "HEX médio": "#E055A6",
+    "HEX claro": "#EE6AB5",
+    "Descrição Nome": "Pitaya"
+  },
+  {
+    "Código": "2618",
+    "Nome": "Planeta",
+    "Categoria": "Azul",
+    "HEX escuro": "#0068B8",
+    "HEX médio": "#0571C7",
+    "HEX claro": "#1478C9",
+    "Descrição Nome": "Planeta"
+  },
+  {
+    "Código": "3087",
+    "Nome": "Pop",
+    "Categoria": "Rosa",
+    "HEX escuro": "#B78598",
+    "HEX médio": "#B78799",
+    "HEX claro": "#B7899A",
+    "Descrição Nome": "Pop"
+  },
+  {
+    "Código": "7564",
+    "Nome": "Porcelana",
+    "Categoria": "Bege/Marrom",
+    "HEX escuro": "#D2B29D",
+    "HEX médio": "#DEBEA6",
+    "HEX claro": "#DCC2AF",
+    "Descrição Nome": "Porcelana"
+  },
+  {
+    "Código": "2620",
+    "Nome": "Praia",
+    "Categoria": "Azul",
+    "HEX escuro": "#0068D9",
+    "HEX médio": "#0068D9",
+    "HEX claro": "#0069D9",
+    "Descrição Nome": "Praia"
+  },
+  {
+    "Código": "8009",
+    "Nome": "Prateado",
+    "Categoria": "Cinza",
+    "HEX escuro": "#C8C1C7",
+    "HEX médio": "#C8C1C7",
+    "HEX claro": "#C8C1C7",
+    "Descrição Nome": "Prateado"
+  },
+  {
+    "Código": "8990",
+    "Nome": "Preto",
+    "Categoria": "Preto",
+    "HEX escuro": "#101014",
+    "HEX médio": "#1D1C20",
+    "HEX claro": "#232327",
+    "Descrição Nome": "Preto"
+  },
+  {
+    "Código": "3077",
+    "Nome": "Quartzo",
+    "Categoria": "Rosa",
+    "HEX escuro": "#F7A8C8",
+    "HEX médio": "#F6CADC",
+    "HEX claro": "#F8D1E5",
+    "Descrição Nome": "Quartzo"
+  },
+  {
+    "Código": "6668",
+    "Nome": "Raiz",
+    "Categoria": "Laranja",
+    "HEX escuro": "#B5543B",
+    "HEX médio": "#BA572C",
+    "HEX claro": "#C05A1D",
+    "Descrição Nome": "Raiz"
+  },
+  {
+    "Código": "6034",
+    "Nome": "Realeza",
+    "Categoria": "Roxo/Vinho",
+    "HEX escuro": "#8A6CB4",
+    "HEX médio": "#987AC0",
+    "HEX claro": "#A285C8",
+    "Descrição Nome": "Realeza"
+  },
+  {
+    "Código": "4002",
+    "Nome": "Rosa",
+    "Categoria": "Rosa",
+    "HEX escuro": "#B497B8",
+    "HEX médio": "#B497B8",
+    "HEX claro": "#B497B8",
+    "Descrição Nome": "Rosa"
+  },
+  {
+    "Código": "2771",
+    "Nome": "Rosa Pink",
+    "Categoria": "Rosa",
+    "HEX escuro": "#B04A74",
+    "HEX médio": "#B04A74",
+    "HEX claro": "#B04A74",
+    "Descrição Nome": "Rosa Pink"
+  },
+  {
+    "Código": "3754",
+    "Nome": "Rosa Pink",
+    "Categoria": "Rosa",
+    "HEX escuro": "#B92A73",
+    "HEX médio": "#C02D76",
+    "HEX claro": "#D93E74",
+    "Descrição Nome": "Rosa Pink"
+  },
+  {
+    "Código": "3526",
+    "Nome": "Rosa-Candy",
+    "Categoria": "Rosa",
+    "HEX escuro": "#E1C7D7",
+    "HEX médio": "#E2C7D8",
+    "HEX claro": "#E2C7D8",
+    "Descrição Nome": "Rosa-Candy"
+  },
+  {
+    "Código": "3081",
+    "Nome": "Rosado",
+    "Categoria": "Rosa",
+    "HEX escuro": "#E7D6D0",
+    "HEX médio": "#E8D6D0",
+    "HEX claro": "#E8D7D1",
+    "Descrição Nome": "Rosado"
+  },
+  {
+    "Código": "3157",
+    "Nome": "Roseira",
+    "Categoria": "Rosa",
+    "HEX escuro": "#B15C79",
+    "HEX médio": "#B35E78",
+    "HEX claro": "#A9687F",
+    "Descrição Nome": "Roseira"
+  },
+  {
+    "Código": "3337",
+    "Nome": "Roséira",
+    "Categoria": "Rosa",
+    "HEX escuro": "#B95B76",
+    "HEX médio": "#B95B76",
+    "HEX claro": "#B95B76",
+    "Descrição Nome": "Roséira"
+  },
+  {
+    "Código": "3611",
+    "Nome": "Rubi",
+    "Categoria": "Vermelho",
+    "HEX escuro": "#7E0F1F",
+    "HEX médio": "#A50D2F",
+    "HEX claro": "#B0183B",
+    "Descrição Nome": "Rubi"
+  },
+  {
+    "Código": "4095",
+    "Nome": "Rum",
+    "Categoria": "Laranja",
+    "HEX escuro": "#6A3A30",
+    "HEX médio": "#AE4D47",
+    "HEX claro": "#B85D59",
+    "Descrição Nome": "Rum"
+  },
+  {
+    "Código": "5069",
+    "Nome": "Samambaia",
+    "Categoria": "Verde",
+    "HEX escuro": "#A5D489",
+    "HEX médio": "#A6D488",
+    "HEX claro": "#A6D588",
+    "Descrição Nome": "Samambaia"
+  },
+  {
+    "Código": "5089",
+    "Nome": "Selva",
+    "Categoria": "Verde",
+    "HEX escuro": "#4A682D",
+    "HEX médio": "#526A22",
+    "HEX claro": "#5B6D14",
+    "Descrição Nome": "Selva"
+  },
+  {
+    "Código": "5608",
+    "Nome": "Selva",
+    "Categoria": "Verde",
+    "HEX escuro": "#4D5420",
+    "HEX médio": "#4D5420",
+    "HEX claro": "#4D5420",
+    "Descrição Nome": "Selva"
+  },
+  {
+    "Código": "6019",
+    "Nome": "Sensação",
+    "Categoria": "Roxo/Vinho",
+    "HEX escuro": "#A07A95",
+    "HEX médio": "#A17B96",
+    "HEX claro": "#A27C98",
+    "Descrição Nome": "Sensação"
+  },
+  {
+    "Código": "1317",
+    "Nome": "Solar",
+    "Categoria": "Amarelo",
+    "HEX escuro": "#DDB92F",
+    "HEX médio": "#EFC33A",
+    "HEX claro": "#F3CC3D",
+    "Descrição Nome": "Solar"
+  },
+  {
+    "Código": "3134",
+    "Nome": "Sonho",
+    "Categoria": "Rosa",
+    "HEX escuro": "#9C7A80",
+    "HEX médio": "#9D7A80",
+    "HEX claro": "#9E7A80",
+    "Descrição Nome": "Sonho"
+  },
+  {
+    "Código": "3047",
+    "Nome": "Sopro",
+    "Categoria": "Rosa",
+    "HEX escuro": "#E8CDBF",
+    "HEX médio": "#EBCFC4",
+    "HEX claro": "#F1D2C8",
+    "Descrição Nome": "Sopro"
+  },
+  {
+    "Código": "3116",
+    "Nome": "Sorvete",
+    "Categoria": "Rosa",
+    "HEX escuro": "#F2A8D6",
+    "HEX médio": "#F1A8D6",
+    "HEX claro": "#F0A9D5",
+    "Descrição Nome": "Sorvete"
+  },
+  {
+    "Código": "7311",
+    "Nome": "Tabaco",
+    "Categoria": "Cinza",
+    "HEX escuro": "#261514",
+    "HEX médio": "#2A1816",
+    "HEX claro": "#2E1B18",
+    "Descrição Nome": "Tabaco"
+  },
+  {
+    "Código": "4093",
+    "Nome": "Tafetá",
+    "Categoria": "Vermelho",
+    "HEX escuro": "#B97B73",
+    "HEX médio": "#CC8279",
+    "HEX claro": "#D58B82",
+    "Descrição Nome": "Tafetá"
+  },
+  {
+    "Código": "7220",
+    "Nome": "Tâmara",
+    "Categoria": "Bege/Marrom",
+    "HEX escuro": "#704B3D",
+    "HEX médio": "#9B4D2B",
+    "HEX claro": "#9B5132",
+    "Descrição Nome": "Tâmara"
+  },
+  {
+    "Código": "4445",
+    "Nome": "Tangerina",
+    "Categoria": "Laranja",
+    "HEX escuro": "#C7641C",
+    "HEX médio": "#C9671D",
+    "HEX claro": "#C9681E",
+    "Descrição Nome": "Tangerina"
+  },
+  {
+    "Código": "6201",
+    "Nome": "Tecno",
+    "Categoria": "Roxo/Vinho",
+    "HEX escuro": "#5A3C8C",
+    "HEX médio": "#7A63AE",
+    "HEX claro": "#8B78B5",
+    "Descrição Nome": "Tecno"
+  },
+  {
+    "Código": "7259",
+    "Nome": "Telha",
+    "Categoria": "Laranja",
+    "HEX escuro": "#A3542B",
+    "HEX médio": "#A3542B",
+    "HEX claro": "#A3542B",
+    "Descrição Nome": "Telha"
+  },
+  {
+    "Código": "4005",
+    "Nome": "Terra",
+    "Categoria": "Vermelho",
+    "HEX escuro": "#C77562",
+    "HEX médio": "#CC7A6C",
+    "HEX claro": "#D17F76",
+    "Descrição Nome": "Terra"
+  },
+  {
+    "Código": "7529",
+    "Nome": "Terracota",
+    "Categoria": "Cinza",
+    "HEX escuro": "#9A4F2C",
+    "HEX médio": "#9A4F30",
+    "HEX claro": "#9B4F33",
+    "Descrição Nome": "Terracota"
+  },
+  {
+    "Código": "6403",
+    "Nome": "Tétis",
+    "Categoria": "Roxo/Vinho",
+    "HEX escuro": "#7667A0",
+    "HEX médio": "#7667A0",
+    "HEX claro": "#7667A0",
+    "Descrição Nome": "Tétis"
+  },
+  {
+    "Código": "5669",
+    "Nome": "Tiffany",
+    "Categoria": "Verde",
+    "HEX escuro": "#1BB9B4",
+    "HEX médio": "#09CDC8",
+    "HEX claro": "#00D6D0",
+    "Descrição Nome": "Tiffany"
+  },
+  {
+    "Código": "4140",
+    "Nome": "Tijolo",
+    "Categoria": "Laranja",
+    "HEX escuro": "#C86C3B",
+    "HEX médio": "#CF7444",
+    "HEX claro": "#D67B4D",
+    "Descrição Nome": "Tijolo"
+  },
+  {
+    "Código": "4448",
+    "Nome": "Tijolo",
+    "Categoria": "Laranja",
+    "HEX escuro": "#F04E39",
+    "HEX médio": "#EB5844",
+    "HEX claro": "#E96A5D",
+    "Descrição Nome": "Tijolo"
+  },
+  {
+    "Código": "4371",
+    "Nome": "Tropical",
+    "Categoria": "Vermelho",
+    "HEX escuro": "#D8A29A",
+    "HEX médio": "#D8A29A",
+    "HEX claro": "#D8A29A",
+    "Descrição Nome": "Tropical"
+  },
+  {
+    "Código": "4171",
+    "Nome": "Tropicalia",
+    "Categoria": "Laranja",
+    "HEX escuro": "#D49C84",
+    "HEX médio": "#D29E89",
+    "HEX claro": "#CFA090",
+    "Descrição Nome": "Tropicalia"
+  },
+  {
+    "Código": "4174",
+    "Nome": "Tropicalia",
+    "Categoria": "Laranja",
+    "HEX escuro": "#D89A8A",
+    "HEX médio": "#D89A8A",
+    "HEX claro": "#D89A8A",
+    "Descrição Nome": "Tropicalia"
+  },
+  {
+    "Código": "3334",
+    "Nome": "Tulipa",
+    "Categoria": "Rosa",
+    "HEX escuro": "#D92B73",
+    "HEX médio": "#F53976",
+    "HEX claro": "#FF5C89",
+    "Descrição Nome": "Tulipa"
+  },
+  {
+    "Código": "2194",
+    "Nome": "Turquesa",
+    "Categoria": "Azul",
+    "HEX escuro": "#0097B8",
+    "HEX médio": "#0BAFD8",
+    "HEX claro": "#2BB5E7",
+    "Descrição Nome": "Turquesa"
+  },
+  {
+    "Código": "3668",
+    "Nome": "Veludo",
+    "Categoria": "Vermelho",
+    "HEX escuro": "#420D12",
+    "HEX médio": "#480C14",
+    "HEX claro": "#4F0B16",
+    "Descrição Nome": "Veludo"
+  },
+  {
+    "Código": "5614",
+    "Nome": "Verde",
+    "Categoria": "Verde",
+    "HEX escuro": "#006B4A",
+    "HEX médio": "#006B4A",
+    "HEX claro": "#006B4A",
+    "Descrição Nome": "Verde"
+  },
+  {
+    "Código": "2004",
+    "Nome": "Verde Candy",
+    "Categoria": "Verde",
+    "HEX escuro": "#B8D9C3",
+    "HEX médio": "#B8D9C3",
+    "HEX claro": "#B8D9C3",
+    "Descrição Nome": "Verde Candy"
+  },
+  {
+    "Código": "2204",
+    "Nome": "Verde-Candy",
+    "Categoria": "Verde",
+    "HEX escuro": "#C8E8D3",
+    "HEX médio": "#D0EED9",
+    "HEX claro": "#D3F1DF",
+    "Descrição Nome": "Verde Candy"
+  },
+  {
+    "Código": "5583",
+    "Nome": "Verde Limão",
+    "Categoria": "Verde",
+    "HEX escuro": "#8BB436",
+    "HEX médio": "#A8D01E",
+    "HEX claro": "#B6DD14",
+    "Descrição Nome": "Verde Limão"
+  },
+  {
+    "Código": "5533",
+    "Nome": "Verde-Limão",
+    "Categoria": "Verde",
+    "HEX escuro": "#B5D216",
+    "HEX médio": "#B5D216",
+    "HEX claro": "#B5D216",
+    "Descrição Nome": "Verde-Limão"
+  },
+  {
+    "Código": "3402",
+    "Nome": "Vermelho-Círculo",
+    "Categoria": "Vermelho",
+    "HEX escuro": "#8E0B1C",
+    "HEX médio": "#940D1E",
+    "HEX claro": "#A51F2D",
+    "Descrição Nome": "Vermelho Círculo"
+  },
+  {
+    "Código": "3154",
+    "Nome": "Vinho",
+    "Categoria": "Roxo/Vinho",
+    "HEX escuro": "#560022",
+    "HEX médio": "#6C1041",
+    "HEX claro": "#8A0F4F",
+    "Descrição Nome": "Vinho"
+  },
+  {
+    "Código": "3961",
+    "Nome": "Vinho Intenso",
+    "Categoria": "Roxo/Vinho",
+    "HEX escuro": "#7B3046",
+    "HEX médio": "#7B3046",
+    "HEX claro": "#7B3046",
+    "Descrição Nome": "Vinho Intenso"
+  },
+  {
+    "Código": "4441",
+    "Nome": "Violeta",
+    "Categoria": "Roxo/Vinho",
+    "HEX escuro": "#B38AB6",
+    "HEX médio": "#B38AB6",
+    "HEX claro": "#B38AB6",
+    "Descrição Nome": "Violeta"
+  },
+  {
+    "Código": "6161",
+    "Nome": "Violeta",
+    "Categoria": "Roxo/Vinho",
+    "HEX escuro": "#B077B9",
+    "HEX médio": "#C080C3",
+    "HEX claro": "#C59BC7",
+    "Descrição Nome": "Violeta"
+  },
+  {
+    "Código": "3951",
+    "Nome": "Viva Magenta",
+    "Categoria": "Vermelho",
+    "HEX escuro": "#8B3555",
+    "HEX médio": "#8B3555",
+    "HEX claro": "#8B3555",
+    "Descrição Nome": "Viva Magenta"
+  }
+]

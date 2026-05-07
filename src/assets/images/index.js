@@ -72,6 +72,7 @@ import logo from './ui/logo.webp'
 import emptyFavoritos from './ui/empty-favoritos.png'
 import simuladorPreco from './ui/simulador-preco.png'
 import abreviacoes from './ui/abreviacoes.png'
+import baselinha from './ui/linha.webp'
 
 // ==========================
 // EXPORTAÇÃO CENTRAL
@@ -259,6 +260,7 @@ export const IMAGES = {
     logo,
     emptyFavoritos,
     simuladorPreco,
-    abreviacoes
+    abreviacoes,
+    baselinha
   }
 }
