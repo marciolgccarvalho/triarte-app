@@ -121,6 +121,7 @@ export default function MainApp() {
           aberto={menuAberto}
           fechar={() => setMenuAberto(false)}
           irPara={irPara}
+          pagina={pagina}
         />
 
         <div className="app-content">

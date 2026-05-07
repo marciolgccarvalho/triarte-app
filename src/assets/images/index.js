@@ -18,49 +18,25 @@ import zoey from './personagens/zoey.webp'
 // ==========================
 import youtubeActive from './icons/youtube-active.png'
 import tiktokActive from './icons/tiktok-active.png'
-
 import sobreActive from './icons/sobre-active.png'
-import sobreInactive from './icons/sobre-inactive.png'
-
 import siteActive from './icons/site-active.png'
-
 import receitasActive from './icons/receitas-active.png'
-import receitasInactive from './icons/receitas-inactive.png'
-
 import proximaActive from './icons/proxima-active.png'
 import anteriorActive from './icons/anterior-active.png'
-
 import menuActive from './icons/menu-active.png'
-
 import listaActive from './icons/lista-active.png'
-import listaInactive from './icons/lista-inactive.png'
-import listaActiveHome from './icons/lista-active-home.png'
-
 import instagramActive from './icons/instagram-active.png'
-
 import homeActive from './icons/home-active.png'
-import homeInactive from './icons/home-inactive.png'
-
 import gridActive from './icons/grid-active.png'
-import gridInactive from './icons/grid-inactive.png'
-
 import favoritosActive from './icons/favoritos-active.png'
-import favoritosInactive from './icons/favoritos-inactive.png'
-
 import facebookActive from './icons/facebook-active.png'
 import emailActive from './icons/email-active.png'
-
 import contatoActive from './icons/contato-active.png'
-import contatoInactive from './icons/contato-inactive.png'
-
 import conquistasActive from './icons/conquistas-active.png'
-import conquistasInactive from './icons/conquistas-inactive.png'
-
 import calculoActive from './icons/calculo-active.png'
-import calculoInactive from './icons/calculo-inactive.png'
-
 import abreviacaoActive from './icons/abreviacao-active.png'
-import abreviacaoInactive from './icons/abreviacao-inactive.png'
+import projetoActive from './icons/projeto-active.png'
+import linhaActive from './icons/linha-active.png'
 
 // 🔥 CONFIGURAÇÕES
 import configuracoesActive from './icons/configuracao.png'
@@ -127,8 +103,7 @@ export const IMAGES = {
     },
 
     sobre: {
-      active: sobreActive,
-      inactive: sobreInactive
+      active: sobreActive
     },
 
     site: {
@@ -136,8 +111,7 @@ export const IMAGES = {
     },
 
     receitas: {
-      active: receitasActive,
-      inactive: receitasInactive
+      active: receitasActive
     },
 
     proxima: {
@@ -153,9 +127,7 @@ export const IMAGES = {
     },
 
     lista: {
-      active: listaActive,
-      inactive: listaInactive,
-      home: listaActiveHome
+      active: listaActive
     },
 
     instagram: {
@@ -163,18 +135,15 @@ export const IMAGES = {
     },
 
     home: {
-      active: homeActive,
-      inactive: homeInactive
+      active: homeActive
     },
 
     grid: {
-      active: gridActive,
-      inactive: gridInactive
+      active: gridActive
     },
 
     favoritos: {
-      active: favoritosActive,
-      inactive: favoritosInactive
+      active: favoritosActive
     },
 
     facebook: {
@@ -186,27 +155,33 @@ export const IMAGES = {
     },
 
     contato: {
-      active: contatoActive,
-      inactive: contatoInactive
+      active: contatoActive
     },
 
     conquistas: {
-      active: conquistasActive,
-      inactive: conquistasInactive
+      active: conquistasActive
     },
 
     calculo: {
-      active: calculoActive,
-      inactive: calculoInactive
+      active: calculoActive
     },
 
     abreviacao: {
-      active: abreviacaoActive,
-      inactive: abreviacaoInactive
+      active: abreviacaoActive
     },
 
     configuracoes: {
       active: configuracoesActive
+    },
+  
+
+      linha: {
+      active: linhaActive
+    },
+  
+
+      projeto: {
+      active: projetoActive
     }
   },
 

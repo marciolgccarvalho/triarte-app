@@ -1,10 +1,12 @@
 import React from "react";
 import { IMAGES } from "../assets/images";
+import "../styles/components/menu-lateral.css";
 
 export default function MenuLateral({
   aberto,
   fechar = () => {},
-  irPara = () => {}
+  irPara = () => {},
+  pagina
 }) {
   if (!aberto) return null;
 
@@ -36,12 +38,63 @@ export default function MenuLateral({
 
         {/* MENU PRINCIPAL */}
         <div className="sidebar-list">
-          <Item icone={IMAGES.icons.home.active} texto="Início" onClick={() => handleClick("home")} />
-          <Item icone={IMAGES.icons.receitas.active} texto="Receitas" onClick={() => handleClick("receitas")} />
-          <Item icone={IMAGES.icons.favoritos.active} texto="Favoritos" onClick={() => handleClick("favoritos")} />
-          <Item icone={IMAGES.icons.calculo.active} texto="Simulador" onClick={() => handleClick("simulador")} />
-          <Item icone={IMAGES.icons.conquistas.active} texto="Conquistas" onClick={() => handleClick("conquistas")} />
-          <Item icone={IMAGES.icons.abreviacao.active} texto="Abreviações" onClick={() => handleClick("abreviatura")} />
+
+          <Item
+            icone={IMAGES.icons.home.active}
+            texto="Início"
+            ativo={pagina === "home"}
+            onClick={() => handleClick("home")}
+          />
+
+          <Item
+            icone={IMAGES.icons.receitas.active}
+            texto="Receitas"
+             ativo={pagina === "receitas"}
+            onClick={() => handleClick("receitas")}
+          />
+
+          <Item
+            icone={IMAGES.icons.calculo.active}
+            texto="Simulador"
+             ativo={pagina === "simulador"}
+            onClick={() => handleClick("simulador")}
+          />
+
+          <Item
+            icone={IMAGES.icons.conquistas.active}
+            texto="Conquistas"
+            ativo={pagina === "conquistas"}
+            onClick={() => handleClick("conquistas")}
+          />
+
+          <Item
+            icone={IMAGES.icons.projeto.active}
+            texto="Projetos"
+            ativo={pagina === "projetos"}
+            onClick={() => handleClick("projetos")}
+          />
+
+          <Item
+            icone={IMAGES.icons.favoritos.active}
+            texto="Favoritos"
+             ativo={pagina === "favoritos"}
+            onClick={() => handleClick("favoritos")}
+          />
+
+          <Item
+            icone={IMAGES.icons.linha.active}
+            texto="Linhas"
+             ativo={pagina === "linhas"}
+            onClick={() => handleClick("linhas")}
+          />
+
+          <Item
+            icone={IMAGES.icons.abreviacao.active}
+            texto="Abreviações"
+             ativo={pagina === "abreviatura"}
+            onClick={() => handleClick("abreviatura")}
+          />
+
         </div>
 
         {/* DIVISOR */}
@@ -49,27 +102,37 @@ export default function MenuLateral({
 
         {/* MENU SECUNDÁRIO */}
         <div className="sidebar-list">
-          <Item icone={IMAGES.icons.sobre.active} texto="Sobre" onClick={() => handleClick("sobre")} />
 
-          {/* CONFIGURAÇÕES (CORRETO) */}
+          <Item
+            icone={IMAGES.icons.sobre.active}
+            texto="Sobre"
+            onClick={() => handleClick("sobre")}
+          />
+
+          <Item
+            icone={IMAGES.icons.contato.active}
+            texto="Contato"
+            onClick={() => handleClick("contato")}
+          />
+
           <Item
             icone={IMAGES.icons.configuracoes.active}
             texto="Configurações"
             onClick={() => handleClick("configuracoes")}
           />
 
-          <Item icone={IMAGES.icons.contato.active} texto="Contato" onClick={() => handleClick("contato")} />
         </div>
       </div>
     </div>
   );
 }
 
-function Item({ icone, texto, onClick = () => {} }) {
+function Item({ icone, texto, onClick = () => {}, ativo = false }) {
+
   return (
     <button
       onClick={onClick}
-      className="sidebar-item"
+      className={` sidebar-item  ${ativo ? "sidebar-item-active" : ""} `}
     >
       <img
         src={icone}

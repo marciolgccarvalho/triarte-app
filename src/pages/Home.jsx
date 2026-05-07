@@ -218,7 +218,7 @@ export default function Home({
       >
         <div className="home-cta-left">
           <img
-            src={IMAGES.icons.lista.home}
+            src={IMAGES.icons.receitas.active}
             alt="Receitas"
           />
         </div>
@@ -230,7 +230,13 @@ export default function Home({
         </div>
       </div>
 
-        <div className="home-cta-arrow">›</div>
+        <div className="home-cta-arrow">
+          <img
+            src={IMAGES.icons.proxima.active}
+            className="home-icon-md"
+            alt=""
+          />
+        </div>
       </div>
 
     </div>

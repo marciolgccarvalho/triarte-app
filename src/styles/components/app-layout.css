@@ -86,7 +86,7 @@
   justify-content: center;
 
   cursor: pointer;
-} 
+}
 
 /* LOGO */
 .app-logo {
@@ -126,7 +126,7 @@
   overflow-y: auto;
 
   padding: var(--space-md);
-  padding-bottom: 44px; /* 🔥 reduzido pela metade (era 88px) */
+  padding-bottom: 44px;
 
   -webkit-overflow-scrolling: touch;
 }

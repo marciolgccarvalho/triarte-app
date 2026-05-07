@@ -11,6 +11,8 @@ import Contato from "../pages/Contato";
 import ReceitaDetalhe from "../pages/ReceitaDetalhe";
 import Materiais from "../pages/Materiais";
 import Configuracoes from "../pages/Configuracoes";
+import Linhas from "../pages/Linhas";
+import Projetos from "../pages/Projetos";
 
 export function renderPagina({
   pagina,
@@ -140,7 +142,6 @@ export function renderPagina({
           favoritos={favoritos}
           toggleFavorito={toggleFavorito}
 
-          // 🔥 CORREÇÃO AQUI
           origem={origem}
           voltar={() => irPara(origem || "home")}
 
@@ -180,6 +181,12 @@ export function renderPagina({
           voltar={() => irPara("receita")}
         />
       );
+
+    case "linhas":
+      return <Linhas />;
+
+    case "projetos":
+      return <Projetos />;
 
     default:
       return null;
