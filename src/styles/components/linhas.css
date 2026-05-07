@@ -724,3 +724,39 @@
 
   color: #666;
 }
+
+/* MOBILE */
+
+@media (max-width: 480px) {
+  .linha-card {
+    grid-template-columns:
+      92px
+      1.8fr
+      auto
+      auto;
+
+    gap: 10px;
+  }
+
+  .linha-nome {
+    font-size: 16px;
+
+    line-height: 1.2;
+
+    word-break: keep-all;
+  }
+
+  .linha-categoria {
+    padding: 0 10px;
+
+    font-size: 12px;
+  }
+
+  .linha-codigo {
+    font-size: 15px;
+  }
+
+  .linha-seta {
+    font-size: 22px;
+  }
+}
