@@ -73,6 +73,11 @@ import emptyFavoritos from './ui/empty-favoritos.png'
 import simuladorPreco from './ui/simulador-preco.png'
 import abreviacoes from './ui/abreviacoes.png'
 import baselinha from './ui/linha.webp'
+import baselinha2 from './ui/linha2.webp'
+import baselinha3 from './ui/linha3.webp'
+import baselinha4 from './ui/linha4.webp'
+import baselinha5 from './ui/linha5.webp'
+import baselinha6 from './ui/linha6.webp'
 
 // ==========================
 // EXPORTAÇÃO CENTRAL
@@ -261,6 +266,11 @@ export const IMAGES = {
     emptyFavoritos,
     simuladorPreco,
     abreviacoes,
-    baselinha
+    baselinha,
+    baselinha2,
+    baselinha3,
+    baselinha4,
+    baselinha5,
+    baselinha6
   }
 }

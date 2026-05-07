@@ -9,6 +9,23 @@ import "../styles/components/linhas.css";
 import coresLinhas from "../data/cores-linhas.json";
 import { IMAGES } from "../assets/images";
 
+const TEXTURAS = [
+  IMAGES.ui.baselinha,
+  IMAGES.ui.baselinha2,
+  IMAGES.ui.baselinha3,
+  IMAGES.ui.baselinha4,
+  IMAGES.ui.baselinha5,
+  IMAGES.ui.baselinha6
+];
+
+const getTexturaLinha = (codigo) => {
+  const indice =
+    Number(codigo) %
+    TEXTURAS.length;
+
+  return TEXTURAS[indice];
+};
+
 const ITENS_POR_PAGINA = 20;
 
 function Linhas() {
@@ -150,7 +167,6 @@ function Linhas() {
       );
     }
   };
-
 
   return (
     <main className="linhas-page">
@@ -295,7 +311,9 @@ function Linhas() {
                 >
                   <div className="linha-preview">
                     <img
-                      src={IMAGES.ui.baselinha}
+                      src={getTexturaLinha(
+                        linha["Código"]
+                      )}
                       alt={linha["Nome"]}
                     />
 
@@ -362,10 +380,9 @@ function Linhas() {
               >
                 <div className="linha-grid-preview">
                   <img
-                    src={
-                      IMAGES.ui
-                        .baselinha
-                    }
+                    src={getTexturaLinha(
+                      linha["Código"]
+                    )}
                     alt={
                       linha["Nome"]
                     }
@@ -494,10 +511,11 @@ function Linhas() {
 
             <div className="linha-modal-preview">
               <img
-                src={
-                  IMAGES.ui
-                    .baselinha
-                }
+                src={getTexturaLinha(
+                  linhaSelecionada[
+                    "Código"
+                  ]
+                )}
                 alt={
                   linhaSelecionada[
                     "Nome"

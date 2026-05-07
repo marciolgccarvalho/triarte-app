@@ -597,9 +597,9 @@
     "Código": "2198",
     "Nome": "Fumaça",
     "Categoria": "Cinza",
-    "HEX escuro": "#293B6A",
-    "HEX médio": "#9AA0B2",
-    "HEX claro": "#D4D4D7",
+    "HEX escuro": "#8a8a8a",
+    "HEX médio": "#bebebe",
+    "HEX claro": "#d8d8d8",
     "Descrição Nome": "Fumaça"
   },
   {
@@ -669,9 +669,9 @@
     "Código": "2137",
     "Nome": "Hortênsia",
     "Categoria": "Azul",
-    "HEX escuro": "#68B7F0",
-    "HEX médio": "#97C4F4",
-    "HEX claro": "#C8E4D5",
+    "HEX escuro": "#87a8e2",
+    "HEX médio": "#b1cdf5",
+    "HEX claro": "#cde2f7",
     "Descrição Nome": "Hortênsia"
   },
   {
@@ -894,9 +894,9 @@
     "Código": "7030",
     "Nome": "Mostarda",
     "Categoria": "Laranja",
-    "HEX escuro": "#3E2B24",
-    "HEX médio": "#BA8B39",
-    "HEX claro": "#D29A3A",
+    "HEX escuro": "#a5691a",
+    "HEX médio": "#d49636",
+    "HEX claro": "#f3b452",
     "Descrição Nome": "Mostarda"
   },
   {
@@ -1011,9 +1011,9 @@
     "Código": "4092",
     "Nome": "Organza",
     "Categoria": "Rosa",
-    "HEX escuro": "#F47B1D",
-    "HEX médio": "#F3B8AE",
-    "HEX claro": "#F8C4C8",
+    "HEX escuro": "#dda29b",
+    "HEX médio": "#e2baba",
+    "HEX claro": "#f9ddd8",
     "Descrição Nome": "Organza"
   },
   {
