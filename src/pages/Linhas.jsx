@@ -40,7 +40,7 @@ function Linhas() {
   const [
     ordenacao,
     setOrdenacao
-  ] = useState("codigo");
+  ] = useState("nome-asc");
 
   const [
     modoVisualizacao,

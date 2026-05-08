@@ -352,9 +352,13 @@ ConquistaCard({ c }) {
 
       <div className="cq-progress-info">
 
-        {Math.min(
-          c.atual,
-          c.meta
+        {Math.round(
+
+          Math.min(
+            c.atual,
+            c.meta
+          )
+
         )} / {c.meta}
 
       </div>
