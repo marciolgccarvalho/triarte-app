@@ -15,11 +15,13 @@ import Linhas from "../pages/Linhas";
 import Projetos from "../pages/Projetos";
 
 export function renderPagina({
+
   pagina,
   mensagemAtual,
   ultimaReceita,
   receitas,
   receitasRandom,
+
   abrirReceita,
   percentual,
   toggleFavorito,
@@ -31,6 +33,7 @@ export function renderPagina({
 
   buscaNome,
   setBuscaNome,
+
   buscaCategoria,
   setBuscaCategoria,
 
@@ -52,11 +55,17 @@ export function renderPagina({
   marcarVideo,
   progresso,
 
-  origem // 🔥 NOVO
+  origem,
+  listaMateriaisTexto
+
 }) {
+
   switch (pagina) {
+
     case "home":
+
       return (
+
         <Home
           mensagemAtual={mensagemAtual}
           ultimaReceita={ultimaReceita}
@@ -68,127 +77,227 @@ export function renderPagina({
           favoritos={favoritos}
           irPara={irPara}
         />
+
       );
 
     case "receitas":
+
       return (
+
         <Receitas
+
           receitasFiltradas={receitasFiltradas}
-          receitasPaginadas={receitasPage.itens}
-          totalPaginas={receitasPage.totalPaginas}
+
+          receitasPaginadas={
+            receitasPage.itens
+          }
+
+          totalPaginas={
+            receitasPage.totalPaginas
+          }
 
           buscaNome={buscaNome}
           setBuscaNome={setBuscaNome}
+
           buscaCategoria={buscaCategoria}
-          setBuscaCategoria={setBuscaCategoria}
+          setBuscaCategoria={
+            setBuscaCategoria
+          }
 
           categorias={categorias}
 
           modoExibicao={modoExibicao}
-          setModoExibicao={setModoExibicao}
+          setModoExibicao={
+            setModoExibicao
+          }
 
           limite={limite}
           setLimite={setLimite}
 
           paginaAtual={paginaAtual}
-          setPaginaAtual={setPaginaAtual}
+          setPaginaAtual={
+            setPaginaAtual
+          }
 
           abrirReceita={abrirReceita}
-          toggleFavorito={toggleFavorito}
+
+          toggleFavorito={
+            toggleFavorito
+          }
+
           favoritos={favoritos}
+
           percentual={percentual}
+
         />
+
       );
 
     case "favoritos":
+
       return (
+
         <Favoritos
-          receitasFiltradas={favoritosFiltrados}
-          receitasPaginadas={favoritosPage.itens}
-          totalPaginas={favoritosPage.totalPaginas}
+
+          receitasFiltradas={
+            favoritosFiltrados
+          }
+
+          receitasPaginadas={
+            favoritosPage.itens
+          }
+
+          totalPaginas={
+            favoritosPage.totalPaginas
+          }
 
           buscaNome={buscaNome}
           setBuscaNome={setBuscaNome}
+
           buscaCategoria={buscaCategoria}
-          setBuscaCategoria={setBuscaCategoria}
+          setBuscaCategoria={
+            setBuscaCategoria
+          }
 
           categorias={categorias}
 
           modoExibicao={modoExibicao}
-          setModoExibicao={setModoExibicao}
+          setModoExibicao={
+            setModoExibicao
+          }
 
           limite={limite}
           setLimite={setLimite}
 
           paginaAtual={paginaAtual}
-          setPaginaAtual={setPaginaAtual}
+          setPaginaAtual={
+            setPaginaAtual
+          }
 
           abrirReceita={abrirReceita}
-          toggleFavorito={toggleFavorito}
+
+          toggleFavorito={
+            toggleFavorito
+          }
+
           favoritos={favoritos}
+
           percentual={percentual}
 
           irPara={irPara}
+
         />
+
       );
 
     case "receita":
+
       return (
+
         <ReceitaDetalhe
+
           receita={receitaSelecionada}
+
           marcarVideo={marcarVideo}
+
           percentual={percentual}
+
           progresso={progresso}
+
           favoritos={favoritos}
-          toggleFavorito={toggleFavorito}
+
+          toggleFavorito={
+            toggleFavorito
+          }
 
           origem={origem}
-          voltar={() => irPara(origem || "home")}
+
+          voltar={() =>
+            irPara(origem || "home")
+          }
 
           irPara={irPara}
+
         />
+
       );
 
     case "conquistas":
+
       return (
+
         <Conquistas
-          voltar={() => irPara("home")}
+
+          voltar={() =>
+            irPara("home")
+          }
+
           progresso={progresso}
+
           receitas={receitas}
+
           favoritos={favoritos}
+
         />
+
       );
 
     case "simulador":
+
       return <Simulador />;
 
     case "abreviatura":
-      return <Abreviatura voltar={() => irPara("home")} />;
 
-    case "sobre":
-      return <Sobre />;
-
-    case "configuracoes":
-      return <Configuracoes />;
-
-    case "contato":
-      return <Contato />;
-
-    case "materiais":
       return (
-        <Materiais
-          receita={receitaSelecionada}
-          voltar={() => irPara("receita")}
+        <Abreviatura
+          voltar={() =>
+            irPara("home")
+          }
         />
       );
 
+    case "sobre":
+
+      return <Sobre />;
+
+    case "configuracoes":
+
+      return <Configuracoes />;
+
+    case "contato":
+
+      return <Contato />;
+
+    case "materiais":
+
+      return (
+
+        <Materiais
+
+          receita={receitaSelecionada}
+
+          voltar={() =>
+            irPara("receita")
+          }
+
+          listaMateriaisTexto={
+            listaMateriaisTexto
+          }
+
+        />
+
+      );
+
     case "linhas":
+
       return <Linhas />;
 
     case "projetos":
+
       return <Projetos />;
 
     default:
+
       return null;
   }
 }

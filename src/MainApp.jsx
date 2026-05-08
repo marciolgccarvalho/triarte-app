@@ -11,6 +11,7 @@ import Footer from "./components/Footer";
 import { renderPagina } from "./navigation/renderPagina";
 
 export default function MainApp() {
+
   const liberarNoPC = true;
 
   const [pagina, setPagina] = React.useState("home");
@@ -27,7 +28,10 @@ export default function MainApp() {
   const [limite, setLimite] = React.useState(10);
   const [paginaAtual, setPaginaAtual] = React.useState(1);
 
-  const receitas = React.useMemo(() => getReceitas(), []);
+  const receitas = React.useMemo(
+    () => getReceitas(),
+    []
+  );
 
   // STORAGE
   const {
@@ -56,81 +60,197 @@ export default function MainApp() {
   });
 
   React.useEffect(() => {
+
     const check = () => {
-      setRotacionado(window.innerWidth > window.innerHeight);
+      setRotacionado(
+        window.innerWidth >
+        window.innerHeight
+      );
     };
 
     check();
-    window.addEventListener("resize", check);
 
-    return () => window.removeEventListener("resize", check);
+    window.addEventListener(
+      "resize",
+      check
+    );
+
+    return () => {
+      window.removeEventListener(
+        "resize",
+        check
+      );
+    };
+
   }, []);
 
   const irPara = (destino) => {
+
     setPagina(destino);
     setMenuAberto(false);
     setPaginaAtual(1);
   };
 
   // 🔥 CORRIGIDO (com origem, sem quebrar nada)
-  const abrirReceita = (receita, origemTela = pagina) => {
+  const abrirReceita = (
+    receita,
+    origemTela = pagina
+  ) => {
+
     setReceitaSelecionada(receita);
     setUltimaReceitaId(receita.id);
-    setOrigem(origemTela); // 🔥 NOVO
+    setOrigem(origemTela);
     setPagina("receita");
   };
 
   const percentual = (receita) => {
-    if (!receita?.videos?.length) return 0;
 
-    const vistos = progresso[receita.id]?.vistos?.length || 0;
-    return Math.round((vistos / receita.videos.length) * 100);
+    if (!receita?.videos?.length) {
+      return 0;
+    }
+
+    const vistos =
+      progresso[receita.id]
+        ?.vistos?.length || 0;
+
+    return Math.round(
+      (
+        vistos /
+        receita.videos.length
+      ) * 100
+    );
   };
 
-  const ultimaReceita = receitas.find(
-    (r) => r.id === ultimaReceitaId
-  );
+  // ========================================
+  // TEXTO DOS MATERIAIS
+  // ========================================
 
-  const mensagemAtual = mensagens[0];
+  const listaMateriaisTexto =
+    React.useCallback(() => {
 
-  const receitasRandom = React.useMemo(() => {
-    const embaralhado = [...receitas].sort(() => Math.random() - 0.5);
-    return embaralhado.slice(0, 8);
-  }, [receitas]);
+      if (!receitaSelecionada) {
+        return "";
+      }
 
-  if (rotacionado && !liberarNoPC) {
+      const linhas =
+        receitaSelecionada
+          .materiais?.linhas || [];
+
+      const itens =
+        receitaSelecionada
+          .materiais?.itens || [];
+
+      return `
+🧶 Materiais - ${receitaSelecionada.nome}
+
+LINHAS:
+${linhas
+  .map((l) => `• ${l}`)
+  .join("\n")}
+
+OUTROS MATERIAIS:
+${itens
+  .map((i) => `• ${i}`)
+  .join("\n")}
+
+💛 Real Triarte
+`.trim();
+
+    }, [receitaSelecionada]);
+
+  const ultimaReceita =
+    receitas.find(
+      (r) =>
+        r.id === ultimaReceitaId
+    );
+
+  const mensagemAtual =
+    mensagens[0];
+
+  const receitasRandom =
+    React.useMemo(() => {
+
+      const embaralhado =
+        [...receitas].sort(
+          () => Math.random() - 0.5
+        );
+
+      return embaralhado.slice(0, 8);
+
+    }, [receitas]);
+
+  if (
+    rotacionado &&
+    !liberarNoPC
+  ) {
+
     return (
       <div className="screen-center">
+
         <h2>📱 Gire o celular</h2>
-        <p className="text-muted">Use o app na vertical</p>
+
+        <p className="text-muted">
+          Use o app na vertical
+        </p>
+
       </div>
     );
   }
 
   return (
-    <div className={`app-wrapper ${liberarNoPC ? "desktop" : ""}`}>
-      <div className={`app-container ${liberarNoPC ? "desktop" : ""}`}>
+
+    <div
+      className={
+        `app-wrapper ${
+          liberarNoPC
+            ? "desktop"
+            : ""
+        }`
+      }
+    >
+
+      <div
+        className={
+          `app-container ${
+            liberarNoPC
+              ? "desktop"
+              : ""
+          }`
+        }
+      >
 
         {/* HEADER */}
+
         <Header
           irPara={irPara}
-          abrirMenu={() => setMenuAberto(true)}
+          abrirMenu={() =>
+            setMenuAberto(true)
+          }
         />
+
+        {/* MENU */}
 
         <MenuLateral
           aberto={menuAberto}
-          fechar={() => setMenuAberto(false)}
+          fechar={() =>
+            setMenuAberto(false)
+          }
           irPara={irPara}
           pagina={pagina}
         />
 
+        {/* CONTEÚDO */}
+
         <div className="app-content">
+
           {renderPagina({
+
             pagina,
             mensagemAtual,
             ultimaReceita,
             receitas,
             receitasRandom,
+
             abrirReceita,
             percentual,
             toggleFavorito,
@@ -142,6 +262,7 @@ export default function MainApp() {
 
             buscaNome,
             setBuscaNome,
+
             buscaCategoria,
             setBuscaCategoria,
 
@@ -163,18 +284,25 @@ export default function MainApp() {
             marcarVideo,
             progresso,
 
-            origem // 🔥 NOVO (não quebra nada)
+            origem,
+            listaMateriaisTexto
+
           })}
+
         </div>
 
         {/* FOOTER */}
+
         <Footer
           pagina={pagina}
           irPara={irPara}
-          abrirMenu={() => setMenuAberto(true)}
+          abrirMenu={() =>
+            setMenuAberto(true)
+          }
         />
 
       </div>
+
     </div>
   );
 }

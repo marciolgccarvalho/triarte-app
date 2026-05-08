@@ -12,8 +12,8 @@
     "ordem": 1,
     "materiais": {
       "linhas": [
-        "Fio Amigurumi 6201 Tecno",
-        "Fio Amigurumi Preto"
+        "6201",
+        "8990"
       ],
       "itens": [
         "Agulha de crochê",
@@ -56,12 +56,12 @@
     "ordem": 2,
     "materiais": {
       "linhas": [
-        "Fio Amigurumi Creme 1112",
-        "Fio Amigurumi Laranja 4456",
-        "Fio Amigurumi Preto 8990",
-        "Fio Amigurumi Rubi 3611",
-        "Fio Amigurumi Castanha 7625",
-        "Fio Amigurumi Aço 8797"
+        "1112",
+        "4456",
+        "8990",
+        "3611",
+        "7625",
+        "8797"
       ],
       "itens": [
         "Agulha de crochê",
@@ -110,11 +110,11 @@
     "ordem": 3,
     "materiais": {
       "linhas": [
-        "Fio Amigurumi Chantily 7563",
-        "Fio Amigurumi Craft 7148",
-        "Fio Amigurumi Preto 8990",
-        "Fio Amigurumi Brigadeiro 7569",
-        "Fio Amigurumi Matrix 8069"
+        "7563",
+        "7148",
+        "8990",
+        "7569",
+        "8069"
       ],
       "itens": [
         "Agulha de crochê",
@@ -158,14 +158,14 @@
     "ordem": 4,
     "materiais": {
       "linhas": [
-        "Fio Amigurumi Chantily 7563",
-        "Fio Amigurumi Preto 8990",
-        "Fio Amigurumi Marinheiro 2745",
-        "Fio Amigurumi Branco 8001",
-        "Fio Amigurumi Canário 1289",
-        "Fio Amigurumi Glacial 8013",
-        "Fio Amigurumi Carmim 3528",
-        "Fio Amigurumi Azaleia 6399"
+        "7563",
+        "8990",
+        "2745",
+        "8001",
+        "1289",
+        "8013",
+        "3528",
+        "6399"
       ],
       "itens": [
         "Agulha de crochê",
@@ -209,9 +209,9 @@
     "ordem": 5,
     "materiais": {
       "linhas": [
-        "Fio Amigurumi Carmim 3528",
-        "Fio Amigurumi Pedreira 8008",
-        "Fio Amigurumi Off-White 8175"
+        "3528",
+        "8008",
+        "8175"
       ],
       "itens": [
         "Agulha de crochê",
@@ -253,17 +253,16 @@
     "ordem": 6,
     "materiais": {
       "linhas": [
-        "Fio Amigurumi Chantily 7563",
-        "Fio Amigurumi Petróleo 5073",
-        "Fio Amigurumi Preto 8990",
-        "Fio Amigurumi Brigadeiro 7569",
-        "Fio Amigurumi Verde Militar 5368",
-        "Fio Amigurumi Caramelito 7076",
-        "Fio Amigurumi Pedreira 8008",
-        "Fio Amigurumi Verde Bandeira 5767",
-        "Fio Amigurumi Creme 1112",
-        "Fios para bordado Creme 1112",
-        "Fios para bordado Laranja 4456"
+        "7563",
+        "5073",
+        "8990",
+        "7569",
+        "5368",
+        "7076",
+        "8008",
+        "5767",
+        "1112",
+        "4456"
       ],
       "itens": [
         "Agulha de crochê",
@@ -311,14 +310,14 @@
     "ordem": 7,
     "materiais": {
       "linhas": [
-        "Fio Amigurumi Off White 8176",
-        "Fio Amigurumi Cinza Pedreira 8008",
-        "Fio Amigurumi Preto 8990",
-        "Fio Amigurumi Azul Náutico 2931",
-        "Fio Amigurumi Azul Hortênsia 2137",
-        "Fio Amigurumi Branco 8001",
-        "Fio Amigurumi Rosa Quatzo 3077",
-        "Fio Amigurumi Amarelo Canário 1289 (distintivo)"
+        "8176",
+        "8008",
+        "8990",
+        "2931",
+        "2137",
+        "8001",
+        "3077",
+        "1289"
       ],
       "itens": [
         "Agulha de crochê",
@@ -366,13 +365,13 @@
     "ordem": 8,
     "materiais": {
       "linhas": [
-        "Fio Amigurumi Chantily 7563",
-        "Fio Amigurumi Preto 8990",
-        "Fio Amigurumi Branco 8001",
-        "Fio Amigurumi Canário 1289",
-        "Fio Amigurumi Rosa Pink 3754",
-        "Fio Amigurumi Azul Água 2500 (Bordados)",
-        "Fio Amigurumi Lilaz Candy 6006 (Bordados)"
+        "7563",
+        "8990",
+        "8001",
+        "1289",
+        "3754",
+        "2500",
+        "6006"
       ],
       "itens": [
         "Agulha de crochê",
@@ -418,11 +417,11 @@
     "ordem": 9,
     "materiais": {
       "linhas": [
-        "Fio Amigurumi Chantily 7563",
-        "Fio Amigurumi Amarelo Canário 1289",
-        "Fio Amigurumi Azul Marinheiro 2745",
-        "Fio Amigurumi Preto 8990",
-        "Fio Amigurumi Verde Neo Mind 5743"
+        "7563",
+        "1289",
+        "2745",
+        "8990",
+        "5743"
       ],
       "itens": [
         "Agulha de crochê",
@@ -470,11 +469,11 @@
     "ordem": 10,
     "materiais": {
       "linhas": [
-        "Fio Amigurumi Preto 8990",
-        "Fio Amigurumi Branco 8001",
-        "Fio Amigurumi Mostarda 7030",
-        "Fio Amigurumi Carmim 3528",
-        "Fio Amigurumi Porcelana 7564"
+        "8990",
+        "8001",
+        "7030",
+        "3528",
+        "7564"
       ],
       "itens": [
         "Agulha de crochê",
@@ -523,10 +522,10 @@
     "ordem": 11,
     "materiais": {
       "linhas": [
-        "Fio Amigurumi Azul Hortênsia 2137",
-        "Fio Amigurumi Porcelana 7564",
-        "Fio Amigurumi Craft 7148",
-        "Fio Amigurumi Preto 8990"
+        "2137",
+        "7564",
+        "7148",
+        "8990"
       ],
       "itens": [
         "Agulha de crochê",

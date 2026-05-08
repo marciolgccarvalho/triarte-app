@@ -15,21 +15,26 @@ export default function ReceitaDetalhe({
   marcarVideo = () => {}
 }) {
 
-  if (!receita) return null;
+  const imagem = receita
+    ? new URL(
+        `../assets/images/personagens/${receita.id}.webp`,
+        import.meta.url
+      ).href
+    : "";
 
-  const imagem = new URL(
-    `../assets/images/personagens/${receita.id}.webp`,
-    import.meta.url
-  ).href;
-
-  const isFavorito = favoritos.includes(receita.id);
+  const isFavorito = receita
+    ? favoritos.includes(receita.id)
+    : false;
 
   const [mostrarParabens, setMostrarParabens] = React.useState(false);
 
-  const vistos = progresso?.[receita.id]?.vistos?.length || 0;
-  const total = receita.videos?.length || 0;
+  const vistos = progresso?.[receita?.id]?.vistos?.length || 0;
 
-  const percentualAtual = Number(percentual(receita)) || 0;
+  const total = receita?.videos?.length || 0;
+
+  const percentualAtual = receita
+    ? Number(percentual(receita)) || 0
+    : 0;
 
   const percentualAnteriorRef = React.useRef(percentualAtual);
 
@@ -42,6 +47,8 @@ export default function ReceitaDetalhe({
 
     percentualAnteriorRef.current = percentualAtual;
   }, [percentualAtual]);
+
+  if (!receita) return null;
 
   return (
     <div className="rd-page rd-debug">
