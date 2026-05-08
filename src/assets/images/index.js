@@ -80,6 +80,7 @@ import baselinha3 from './ui/linha3.webp'
 import baselinha4 from './ui/linha4.webp'
 import baselinha5 from './ui/linha5.webp'
 import baselinha6 from './ui/linha6.webp'
+import rankingimagem from './ui/ranking-imagem.png'
 
 // ==========================
 // EXPORTAÇÃO CENTRAL
@@ -282,6 +283,7 @@ export const IMAGES = {
     baselinha3,
     baselinha4,
     baselinha5,
-    baselinha6
+    baselinha6,
+    rankingimagem
   }
 }
