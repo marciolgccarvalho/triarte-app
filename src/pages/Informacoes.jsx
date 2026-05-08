@@ -351,12 +351,6 @@ export default function Informacoes({
           className="info-suporte-button"
         >
 
-          <img
-            src={IMAGES.icons.contato.active}
-            alt="Contato"
-            className="info-suporte-button-icon"
-          />
-
           <span>
             Abrir página de contato
           </span>

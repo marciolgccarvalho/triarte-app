@@ -141,12 +141,6 @@ export default function Configuracoes() {
             }`}
           >
 
-            <img
-              src={IMAGES.icons.configuracoes.active}
-              alt="Atualizar"
-              className="cfg-update-icon"
-            />
-
             <span>
               {
                 atualizando
