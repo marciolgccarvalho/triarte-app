@@ -2,8 +2,6 @@ import React from "react";
 
 import { IMAGES } from "../assets/images";
 
-import "../styles/components/contato.css";
-
 export default function Contato() {
 
   const [copiado, setCopiado] =

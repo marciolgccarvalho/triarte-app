@@ -1,0 +1,114 @@
+/* =========================
+   PAGE
+========================= */
+.cfg-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* =========================
+   CARD
+========================= */
+.cfg-card {
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #eee;
+
+  overflow: hidden;
+
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+/* futuro */
+.cfg-futuro {
+  padding: 16px;
+  background: #fffbeb;
+  border: 1px solid #facc15;
+}
+
+/* =========================
+   ITEM
+========================= */
+.cfg-item {
+  border-bottom: 1px solid #eee;
+}
+
+.cfg-item:last-child {
+  border-bottom: none;
+}
+
+/* =========================
+   HEADER (CLICÁVEL)
+========================= */
+.cfg-header {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 14px 16px;
+
+  background: #fff;
+  border: none;
+
+  font-size: 14px;
+
+  cursor: pointer;
+
+  transition: background 0.15s ease;
+}
+
+.cfg-header:active {
+  background: #fafafa;
+}
+
+/* =========================
+   ICONE
+========================= */
+.cfg-icon {
+  font-size: 18px;
+  color: #f59e0b;
+}
+
+/* =========================
+   CONTEÚDO
+========================= */
+.cfg-content {
+  padding: 14px 16px;
+
+  font-size: 13px;
+  color: #444;
+
+  line-height: 1.5;
+
+  background: #fcfcfc;
+}
+
+/* =========================
+   LISTA FUTURA
+========================= */
+.cfg-futuro ul {
+  margin-top: 8px;
+  padding-left: 16px;
+
+  font-size: 13px;
+}
+
+.cfg-futuro li {
+  margin-bottom: 4px;
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+@media (max-width: 360px) {
+  .cfg-header {
+    font-size: 13px;
+  }
+
+  .cfg-content {
+    font-size: 12px;
+  }
+}

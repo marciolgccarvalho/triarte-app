@@ -4,9 +4,9 @@ import mensagens from "./data/mensagens.json";
 import { useStorage } from "./hooks/useStorage";
 import { useListas } from "./hooks/useListas";
 
-import MenuLateral from "./components/MenuLateral";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import MenuLateral from "./components/layout/MenuLateral";
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
 
 import { renderPagina } from "./navigation/renderPagina";
 

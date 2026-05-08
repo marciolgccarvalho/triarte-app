@@ -1,0 +1,489 @@
+/* AÇÕES */
+.projetos-page {
+  width: 100%;
+  min-height: 100%;
+  padding: 18px 16px 86px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background:
+  linear-gradient(
+    180deg,
+    #fffef9 0%,
+    #fffdf6 45%,
+    #ffffff 100%
+  );
+}
+
+/* HERO */
+
+.projetos-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 7px;
+  margin-top: 6px;
+}
+
+.projetos-titulo {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -0.8px;
+  color: #171717;
+}
+
+.projetos-subtitulo {
+  margin: 0;
+  max-width: 270px;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: #777;
+}
+
+/* CARDS */
+
+.projetos-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 24px 14px 14px;
+  border: 1.5px solid #f0c533;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.035);
+  overflow: visible;
+}
+
+.projetos-card-votacao {
+  padding-top: 28px;
+}
+
+/* BADGES */
+
+.projetos-badge {
+  position: absolute;
+  top: -11px;
+  left: 14px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.6rem;
+  font-weight: 900;
+  letter-spacing: 0.35px;
+  z-index: 5;
+  white-space: nowrap;
+}
+
+.projetos-badge-amarelo {
+  background: #f0c533;
+  color: #5d4700;
+}
+
+.projetos-badge-verde {
+  background: #cfe5bf;
+  color: #3f5c2d;
+}
+
+/* DESENVOLVIMENTO */
+
+.projetos-desenvolvimento {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.projetos-imagem {
+  width: 78px;
+  height: 78px;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.08));
+  transition: transform 0.2s ease;
+}
+
+.projetos-card-desenvolvimento:hover .projetos-imagem {
+  transform: scale(1.03);
+}
+
+.projetos-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.projetos-info h2 {
+  margin: 0;
+  font-size: 1.12rem;
+  font-weight: 900;
+  color: #1d1d1d;
+}
+
+.projetos-info p {
+  margin: 0;
+  font-size: 0.74rem;
+  color: #8b8b8b;
+}
+
+.projetos-progresso {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.projetos-barra {
+  flex: 1;
+  height: 6px;
+  background: #dde3ea;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.projetos-barra-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #3b82f6, #5da3ff);
+  transition: width 0.5s ease;
+}
+
+.projetos-progresso strong {
+  min-width: 38px;
+  text-align: right;
+  font-size: 0.78rem;
+  font-weight: 900;
+  color: #3b82f6;
+}
+
+/* RANKING */
+
+.projetos-ranking {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.projetos-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 13px;
+  border-radius: 16px;
+  border: 1px solid #d9e7d0;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.projetos-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+}
+
+.projetos-item-left {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-width: 0;
+}
+
+.projetos-posicao {
+  width: 27px;
+  height: 27px;
+  min-width: 27px;
+  min-height: 27px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 900;
+  color: #171717;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.projetos-nome {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #1f1f1f;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.projetos-percentual {
+  flex-shrink: 0;
+  font-size: 0.78rem;
+  font-weight: 900;
+  color: #171717;
+}
+
+/* CORES DO RANKING */
+
+.projetos-pos-1 {
+  position: relative;
+
+  background:
+    linear-gradient(
+      90deg,
+      #7fd45b 0%,
+      #a8e28f 22%,
+      #eef9e8 100%
+    );
+
+  border: 1px solid #58ad3b;
+
+  padding-top: 16px;
+  padding-bottom: 16px;
+
+  min-height: 62px;
+
+  transform: scale(1.01);
+
+  box-shadow:
+    0 0 0 1px rgba(88,173,59,0.10),
+    0 8px 22px rgba(88,173,59,0.18),
+    0 2px 10px rgba(0,0,0,0.04);
+
+  overflow: hidden;
+}
+
+.projetos-pos-1::before {
+  content: "👑";
+
+  position: absolute;
+
+  top: 2px;
+  left: 20px;
+
+  font-size: 0.7rem;
+
+  z-index: 6;
+
+  filter:
+    drop-shadow(
+      0 2px 3px rgba(0,0,0,0.12)
+    );
+
+  pointer-events: none;
+}
+
+.projetos-pos-1 .projetos-item-left {
+  gap: 14px;
+}
+
+.projetos-pos-1 .projetos-posicao {
+  width: 30px;
+  height: 30px;
+
+  min-width: 30px;
+
+  font-size: 0.75rem;
+
+  border: 1px solid rgba(88,173,59,0.22);
+
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.10);
+
+  transform: scale(1.06);
+}
+
+.projetos-pos-1 .projetos-nome {
+  font-size: 0.96rem;
+}
+
+.projetos-pos-1 .projetos-percentual {
+  font-size: 0.82rem;
+}
+
+.projetos-pos-2 {
+  background: linear-gradient(90deg, #afe59a, #f3fbef);
+  border-color: #82c565;
+}
+
+.projetos-pos-3 {
+  background: linear-gradient(90deg, #c3ecb5, #f7fdf4);
+  border-color: #9fd487;
+}
+
+.projetos-pos-4 {
+  background: linear-gradient(90deg, #d2f0c7, #fbfef9);
+  border-color: #b5dd9f;
+}
+
+.projetos-pos-5 {
+  background: linear-gradient(90deg, #ddf4d5, #ffffff);
+  border-color: #c4e6b4;
+}
+
+.projetos-pos-6 {
+  background: linear-gradient(90deg, #e8f7e2, #ffffff);
+  border-color: #d2edd0;
+}
+
+.projetos-pos-7 {
+  background: linear-gradient(90deg, #f0faec, #ffffff);
+  border-color: #dff3da;
+}
+
+.projetos-pos-8 {
+  background: linear-gradient(90deg, #f6fcf3, #ffffff);
+  border-color: #e5f5df;
+}
+
+.projetos-pos-9 {
+  background: linear-gradient(90deg, #fbfef9, #ffffff);
+  border-color: #edf8e9;
+}
+
+/* OUTROS */
+
+.projetos-outros {
+  border-color: #ebd06f;
+  background: linear-gradient(90deg, #fff3bf, #fff9e2);
+}
+
+/* FOOTER */
+
+.projetos-footer {
+  margin-top: -10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.projetos-data {
+  margin: 0;
+  font-size: 0.68rem;
+  color: #9a9a9a;
+}
+
+.projetos-acoes {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.projetos-icon-btn {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: #ffd400;
+  box-shadow: 0 4px 12px rgba(255, 212, 0, 0.25);
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.18s ease;
+  cursor: pointer;
+}
+
+.projetos-icon-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(255, 212, 0, 0.34);
+}
+
+.projetos-icon-btn-success {
+  background: #29c45a !important;
+}
+
+.projetos-icon-img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+/* RESPONSIVO */
+
+@media (min-width: 768px) {
+  .projetos-page {
+    max-width: 540px;
+    margin: 0 auto;
+  }
+}
+
+/* =====================================================
+   INFO VOTAÇÃO
+===================================================== */
+
+.projetos-info-votacao {
+  margin-top: -2px;
+
+  padding: 14px 16px;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff4c6,
+      #fff9e8
+    );
+
+  border: 1px solid #f0d46b;
+
+  font-size: 0.78rem;
+  font-weight: 600;
+
+  line-height: 1.55;
+  text-align: center;
+
+  color: #7a5a00;
+
+  box-shadow:
+    0 4px 12px rgba(240,197,51,0.08);
+}
+
+.projetos-info-votacao-texto {
+  margin: 0 0 12px;
+}
+
+.projetos-btn-enquete {
+  width: 100%;
+
+  min-height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffd83d,
+      #f0c533
+    );
+
+  color: #5d4700;
+
+  font-size: 0.82rem;
+  font-weight: 800;
+
+  text-decoration: none;
+
+  box-shadow:
+    0 4px 12px rgba(240,197,51,0.20);
+
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease;
+}
+
+.projetos-btn-enquete:hover {
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 6px 16px rgba(240,197,51,0.28);
+}

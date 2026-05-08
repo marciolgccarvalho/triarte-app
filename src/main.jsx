@@ -20,33 +20,27 @@ import "./styles/utils/progress.css";
    COMPONENTS (ordem importa)
 ========================= */
 import "./styles/components/app-layout.css";
-
-// UI
 import "./styles/components/button.css";
 import "./styles/components/card.css";
 import "./styles/components/modal.css";
-
-// estrutura
 import "./styles/components/sidebar.css";
-
-// telas
-import "./styles/components/home.css";
-import "./styles/components/sobre.css";
-import "./styles/components/contato.css";
-
-// features
-import "./styles/components/favoritos.css";
-import "./styles/components/materiais.css";
-import "./styles/components/simulador.css";
-import "./styles/components/abreviacoes.css"; // ✅ EXISTE na tua pasta
-
-// receitas
-import "./styles/components/receitas.css";
-import "./styles/components/receita-detalhe.css";
-
-// conquistas
-import "./styles/components/conquistas.css";
 import "./styles/components/parabens.css";
+
+// Pages
+import "./styles/pages/home.css";
+import "./styles/pages/sobre.css";
+import "./styles/pages/contato.css";
+import "./styles/pages/favoritos.css";
+import "./styles/pages/receitas.css";
+import "./styles/pages/receita-detalhe.css";
+import "./styles/pages/materiais.css";
+import "./styles/pages/linhas.css";
+import "./styles/pages/simulador.css";
+import "./styles/pages/projetos.css";
+import "./styles/pages/configuracoes.css";
+import "./styles/pages/conquistas.css";
+import "./styles/pages/abreviacoes.css";
+
 
 /* =========================
    RENDER APP

@@ -1,0 +1,270 @@
+/* =========================================
+   ROOT
+========================================= */
+
+.abv-page {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.abv-page .abv-header {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 10px;
+}
+
+/* =========================================
+   ÍCONE HEADER
+========================================= */
+
+.abv-page .abv-header-icon {
+  width: 68px;
+  height: 68px;
+
+  flex-shrink: 0;
+}
+
+.abv-page .abv-header-image {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+}
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.abv-page .abv-header-content {
+  flex: 1;
+}
+
+/* =========================================
+   TÍTULO
+========================================= */
+
+.abv-page .abv-title {
+  font-size: 20px;
+  font-weight: 800;
+
+  line-height: 1.1;
+
+  color: #111;
+}
+
+/* =========================================
+   SUBTÍTULO
+========================================= */
+
+.abv-page .abv-subtitle {
+  margin-top: 4px;
+
+  font-size: 13px;
+  line-height: 1.35;
+
+  color: #666;
+}
+
+/* =========================================
+   AÇÕES TOPO
+========================================= */
+
+.abv-page .abv-top-actions {
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-left: auto;
+}
+
+/* =========================================
+   BOTÃO ÍCONE
+========================================= */
+
+.abv-page .abv-icon-btn {
+
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #ffd400;
+
+  box-shadow:
+    0 4px 12px rgba(255,212,0,0.25);
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.abv-page .abv-icon-btn:hover {
+
+  box-shadow:
+    0 6px 16px rgba(255,212,0,0.34);
+}
+
+/* =========================================
+   COPIADO
+========================================= */
+
+.abv-page .abv-icon-btn-success {
+
+  background: #22c55e !important;
+}
+
+/* =========================================
+   IMG ÍCONE
+========================================= */
+
+.abv-page .abv-icon-img {
+
+  width: 18px;
+  height: 18px;
+
+  object-fit: contain;
+}
+
+/* =========================================
+   CARD
+========================================= */
+
+.abv-page .abv-card {
+  background: #fff;
+
+  border: 1px solid #eee;
+  border-radius: 16px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* =========================================
+   ROW
+========================================= */
+
+.abv-page .abv-row {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 12px;
+
+  transition:
+    background 0.15s ease,
+    transform 0.15s ease;
+}
+
+/* zebrado */
+
+.abv-page .abv-row:nth-child(even) {
+  background: rgba(0,0,0,0.025);
+}
+
+/* interação */
+
+.abv-page .abv-row:hover {
+  background: rgba(0,0,0,0.04);
+}
+
+.abv-page .abv-row:active {
+  transform: scale(0.975);
+}
+
+/* =========================================
+   TAG
+========================================= */
+
+.abv-page .abv-tag {
+  min-width: 54px;
+
+  text-align: center;
+
+  font-weight: 800;
+  font-size: 13px;
+
+  padding: 6px 8px;
+
+  border-radius: 999px;
+
+  background: #fffbeb;
+
+  border: 1px solid #facc15;
+
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease;
+}
+
+/* micro interação */
+
+.abv-page .abv-row:active .abv-tag {
+  transform: scale(0.94);
+}
+
+/* =========================================
+   DESCRIÇÃO
+========================================= */
+
+.abv-page .abv-desc {
+  font-size: 13px;
+  font-weight: 600;
+
+  color: #333;
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+
+  .abv-page .abv-header {
+    gap: 10px;
+  }
+
+  .abv-page .abv-header-icon {
+    width: 58px;
+    height: 58px;
+  }
+
+  .abv-page .abv-title {
+    font-size: 18px;
+  }
+
+  .abv-page .abv-subtitle {
+    font-size: 12px;
+  }
+
+  .abv-page .abv-icon-btn {
+
+    width: 34px;
+    height: 34px;
+  }
+
+  .abv-page .abv-icon-img {
+
+    width: 16px;
+    height: 16px;
+  }
+}

@@ -5,7 +5,7 @@ import Receitas from "../pages/Receitas";
 import Favoritos from "../pages/Favoritos";
 import Conquistas from "../pages/Conquistas";
 import Simulador from "../pages/Simulador";
-import Abreviatura from "../pages/Abreviatura";
+import Abreviacoes from "../pages/Abreviacoes";
 import Sobre from "../pages/Sobre";
 import Contato from "../pages/Contato";
 import ReceitaDetalhe from "../pages/ReceitaDetalhe";
@@ -246,10 +246,10 @@ export function renderPagina({
 
       return <Simulador />;
 
-    case "abreviatura":
+    case "abreviacoes":
 
       return (
-        <Abreviatura
+        <Abreviacoes
           voltar={() =>
             irPara("home")
           }

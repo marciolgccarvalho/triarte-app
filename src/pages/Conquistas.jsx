@@ -1,5 +1,3 @@
-import "../styles/components/conquistas.css";
-
 import {
   gerarConquistas,
   gerarResumo

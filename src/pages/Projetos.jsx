@@ -1,10 +1,6 @@
 import React from "react";
-
-import "../styles/components/projetos.css";
-
 import ranking from "../data/ranking.json";
 import percentual from "../data/percentual.json";
-
 import { IMAGES } from "../assets/images";
 
 function Projetos() {

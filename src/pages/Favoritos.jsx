@@ -1,5 +1,5 @@
 import React from "react";
-import CardReceita from "../components/CardReceita";
+import CardReceita from "../components/ui/CardReceita";
 import { IMAGES } from "../assets/images";
 
 export default function Favoritos({

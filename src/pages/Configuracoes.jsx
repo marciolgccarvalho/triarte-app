@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/components/configuracoes.css";
+
 
 export default function Configuracoes() {
   const [aberto, setAberto] = useState(null);

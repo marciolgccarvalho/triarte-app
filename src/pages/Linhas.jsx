@@ -4,7 +4,6 @@ import {
   useState
 } from "react";
 
-import "../styles/components/linhas.css";
 
 import coresLinhas from "../data/cores-linhas.json";
 import { IMAGES } from "../assets/images";
