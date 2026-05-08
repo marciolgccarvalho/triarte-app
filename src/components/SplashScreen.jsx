@@ -5,32 +5,23 @@ export default function SplashScreen() {
   return (
     <div className="splash-screen">
 
-      {/* textura suave */}
-      <div className="fabric-texture"></div>
+      <div className="splash-bg-pattern"></div>
 
-      {/* pontos decorativos */}
-      <div className="crochet-stitches">
-        {Array.from({ length: 16 }).map((_, i) => (
-          <span
-            key={i}
-            className="stitch"
-            style={{
-              left: `${5 + Math.random() * 90}%`,
-              top: `${5 + Math.random() * 90}%`,
-              animationDelay: `${Math.random() * 4}s`
-            }}
-          >
-            ✦
-          </span>
-        ))}
-      </div>
+      {/* cantos crochet */}
+      <div className="crochet-corner crochet-corner-top"></div>
+      <div className="crochet-corner crochet-corner-bottom"></div>
+
+      {/* doodles suaves */}
+      <div className="doodle doodle-heart-one">♡</div>
+      <div className="doodle doodle-heart-two">♡</div>
+
+      <div className="doodle doodle-spark-one">✦</div>
+      <div className="doodle doodle-spark-two">✧</div>
 
       <div className="splash-content">
 
         {/* logo */}
-        <div className="logo-area">
-
-          <div className="soft-bg"></div>
+        <div className="brand-badge">
 
           <img
             src="/logo.webp"
@@ -40,41 +31,42 @@ export default function SplashScreen() {
 
         </div>
 
-        {/* textos */}
-        <div className="splash-texts">
-
-          <h1>Real Triarte</h1>
-
-          <p>
-            Feito à mão com carinho
-          </p>
-
+        {/* selo */}
+        <div className="amigurumi-label">
+          AMIGURUMIS
         </div>
 
-        {/* animação de lã */}
-        <div className="yarn-animation">
+        {/* título */}
+        <h1 className="splash-title">
+          Feitos à mão
+        </h1>
+
+        {/* subtítulo */}
+        <p className="splash-subtitle">
+          com carinho em cada ponto
+        </p>
+
+        {/* loader artesanal */}
+        <div className="yarn-loader">
 
           <svg
-            className="yarn-svg"
-            viewBox="0 0 320 80"
-            preserveAspectRatio="none"
+            viewBox="0 0 320 70"
+            className="loader-svg"
           >
-
-            {/* fio */}
             <path
-              className="yarn-path"
+              className="loader-path"
               d="
-                M10 40
-                C40 10, 80 70, 120 40
-                S200 10, 240 40
-                S280 70, 310 40
+                M15 38
+                C55 8, 95 65, 135 38
+                S215 8, 255 38
+                S295 65, 315 38
               "
             />
-
           </svg>
 
-          {/* bolinha de lã */}
-          <div className="yarn-ball"></div>
+          <div className="loader-ball">
+            🧶
+          </div>
 
         </div>
 

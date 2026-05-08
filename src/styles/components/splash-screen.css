@@ -9,76 +9,32 @@
   justify-content: center;
 
   background:
-    radial-gradient(circle at top, rgba(255, 236, 210, 0.95), transparent 45%),
-    linear-gradient(180deg, #fffaf4 0%, #f7efe3 100%);
+    linear-gradient(180deg, #ffd814 0%, #ffc400 100%);
 
   z-index: 999999;
+
+  font-family:
+    "Poppins",
+    sans-serif;
 }
 
-/* textura artesanal */
-.fabric-texture {
+/* FUNDO */
+
+.splash-bg-pattern {
   position: absolute;
   inset: 0;
 
-  opacity: 0.04;
+  opacity: 0.06;
 
   background-image:
-    radial-gradient(rgba(170, 120, 80, 0.18) 1px, transparent 1px);
+    radial-gradient(#b36b00 1px, transparent 1px);
 
-  background-size: 14px 14px;
-
-  pointer-events: none;
+  background-size: 18px 18px;
 }
 
-/* pontos flutuando */
-.crochet-stitches {
-  position: absolute;
-  inset: 0;
+/* CANTOS CROCHET */
 
-  overflow: hidden;
-
-  pointer-events: none;
-}
-
-.stitch {
-  position: absolute;
-
-  color: rgba(190, 140, 90, 0.45);
-
-  font-size: 12px;
-
-  animation:
-    stitchFloat 5s ease-in-out infinite;
-}
-
-/* conteúdo principal */
-.splash-content {
-  position: relative;
-  z-index: 10;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  animation: fadeIn 1.2s ease forwards;
-}
-
-/* área da logo */
-.logo-area {
-  position: relative;
-
-  width: 190px;
-  height: 190px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  margin-bottom: 24px;
-}
-
-/* halo suave */
-.soft-bg {
+.crochet-corner {
   position: absolute;
 
   width: 180px;
@@ -86,121 +42,277 @@
 
   border-radius: 50%;
 
+  opacity: 0.18;
+
   background:
     radial-gradient(circle,
-      rgba(255, 215, 170, 0.55) 0%,
-      rgba(255, 215, 170, 0.18) 45%,
+      #c97a00 0%,
+      #b96f00 55%,
       transparent 75%
     );
 
-  filter: blur(12px);
+  filter: blur(1px);
+}
+
+.crochet-corner-top {
+  top: -70px;
+  right: -70px;
+}
+
+.crochet-corner-bottom {
+  bottom: -70px;
+  left: -70px;
+}
+
+/* DOODLE PRINCIPAL */
+
+.yarn-doodle {
+  position: absolute;
+
+  top: 60px;
+  left: 30px;
+
+  width: 240px;
+}
+
+.yarn-ball-small {
+  position: absolute;
+
+  left: -5px;
+  top: 18px;
+
+  font-size: 34px;
 
   animation:
-    softPulse 5s ease-in-out infinite;
+    floatBall 3s ease-in-out infinite;
 }
 
-/* logo */
-.splash-logo {
-  position: relative;
-
-  width: 150px;
-  height: 150px;
-
-  object-fit: contain;
-
-  filter:
-    drop-shadow(0 4px 10px rgba(120, 80, 30, 0.10))
-    drop-shadow(0 0 18px rgba(255, 215, 170, 0.16));
-
-  animation:
-    logoFloat 4s ease-in-out infinite,
-    logoReveal 1.2s ease;
-}
-
-/* textos */
-.splash-texts {
-  text-align: center;
-
-  margin-bottom: 42px;
-}
-
-.splash-texts h1 {
-  margin: 0;
-
-  color: #7b5536;
-
-  font-size: 2rem;
-  font-weight: 800;
-
-  letter-spacing: 0.3px;
-}
-
-.splash-texts p {
-  margin-top: 10px;
-
-  color: #9d7b60;
-
-  font-size: 1rem;
-
-  letter-spacing: 0.2px;
-}
-
-/* área da lã */
-.yarn-animation {
-  position: relative;
-
-  width: 320px;
-  height: 80px;
-}
-
-/* svg */
-.yarn-svg {
+.doodle-line {
   width: 100%;
   height: 100%;
 }
 
-/* fio */
-.yarn-path {
+.doodle-line path {
   fill: none;
 
-  stroke: #d4a276;
+  stroke: #d26d00;
+  stroke-width: 4;
+  stroke-linecap: round;
+
+  stroke-dasharray: 8 8;
+
+  animation:
+    lineMove 3s linear infinite;
+}
+
+.doodle-heart {
+  position: absolute;
+
+  right: -10px;
+  top: -5px;
+
+  color: #d26d00;
+
+  font-size: 28px;
+
+  animation:
+    heartPulse 2s ease-in-out infinite;
+}
+
+/* PEQUENOS DOODLES */
+
+.doodle {
+  position: absolute;
+
+  color: rgba(210, 109, 0, 0.55);
+
+  animation:
+    softFloat 4s ease-in-out infinite;
+}
+
+.doodle-heart-one {
+  top: 120px;
+  right: 80px;
+
+  font-size: 26px;
+}
+
+.doodle-heart-two {
+  bottom: 180px;
+  left: 70px;
+
+  font-size: 22px;
+}
+
+.doodle-spark-one {
+  top: 200px;
+  left: 50px;
+
+  font-size: 18px;
+}
+
+.doodle-spark-two {
+  bottom: 140px;
+  right: 90px;
+
+  font-size: 16px;
+}
+
+/* CONTEÚDO */
+
+.splash-content {
+  position: relative;
+  z-index: 20;
+
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 24px;
+
+  animation:
+    fadeIn 1s ease;
+}
+
+/* LOGO */
+
+.brand-badge {
+  width: 170px;
+  height: 170px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(180deg, #ffe36c 0%, #ffd000 100%);
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.12),
+    inset 0 4px 12px rgba(255,255,255,0.35);
+
+  margin-bottom: 26px;
+
+  animation:
+    badgeFloat 4s ease-in-out infinite;
+}
+
+.splash-logo {
+  width: 125px;
+  height: 125px;
+
+  object-fit: contain;
+}
+
+/* LABEL */
+
+.amigurumi-label {
+  padding:
+    10px 22px;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(180deg, #ff8b2b 0%, #ff6f00 100%);
+
+  color: white;
+
+  font-weight: 800;
+  font-size: 0.95rem;
+
+  letter-spacing: 1px;
+
+  margin-bottom: 18px;
+
+  box-shadow:
+    0 6px 18px rgba(255,111,0,0.25);
+
+  transform:
+    rotate(-3deg);
+}
+
+/* TÍTULO */
+
+.splash-title {
+  margin: 0;
+
+  color: #1c1c1c;
+
+  font-size: 3.2rem;
+  font-weight: 900;
+
+  text-align: center;
+  line-height: 1;
+
+  letter-spacing: -1px;
+
+  text-shadow:
+    0 4px 10px rgba(0,0,0,0.10);
+}
+
+/* SUB */
+
+.splash-subtitle {
+  margin-top: 12px;
+
+  color: #ff6f00;
+
+  font-size: 1.3rem;
+  font-weight: 700;
+
+  text-align: center;
+
+  margin-bottom: 48px;
+}
+
+/* LOADER */
+
+.yarn-loader {
+  position: relative;
+
+  width: 320px;
+  height: 70px;
+}
+
+.loader-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.loader-path {
+  fill: none;
+
+  stroke: #d26d00;
   stroke-width: 6;
   stroke-linecap: round;
 
   stroke-dasharray: 12 10;
 
   filter:
-    drop-shadow(0 0 4px rgba(212, 162, 118, 0.18));
+    drop-shadow(0 2px 4px rgba(0,0,0,0.12));
 
   animation:
-    threadWave 3s linear infinite;
+    lineMove 2.5s linear infinite;
 }
 
-/* bolinha de lã */
-.yarn-ball {
+.loader-ball {
   position: absolute;
-  top: 28px;
+
   left: 0;
+  top: 18px;
 
-  width: 24px;
-  height: 24px;
-
-  border-radius: 50%;
-
-  background:
-    radial-gradient(circle at 30% 30%,
-      #ffd8b5,
-      #d49562
-    );
-
-  box-shadow:
-    0 3px 10px rgba(120, 80, 30, 0.18);
+  font-size: 34px;
 
   animation:
-    yarnWalk 3s ease-in-out infinite;
+    yarnWalk 2.5s ease-in-out infinite;
 }
 
-/* entrada */
+/* ANIMAÇÕES */
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -213,27 +325,13 @@
   }
 }
 
-/* revelação da logo */
-@keyframes logoReveal {
-  from {
-    opacity: 0;
-    transform: scale(0.82);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* logo flutuando */
-@keyframes logoFloat {
+@keyframes badgeFloat {
   0% {
     transform: translateY(0px);
   }
 
   50% {
-    transform: translateY(-5px);
+    transform: translateY(-6px);
   }
 
   100% {
@@ -241,75 +339,79 @@
   }
 }
 
-/* brilho suave */
-@keyframes softPulse {
-  0% {
-    transform: scale(1);
-    opacity: 0.8;
-  }
-
-  50% {
-    transform: scale(1.06);
-    opacity: 1;
-  }
-
-  100% {
-    transform: scale(1);
-    opacity: 0.8;
-  }
-}
-
-/* bolinha andando */
 @keyframes yarnWalk {
   0% {
     left: 0;
-    top: 28px;
+    top: 18px;
   }
 
   25% {
-    top: 8px;
+    top: 2px;
   }
 
   50% {
-    left: calc(50% - 12px);
-    top: 40px;
+    left: calc(50% - 18px);
+    top: 32px;
   }
 
   75% {
-    top: 8px;
+    top: 2px;
   }
 
   100% {
-    left: calc(100% - 24px);
-    top: 28px;
+    left: calc(100% - 36px);
+    top: 18px;
   }
 }
 
-/* fio se movendo */
-@keyframes threadWave {
+@keyframes lineMove {
   from {
     stroke-dashoffset: 0;
   }
 
   to {
-    stroke-dashoffset: -44;
+    stroke-dashoffset: -40;
   }
 }
 
-/* pontos */
-@keyframes stitchFloat {
+@keyframes heartPulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.12);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes softFloat {
   0% {
     transform: translateY(0px);
-    opacity: 0.2;
   }
 
   50% {
     transform: translateY(-6px);
-    opacity: 0.6;
   }
 
   100% {
     transform: translateY(0px);
-    opacity: 0.2;
+  }
+}
+
+@keyframes floatBall {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+
+  100% {
+    transform: translateY(0px);
   }
 }
