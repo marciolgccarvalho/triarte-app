@@ -6,6 +6,12 @@ import React, {
 } from "react";
 
 /* ========================================
+   MODAIS
+======================================== */
+
+import ConquistaModal from "./components/modals/ConquistaModal";
+
+/* ========================================
    SERVICES / DADOS
 ======================================== */
 
@@ -63,6 +69,15 @@ export default function MainApp() {
   // 🔥 mantém origem da navegação
   const [origem, setOrigem] =
     useState("home");
+
+  /* ========================================
+     MODAL CONQUISTA
+  ======================================== */
+
+  const [
+    conquistaModal,
+    setConquistaModal
+  ] = useState(null);
 
   /* ========================================
      FILTROS / LISTAS
@@ -134,23 +149,23 @@ export default function MainApp() {
      SCROLL AO TROCAR DE TELA
   ======================================== */
 
-    useEffect(() => {
+  useEffect(() => {
 
-      const content =
-        document.querySelector(
-          ".app-content"
-        );
+    const content =
+      document.querySelector(
+        ".app-content"
+      );
 
-      if (content) {
+    if (content) {
 
-        content.scrollTo({
-          top: 0,
-          behavior: "auto"
-        });
+      content.scrollTo({
+        top: 0,
+        behavior: "auto"
+      });
 
-      }
+    }
 
-    }, [pagina]);
+  }, [pagina]);
 
   /* ========================================
      CONTROLE ROTAÇÃO
@@ -459,7 +474,10 @@ ${itens
 
             origem,
 
-            listaMateriaisTexto
+            listaMateriaisTexto,
+
+            // 🔥 modal conquista
+            setConquistaModal
 
           })}
 
@@ -476,6 +494,21 @@ ${itens
             setMenuAberto(true)
           }
         />
+
+        {/* ========================================
+            MODAL CONQUISTA
+        ======================================== */}
+
+        {conquistaModal && (
+
+          <ConquistaModal
+            conquista={conquistaModal}
+            onClose={() =>
+              setConquistaModal(null)
+            }
+          />
+
+        )}
 
       </div>
 

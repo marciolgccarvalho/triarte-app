@@ -1,64 +1,114 @@
-import { useEffect, useState } from "react";
-import { playConquistaSound } from "@/utils/playConquistaSound";
+import {
+  useEffect,
+  useState
+} from "react";
 
-const STORAGE_KEY = "conquistas_notificadas";
+import {
+  playConquistaSound
+} from "@/utils/playConquistaSound";
+
+/* ========================================
+   STORAGE
+======================================== */
+
+const STORAGE_KEY =
+  "conquistas_notificadas";
+
+/* ========================================
+   LER STORAGE
+======================================== */
 
 function lerNotificadas() {
 
   try {
 
     return JSON.parse(
-      localStorage.getItem(STORAGE_KEY) || "[]"
+
+      localStorage.getItem(
+        STORAGE_KEY
+      ) || "[]"
+
     );
 
   } catch {
 
     return [];
+
   }
+
 }
 
-export default function useConquistaNotifier(lista) {
+/* ========================================
+   HOOK
+======================================== */
 
-  const [nova, setNova] = useState(null);
+export default function
+useConquistaNotifier(lista = []) {
+
+  const [nova, setNova] =
+    useState(null);
 
   useEffect(() => {
 
-    // =========================================
-    // SSR
-    // =========================================
+    /* ========================================
+       SSR
+    ======================================== */
 
-    if (typeof window === "undefined") return;
+    if (
+      typeof window === "undefined"
+    ) return;
 
-    // =========================================
-    // EVITA LOOP
-    // =========================================
+    /* ========================================
+       EVITA LOOP
+    ======================================== */
 
     if (nova) return;
+
+    /* ========================================
+       JÁ NOTIFICADAS
+    ======================================== */
 
     const jaNotificadas =
       lerNotificadas();
 
-    const novas = lista.filter(
+    /* ========================================
+       FILTRA NOVAS
+    ======================================== */
 
-      (c) =>
+    const novas =
+      lista.filter(
 
-        c.status === "concluido" &&
-        !jaNotificadas.includes(c.id)
-    );
+        (c) =>
 
-    if (novas.length === 0) return;
+          c.status ===
+            "concluido" &&
 
-    const conquista = novas[0];
+          !jaNotificadas.includes(
+            c.id
+          )
 
-    // =========================================
-    // MOSTRA POPUP
-    // =========================================
+      );
+
+    if (novas.length === 0) {
+      return;
+    }
+
+    /* ========================================
+       PRIMEIRA NOVA
+    ======================================== */
+
+    const conquista =
+      novas[0];
+
+    /* ========================================
+       ABRE MODAL
+    ======================================== */
 
     setNova(conquista);
 
-    // =========================================
-    // SALVA COMO NOTIFICADA
-    // =========================================
+    /* ========================================
+       SALVA STORAGE
+    ======================================== */
 
     localStorage.setItem(
 
@@ -68,36 +118,43 @@ export default function useConquistaNotifier(lista) {
         ...jaNotificadas,
         conquista.id
       ])
+
     );
 
-    // =========================================
-    // SOM
-    // =========================================
+    /* ========================================
+       SOM
+    ======================================== */
 
     playConquistaSound();
 
-    // =========================================
-    // VIBRAÇÃO
-    // =========================================
+    /* ========================================
+       VIBRAÇÃO
+    ======================================== */
 
-    if (navigator.vibrate) {
+    if (
+      navigator.vibrate
+    ) {
 
       navigator.vibrate(120);
+
     }
-
-    // =========================================
-    // FECHA AUTOMATICAMENTE
-    // =========================================
-
-    const timer = setTimeout(() => {
-
-      setNova(null);
-
-    }, 3500);
-
-    return () => clearTimeout(timer);
 
   }, [lista, nova]);
 
-  return nova;
+  /* ========================================
+     API
+  ======================================== */
+
+  return {
+
+    nova,
+
+    fechar: () => {
+
+      setNova(null);
+
+    }
+
+  };
+
 }
