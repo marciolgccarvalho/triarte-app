@@ -6,6 +6,12 @@ function App() {
   const [isStandalone, setIsStandalone] = React.useState(false);
   const [isDesktop, setIsDesktop] = React.useState(false);
 
+  const [instalando, setInstalando] = React.useState(false);
+  const [promptInstalar, setPromptInstalar] = React.useState(null);
+  const [foiInstalado, setFoiInstalado] = React.useState(false);
+
+  const liberarNoPC = true;
+
   React.useEffect(() => {
     const check = () => {
       const standalone =
@@ -18,15 +24,14 @@ function App() {
 
     check();
 
-    setTimeout(check, 1000);
-    setTimeout(check, 2500);
+    const timeout1 = setTimeout(check, 1000);
+    const timeout2 = setTimeout(check, 2500);
+
+    return () => {
+      clearTimeout(timeout1);
+      clearTimeout(timeout2);
+    };
   }, []);
-
-  const liberarNoPC = true;
-
-  const [instalando, setInstalando] = React.useState(false);
-  const [promptInstalar, setPromptInstalar] = React.useState(null);
-  const [foiInstalado, setFoiInstalado] = React.useState(false);
 
   React.useEffect(() => {
     const handler = (e) => {
@@ -43,12 +48,17 @@ function App() {
 
   React.useEffect(() => {
     const handleInstalled = () => {
-      setInstalando(true);
+      setInstalando(false);
+      setFoiInstalado(true);
 
+      // garante atualização do standalone após instalação
       setTimeout(() => {
-        setFoiInstalado(true);
-        setInstalando(false);
-      }, 2000);
+        const standalone =
+          window.matchMedia("(display-mode: standalone)").matches ||
+          window.navigator.standalone === true;
+
+        setIsStandalone(standalone);
+      }, 500);
     };
 
     window.addEventListener("appinstalled", handleInstalled);
@@ -64,13 +74,19 @@ function App() {
       return;
     }
 
+    setInstalando(true);
+
     promptInstalar.prompt();
 
     const escolha = await promptInstalar.userChoice;
 
-    if (escolha.outcome === "accepted") {
-      setInstalando(true);
+    // usuário cancelou instalação
+    if (escolha.outcome !== "accepted") {
+      setInstalando(false);
     }
+
+    // limpa prompt após uso
+    setPromptInstalar(null);
   };
 
   const TelaCentro = ({ titulo, texto }) => (
@@ -82,6 +98,7 @@ function App() {
     </div>
   );
 
+  // tela durante instalação REAL
   if (!isStandalone && instalando) {
     return (
       <TelaCentro
@@ -91,10 +108,12 @@ function App() {
     );
   }
 
+  // app aberto corretamente
   if (isStandalone || (liberarNoPC && isDesktop)) {
     return <MainApp />;
   }
 
+  // instalação concluída REAL
   if (foiInstalado) {
     return (
       <TelaCentro
