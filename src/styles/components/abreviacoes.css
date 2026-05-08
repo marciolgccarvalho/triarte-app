@@ -15,12 +15,15 @@
 .abv-page .abv-header {
   display: flex;
   align-items: center;
+
   gap: 12px;
 
   padding: 10px;
 }
 
-/* ícone */
+/* =========================================
+   ÍCONE HEADER
+========================================= */
 
 .abv-page .abv-header-icon {
   width: 68px;
@@ -36,16 +39,107 @@
   object-fit: contain;
 }
 
-/* textos */
+/* =========================================
+   CONTENT
+========================================= */
+
+.abv-page .abv-header-content {
+  flex: 1;
+}
+
+/* =========================================
+   TÍTULO
+========================================= */
 
 .abv-page .abv-title {
   font-size: 20px;
   font-weight: 800;
+
+  line-height: 1.1;
+
+  color: #111;
 }
 
+/* =========================================
+   SUBTÍTULO
+========================================= */
+
 .abv-page .abv-subtitle {
+  margin-top: 4px;
+
   font-size: 13px;
+  line-height: 1.35;
+
   color: #666;
+}
+
+/* =========================================
+   AÇÕES TOPO
+========================================= */
+
+.abv-page .abv-top-actions {
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-left: auto;
+}
+
+/* =========================================
+   BOTÃO ÍCONE
+========================================= */
+
+.abv-page .abv-icon-btn {
+
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #ffd400;
+
+  box-shadow:
+    0 4px 12px rgba(255,212,0,0.25);
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.abv-page .abv-icon-btn:hover {
+
+  box-shadow:
+    0 6px 16px rgba(255,212,0,0.34);
+}
+
+/* =========================================
+   COPIADO
+========================================= */
+
+.abv-page .abv-icon-btn-success {
+
+  background: #22c55e !important;
+}
+
+/* =========================================
+   IMG ÍCONE
+========================================= */
+
+.abv-page .abv-icon-img {
+
+  width: 18px;
+  height: 18px;
+
+  object-fit: contain;
 }
 
 /* =========================================
@@ -60,7 +154,8 @@
 
   overflow: hidden;
 
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.05);
 }
 
 /* =========================================
@@ -75,7 +170,9 @@
 
   padding: 12px;
 
-  transition: all 0.15s ease;
+  transition:
+    background 0.15s ease,
+    transform 0.15s ease;
 }
 
 /* zebrado */
@@ -111,6 +208,7 @@
   border-radius: 999px;
 
   background: #fffbeb;
+
   border: 1px solid #facc15;
 
   transition:
@@ -136,27 +234,37 @@
 }
 
 /* =========================================
-   BOTÃO
+   MOBILE
 ========================================= */
 
-.abv-page .abv-copy-btn {
-  margin-top: 10px;
+@media (max-width: 480px) {
 
-  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+  .abv-page .abv-header {
+    gap: 10px;
+  }
 
-  transition:
-    transform 0.12s ease,
-    box-shadow 0.12s ease;
-}
+  .abv-page .abv-header-icon {
+    width: 58px;
+    height: 58px;
+  }
 
-.abv-page .abv-copy-btn:active {
-  transform: scale(0.97);
+  .abv-page .abv-title {
+    font-size: 18px;
+  }
 
-  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
-}
+  .abv-page .abv-subtitle {
+    font-size: 12px;
+  }
 
-/* feedback */
+  .abv-page .abv-icon-btn {
 
-.abv-page .abv-copy-success {
-  background: #22c55e;
+    width: 34px;
+    height: 34px;
+  }
+
+  .abv-page .abv-icon-img {
+
+    width: 16px;
+    height: 16px;
+  }
 }

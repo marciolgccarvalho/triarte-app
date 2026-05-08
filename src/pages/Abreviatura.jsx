@@ -21,22 +21,83 @@ export default function Abreviatura() {
     { abrev: "ag.", nome: "Agulha" }
   ];
 
-  const [abvCopiado, setAbvCopiado] = React.useState(false);
+  const [abvCopiado, setAbvCopiado] =
+    React.useState(false);
+
+  // ========================================
+  // COPIAR
+  // ========================================
 
   const copiar = async () => {
 
     const texto = lista
-      .map((item) => `${item.abrev} - ${item.nome}`)
+      .map(
+        (item) =>
+          `${item.abrev} - ${item.nome}`
+      )
       .join("\n");
 
-    await navigator.clipboard.writeText(texto);
+    try {
 
-    setAbvCopiado(true);
+      await navigator.clipboard.writeText(
+        texto
+      );
 
-    setTimeout(() => {
-      setAbvCopiado(false);
-    }, 1500);
+      setAbvCopiado(true);
 
+      setTimeout(() => {
+
+        setAbvCopiado(false);
+
+      }, 1500);
+
+    } catch (error) {
+
+      alert(
+        "Erro ao copiar abreviações."
+      );
+    }
+  };
+
+  // ========================================
+  // SHARE
+  // ========================================
+
+  const compartilhar = async () => {
+
+    const texto = lista
+      .map(
+        (item) =>
+          `${item.abrev} - ${item.nome}`
+      )
+      .join("\n");
+
+    try {
+
+      if (navigator.share) {
+
+        await navigator.share({
+
+          title: "Abreviações",
+
+          text: texto
+        });
+
+      } else {
+
+        await navigator.clipboard.writeText(
+          texto
+        );
+
+        alert(
+          "Seu dispositivo não suporta compartilhamento. A lista foi copiada."
+        );
+      }
+
+    } catch (error) {
+
+      console.log(error);
+    }
   };
 
   return (
@@ -46,6 +107,8 @@ export default function Abreviatura() {
       {/* HEADER */}
 
       <div className="abv-header">
+
+        {/* ÍCONE */}
 
         <div className="abv-header-icon">
 
@@ -57,6 +120,8 @@ export default function Abreviatura() {
 
         </div>
 
+        {/* TEXTOS */}
+
         <div className="abv-header-content">
 
           <h2 className="abv-title">
@@ -66,6 +131,53 @@ export default function Abreviatura() {
           <p className="abv-subtitle">
             Guia rápido para receitas de crochê e amigurumi
           </p>
+
+        </div>
+
+        {/* AÇÕES */}
+
+        <div className="abv-top-actions">
+
+          {/* COPIAR */}
+
+          <button
+            className={`
+              abv-icon-btn
+              ${
+                abvCopiado
+                  ? "abv-icon-btn-success"
+                  : ""
+              }
+            `}
+            onClick={copiar}
+          >
+
+            <img
+              src={
+                IMAGES.icons.salvar.active
+              }
+              alt="Copiar"
+              className="abv-icon-img"
+            />
+
+          </button>
+
+          {/* SHARE */}
+
+          <button
+            className="abv-icon-btn"
+            onClick={compartilhar}
+          >
+
+            <img
+              src={
+                IMAGES.icons.compartilhar.active
+              }
+              alt="Compartilhar"
+              className="abv-icon-img"
+            />
+
+          </button>
 
         </div>
 
@@ -96,27 +208,6 @@ export default function Abreviatura() {
 
       </div>
 
-      {/* BOTÃO */}
-
-      <button
-        className={`
-          btn
-          btn-primary
-          btn-full
-          abv-copy-btn
-          ${abvCopiado ? "abv-copy-success" : ""}
-        `}
-        onClick={copiar}
-      >
-
-        {abvCopiado
-          ? "✔ Copiado!"
-          : "Copiar abreviações"}
-
-      </button>
-
     </div>
-
   );
-
 }

@@ -37,6 +37,8 @@ import calculoActive from './icons/calculo-active.png'
 import abreviacaoActive from './icons/abreviacao-active.png'
 import projetoActive from './icons/projeto-active.png'
 import linhaActive from './icons/linha-active.png'
+import compartilharactive from './icons/compartilhar-active.png'
+import salvaractive from './icons/salvar-active.png'
 
 // 🔥 CONFIGURAÇÕES
 import configuracoesActive from './icons/configuracao.png'
@@ -188,7 +190,16 @@ export const IMAGES = {
 
       projeto: {
       active: projetoActive
+    },
+  
+      compartilhar: {
+      active: compartilharactive
+    },
+    
+          salvar: {
+      active: salvaractive
     }
+
   },
 
   topoConquistas: {

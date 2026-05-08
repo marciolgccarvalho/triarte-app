@@ -1,56 +1,158 @@
 /* =========================
    PAGE
 ========================= */
+
 .ct-page {
   display: flex;
   flex-direction: column;
+
   gap: 14px;
+}
+
+/* =========================
+   TOPO
+========================= */
+
+.ct-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 14px;
+}
+
+/* =========================
+   AÇÕES TOPO
+========================= */
+
+.ct-top-actions {
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-top: 4px;
+}
+
+/* =========================
+   BOTÃO ÍCONE
+========================= */
+
+.ct-icon-btn {
+
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #ffd400;
+
+  box-shadow:
+    0 4px 12px rgba(255,212,0,0.25);
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.ct-icon-btn:hover {
+
+  box-shadow:
+    0 6px 16px rgba(255,212,0,0.34);
+}
+
+/* =========================
+   COPIADO
+========================= */
+
+.ct-icon-btn-success {
+
+  background: #22c55e !important;
+}
+
+/* =========================
+   ÍCONE TOPO
+========================= */
+
+.ct-top-icon {
+
+  width: 18px;
+  height: 18px;
+
+  object-fit: contain;
 }
 
 /* =========================
    EMAIL DESTAQUE
 ========================= */
+
 .ct-destaque {
   display: flex;
   align-items: center;
+
   gap: 14px;
 
   padding: 16px;
+
   border-radius: 16px;
 
   background: #fffbeb;
+
   border: 1px solid #facc15;
 
   cursor: pointer;
 
-  /* 🔥 destaque premium */
-  box-shadow: 0 4px 14px rgba(250, 204, 21, 0.25);
+  box-shadow:
+    0 4px 14px rgba(250, 204, 21, 0.25);
 
-  transition: transform 0.15s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.ct-destaque:hover {
+
+  box-shadow:
+    0 6px 18px rgba(250, 204, 21, 0.32);
 }
 
 .ct-destaque:active {
+
   transform: scale(0.97);
 }
 
 .ct-destaque-text p {
+
   margin: 2px 0 0;
+
   font-size: 13px;
+
   color: #555;
 }
 
 /* =========================
    LISTA
 ========================= */
+
 .ct-list {
   display: flex;
   flex-direction: column;
+
   gap: 10px;
 }
 
 /* =========================
-   ITEM (BOTÃO PREMIUM)
+   ITEM
 ========================= */
+
 .ct-item {
   display: flex;
   align-items: center;
@@ -59,62 +161,102 @@
   gap: 12px;
 
   width: 100%;
+
   padding: 14px;
 
   border-radius: 16px;
+
   border: 1px solid #eee;
+
   background: #fff;
 
   font-size: 15px;
 
   cursor: pointer;
 
-  /* 🔥 leve profundidade */
-  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  box-shadow:
+    0 2px 6px rgba(0,0,0,0.04);
 
-  transition: all 0.15s ease;
+  transition:
+    transform 0.15s ease,
+    background 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
-/* toque premium */
+.ct-item:hover {
+
+  background: #fafafa;
+
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.06);
+}
+
 .ct-item:active {
+
   transform: scale(0.97);
+
   background: #fafafa;
 }
 
 /* =========================
-   ICONES
+   ÍCONES
 ========================= */
+
 .ct-icon {
   width: 26px;
+
   flex-shrink: 0;
 }
 
 /* =========================
    TEXTO
 ========================= */
+
 .ct-label {
   flex: 1;
+
   text-align: left;
+
+  font-weight: 500;
 }
 
 /* =========================
    SETA
 ========================= */
+
 .ct-arrow {
   font-size: 18px;
+
   color: #bbb;
 }
 
 /* =========================
    RESPONSIVO
 ========================= */
+
 @media (max-width: 360px) {
+
   .ct-item {
+
     padding: 12px;
+
     font-size: 14px;
   }
 
   .ct-icon {
+
     width: 24px;
+  }
+
+  .ct-icon-btn {
+
+    width: 34px;
+    height: 34px;
+  }
+
+  .ct-top-icon {
+
+    width: 16px;
+    height: 16px;
   }
 }

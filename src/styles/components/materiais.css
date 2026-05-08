@@ -31,7 +31,7 @@
   align-items: center;
   gap: 6px;
 
-  margin-bottom: 10px;
+  margin: 0;
 
   font-size: 20px;
   font-weight: 900;
@@ -45,6 +45,85 @@
 
 .page-container .grid.gap-sm {
   gap: 8px;
+}
+
+/* =========================================
+   TOPO LINHAS
+========================================= */
+
+.materiais-linhas-top {
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 12px;
+}
+
+/* =========================================
+   AÇÕES TOPO
+========================================= */
+
+.materiais-top-actions {
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* =========================================
+   BOTÃO ÍCONE
+========================================= */
+
+.materiais-icon-btn {
+
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #ffd400;
+
+  box-shadow:
+    0 4px 12px rgba(255,212,0,0.25);
+
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+
+  cursor: pointer;
+}
+
+.materiais-icon-btn:hover {
+
+  box-shadow:
+    0 6px 16px rgba(255,212,0,0.34);
+}
+
+/* =========================================
+   BOTÃO COPIADO
+========================================= */
+
+.materiais-icon-btn-success {
+
+  background: #29c45a !important;
+}
+
+/* =========================================
+   ÍCONE
+========================================= */
+
+.materiais-icon-img {
+
+  width: 18px;
+  height: 18px;
+
+  object-fit: contain;
 }
 
 /* =========================================
@@ -290,35 +369,6 @@
 }
 
 /* =========================================
-   BOTÃO COPIAR
-========================================= */
-
-.materiais-copy-btn {
-
-  min-height: 52px;
-
-  border-radius: 999px;
-
-  font-size: 14px;
-  font-weight: 900;
-
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    filter 0.2s ease;
-}
-
-.materiais-copy-btn:hover {
-
-  transform: translateY(-1px);
-}
-
-.materiais-copy-btn:active {
-
-  transform: scale(0.98);
-}
-
-/* =========================================
    MOBILE
 ========================================= */
 
@@ -355,61 +405,21 @@
     font-size: 11.5px;
   }
 
-  .materiais-btn-ml,
-  .materiais-copy-btn {
+  .materiais-btn-ml {
     min-height: 46px;
   }
-}
 
-/* =========================================
-   AÇÕES
-========================================= */
+  .materiais-icon-btn {
 
-.materiais-actions {
-  display: grid;
+    width: 34px;
+    height: 34px;
+  }
 
-  gap: 10px;
+  .materiais-icon-img {
 
-  margin-top: 18px;
-}
-
-/* =========================================
-   COPIADO
-========================================= */
-
-.materiais-copy-success {
-  background: #29c45a !important;
-
-  color: #ffffff !important;
-
-  box-shadow:
-    0 8px 18px rgba(41,196,90,0.28);
-}
-
-/* =========================================
-   COMPARTILHAR
-========================================= */
-
-.materiais-share-btn {
-  min-height: 50px;
-
-  border-radius: 999px;
-
-  background: #111;
-
-  color: #ffffff;
-
-  font-size: 14px;
-  font-weight: 800;
-
-  border: none;
-
-  transition:
-    transform 0.2s ease;
-}
-
-.materiais-share-btn:hover {
-  transform: translateY(-1px);
+    width: 16px;
+    height: 16px;
+  }
 }
 
 /* =========================================
@@ -430,13 +440,7 @@
 
   border: none;
 
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.materiais-back-btn:active {
-  transform: scale(0.96);
+  cursor: pointer;
 }
 
 .materiais-back-icon {

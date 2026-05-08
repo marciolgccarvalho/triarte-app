@@ -10,6 +10,9 @@ export default function Materiais({
   listaMateriaisTexto
 }) {
 
+  const [copiado, setCopiado] =
+    React.useState(false);
+
   if (!receita) {
     return (
       <div className="p-md">
@@ -132,11 +135,111 @@ export default function Materiais({
 
       </button>
 
-      {/* LINHAS */}
+      {/* TOPO LINHAS */}
 
-      <h3 className="materiais-section-title mb-sm">
-        🧶 Linhas
-      </h3>
+      <div className="materiais-linhas-top">
+
+        <h3 className="materiais-section-title mb-sm">
+          🧶 Linhas
+        </h3>
+
+        <div className="materiais-top-actions">
+
+          {/* COPIAR */}
+
+          <button
+            className={`
+              materiais-icon-btn
+              ${
+                copiado
+                  ? "materiais-icon-btn-success"
+                  : ""
+              }
+            `}
+            onClick={async () => {
+
+              try {
+
+                await navigator.clipboard.writeText(
+                  textoLista
+                );
+
+                setCopiado(true);
+
+                setTimeout(() => {
+
+                  setCopiado(false);
+
+                }, 1800);
+
+              } catch (error) {
+
+                alert(
+                  "Erro ao copiar lista."
+                );
+              }
+
+            }}
+          >
+
+            <img
+              src={IMAGES.icons.salvar.active}
+              alt="Copiar"
+              className="materiais-icon-img"
+            />
+
+          </button>
+
+          {/* SHARE */}
+
+          <button
+            className="materiais-icon-btn"
+            onClick={async () => {
+
+              try {
+
+                if (navigator.share) {
+
+                  await navigator.share({
+
+                    title:
+                      "Materiais Real Triarte",
+
+                    text: textoLista
+                  });
+
+                } else {
+
+                  await navigator.clipboard.writeText(
+                    textoLista
+                  );
+
+                  alert(
+                    "Seu dispositivo não suporta compartilhamento. A lista foi copiada."
+                  );
+                }
+
+              } catch (error) {
+
+                console.log(error);
+              }
+
+            }}
+          >
+
+            <img
+              src={IMAGES.icons.compartilhar.active}
+              alt="Compartilhar"
+              className="materiais-icon-img"
+            />
+
+          </button>
+
+        </div>
+
+      </div>
+
+      {/* LINHAS */}
 
       <div className="grid gap-sm mb-lg">
 
@@ -221,7 +324,6 @@ export default function Materiais({
                 {/* SETA */}
 
                 <div className="material-linha-arrow">
-                   
                 </div>
 
               </div>
@@ -259,106 +361,6 @@ export default function Materiais({
             </div>
           )
         )}
-
-      </div>
-
-      {/* AÇÕES */}
-
-      <div className="materiais-actions">
-
-        {/* COPIAR */}
-
-        <button
-          onClick={async () => {
-
-            try {
-
-              await navigator.clipboard.writeText(
-                textoLista
-              );
-
-              const botao =
-                document.getElementById(
-                  "btn-copiar-materiais"
-                );
-
-              if (botao) {
-
-                botao.innerHTML =
-                  "✔ Copiado!";
-
-                botao.classList.add(
-                  "materiais-copy-success"
-                );
-
-                setTimeout(() => {
-
-                  botao.innerHTML =
-                    "Copiar lista de materiais";
-
-                  botao.classList.remove(
-                    "materiais-copy-success"
-                  );
-
-                }, 2000);
-              }
-
-            } catch (error) {
-
-              alert(
-                "Erro ao copiar lista."
-              );
-            }
-
-          }}
-          id="btn-copiar-materiais"
-          className="btn btn-primary btn-full materiais-copy-btn"
-        >
-
-          Copiar lista de materiais
-
-        </button>
-
-        {/* COMPARTILHAR */}
-
-        <button
-          onClick={async () => {
-
-            try {
-
-              if (navigator.share) {
-
-                await navigator.share({
-
-                  title:
-                    "Materiais Real Triarte",
-
-                  text: textoLista
-                });
-
-              } else {
-
-                await navigator.clipboard.writeText(
-                  textoLista
-                );
-
-                alert(
-                  "Seu celular não suporta compartilhamento. A lista foi copiada."
-                );
-              }
-
-            } catch (error) {
-
-              console.log(error);
-            }
-
-          }}
-          className="btn btn-full materiais-share-btn"
-        >
-
-          Compartilhar lista
-
-        </button>
 
       </div>
 
