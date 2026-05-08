@@ -1,6 +1,6 @@
 import React from "react";
-import { IMAGES } from "../assets/images";
-import "../styles/pages/sobre.css";
+import { IMAGES } from "@/assets/images";
+import "@/styles/pages/sobre.css";
 
 export default function Sobre() {
   return (

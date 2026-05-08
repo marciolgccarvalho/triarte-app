@@ -5,8 +5,8 @@ import {
 } from "react";
 
 
-import coresLinhas from "../data/cores-linhas.json";
-import { IMAGES } from "../assets/images";
+import coresLinhas from "@/data/cores-linhas.json";
+import { IMAGES } from "@/assets/images";
 
 const TEXTURAS = [
   IMAGES.ui.baselinha,

@@ -123,7 +123,7 @@ export const CONQUISTAS = [
     titulo: "Persistente",
     descricao: "Inicie 5 receitas",
     tipo: "receitas_iniciadas",
-    meta: 3,
+    meta: 5,
     raridade: "comum",
     icone: IMAGES.conquistas.persistente.active
   },

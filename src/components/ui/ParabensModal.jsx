@@ -1,7 +1,7 @@
 import React from "react";
 import html2canvas from "html2canvas";
-import { IMAGES } from "../../assets/images";
-import "../../styles/components/parabens.css";
+import { IMAGES } from "@/assets/images";
+import "@/styles/components/parabens.css";
 
 export default function ParabensModal({
   aberto,

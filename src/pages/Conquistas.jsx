@@ -1,12 +1,12 @@
 import {
   gerarConquistas,
   gerarResumo
-} from "../features/conquistas/conquistasEngine";
+} from "@/features/conquistas/conquistasEngine";
 
-import ConquistaCard from "../components/conquistas/ConquistaCard";
-import ConquistaHeader from "../components/conquistas/ConquistaHeader";
-import ConquistaPopup from "../components/conquistas/ConquistaPopup";
-import useConquistaNotifier from "../hooks/useConquistaNotifier";
+import ConquistaCard from "@/components/conquistas/ConquistaCard";
+import ConquistaHeader from "@/components/conquistas/ConquistaHeader";
+import ConquistaPopup from "@/components/conquistas/ConquistaPopup";
+import useConquistaNotifier from "@/hooks/useConquistaNotifier";
 
 export default function Conquistas({ progresso, receitas, favoritos }) {
   const lista = gerarConquistas({ progresso, receitas, favoritos });

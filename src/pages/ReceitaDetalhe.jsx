@@ -1,8 +1,8 @@
 import React from "react";
-import "../styles/pages/receita-detalhe.css";
-import { IMAGES } from "../assets/images";
-import ParabensModal from "../components/ui/ParabensModal";
-import { isVideoLiberado } from '../services/receitasService';
+import "@/styles/pages/receita-detalhe.css";
+import { IMAGES } from "@/assets/images";
+import ParabensModal from "@/components/ui/ParabensModal";
+import { isVideoLiberado } from '@/services/receitasService';
 
 export default function ReceitaDetalhe({
   receita,

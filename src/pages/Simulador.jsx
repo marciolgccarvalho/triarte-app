@@ -1,5 +1,5 @@
 import React from "react";
-import { IMAGES } from "../assets/images";
+import { IMAGES } from "@/assets/images";
 
 export default function Simulador() {
   const [dados, setDados] = React.useState({

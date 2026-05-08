@@ -1,8 +1,8 @@
 import React from "react";
 
-import { IMAGES } from "../assets/images";
+import { IMAGES } from "@/assets/images";
 
-import coresLinhas from "../data/cores-linhas.json";
+import coresLinhas from "@/data/cores-linhas.json";
 
 export default function Materiais({
   receita,

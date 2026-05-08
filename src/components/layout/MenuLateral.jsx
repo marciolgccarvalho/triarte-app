@@ -1,6 +1,6 @@
 import React from "react";
-import { IMAGES } from "../../assets/images";
-import "../../styles/components/menu-lateral.css";
+import { IMAGES } from "@/assets/images";
+import "@/styles/components/menu-lateral.css";
 
 export default function MenuLateral({
   aberto,

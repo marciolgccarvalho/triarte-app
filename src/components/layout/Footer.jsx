@@ -1,6 +1,6 @@
 import React from "react";
 
-import { IMAGES } from "../../assets/images";
+import { IMAGES } from "@/assets/images";
 
 const ITEMS = [
   ["home", IMAGES.icons.home.active, "Início"],

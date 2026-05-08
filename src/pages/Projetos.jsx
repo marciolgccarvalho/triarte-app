@@ -1,7 +1,7 @@
 import React from "react";
-import ranking from "../data/ranking.json";
-import percentual from "../data/percentual.json";
-import { IMAGES } from "../assets/images";
+import ranking from "@/data/ranking.json";
+import percentual from "@/data/percentual.json";
+import { IMAGES } from "@/assets/images";
 
 function Projetos() {
   const [copiado, setCopiado] = React.useState(false);

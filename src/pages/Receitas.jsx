@@ -1,6 +1,6 @@
 import React from "react";
-import CardReceita from "../components/ui/CardReceita";
-import { IMAGES } from "../assets/images";
+import CardReceita from "@/components/ui/CardReceita";
+import { IMAGES } from "@/assets/images";
 
 export default function Receitas({
   receitas,

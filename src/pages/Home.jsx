@@ -1,7 +1,7 @@
 import React from "react";
-import CardReceita from "../components/ui/CardReceita";
-import mensagensData from "../data/mensagens.json";
-import { IMAGES } from "../assets/images";
+import CardReceita from "@/components/ui/CardReceita";
+import mensagensData from "@/data/mensagens.json";
+import { IMAGES } from "@/assets/images";
 
 export default function Home({
   ultimaReceita,
