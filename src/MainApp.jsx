@@ -1,39 +1,107 @@
-import React from "react";
+import React, {
+  useEffect,
+  useMemo,
+  useCallback,
+  useState
+} from "react";
+
+/* ========================================
+   SERVICES / DADOS
+======================================== */
+
 import { getReceitas } from "./services/receitasService";
+
 import mensagens from "./data/mensagens.json";
+
+/* ========================================
+   HOOKS
+======================================== */
+
 import { useStorage } from "./hooks/useStorage";
 import { useListas } from "./hooks/useListas";
+
+/* ========================================
+   LAYOUT
+======================================== */
 
 import MenuLateral from "./components/layout/MenuLateral";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 
+/* ========================================
+   NAVEGAÇÃO
+======================================== */
+
 import { renderPagina } from "./navigation/renderPagina";
 
 export default function MainApp() {
 
+  /* ========================================
+     CONFIG
+  ======================================== */
+
   const liberarNoPC = true;
 
-  const [pagina, setPagina] = React.useState("home");
-  const [menuAberto, setMenuAberto] = React.useState(false);
-  const [receitaSelecionada, setReceitaSelecionada] = React.useState(null);
-  const [rotacionado, setRotacionado] = React.useState(false);
+  /* ========================================
+     ESTADOS GLOBAIS
+  ======================================== */
 
-  // 🔥 NOVO (não interfere em nada existente)
-  const [origem, setOrigem] = React.useState("home");
+  const [pagina, setPagina] =
+    useState("home");
 
-  const [buscaNome, setBuscaNome] = React.useState("");
-  const [buscaCategoria, setBuscaCategoria] = React.useState("");
-  const [modoExibicao, setModoExibicao] = React.useState("grid");
-  const [limite, setLimite] = React.useState(10);
-  const [paginaAtual, setPaginaAtual] = React.useState(1);
+  const [menuAberto, setMenuAberto] =
+    useState(false);
 
-  const receitas = React.useMemo(
+  const [
+    receitaSelecionada,
+    setReceitaSelecionada
+  ] = useState(null);
+
+  const [rotacionado, setRotacionado] =
+    useState(false);
+
+  // 🔥 mantém origem da navegação
+  const [origem, setOrigem] =
+    useState("home");
+
+  /* ========================================
+     FILTROS / LISTAS
+  ======================================== */
+
+  const [buscaNome, setBuscaNome] =
+    useState("");
+
+  const [
+    buscaCategoria,
+    setBuscaCategoria
+  ] = useState("");
+
+  const [
+    modoExibicao,
+    setModoExibicao
+  ] = useState("grid");
+
+  const [limite, setLimite] =
+    useState(10);
+
+  const [
+    paginaAtual,
+    setPaginaAtual
+  ] = useState(1);
+
+  /* ========================================
+     RECEITAS
+  ======================================== */
+
+  const receitas = useMemo(
     () => getReceitas(),
     []
   );
 
-  // STORAGE
+  /* ========================================
+     STORAGE
+  ======================================== */
+
   const {
     favoritos,
     progresso,
@@ -43,7 +111,10 @@ export default function MainApp() {
     setUltimaReceitaId
   } = useStorage();
 
-  // LISTAS
+  /* ========================================
+     LISTAS FILTRADAS
+  ======================================== */
+
   const {
     receitasFiltradas,
     favoritosFiltrados,
@@ -59,13 +130,41 @@ export default function MainApp() {
     paginaAtual
   });
 
-  React.useEffect(() => {
+  /* ========================================
+     SCROLL AO TROCAR DE TELA
+  ======================================== */
+
+    useEffect(() => {
+
+      const content =
+        document.querySelector(
+          ".app-content"
+        );
+
+      if (content) {
+
+        content.scrollTo({
+          top: 0,
+          behavior: "auto"
+        });
+
+      }
+
+    }, [pagina]);
+
+  /* ========================================
+     CONTROLE ROTAÇÃO
+  ======================================== */
+
+  useEffect(() => {
 
     const check = () => {
+
       setRotacionado(
         window.innerWidth >
         window.innerHeight
       );
+
     };
 
     check();
@@ -76,32 +175,52 @@ export default function MainApp() {
     );
 
     return () => {
+
       window.removeEventListener(
         "resize",
         check
       );
+
     };
 
   }, []);
 
+  /* ========================================
+     NAVEGAÇÃO
+  ======================================== */
+
   const irPara = (destino) => {
 
     setPagina(destino);
+
     setMenuAberto(false);
+
     setPaginaAtual(1);
+
   };
 
-  // 🔥 CORRIGIDO (com origem, sem quebrar nada)
+  /* ========================================
+     ABRIR RECEITA
+  ======================================== */
+
   const abrirReceita = (
     receita,
     origemTela = pagina
   ) => {
 
     setReceitaSelecionada(receita);
+
     setUltimaReceitaId(receita.id);
+
     setOrigem(origemTela);
+
     setPagina("receita");
+
   };
+
+  /* ========================================
+     PROGRESSO
+  ======================================== */
 
   const percentual = (receita) => {
 
@@ -119,14 +238,15 @@ export default function MainApp() {
         receita.videos.length
       ) * 100
     );
+
   };
 
-  // ========================================
-  // TEXTO DOS MATERIAIS
-  // ========================================
+  /* ========================================
+     TEXTO DOS MATERIAIS
+  ======================================== */
 
   const listaMateriaisTexto =
-    React.useCallback(() => {
+    useCallback(() => {
 
       if (!receitaSelecionada) {
         return "";
@@ -158,6 +278,10 @@ ${itens
 
     }, [receitaSelecionada]);
 
+  /* ========================================
+     ÚLTIMA RECEITA EM ANDAMENTO
+  ======================================== */
+
   const ultimaReceita =
     receitas.find((r) => {
 
@@ -167,15 +291,24 @@ ${itens
 
       const pct = percentual(r);
 
+      // 🔥 NÃO mostra receitas 100%
       return pct > 0 && pct < 100;
 
     });
 
+  /* ========================================
+     MENSAGEM HOME
+  ======================================== */
+
   const mensagemAtual =
     mensagens[0];
 
+  /* ========================================
+     RECEITAS ALEATÓRIAS
+  ======================================== */
+
   const receitasRandom =
-    React.useMemo(() => {
+    useMemo(() => {
 
       const embaralhado =
         [...receitas].sort(
@@ -186,6 +319,10 @@ ${itens
 
     }, [receitas]);
 
+  /* ========================================
+     BLOQUEIO ROTAÇÃO
+  ======================================== */
+
   if (
     rotacionado &&
     !liberarNoPC
@@ -194,7 +331,9 @@ ${itens
     return (
       <div className="screen-center">
 
-        <h2>📱 Gire o celular</h2>
+        <h2>
+          📱 Gire o celular
+        </h2>
 
         <p className="text-muted">
           Use o app na vertical
@@ -203,6 +342,10 @@ ${itens
       </div>
     );
   }
+
+  /* ========================================
+     RENDER
+  ======================================== */
 
   return (
 
@@ -226,7 +369,9 @@ ${itens
         }
       >
 
-        {/* HEADER */}
+        {/* ========================================
+            HEADER
+        ======================================== */}
 
         <Header
           irPara={irPara}
@@ -235,7 +380,9 @@ ${itens
           }
         />
 
-        {/* MENU */}
+        {/* ========================================
+            MENU LATERAL
+        ======================================== */}
 
         <MenuLateral
           aberto={menuAberto}
@@ -246,59 +393,81 @@ ${itens
           pagina={pagina}
         />
 
-        {/* CONTEÚDO */}
+        {/* ========================================
+            CONTEÚDO
+        ======================================== */}
 
         <div className="app-content">
 
           {renderPagina({
 
             pagina,
+
             mensagemAtual,
+
             ultimaReceita,
+
             receitas,
+
             receitasRandom,
 
             abrirReceita,
+
             percentual,
+
             toggleFavorito,
+
             favoritos,
+
             irPara,
 
             receitasFiltradas,
+
             receitasPage,
 
             buscaNome,
+
             setBuscaNome,
 
             buscaCategoria,
+
             setBuscaCategoria,
 
             categorias,
 
             modoExibicao,
+
             setModoExibicao,
 
             limite,
+
             setLimite,
 
             paginaAtual,
+
             setPaginaAtual,
 
             favoritosFiltrados,
+
             favoritosPage,
 
             receitaSelecionada,
+
             marcarVideo,
+
             progresso,
 
             origem,
+
             listaMateriaisTexto
 
           })}
 
         </div>
 
-        {/* FOOTER */}
+        {/* ========================================
+            FOOTER
+        ======================================== */}
 
         <Footer
           pagina={pagina}
