@@ -10,6 +10,7 @@
     "destaqueFim": "2026-05-26",
     "ativo": true,
     "ordem": 1,
+	"altura": "15 cm",
     "materiais": {
       "linhas": [
         "6201",
@@ -54,6 +55,7 @@
     "destaqueFim": "2026-05-29",
     "ativo": true,
     "ordem": 2,
+	"altura": "15 cm",
     "materiais": {
       "linhas": [
         "1112",
@@ -108,6 +110,7 @@
     "destaqueFim": null,
     "ativo": true,
     "ordem": 3,
+	"altura": "15 cm",
     "materiais": {
       "linhas": [
         "7563",
@@ -156,6 +159,7 @@
     "destaqueFim": null,
     "ativo": true,
     "ordem": 4,
+	"altura": "15 cm",
     "materiais": {
       "linhas": [
         "7563",
@@ -207,6 +211,7 @@
     "destaqueFim": null,
     "ativo": true,
     "ordem": 5,
+	"altura": "15 cm",
     "materiais": {
       "linhas": [
         "3528",
@@ -251,6 +256,7 @@
     "destaqueFim": null,
     "ativo": true,
     "ordem": 6,
+	"altura": "15 cm",
     "materiais": {
       "linhas": [
         "7563",
@@ -308,6 +314,7 @@
     "destaqueFim": null,
     "ativo": true,
     "ordem": 7,
+	"altura": "15 cm",
     "materiais": {
       "linhas": [
         "8176",
@@ -363,6 +370,7 @@
     "destaqueFim": null,
     "ativo": true,
     "ordem": 8,
+	"altura": "15 cm",
     "materiais": {
       "linhas": [
         "7563",
@@ -415,6 +423,7 @@
     "destaqueFim": null,
     "ativo": true,
     "ordem": 9,
+	"altura": "15 cm",
     "materiais": {
       "linhas": [
         "7563",
@@ -467,6 +476,7 @@
     "destaqueFim": null,
     "ativo": true,
     "ordem": 10,
+	"altura": "15 cm",
     "materiais": {
       "linhas": [
         "8990",
@@ -520,6 +530,7 @@
     "destaqueFim": null,
     "ativo": true,
     "ordem": 11,
+	"altura": "15 cm",
     "materiais": {
       "linhas": [
         "2137",

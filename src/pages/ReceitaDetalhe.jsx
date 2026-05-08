@@ -119,6 +119,30 @@ export default function ReceitaDetalhe({
             {receita.descricao}
           </p>
 
+          {receita.altura && (
+
+            <div className="rd-altura">
+
+              <img
+                src={
+                  IMAGES.icons.regua.active
+                }
+                alt="Altura"
+                className="rd-altura-icon"
+              />
+
+              <strong>
+                Altura:
+              </strong>
+
+              <span>
+                {receita.altura}
+              </span>
+
+            </div>
+
+          )}
+
           <div className="rd-progresso-header">
             <span className="rd-progresso-titulo">
               Seu progresso

@@ -40,6 +40,7 @@ import linhaActive from './icons/linha-active.png'
 import compartilharactive from './icons/compartilhar-active.png'
 import salvaractive from './icons/salvar-active.png'
 import informacoesactive from './icons/informacoes-active.png'
+import reguaactive from './icons/regua-active.png'
 
 // 🔥 CONFIGURAÇÕES
 import configuracoesActive from './icons/configuracao.png'
@@ -204,6 +205,10 @@ export const IMAGES = {
 
           informacoes: {
       active: informacoesactive
+    },
+
+          regua: {
+      active: reguaactive
     }
 
   },
