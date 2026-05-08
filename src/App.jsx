@@ -2,6 +2,8 @@ import React from "react";
 import MainApp from "./MainApp";
 import InstallGate from "./InstallGate";
 
+import SplashScreen from "@/components/SplashScreen";
+
 function App() {
   const [isStandalone, setIsStandalone] = React.useState(false);
   const [isDesktop, setIsDesktop] = React.useState(false);
@@ -10,8 +12,20 @@ function App() {
   const [promptInstalar, setPromptInstalar] = React.useState(null);
   const [foiInstalado, setFoiInstalado] = React.useState(false);
 
+  const [loadingSplash, setLoadingSplash] = React.useState(true);
+
   const liberarNoPC = true;
 
+  // SPLASH PREMIUM
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoadingSplash(false);
+    }, 2800);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  // DETECTA STANDALONE / DESKTOP
   React.useEffect(() => {
     const check = () => {
       const standalone =
@@ -33,6 +47,7 @@ function App() {
     };
   }, []);
 
+  // CAPTURA PROMPT DE INSTALAÇÃO
   React.useEffect(() => {
     const handler = (e) => {
       e.preventDefault();
@@ -46,6 +61,7 @@ function App() {
     };
   }, []);
 
+  // INSTALAÇÃO REAL CONCLUÍDA
   React.useEffect(() => {
     const handleInstalled = () => {
       setInstalando(false);
@@ -68,6 +84,7 @@ function App() {
     };
   }, []);
 
+  // INSTALAR APP
   const instalarApp = async () => {
     if (!promptInstalar) {
       alert("Use o menu do navegador para instalar");
@@ -80,7 +97,7 @@ function App() {
 
     const escolha = await promptInstalar.userChoice;
 
-    // usuário cancelou instalação
+    // usuário cancelou
     if (escolha.outcome !== "accepted") {
       setInstalando(false);
     }
@@ -89,16 +106,25 @@ function App() {
     setPromptInstalar(null);
   };
 
+  // COMPONENTE CENTRAL
   const TelaCentro = ({ titulo, texto }) => (
     <div className="screen-center">
       <div>
         <h2>{titulo}</h2>
-        <p className="small text-muted mt-sm">{texto}</p>
+
+        <p className="small text-muted mt-sm">
+          {texto}
+        </p>
       </div>
     </div>
   );
 
-  // tela durante instalação REAL
+  // SPLASH PREMIUM INICIAL
+  if (loadingSplash) {
+    return <SplashScreen />;
+  }
+
+  // INSTALAÇÃO EM ANDAMENTO
   if (!isStandalone && instalando) {
     return (
       <TelaCentro
@@ -108,12 +134,12 @@ function App() {
     );
   }
 
-  // app aberto corretamente
+  // APP ABERTO NORMALMENTE
   if (isStandalone || (liberarNoPC && isDesktop)) {
     return <MainApp />;
   }
 
-  // instalação concluída REAL
+  // INSTALAÇÃO CONCLUÍDA
   if (foiInstalado) {
     return (
       <TelaCentro
@@ -123,7 +149,10 @@ function App() {
     );
   }
 
-  return <InstallGate instalarApp={instalarApp} />;
+  // TELA DE INSTALAÇÃO
+  return (
+    <InstallGate instalarApp={instalarApp} />
+  );
 }
 
 export default App;

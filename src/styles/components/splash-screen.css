@@ -1,0 +1,315 @@
+.splash-screen {
+  position: fixed;
+  inset: 0;
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    radial-gradient(circle at top, rgba(255, 236, 210, 0.95), transparent 45%),
+    linear-gradient(180deg, #fffaf4 0%, #f7efe3 100%);
+
+  z-index: 999999;
+}
+
+/* textura artesanal */
+.fabric-texture {
+  position: absolute;
+  inset: 0;
+
+  opacity: 0.04;
+
+  background-image:
+    radial-gradient(rgba(170, 120, 80, 0.18) 1px, transparent 1px);
+
+  background-size: 14px 14px;
+
+  pointer-events: none;
+}
+
+/* pontos flutuando */
+.crochet-stitches {
+  position: absolute;
+  inset: 0;
+
+  overflow: hidden;
+
+  pointer-events: none;
+}
+
+.stitch {
+  position: absolute;
+
+  color: rgba(190, 140, 90, 0.45);
+
+  font-size: 12px;
+
+  animation:
+    stitchFloat 5s ease-in-out infinite;
+}
+
+/* conteúdo principal */
+.splash-content {
+  position: relative;
+  z-index: 10;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  animation: fadeIn 1.2s ease forwards;
+}
+
+/* área da logo */
+.logo-area {
+  position: relative;
+
+  width: 190px;
+  height: 190px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 24px;
+}
+
+/* halo suave */
+.soft-bg {
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(circle,
+      rgba(255, 215, 170, 0.55) 0%,
+      rgba(255, 215, 170, 0.18) 45%,
+      transparent 75%
+    );
+
+  filter: blur(12px);
+
+  animation:
+    softPulse 5s ease-in-out infinite;
+}
+
+/* logo */
+.splash-logo {
+  position: relative;
+
+  width: 150px;
+  height: 150px;
+
+  object-fit: contain;
+
+  filter:
+    drop-shadow(0 4px 10px rgba(120, 80, 30, 0.10))
+    drop-shadow(0 0 18px rgba(255, 215, 170, 0.16));
+
+  animation:
+    logoFloat 4s ease-in-out infinite,
+    logoReveal 1.2s ease;
+}
+
+/* textos */
+.splash-texts {
+  text-align: center;
+
+  margin-bottom: 42px;
+}
+
+.splash-texts h1 {
+  margin: 0;
+
+  color: #7b5536;
+
+  font-size: 2rem;
+  font-weight: 800;
+
+  letter-spacing: 0.3px;
+}
+
+.splash-texts p {
+  margin-top: 10px;
+
+  color: #9d7b60;
+
+  font-size: 1rem;
+
+  letter-spacing: 0.2px;
+}
+
+/* área da lã */
+.yarn-animation {
+  position: relative;
+
+  width: 320px;
+  height: 80px;
+}
+
+/* svg */
+.yarn-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* fio */
+.yarn-path {
+  fill: none;
+
+  stroke: #d4a276;
+  stroke-width: 6;
+  stroke-linecap: round;
+
+  stroke-dasharray: 12 10;
+
+  filter:
+    drop-shadow(0 0 4px rgba(212, 162, 118, 0.18));
+
+  animation:
+    threadWave 3s linear infinite;
+}
+
+/* bolinha de lã */
+.yarn-ball {
+  position: absolute;
+  top: 28px;
+  left: 0;
+
+  width: 24px;
+  height: 24px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(circle at 30% 30%,
+      #ffd8b5,
+      #d49562
+    );
+
+  box-shadow:
+    0 3px 10px rgba(120, 80, 30, 0.18);
+
+  animation:
+    yarnWalk 3s ease-in-out infinite;
+}
+
+/* entrada */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* revelação da logo */
+@keyframes logoReveal {
+  from {
+    opacity: 0;
+    transform: scale(0.82);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* logo flutuando */
+@keyframes logoFloat {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* brilho suave */
+@keyframes softPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: scale(1.06);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+}
+
+/* bolinha andando */
+@keyframes yarnWalk {
+  0% {
+    left: 0;
+    top: 28px;
+  }
+
+  25% {
+    top: 8px;
+  }
+
+  50% {
+    left: calc(50% - 12px);
+    top: 40px;
+  }
+
+  75% {
+    top: 8px;
+  }
+
+  100% {
+    left: calc(100% - 24px);
+    top: 28px;
+  }
+}
+
+/* fio se movendo */
+@keyframes threadWave {
+  from {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: -44;
+  }
+}
+
+/* pontos */
+@keyframes stitchFloat {
+  0% {
+    transform: translateY(0px);
+    opacity: 0.2;
+  }
+
+  50% {
+    transform: translateY(-6px);
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: translateY(0px);
+    opacity: 0.2;
+  }
+}
