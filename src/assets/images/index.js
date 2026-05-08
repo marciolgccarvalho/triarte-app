@@ -39,6 +39,7 @@ import projetoActive from './icons/projeto-active.png'
 import linhaActive from './icons/linha-active.png'
 import compartilharactive from './icons/compartilhar-active.png'
 import salvaractive from './icons/salvar-active.png'
+import informacoesactive from './icons/informacoes-active.png'
 
 // 🔥 CONFIGURAÇÕES
 import configuracoesActive from './icons/configuracao.png'
@@ -71,9 +72,9 @@ import focadoActive from './conquistas/12-focado.webp'
 // UI
 // ==========================
 import logo from './ui/logo.webp'
-import emptyFavoritos from './ui/empty-favoritos.png'
-import simuladorPreco from './ui/simulador-preco.png'
-import abreviacoes from './ui/abreviacoes.png'
+import emptyFavoritos from './ui/empty-favoritos.webp'
+import simuladorPreco from './ui/simulador-preco.webp'
+import abreviacoes from './ui/abreviacoes.webp'
 import baselinha from './ui/linha.webp'
 import baselinha2 from './ui/linha2.webp'
 import baselinha3 from './ui/linha3.webp'
@@ -199,6 +200,10 @@ export const IMAGES = {
     
           salvar: {
       active: salvaractive
+    },
+
+          informacoes: {
+      active: informacoesactive
     }
 
   },

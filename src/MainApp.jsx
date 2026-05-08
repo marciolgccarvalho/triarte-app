@@ -159,10 +159,17 @@ ${itens
     }, [receitaSelecionada]);
 
   const ultimaReceita =
-    receitas.find(
-      (r) =>
-        r.id === ultimaReceitaId
-    );
+    receitas.find((r) => {
+
+      if (r.id !== ultimaReceitaId) {
+        return false;
+      }
+
+      const pct = percentual(r);
+
+      return pct > 0 && pct < 100;
+
+    });
 
   const mensagemAtual =
     mensagens[0];

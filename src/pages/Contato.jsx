@@ -1,146 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { IMAGES } from "@/assets/images";
 
+import "@/styles/pages/contato.css";
+
 export default function Contato() {
 
-  const [copiado, setCopiado] =
-    React.useState(false);
+  const [copiado, setCopiado] = useState(false);
 
-  // ========================================
-  // TEXTO SHARE
-  // ========================================
+  const email = "contato@realtriarte.com.br";
 
-  const textoCompartilhar = `
-🌟 Real Triarte
-
-Site:
-https://triarte.com.br
-
-YouTube:
-https://www.youtube.com/@RealTriarte
-
-Instagram:
-https://instagram.com/realtriarte
-
-Facebook:
-https://www.facebook.com/realtriarteartesanato
-
-TikTok:
-https://www.tiktok.com/@triarteamigurumi
-
-Email:
-contato@triarte.com.br
-`.trim();
-
-  // ========================================
-  // ITENS
-  // ========================================
-
-  const itens = [
-
-    {
-      icon:
-        IMAGES.icons.site.active,
-
-      label:
-        "Site Oficial",
-
-      action: () =>
-        window.open(
-          "https://triarte.com.br",
-          "_blank"
-        )
-    },
-
-    {
-      icon:
-        IMAGES.icons.youtube.active,
-
-      label:
-        "YouTube",
-
-      action: () =>
-        window.open(
-          "https://www.youtube.com/@RealTriarte",
-          "_blank"
-        )
-    },
-
-    {
-      icon:
-        IMAGES.icons.instagram.active,
-
-      label:
-        "Instagram",
-
-      action: () =>
-        window.open(
-          "https://instagram.com/realtriarte",
-          "_blank"
-        )
-    },
-
-    {
-      icon:
-        IMAGES.icons.facebook.active,
-
-      label:
-        "Facebook",
-
-      action: () =>
-        window.open(
-          "https://www.facebook.com/realtriarteartesanato",
-          "_blank"
-        )
-    },
-
-    {
-      icon:
-        IMAGES.icons.tiktok.active,
-
-      label:
-        "TikTok",
-
-      action: () =>
-        window.open(
-          "https://www.tiktok.com/@triarteamigurumi",
-          "_blank"
-        )
-    }
-  ];
-
-  // ========================================
-  // COPIAR
-  // ========================================
-
-  const copiar = async () => {
+  const copiarEmail = async () => {
 
     try {
 
-      await navigator.clipboard.writeText(
-        textoCompartilhar
-      );
+      await navigator.clipboard.writeText(email);
 
       setCopiado(true);
 
       setTimeout(() => {
-
         setCopiado(false);
-
       }, 1800);
 
-    } catch (error) {
-
-      alert(
-        "Erro ao copiar contatos."
-      );
+    } catch (erro) {
+      console.log(erro);
     }
-  };
 
-  // ========================================
-  // SHARE
-  // ========================================
+  };
 
   const compartilhar = async () => {
 
@@ -149,169 +35,265 @@ contato@triarte.com.br
       if (navigator.share) {
 
         await navigator.share({
-
-          title:
-            "Real Triarte",
-
+          title: "Real Triarte",
           text:
-            textoCompartilhar
+            "Conheça o aplicativo Real Triarte.",
+          url: window.location.href
         });
 
-      } else {
-
-        await navigator.clipboard.writeText(
-          textoCompartilhar
-        );
-
-        alert(
-          "Seu dispositivo não suporta compartilhamento. Os contatos foram copiados."
-        );
       }
 
-    } catch (error) {
-
-      console.log(error);
+    } catch (erro) {
+      console.log(erro);
     }
+
   };
 
   return (
-
     <div className="page ct-page">
 
-      {/* TOPO */}
+      {/* HERO */}
+      <section className="ct-hero">
 
-      <div className="ct-top">
+        <div className="ct-hero-top">
 
-        <div>
+          <div className="ct-brand">
 
-          <h2 className="page-title">
-            Contato
-          </h2>
+            <div className="ct-logo-wrapper">
 
-          <p className="text-muted mb-md">
-            Fale conosco ou acompanhe nossos conteúdos:
-          </p>
+              <img
+                src={IMAGES.ui.logo}
+                alt="Real Triarte"
+                className="ct-logo"
+              />
 
-        </div>
+            </div>
 
-        {/* AÇÕES */}
+            <div>
 
-        <div className="ct-top-actions">
+              <span className="ct-badge">
+                Contato Oficial
+              </span>
 
-          {/* COPIAR */}
+              <h1 className="page-title ct-title">
+                Fale conosco
+              </h1>
 
-          <button
-            className={`
-              ct-icon-btn
-              ${
+              <p className="ct-subtitle">
+                Redes sociais, canais oficiais e suporte
+                do aplicativo Real Triarte.
+              </p>
+
+            </div>
+
+          </div>
+
+          <div className="ct-top-actions">
+
+            <button
+              onClick={compartilhar}
+              className="ct-icon-btn"
+            >
+
+              <img
+                src={IMAGES.icons.compartilhar.active}
+                alt="Compartilhar"
+                className="ct-top-icon"
+              />
+
+            </button>
+
+            <button
+              onClick={copiarEmail}
+              className={`ct-icon-btn ${
                 copiado
                   ? "ct-icon-btn-success"
                   : ""
-              }
-            `}
-            onClick={copiar}
-          >
+              }`}
+            >
 
-            <img
-              src={
-                IMAGES.icons.salvar.active
-              }
-              alt="Copiar"
-              className="ct-top-icon"
-            />
+              <img
+                src={IMAGES.icons.salvar.active}
+                alt="Copiar email"
+                className="ct-top-icon"
+              />
 
-          </button>
+            </button>
 
-          {/* SHARE */}
-
-          <button
-            className="ct-icon-btn"
-            onClick={compartilhar}
-          >
-
-            <img
-              src={
-                IMAGES.icons.compartilhar.active
-              }
-              alt="Compartilhar"
-              className="ct-top-icon"
-            />
-
-          </button>
+          </div>
 
         </div>
 
-      </div>
+      </section>
+
+      {/* STATUS */}
+      <section className="ct-status-row">
+
+        <div className="ct-status-card">
+          <strong>Suporte</strong>
+
+          <span>
+            Atendimento e canais oficiais.
+          </span>
+        </div>
+
+        <div className="ct-status-card">
+          <strong>Comunidade</strong>
+
+          <span>
+            Conteúdos e novidades diariamente.
+          </span>
+        </div>
+
+        <div className="ct-status-card">
+          <strong>Atualizações</strong>
+
+          <span>
+            Melhorias contínuas no aplicativo.
+          </span>
+        </div>
+
+      </section>
 
       {/* EMAIL */}
-
-      <div
+      <section
         className="ct-destaque"
-        onClick={() =>
-          window.location.href =
-            "mailto:contato@triarte.com.br"
-        }
-        role="button"
-        aria-label="Enviar email"
+        onClick={copiarEmail}
       >
 
-        <img
-          src={
-            IMAGES.icons.email.active
-          }
-          alt="Email"
-          className="ct-icon"
-        />
+        <div className="ct-destaque-icon-wrapper">
+
+          <img
+            src={IMAGES.icons.email.active}
+            alt="Email"
+            className="ct-icon"
+          />
+
+        </div>
 
         <div className="ct-destaque-text">
 
           <strong>
-            Enviar email
+            {email}
           </strong>
 
           <p>
-            contato@triarte.com.br
+            Toque para copiar o email oficial.
           </p>
 
         </div>
 
-      </div>
+      </section>
 
-      {/* REDES */}
+      {/* LISTA */}
+      <section className="ct-list">
 
-      <div className="ct-list">
+        <a
+          href="https://youtube.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="ct-item"
+        >
 
-        {itens.map(
-          (item, index) => (
+          <img
+            src={IMAGES.icons.youtube.active}
+            alt="YouTube"
+            className="ct-icon"
+          />
 
-            <button
-              key={index}
-              onClick={item.action}
-              className="ct-item"
-              aria-label={
-                item.label
-              }
-            >
+          <span className="ct-label">
+            YouTube
+          </span>
 
-              <img
-                src={item.icon}
-                alt={item.label}
-                className="ct-icon"
-              />
+          <span className="ct-arrow">
+            →
+          </span>
 
-              <span className="ct-label">
-                {item.label}
-              </span>
+        </a>
 
-              <span className="ct-arrow">
-                ›
-              </span>
+        <a
+          href="https://instagram.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="ct-item"
+        >
 
-            </button>
-          )
-        )}
+          <img
+            src={IMAGES.icons.instagram.active}
+            alt="Instagram"
+            className="ct-icon"
+          />
 
-      </div>
+          <span className="ct-label">
+            Instagram
+          </span>
+
+          <span className="ct-arrow">
+            →
+          </span>
+
+        </a>
+
+        <a
+          href="https://tiktok.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="ct-item"
+        >
+
+          <img
+            src={IMAGES.icons.tiktok.active}
+            alt="TikTok"
+            className="ct-icon"
+          />
+
+          <span className="ct-label">
+            TikTok
+          </span>
+
+          <span className="ct-arrow">
+            →
+          </span>
+
+        </a>
+
+        <a
+          href="https://facebook.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="ct-item"
+        >
+
+          <img
+            src={IMAGES.icons.facebook.active}
+            alt="Facebook"
+            className="ct-icon"
+          />
+
+          <span className="ct-label">
+            Facebook
+          </span>
+
+          <span className="ct-arrow">
+            →
+          </span>
+
+        </a>
+
+      </section>
+
+      {/* FOOTER */}
+      <section className="ct-footer">
+
+        <strong>
+          Real Triarte
+        </strong>
+
+        <small>
+          Obrigado por fazer parte da nossa comunidade.
+        </small>
+
+      </section>
 
     </div>
   );

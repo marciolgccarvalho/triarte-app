@@ -1,35 +1,47 @@
 import { useEffect, useState } from "react";
+import { playConquistaSound } from "@/utils/playConquistaSound";
 
 const STORAGE_KEY = "conquistas_notificadas";
 
 function lerNotificadas() {
+
   try {
+
     return JSON.parse(
       localStorage.getItem(STORAGE_KEY) || "[]"
     );
+
   } catch {
+
     return [];
   }
 }
 
 export default function useConquistaNotifier(lista) {
+
   const [nova, setNova] = useState(null);
 
   useEffect(() => {
+
     // =========================================
     // SSR
     // =========================================
+
     if (typeof window === "undefined") return;
 
     // =========================================
     // EVITA LOOP
     // =========================================
+
     if (nova) return;
 
-    const jaNotificadas = lerNotificadas();
+    const jaNotificadas =
+      lerNotificadas();
 
     const novas = lista.filter(
+
       (c) =>
+
         c.status === "concluido" &&
         !jaNotificadas.includes(c.id)
     );
@@ -41,13 +53,17 @@ export default function useConquistaNotifier(lista) {
     // =========================================
     // MOSTRA POPUP
     // =========================================
+
     setNova(conquista);
 
     // =========================================
     // SALVA COMO NOTIFICADA
     // =========================================
+
     localStorage.setItem(
+
       STORAGE_KEY,
+
       JSON.stringify([
         ...jaNotificadas,
         conquista.id
@@ -57,26 +73,26 @@ export default function useConquistaNotifier(lista) {
     // =========================================
     // SOM
     // =========================================
-    try {
-      const audio = new Audio("/sounds/conquista.mp3");
 
-      audio.currentTime = 0;
-
-      audio.play().catch(() => {});
-    } catch {}
+    playConquistaSound();
 
     // =========================================
     // VIBRAÇÃO
     // =========================================
+
     if (navigator.vibrate) {
+
       navigator.vibrate(120);
     }
 
     // =========================================
     // FECHA AUTOMATICAMENTE
     // =========================================
+
     const timer = setTimeout(() => {
+
       setNova(null);
+
     }, 3500);
 
     return () => clearTimeout(timer);

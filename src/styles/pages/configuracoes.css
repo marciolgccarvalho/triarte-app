@@ -1,114 +1,423 @@
 /* =========================
    PAGE
 ========================= */
+
 .cfg-page {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+
+  gap: 18px;
+
+  padding-bottom: 32px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.cfg-hero {
+  margin-bottom: 2px;
+}
+
+.cfg-hero-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 14px;
+
+  padding: 20px;
+
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fffdf6 0%,
+      #fffdf6 100%
+    );
+
+  border: 1px solid #f6e3a2;
+
+  box-shadow:
+    0 10px 24px #0000000a;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.cfg-hero-top:hover {
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 14px 28px #00000012;
+}
+
+.cfg-brand {
+  display: flex;
+  gap: 14px;
+}
+
+.cfg-logo-wrapper {
+  width: 70px;
+  height: 70px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 20px;
+
+  background:
+    #ffffffaa;
+
+  backdrop-filter: blur(6px);
+
+  flex-shrink: 0;
+}
+
+.cfg-logo {
+  width: 58px;
+}
+
+.cfg-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: fit-content;
+
+  padding: 5px 12px;
+
+  border-radius: 999px;
+
+  background: #facc15;
+
+  color: #111;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  margin-bottom: 10px;
+}
+
+.cfg-title {
+  margin: 0;
+
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.cfg-subtitle {
+  color: #555;
+
+  font-size: 14px;
+  line-height: 1.6;
+
+  margin-top: 6px;
+}
+
+/* =========================
+   STATUS
+========================= */
+
+.cfg-status-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 10px;
+}
+
+.cfg-status-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  padding: 14px;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #fafafa
+    );
+
+  border: 1px solid #ececec;
+
+  box-shadow:
+    0 4px 12px #00000008;
+
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.cfg-status-card:hover {
+  border-color: #facc15;
+
+  box-shadow:
+    0 10px 18px #facc1522;
+}
+
+.cfg-status-card:active {
+  transform:
+    scale(0.98);
+}
+
+.cfg-status-card strong {
+  color: #111;
+
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.cfg-status-card span {
+  color: #666;
+
+  font-size: 11px;
+  line-height: 1.4;
 }
 
 /* =========================
    CARD
 ========================= */
+
 .cfg-card {
   background: #fff;
-  border-radius: 16px;
-  border: 1px solid #eee;
+
+  border-radius: 24px;
+
+  border: 1px solid #ededed;
 
   overflow: hidden;
 
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  box-shadow:
+    0 6px 18px #00000008;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-/* futuro */
-.cfg-futuro {
+.cfg-card:hover {
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 12px 28px #00000010;
+}
+
+.cfg-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 18px 18px 14px;
+}
+
+.cfg-card-header h2 {
+  color: #111;
+
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.cfg-card-icon {
+  width: 22px;
+  height: 22px;
+
+  object-fit: contain;
+}
+
+.cfg-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  padding: 0 18px 18px;
+}
+
+/* =========================
+   VERSÃO
+========================= */
+
+.cfg-version-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 14px;
+
   padding: 16px;
-  background: #fffbeb;
-  border: 1px solid #facc15;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fafafa,
+      #ffffff
+    );
+
+  border: 1px solid #eeeeee;
+}
+
+.cfg-version-label {
+  display: block;
+
+  color: #666;
+
+  font-size: 12px;
+
+  margin-bottom: 4px;
+}
+
+.cfg-version-number {
+  color: #111;
+
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.cfg-version-status {
+  padding: 6px 12px;
+
+  border-radius: 999px;
+
+  background: #dcfce7;
+
+  color: #166534;
+
+  font-size: 12px;
+  font-weight: 700;
 }
 
 /* =========================
-   ITEM
+   BOTÃO
 ========================= */
-.cfg-item {
-  border-bottom: 1px solid #eee;
-}
 
-.cfg-item:last-child {
-  border-bottom: none;
-}
-
-/* =========================
-   HEADER (CLICÁVEL)
-========================= */
-.cfg-header {
+.cfg-update-btn {
   width: 100%;
 
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
+  gap: 10px;
 
-  padding: 14px 16px;
-
-  background: #fff;
   border: none;
 
+  padding: 16px;
+
+  border-radius: 18px;
+
+  background: #111;
+
+  color: #fff;
+
   font-size: 14px;
+  font-weight: 700;
 
   cursor: pointer;
 
-  transition: background 0.15s ease;
+  box-shadow:
+    0 10px 20px #00000018;
+
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease,
+    box-shadow 0.18s ease;
 }
 
-.cfg-header:active {
-  background: #fafafa;
+.cfg-update-btn:hover {
+  background: #000;
+
+  box-shadow:
+    0 14px 24px #00000025;
 }
 
-/* =========================
-   ICONE
-========================= */
-.cfg-icon {
-  font-size: 18px;
-  color: #f59e0b;
+.cfg-update-btn:active {
+  transform:
+    scale(0.98);
 }
 
-/* =========================
-   CONTEÚDO
-========================= */
-.cfg-content {
-  padding: 14px 16px;
+.cfg-update-btn-loading {
+  opacity: 0.85;
+
+  pointer-events: none;
+}
+
+.cfg-update-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.cfg-update-info {
+  color: #666;
 
   font-size: 13px;
-  color: #444;
-
-  line-height: 1.5;
-
-  background: #fcfcfc;
+  line-height: 1.6;
 }
 
 /* =========================
-   LISTA FUTURA
+   FOOTER
 ========================= */
-.cfg-futuro ul {
-  margin-top: 8px;
-  padding-left: 16px;
+
+.cfg-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 10px 0 30px;
+}
+
+.cfg-footer strong {
+  color: #111;
 
   font-size: 13px;
 }
 
-.cfg-futuro li {
-  margin-bottom: 4px;
+.cfg-footer small {
+  color: #777;
+
+  font-size: 12px;
+
+  text-align: center;
+
+  line-height: 1.6;
 }
 
 /* =========================
    RESPONSIVO
 ========================= */
-@media (max-width: 360px) {
-  .cfg-header {
+
+@media (max-width: 640px) {
+
+  .cfg-status-row {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+@media (max-width: 420px) {
+
+  .cfg-title {
+    font-size: 20px;
+  }
+
+  .cfg-subtitle,
+  .cfg-update-info {
     font-size: 13px;
   }
 
-  .cfg-content {
-    font-size: 12px;
+  .cfg-version-number {
+    font-size: 20px;
   }
+
 }

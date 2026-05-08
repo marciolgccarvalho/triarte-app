@@ -13,6 +13,8 @@ import Materiais from "../pages/Materiais";
 import Configuracoes from "../pages/Configuracoes";
 import Linhas from "../pages/Linhas";
 import Projetos from "../pages/Projetos";
+import Informacoes from "../pages/Informacoes";
+
 
 export function renderPagina({
 
@@ -295,6 +297,16 @@ export function renderPagina({
     case "projetos":
 
       return <Projetos />;
+
+    case "informacoes":
+
+      return (
+        <Informacoes
+          irPara={irPara}
+        />
+      );
+
+    return <Informacoes />;
 
     default:
 

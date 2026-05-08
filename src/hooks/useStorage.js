@@ -1,17 +1,71 @@
 import { useState, useEffect } from "react";
 
 export function useStorage() {
+
+  // =========================
+  // FAVORITOS
+  // =========================
+
   const [favoritos, setFavoritos] = useState(() => {
-    return JSON.parse(localStorage.getItem("favoritos") || "[]");
+
+    try {
+      return JSON.parse(
+        localStorage.getItem("favoritos") || "[]"
+      );
+
+    } catch (error) {
+
+      console.error(
+        "Erro ao carregar favoritos:",
+        error
+      );
+
+      return [];
+    }
   });
+
+  // =========================
+  // PROGRESSO
+  // =========================
 
   const [progresso, setProgresso] = useState(() => {
-    return JSON.parse(localStorage.getItem("progresso") || "{}");
+
+    try {
+      return JSON.parse(
+        localStorage.getItem("progresso") || "{}"
+      );
+
+    } catch (error) {
+
+      console.error(
+        "Erro ao carregar progresso:",
+        error
+      );
+
+      return {};
+    }
   });
 
-  // ✅ NOVO — última receita aberta
+  // =========================
+  // ÚLTIMA RECEITA
+  // =========================
+
   const [ultimaReceitaId, setUltimaReceitaId] = useState(() => {
-    return localStorage.getItem("ultimaReceitaId") || null;
+
+    try {
+      return (
+        localStorage.getItem("ultimaReceitaId") || null
+      );
+
+    } catch (error) {
+
+      console.error(
+        "Erro ao carregar última receita:",
+        error
+      );
+
+      return null;
+    }
   });
 
   // =========================
@@ -19,17 +73,61 @@ export function useStorage() {
   // =========================
 
   useEffect(() => {
-    localStorage.setItem("favoritos", JSON.stringify(favoritos));
+
+    try {
+      localStorage.setItem(
+        "favoritos",
+        JSON.stringify(favoritos)
+      );
+
+    } catch (error) {
+
+      console.error(
+        "Erro ao salvar favoritos:",
+        error
+      );
+    }
+
   }, [favoritos]);
 
   useEffect(() => {
-    localStorage.setItem("progresso", JSON.stringify(progresso));
+
+    try {
+      localStorage.setItem(
+        "progresso",
+        JSON.stringify(progresso)
+      );
+
+    } catch (error) {
+
+      console.error(
+        "Erro ao salvar progresso:",
+        error
+      );
+    }
+
   }, [progresso]);
 
   useEffect(() => {
-    if (ultimaReceitaId) {
-      localStorage.setItem("ultimaReceitaId", ultimaReceitaId);
+
+    try {
+
+      if (ultimaReceitaId) {
+
+        localStorage.setItem(
+          "ultimaReceitaId",
+          ultimaReceitaId
+        );
+      }
+
+    } catch (error) {
+
+      console.error(
+        "Erro ao salvar última receita:",
+        error
+      );
     }
+
   }, [ultimaReceitaId]);
 
   // =========================
@@ -37,24 +135,37 @@ export function useStorage() {
   // =========================
 
   const toggleFavorito = (id) => {
+
     setFavoritos((atual) =>
+
       atual.includes(id)
+
         ? atual.filter((item) => item !== id)
+
         : [...atual, id]
     );
   };
 
   const marcarVideo = (receitaId, index) => {
-    setProgresso((atual) => {
-      const vistos = atual[receitaId]?.vistos || [];
 
-      const novosVistos = vistos.includes(index)
-        ? vistos.filter((v) => v !== index)
-        : [...vistos, index];
+    setProgresso((atual) => {
+
+      const vistos =
+        atual[receitaId]?.vistos || [];
+
+      const novosVistos =
+        vistos.includes(index)
+
+          ? vistos.filter((v) => v !== index)
+
+          : [...vistos, index];
 
       return {
         ...atual,
-        [receitaId]: { vistos: novosVistos }
+
+        [receitaId]: {
+          vistos: novosVistos
+        }
       };
     });
   };
@@ -64,12 +175,13 @@ export function useStorage() {
   // =========================
 
   return {
+
     favoritos,
     progresso,
+
     toggleFavorito,
     marcarVideo,
 
-    // ✅ NOVO
     ultimaReceitaId,
     setUltimaReceitaId
   };

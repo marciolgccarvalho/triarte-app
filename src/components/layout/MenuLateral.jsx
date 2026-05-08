@@ -116,6 +116,14 @@ export default function MenuLateral({
           />
 
           <Item
+            icone={IMAGES.icons.informacoes.active}
+            texto="Informações"
+            ativo={pagina === "informacoes"}
+            onClick={() => handleClick("informacoes")}
+          />
+
+
+          <Item
             icone={IMAGES.icons.configuracoes.active}
             texto="Configurações"
             onClick={() => handleClick("configuracoes")}

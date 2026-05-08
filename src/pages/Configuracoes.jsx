@@ -1,150 +1,186 @@
 import React, { useState } from "react";
 
+import { IMAGES } from "@/assets/images";
+
+import "@/styles/pages/configuracoes.css";
 
 export default function Configuracoes() {
-  const [aberto, setAberto] = useState(null);
 
-  const toggle = (item) => {
-    setAberto(aberto === item ? null : item);
+  const [atualizando, setAtualizando] =
+    useState(false);
+
+  const atualizarAplicativo = () => {
+
+    setAtualizando(true);
+
+    setTimeout(() => {
+
+      window.location.reload();
+
+    }, 700);
+
   };
 
   return (
     <div className="page cfg-page">
-      <h1 className="page-title">Configurações</h1>
 
-      <div className="cfg-card">
-        <Item
-          titulo="Política de Privacidade"
-          aberto={aberto === "privacidade"}
-          onClick={() => toggle("privacidade")}
-        >
-          <p>
-            Sua privacidade é importante para nós. O Real Triarte não coleta
-            dados pessoais sensíveis como nome, e-mail, localização ou
-            informações bancárias.
+      {/* HERO */}
+      <section className="cfg-hero">
+
+        <div className="cfg-hero-top">
+
+          <div className="cfg-brand">
+
+            <div className="cfg-logo-wrapper">
+
+              <img
+                src={IMAGES.ui.logo}
+                alt="Real Triarte"
+                className="cfg-logo"
+              />
+
+            </div>
+
+            <div>
+
+              <span className="cfg-badge">
+                Configurações do App
+              </span>
+
+              <h1 className="page-title cfg-title">
+                Configurações
+              </h1>
+
+              <p className="cfg-subtitle">
+                Informações técnicas e atualização
+                do aplicativo Real Triarte.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* STATUS */}
+      <section className="cfg-status-row">
+
+        <div className="cfg-status-card">
+          <strong>Versão</strong>
+
+          <span>
+            Aplicativo atualizado e otimizado.
+          </span>
+        </div>
+
+        <div className="cfg-status-card">
+          <strong>PWA</strong>
+
+          <span>
+            Melhor experiência mobile possível.
+          </span>
+        </div>
+
+        <div className="cfg-status-card">
+          <strong>Atualizações</strong>
+
+          <span>
+            Melhorias contínuas no sistema.
+          </span>
+        </div>
+
+      </section>
+
+      {/* CARD PRINCIPAL */}
+      <section className="cfg-card">
+
+        <div className="cfg-card-header">
+
+          <img
+            src={IMAGES.icons.configuracoes.active}
+            alt="Configurações"
+            className="cfg-card-icon"
+          />
+
+          <h2>
+            Aplicativo
+          </h2>
+
+        </div>
+
+        <div className="cfg-card-content">
+
+          <div className="cfg-version-box">
+
+            <div>
+
+              <strong className="cfg-version-label">
+                Versão atual
+              </strong>
+
+              <span className="cfg-version-number">
+                1.0.0
+              </span>
+
+            </div>
+
+            <div className="cfg-version-status">
+              Atualizado
+            </div>
+
+          </div>
+
+          <button
+            onClick={atualizarAplicativo}
+            className={`cfg-update-btn ${
+              atualizando
+                ? "cfg-update-btn-loading"
+                : ""
+            }`}
+          >
+
+            <img
+              src={IMAGES.icons.configuracoes.active}
+              alt="Atualizar"
+              className="cfg-update-icon"
+            />
+
+            <span>
+              {
+                atualizando
+                  ? "Atualizando aplicativo..."
+                  : "Atualizar aplicativo"
+              }
+            </span>
+
+          </button>
+
+          <p className="cfg-update-info">
+            Utilize esta opção para atualizar o
+            aplicativo e carregar a versão mais
+            recente disponível no sistema.
           </p>
 
-          <p className="mt-sm">
-            Todas as informações relacionadas ao uso do aplicativo, como
-            progresso, favoritos e preferências, são armazenadas exclusivamente
-            no seu dispositivo.
-          </p>
+        </div>
 
-          <p className="mt-sm">
-            Não utilizamos sistemas de rastreamento, não compartilhamos dados
-            com terceiros e não realizamos qualquer tipo de monitoramento
-            externo.
-          </p>
+      </section>
 
-          <p className="mt-sm">
-            Ao utilizar o aplicativo, você concorda com esta política.
-          </p>
-        </Item>
+      {/* FOOTER */}
+      <section className="cfg-footer">
 
-        <Item
-          titulo="Termos de Uso"
-          aberto={aberto === "termos"}
-          onClick={() => toggle("termos")}
-        >
-          <p>
-            O Real Triarte é um aplicativo voltado ao aprendizado de amigurumi
-            com fins educacionais e recreativos.
-          </p>
+        <strong>
+          Real Triarte
+        </strong>
 
-          <p className="mt-sm">
-            Todo o conteúdo disponibilizado, incluindo textos, receitas, vídeos
-            e materiais, é protegido por direitos autorais e não pode ser
-            reproduzido, distribuído ou comercializado sem autorização prévia.
-          </p>
+        <small>
+          Aplicativo em constante evolução para
+          oferecer a melhor experiência possível.
+        </small>
 
-          <p className="mt-sm">
-            O uso do aplicativo é de responsabilidade do usuário, sendo vedado
-            qualquer uso indevido ou que viole direitos de terceiros.
-          </p>
+      </section>
 
-          <p className="mt-sm">
-            O aplicativo pode ser atualizado, modificado ou descontinuado a
-            qualquer momento, sem aviso prévio.
-          </p>
-        </Item>
-
-        <Item
-          titulo="Política de Dados"
-          aberto={aberto === "dados"}
-          onClick={() => toggle("dados")}
-        >
-          <p>
-            O Real Triarte funciona de forma local, sem envio de dados para
-            servidores externos.
-          </p>
-
-          <p className="mt-sm">
-            Todas as informações geradas durante o uso do aplicativo permanecem
-            armazenadas no seu próprio dispositivo.
-          </p>
-
-          <p className="mt-sm">
-            Você pode apagar esses dados a qualquer momento, limpando o
-            armazenamento do navegador ou do aplicativo.
-          </p>
-
-          <p className="mt-sm">
-            Não realizamos backup em nuvem nem compartilhamento automático de
-            informações.
-          </p>
-        </Item>
-
-        <Item
-          titulo="Aviso Legal"
-          aberto={aberto === "legal"}
-          onClick={() => toggle("legal")}
-        >
-          <p>
-            O conteúdo apresentado no Real Triarte tem caráter informativo e
-            educacional.
-          </p>
-
-          <p className="mt-sm">
-            Embora busquemos oferecer instruções claras e acessíveis, não
-            garantimos resultados específicos, pois o aprendizado depende de
-            fatores individuais.
-          </p>
-
-          <p className="mt-sm">
-            O uso das técnicas e orientações é de responsabilidade do usuário.
-          </p>
-
-          <p className="mt-sm">
-            O conteúdo pode ser atualizado, alterado ou removido a qualquer
-            momento, sem aviso prévio.
-          </p>
-        </Item>
-      </div>
-
-      <div className="cfg-card cfg-futuro">
-        <strong>Configurações do usuário</strong>
-
-        <p>Em breve você poderá ajustar:</p>
-
-        <ul>
-          <li>Modo escuro</li>
-          <li>Tamanho da fonte</li>
-          <li>Preferências do app</li>
-        </ul>
-      </div>
-    </div>
-  );
-}
-
-function Item({ titulo, aberto, onClick, children }) {
-  return (
-    <div className="cfg-item">
-      <button type="button" onClick={onClick} className="cfg-header">
-        <strong>{titulo}</strong>
-        <span className="cfg-icon">{aberto ? "−" : "+"}</span>
-      </button>
-
-      {aberto && <div className="cfg-content">{children}</div>}
     </div>
   );
 }
