@@ -68,14 +68,21 @@ React.useEffect(() => {
     setFoiInstalado(false);
 
     setTimeout(() => {
-      setInstalando(false);
-      setFoiInstalado(true);
 
       const standalone =
         window.matchMedia("(display-mode: standalone)").matches ||
         window.navigator.standalone === true;
 
       setIsStandalone(standalone);
+
+      setInstalando(false);
+
+      // SÓ MARCA COMO INSTALADO
+      // SE REALMENTE ENTROU EM STANDALONE
+      if (standalone) {
+        setFoiInstalado(true);
+      }
+
     }, 10000);
   };
 
