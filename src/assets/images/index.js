@@ -12,6 +12,24 @@ import rumi from './personagens/rumi.webp'
 import shadow from './personagens/shadow.webp'
 import squirtle from './personagens/squirtle.webp'
 import zoey from './personagens/zoey.webp'
+import charizard from './personagens/charizard.webp'
+import slowpoke from './personagens/slowpoke.webp'
+import smurfette from './personagens/smurfette.webp'
+import sonic from './personagens/sonic.webp'
+import harrypotter from './personagens/harrypotter.webp'
+import barbie from './personagens/barbie.webp'
+import jacksparrow from './personagens/jacksparrow.webp'
+import ariel from './personagens/ariel.webp'
+import rocketraccoon from './personagens/rocketraccoon.webp'
+import mariobros from './personagens/mariobros.webp'
+import mirabel from './personagens/mirabel.webp'
+import emilia from './personagens/emilia.webp'
+import valente from './personagens/valente.webp'
+import brancadeneve from './personagens/brancadeneve.webp'
+import rapunzel from './personagens/rapunzel.webp'
+
+
+
 
 // ==========================
 // ICONS
@@ -100,7 +118,22 @@ export const IMAGES = {
     rumi,
     shadow,
     squirtle,
-    zoey
+    zoey,
+    charizard,
+    slowpoke,
+    smurfette,
+    sonic,
+    harrypotter,
+    barbie,
+    jacksparrow,
+    ariel,
+    rocketraccoon,
+    mariobros,
+    mirabel,
+    emilia,
+    valente,
+    brancadeneve,
+    rapunzel
   },
 
   icons: {

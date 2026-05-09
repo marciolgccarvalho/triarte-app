@@ -219,9 +219,9 @@
     "Código": "7569",
     "Nome": "Brigadeiro",
     "Categoria": "Bege/Marrom",
-    "HEX escuro": "#4A2324",
-    "HEX médio": "#5E2F2C",
-    "HEX claro": "#A06E58",
+    "HEX escuro": "#91493c",
+    "HEX médio": "#975c51",
+    "HEX claro": "#d08c7a",
     "Descrição Nome": "Brigadeiro"
   },
   {
@@ -669,9 +669,9 @@
     "Código": "2137",
     "Nome": "Hortênsia",
     "Categoria": "Azul",
-    "HEX escuro": "#87a8e2",
-    "HEX médio": "#b1cdf5",
-    "HEX claro": "#cde2f7",
+    "HEX escuro": "#6c96c2",
+    "HEX médio": "#8eb4da",
+    "HEX claro": "#a2cdef",
     "Descrição Nome": "Hortênsia"
   },
   {
@@ -1699,5 +1699,51 @@
     "HEX médio": "#8B3555",
     "HEX claro": "#8B3555",
     "Descrição Nome": "Viva Magenta"
+  },
+  {
+    "Código": "1317",
+    "Nome": "Solar",
+    "Categoria": "Amarelo",
+    "HEX escuro": "#f3c969",
+    "HEX médio": "#fbd176",
+    "HEX claro": "#feec93",
+    "Descrição Nome": "Solar"
+  },
+  {
+    "Código": "3583",
+    "Nome": "Cereja",
+    "Categoria": "Vermelho",
+    "HEX escuro": "#c82b2c",
+    "HEX médio": "#ef4e49",
+    "HEX claro": "#fc655e",
+    "Descrição Nome": "Cereja"
+  },
+  {
+    "Código": "1289",
+    "Nome": "Canário",
+    "Categoria": "Amarelo",
+    "HEX escuro": "#fcc010",
+    "HEX médio": "#fada03",
+    "HEX claro": "#fde304",
+    "Descrição Nome": "Canário"
+  },
+  {
+    "Código": "8797",
+    "Nome": "Aço Circulo",
+    "Categoria": "Cinza",
+    "HEX escuro": "#685963",
+    "HEX médio": "#7c6b75",
+    "HEX claro": "#948792",
+    "Descrição Nome": "Aço Circulo"
+  }
+  ,
+  {
+    "Código": "3586",
+    "Nome": "Cereja",
+    "Categoria": "Vermelho",
+    "HEX escuro": "#c52322",
+    "HEX médio": "#ed4746",
+    "HEX claro": "#f55b57",
+    "Descrição Nome": "Cereja"
   }
 ]
