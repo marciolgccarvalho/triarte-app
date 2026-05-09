@@ -33,6 +33,9 @@ export default function Home({
 
   const receitasDestaque = React.useMemo(() => {
     return receitas.filter((r) => {
+
+      if (!r?.premium) return false;
+
       if (!r?.destaqueInicio || !r?.destaqueFim) return false;
 
       const inicio = new Date(r.destaqueInicio);
@@ -79,11 +82,23 @@ export default function Home({
   const isFavorito = favoritos?.includes(receitaAtual?.id);
 
   const receitasLista = React.useMemo(() => {
-    const idsDestaque = new Set(receitasDestaque.map(r => r.id));
-    const filtradas = receitas.filter(r => !idsDestaque.has(r.id));
-    const embaralhadas = [...filtradas].sort(() => Math.random() - 0.5);
-    return embaralhadas.slice(0, 8);
-  }, [receitas, receitasDestaque]);
+
+  const idsDestaque = new Set(
+    receitasDestaque.map(r => r.id)
+  );
+
+  // SOMENTE PREMIUM
+  const filtradas = receitas.filter((r) =>
+    r?.premium && !idsDestaque.has(r.id)
+  );
+
+  // RANDOM
+  const embaralhadas = [...filtradas]
+    .sort(() => Math.random() - 0.5);
+
+  return embaralhadas.slice(0, 8);
+
+}, [receitas, receitasDestaque]);
 
   return (
     <div className="page-container">
