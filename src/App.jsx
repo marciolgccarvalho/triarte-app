@@ -61,28 +61,30 @@ function App() {
     };
   }, []);
 
-  // INSTALAÇÃO REAL CONCLUÍDA
-  React.useEffect(() => {
-    const handleInstalled = () => {
+  // INSTALAÇÃO INICIADA PELO ANDROID
+React.useEffect(() => {
+  const handleInstalled = () => {
+    setInstalando(true);
+    setFoiInstalado(false);
+
+    setTimeout(() => {
       setInstalando(false);
       setFoiInstalado(true);
 
-      // garante atualização do standalone após instalação
-      setTimeout(() => {
-        const standalone =
-          window.matchMedia("(display-mode: standalone)").matches ||
-          window.navigator.standalone === true;
+      const standalone =
+        window.matchMedia("(display-mode: standalone)").matches ||
+        window.navigator.standalone === true;
 
-        setIsStandalone(standalone);
-      }, 500);
-    };
+      setIsStandalone(standalone);
+    }, 10000);
+  };
 
-    window.addEventListener("appinstalled", handleInstalled);
+  window.addEventListener("appinstalled", handleInstalled);
 
-    return () => {
-      window.removeEventListener("appinstalled", handleInstalled);
-    };
-  }, []);
+  return () => {
+    window.removeEventListener("appinstalled", handleInstalled);
+  };
+}, []);
 
   // INSTALAR APP
   const instalarApp = async () => {
@@ -129,8 +131,8 @@ function App() {
     return (
       <TelaCentro
         titulo="⏳ Instalando aplicativo..."
-        texto="Aguarde alguns segundos"
-      />
+        texto="O Android pode levar alguns segundos para concluir a instalação. Aguarde o app aparecer no dispositivo."
+/>
     );
   }
 
@@ -143,8 +145,8 @@ function App() {
   if (foiInstalado) {
     return (
       <TelaCentro
-        titulo="✅ App instalado"
-        texto="Feche esta página e abra o app pela tela inicial"
+        titulo="✅ Instalação finalizada"
+        texto="Se o aplicativo já apareceu na tela inicial do dispositivo, você pode fechar esta página."
       />
     );
   }
