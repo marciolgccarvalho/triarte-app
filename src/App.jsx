@@ -21,7 +21,7 @@ function App() {
   const [loadingSplash, setLoadingSplash] =
     React.useState(true);
 
-  const liberarNoPC = true;
+  const liberarNoPC = False;
 
   // SPLASH PREMIUM
   React.useEffect(() => {
