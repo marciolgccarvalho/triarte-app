@@ -23,7 +23,7 @@ function App() {
 
   const liberarNoPC = false;
 
-  // SPLASH PREMIUM
+  // SPLASH PREMIUM 
   React.useEffect(() => {
 
     const timer = setTimeout(() => {
