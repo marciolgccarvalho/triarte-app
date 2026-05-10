@@ -1,6 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+
 import App from "./App.jsx";
+
+import { Analytics } from "@vercel/analytics/react";
 
 /* =========================
    BASE (sempre primeiro)
@@ -26,7 +29,9 @@ import "./styles/components/modal.css";
 import "./styles/components/sidebar.css";
 import "./styles/components/parabens.css";
 
-// Pages
+/* =========================
+   PAGES
+========================= */
 import "./styles/pages/home.css";
 import "./styles/pages/sobre.css";
 import "./styles/pages/contato.css";
@@ -41,51 +46,103 @@ import "./styles/pages/configuracoes.css";
 import "./styles/pages/conquistas.css";
 import "./styles/pages/abreviacoes.css";
 
-
 /* =========================
    RENDER APP
 ========================= */
-const rootElement = document.getElementById("root");
+const rootElement =
+  document.getElementById("root");
 
 if (!rootElement) {
-  throw new Error("❌ Elemento #root não encontrado");
+
+  throw new Error(
+    "❌ Elemento #root não encontrado"
+  );
+
 }
 
 ReactDOM.createRoot(rootElement).render(
+
   <React.StrictMode>
+
     <App />
+
+    <Analytics />
+
   </React.StrictMode>
+
 );
 
 /* =========================
    SERVICE WORKER (PWA)
 ========================= */
-if ("serviceWorker" in navigator && import.meta.env.PROD) {
-  window.addEventListener("load", async () => {
-    try {
-      const registration = await navigator.serviceWorker.register("/sw.js");
+if (
+  "serviceWorker" in navigator &&
+  import.meta.env.PROD
+) {
 
-      console.log("✅ Service Worker registrado");
+  window.addEventListener(
+    "load",
+    async () => {
 
-      // força atualização imediata
-      if (registration.waiting) {
-        registration.waiting.postMessage({ type: "SKIP_WAITING" });
+      try {
+
+        const registration =
+          await navigator.serviceWorker.register(
+            "/sw.js"
+          );
+
+        console.log(
+          "✅ Service Worker registrado"
+        );
+
+        // força atualização imediata
+        if (registration.waiting) {
+
+          registration.waiting.postMessage({
+            type: "SKIP_WAITING"
+          });
+
+        }
+
+        registration.addEventListener(
+          "updatefound",
+          () => {
+
+            const newWorker =
+              registration.installing;
+
+            if (!newWorker) return;
+
+            newWorker.addEventListener(
+              "statechange",
+              () => {
+
+                if (
+                  newWorker.state === "installed"
+                ) {
+
+                  console.log(
+                    "🔄 Nova versão disponível"
+                  );
+
+                }
+
+              }
+            );
+
+          }
+        );
+
+      } catch (error) {
+
+        console.error(
+          "❌ Erro ao registrar Service Worker:",
+          error
+        );
+
       }
 
-      registration.addEventListener("updatefound", () => {
-        const newWorker = registration.installing;
-
-        if (!newWorker) return;
-
-        newWorker.addEventListener("statechange", () => {
-          if (newWorker.state === "installed") {
-            console.log("🔄 Nova versão disponível");
-          }
-        });
-      });
-
-    } catch (error) {
-      console.error("❌ Erro ao registrar Service Worker:", error);
     }
-  });
+  );
+
 }
