@@ -1,4 +1,5 @@
 import React from "react";
+
 import MainApp from "./MainApp";
 import InstallGate from "./InstallGate";
 
@@ -21,13 +22,25 @@ function App() {
   const [loadingSplash, setLoadingSplash] =
     React.useState(true);
 
+  /*
+  ==========================================
+  LIBERAR ACESSO NO PC
+
+  true  = PC liberado
+  false = PC bloqueado
+
+  ALTERE SOMENTE ESTA LINHA
+  ==========================================
+  */
   const liberarNoPC = false;
 
-  // SPLASH PREMIUM 
+  // SPLASH PREMIUM
   React.useEffect(() => {
 
     const timer = setTimeout(() => {
+
       setLoadingSplash(false);
+
     }, 2800);
 
     return () => clearTimeout(timer);
@@ -40,7 +53,9 @@ function App() {
     const check = () => {
 
       const standalone =
-        window.matchMedia("(display-mode: standalone)").matches ||
+        window.matchMedia(
+          "(display-mode: standalone)"
+        ).matches ||
         window.navigator.standalone === true;
 
       setIsStandalone(standalone);
@@ -195,21 +210,68 @@ function App() {
 
   }
 
-  // APP ABERTO NORMALMENTE
-  if (
-    isStandalone ||
-    (liberarNoPC && isDesktop)
-  ) {
+  /*
+  ==========================================
+  APP INSTALADO (PWA)
+  ==========================================
+  */
+  if (isStandalone) {
 
     return <MainApp />;
 
   }
 
-  // TELA DE INSTALAÇÃO
+  /*
+  ==========================================
+  MOBILE VIA NAVEGADOR
+  ==========================================
+  */
+  if (!isDesktop) {
+
+    return <MainApp />;
+
+  }
+
+  /*
+  ==========================================
+  PC LIBERADO MANUALMENTE
+  ==========================================
+  */
+  if (liberarNoPC) {
+
+    return <MainApp />;
+
+  }
+
+  /*
+  ==========================================
+  PC BLOQUEADO
+  ==========================================
+  */
+  if (isDesktop && !liberarNoPC) {
+
+    return (
+
+      <TelaCentro
+        titulo="📱 Disponível apenas no celular"
+        texto="O Real Triarte foi desenvolvido exclusivamente para dispositivos móveis."
+      />
+
+    );
+
+  }
+
+  /*
+  ==========================================
+  TELA DE INSTALAÇÃO
+  ==========================================
+  */
   return (
+
     <InstallGate
       instalarApp={instalarApp}
     />
+
   );
 
 }
