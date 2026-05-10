@@ -27,6 +27,19 @@ import emilia from './personagens/emilia.webp'
 import valente from './personagens/valente.webp'
 import brancadeneve from './personagens/brancadeneve.webp'
 import rapunzel from './personagens/rapunzel.webp'
+import mulhermaravilha from './personagens/mulhermaravilha.webp'
+import feiticeiraescarlate from './personagens/feiticeiraescarlate.webp'
+import ricksanchez from './personagens/ricksanchez.webp'
+import tanjirokamado from './personagens/tanjirokamado.webp'
+import mulhermaravilha4 from './personagens/mulhermaravilha.webp'
+import mulhermaravilha5 from './personagens/mulhermaravilha.webp'
+import mulhermaravilha6 from './personagens/mulhermaravilha.webp'
+import mulhermaravilha7 from './personagens/mulhermaravilha.webp'
+import mulhermaravilha8 from './personagens/mulhermaravilha.webp'
+import mulhermaravilha9 from './personagens/mulhermaravilha.webp'
+
+
+
 
 
 
@@ -133,7 +146,11 @@ export const IMAGES = {
     emilia,
     valente,
     brancadeneve,
-    rapunzel
+    rapunzel,
+    mulhermaravilha,
+    feiticeiraescarlate,
+    ricksanchez,
+    tanjirokamado
   },
 
   icons: {

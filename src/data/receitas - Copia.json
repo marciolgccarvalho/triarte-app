@@ -1934,7 +1934,7 @@
     "id": "rocketraccoon",
     "nome": "Rocket Raccoon",
     "categoria": "Filmes",
-    "subCategoria": "Marvel",
+    "subCategoria": "Vingadores",
     "descricao": "✨ Aprenda a fazer o Rocket Raccoon Amigurumi em crochê — um dos personagens mais carismáticos e sarcásticos dos Guardiões da Galáxia! 🦝🚀\nNeste curso completo dividido em 5 vídeos, você vai criar um Rocket cheio de detalhes, expressão marcante e aquele estilo destemido que todo fã ama.",
     "premium": true,
     "ativo": true,
@@ -2376,6 +2376,208 @@
     ]
   },
   {
+    "id": "rocketraccoon",
+    "nome": "Rocket Raccoon",
+    "categoria": "Filmes",
+    "subCategoria": "Vingadores",
+    "descricao": "✨ Aprenda a fazer o Rocket Raccoon Amigurumi em crochê — um dos personagens mais carismáticos e sarcásticos dos Guardiões da Galáxia! 🦝🚀\nNeste curso completo dividido em 5 vídeos, você vai criar um Rocket cheio de detalhes, expressão marcante e aquele estilo destemido que todo fã ama.",
+    "premium": true,
+    "ativo": true,
+    "destaqueInicio": null,
+    "destaqueFim": null,
+    "ordem": 19,
+    "altura": "22 cm",
+    "materiais": {
+      "linhas": [
+        "2931",
+        "8176",
+        "7569",
+        "7625",
+        "7030",
+        "8990",
+        "3528"
+      ],
+      "itens": [
+        "Agulha de Crochê",
+        "Agulha de Tapeceiro",
+        "Alfinetes",
+        "Tesoura",
+        "Cola de Silicone",
+        "Fibra Siliconada",
+        "Bastão de Cola Quente",
+        "Olhos com Trava de Segurança",
+        "Retalho de Feltro Cinza"
+      ]
+    },
+    "videos": [
+      {
+        "titulo": "Parte 01",
+        "youtubeId": "wTK0ns6ncIw",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 02",
+        "youtubeId": "9jx_w-2ZRVc",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 03",
+        "youtubeId": "kF7mAoGOdxM",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 04",
+        "youtubeId": "VdNSIjqWv_M",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 05",
+        "youtubeId": "Q--OzYMO2E4",
+        "liberacao": null
+      }
+    ]
+  },
+  {
+    "id": "jacksparrow",
+    "nome": "Jack Sparrow",
+    "categoria": "Filmes",
+    "subCategoria": "Piratas do Caribe",
+    "descricao": "✨ Aprenda a fazer o Jack Sparrow Amigurumi em crochê — o pirata mais lendário dos sete mares! 🏴‍☠️🗺️\nNeste curso completo dividido em 6 vídeos, você vai criar um Jack cheio de personalidade, detalhes marcantes e todo o charme irreverente do personagem.",
+    "premium": true,
+    "ativo": true,
+    "destaqueInicio": null,
+    "destaqueFim": null,
+    "ordem": 17,
+    "altura": "24 cm",
+    "materiais": {
+      "linhas": [
+        "8990",
+        "3528",
+        "7650",
+        "7625",
+        "7569",
+        "8001",
+        "2856",
+        "8797"
+      ],
+      "itens": [
+        "Agulha de Crochê",
+        "Agulha de Tapeceiro",
+        "Alfinetes",
+        "Tesoura",
+        "Cola de Silicone",
+        "Fibra Siliconada",
+        "Bastão de Cola Quente",
+        "Olhos com Trava de Segurança"
+      ]
+    },
+    "videos": [
+      {
+        "titulo": "Parte 01",
+        "youtubeId": "nWCwbUyE4Vk",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 02",
+        "youtubeId": "OIK6KZcsgJ8",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 03",
+        "youtubeId": "5qJbuK8-m_g",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 04",
+        "youtubeId": "4b5tUCxhDUU",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 05",
+        "youtubeId": "Jt_esCnfV6A",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 06",
+        "youtubeId": "y1EIDF91Z_8",
+        "liberacao": null
+      }
+    ]
+  },
+  {
+    "id": "harrypotter",
+    "nome": " Harry Potter",
+    "categoria": "Filmes",
+    "subCategoria": "Harry Potter",
+    "descricao": "✨ \"Descubra a magia dos #amigurumis com esta receita inspirada no #harrypotter! Neste #tutorial, você aprenderá passo a passo a criar seu próprio boneco em #crochet. Mesmo iniciantes podem acompanhar facilmente e se divertir dando vida a esse personagem encantador. Assista agora e embarque nessa jornada criativa!\"",
+    "premium": false,
+    "ativo": true,
+    "destaqueInicio": null,
+    "destaqueFim": null,
+    "ordem": 15,
+    "altura": "24",
+    "materiais": {
+      "linhas": [
+        "3528",
+        "8001",
+        "8008",
+        "1289",
+        "3583",
+        "8990"
+      ],
+      "itens": [
+        "Agulha de Crochê",
+        "Agulha de Tapeceiro",
+        "Alfinetes",
+        "Tesoura",
+        "Cola de Silicone",
+        "Fibra Siliconada",
+        "Bastão de Cola Quente",
+        "Retalho de Feltro Branco",
+        "Retalho de Feltro Preto",
+        "Retalho de Feltro Amarelo",
+        "Retalho de Feltro Cinza"
+      ]
+    },
+    "videos": [
+      {
+        "titulo": "Parte 01",
+        "youtubeId": "LckWyERMJiQ",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 02",
+        "youtubeId": "m9xxMWUNCRk",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 03",
+        "youtubeId": "s-Iji65vbDk",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 04",
+        "youtubeId": "AFiRBjldZz0",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 05",
+        "youtubeId": "EC4Z5MjLDf8",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 06",
+        "youtubeId": "viCypYpES6A",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 07",
+        "youtubeId": "6NRsdu-h6QA",
+        "liberacao": null
+      }
+    ]
+  },
+  {
     "id": "brancadeneve",
     "nome": "Branca de Neve",
     "categoria": "Animação",
@@ -2431,179 +2633,6 @@
       {
         "titulo": "Parte 05",
         "youtubeId": "oYUGx3YheYI",
-        "liberacao": null
-      }
-    ]
-  },
-  {
-    "id": "feiticeiraescarlate",
-    "nome": "Feiticeira Escarlate",
-    "categoria": "Filmes",
-    "subCategoria": "Marvel",
-    "descricao": "✨ Aprenda passo a passo a fazer a Feiticeira Escarlate Amigurumi mais poderosa do YouTube!\nNeste curso completo de crochê amigurumi inspirado na icônica heroína da Marvel, você vai aprender a criar uma personagem cheia de presença, detalhes mágicos e um acabamento digno do caos vermelho! 🔮❤️✨",
-    "premium": true,
-    "ativo": true,
-    "destaqueInicio": null,
-    "destaqueFim": null,
-    "ordem": 27,
-    "altura": "23 cm",
-    "materiais": {
-      "linhas": [
-        "8990",
-        "3611",
-        "7567",
-        "3528",
-        "8176"
-      ],
-      "itens": [
-        "Agulha de Crochê",
-        "Agulha de Tapeceiro",
-        "Alfinetes",
-        "Tesoura",
-        "Cola de Silicone",
-        "Fibra Siliconada",
-        "Bastão de Cola Quente",
-        "Olhos com Trava de Segurança",
-        "Retalho de Feltro Bordo"
-      ]
-    },
-    "videos": [
-      {
-        "titulo": "Parte 01",
-        "youtubeId": "u8X1WL4F9CQ",
-        "liberacao": null
-      },
-      {
-        "titulo": "Parte 02",
-        "youtubeId": "mT_16IGuxlc",
-        "liberacao": null
-      },
-      {
-        "titulo": "Parte 03",
-        "youtubeId": "446PQRr7mTQ",
-        "liberacao": null
-      },
-      {
-        "titulo": "Parte 04",
-        "youtubeId": "gMWfrLPMZb4",
-        "liberacao": null
-      },
-      {
-        "titulo": "Parte 05",
-        "youtubeId": "T2kVDV_HcBA",
-        "liberacao": null
-      }
-    ]
-  },
-  {
-    "id": "ricksanchez",
-    "nome": "Rick Sanchez",
-    "categoria": "Séries",
-    "subCategoria": "Rick and Morty",
-    "descricao": "✨ Aprenda passo a passo a fazer o Rick Amigurumi mais insano do YouTube!\nNeste curso completo de crochê amigurumi inspirado no icônico cientista de Rick and Morty, você vai aprender a criar um boneco cheio de personalidade, estilo irreverente e acabamento digno de outra dimensão! 🧪💚🌀",
-    "premium": false,
-    "ativo": true,
-    "destaqueInicio": null,
-    "destaqueFim": null,
-    "ordem": 28,
-    "altura": "24",
-    "materiais": {
-      "linhas": [
-        "8990",
-        "8176",
-        "7567",
-        "8001",
-        "1289",
-        "2927"
-      ],
-      "itens": [
-        "Agulha de Crochê",
-        "Agulha de Tapeceiro",
-        "Alfinetes",
-        "Tesoura",
-        "Cola de Silicone",
-        "Fibra Siliconada",
-        "Bastão de Cola Quente",
-        "Olhos com Trava de Segurança",
-        "Retalho de Feltro Branco",
-        "Retalho de Feltro Preto"
-      ]
-    },
-    "videos": [
-      {
-        "titulo": "Parte 01",
-        "youtubeId": "4hRSgpw2y0A",
-        "liberacao": null
-      },
-      {
-        "titulo": "Parte 02",
-        "youtubeId": "CWy5EQbywTY",
-        "liberacao": null
-      },
-      {
-        "titulo": "Parte 03",
-        "youtubeId": "w-GGA3NL7yU",
-        "liberacao": null
-      },
-      {
-        "titulo": "Parte 04",
-        "youtubeId": "ETOMbavKU5U",
-        "liberacao": null
-      }
-    ]
-  },
-  {
-    "id": "tanjirokamado",
-    "nome": "Tanjiro Kamado",
-    "categoria": "Anime",
-    "subCategoria": "Demon Slayer",
-    "descricao": "✨ Aprenda passo a passo a fazer o Demon Slayer Amigurumi mais incrível do YouTube!\nNeste curso completo de crochê amigurumi inspirado no universo de Kimetsu no Yaiba, você vai criar um personagem cheio de estilo, cores marcantes e um acabamento digno dos maiores caçadores de demônios! ⚔️🔥🌸",
-    "premium": true,
-    "ativo": true,
-    "destaqueInicio": null,
-    "destaqueFim": null,
-    "ordem": 29,
-    "altura": "24",
-    "materiais": {
-      "linhas": [
-        "8001",
-        "8990",
-        "7567",
-        "5669",
-        "7569"
-      ],
-      "itens": [
-        "Agulha de Crochê",
-        "Agulha de Tapeceiro",
-        "Alfinetes",
-        "Tesoura",
-        "Cola de Silicone",
-        "Fibra Siliconada",
-        "Bastão de Cola Quente",
-        "Olhos com Trava de Segurança",
-        "Retalho de Feltro Branco",
-        "Retalho de Feltro Vermelho"
-      ]
-    },
-    "videos": [
-      {
-        "titulo": "Parte 01",
-        "youtubeId": "9l5RPixsY8M",
-        "liberacao": null
-      },
-      {
-        "titulo": "Parte 02",
-        "youtubeId": "HxI2olDCXG4",
-        "liberacao": null
-      },
-      {
-        "titulo": "Parte 03",
-        "youtubeId": "fAB_Q6h4TVg",
-        "liberacao": null
-      },
-      {
-        "titulo": "Parte 04",
-        "youtubeId": "Lzz6Ey2Yec0",
         "liberacao": null
       }
     ]
