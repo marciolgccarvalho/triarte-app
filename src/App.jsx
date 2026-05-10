@@ -223,17 +223,6 @@ function App() {
 
   /*
   ==========================================
-  MOBILE VIA NAVEGADOR
-  ==========================================
-  */
-  if (!isDesktop) {
-
-    return <MainApp />;
-
-  }
-
-  /*
-  ==========================================
   PC LIBERADO MANUALMENTE
   ==========================================
   */
@@ -263,7 +252,10 @@ function App() {
 
   /*
   ==========================================
-  TELA DE INSTALAÇÃO
+  MOBILE VIA NAVEGADOR
+
+  NÃO ABRE O APP
+  OBRIGA INSTALAR
   ==========================================
   */
   return (
