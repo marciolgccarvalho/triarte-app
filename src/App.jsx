@@ -88,6 +88,18 @@ function App() {
 
     const handler = (e) => {
 
+      // BLOQUEIA INSTALAÇÃO NO PC
+      if (
+        window.innerWidth > 768 &&
+        !liberarNoPC
+      ) {
+
+        e.preventDefault();
+
+        return;
+
+      }
+
       e.preventDefault();
 
       setPromptInstalar(e);
@@ -242,7 +254,7 @@ function App() {
     return (
 
       <TelaCentro
-        titulo="📱 Disponível apenas no celular"
+        titulo="📱 Acesse pelo celular"
         texto="O Real Triarte foi desenvolvido exclusivamente para dispositivos móveis."
       />
 
@@ -253,9 +265,26 @@ function App() {
   /*
   ==========================================
   MOBILE VIA NAVEGADOR
+  APP JÁ INSTALADO
+  ==========================================
+  */
+  if (!promptInstalar) {
 
-  NÃO ABRE O APP
-  OBRIGA INSTALAR
+    return (
+
+      <TelaCentro
+        titulo="📲 Aplicativo já instalado"
+        texto="O Real Triarte deve ser acessado somente pelo aplicativo instalado no dispositivo."
+      />
+
+    );
+
+  }
+
+  /*
+  ==========================================
+  MOBILE VIA NAVEGADOR
+  OBRIGA INSTALAÇÃO
   ==========================================
   */
   return (

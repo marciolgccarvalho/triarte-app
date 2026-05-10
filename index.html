@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="pt-BR">
+
   <head>
+
     <meta charset="UTF-8" />
 
     <meta
@@ -15,13 +17,56 @@
       content="Receitas de amigurumi, vídeos e conteúdos exclusivos do Real Triarte."
     />
 
-    <meta name="theme-color" content="#ffd400" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-title" content="Real Triarte" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta
+      name="theme-color"
+      content="#ffd400"
+    />
 
-    <link rel="manifest" href="/manifest.json" />
+    <meta
+      name="mobile-web-app-capable"
+      content="yes"
+    />
+
+    <meta
+      name="apple-mobile-web-app-capable"
+      content="yes"
+    />
+
+    <meta
+      name="apple-mobile-web-app-title"
+      content="Real Triarte"
+    />
+
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="default"
+    />
+
+    <!--
+    ==========================================
+    MANIFEST APENAS NO MOBILE
+    BLOQUEIA INSTALAÇÃO NO PC
+    ==========================================
+    -->
+    <script>
+
+      const isDesktop =
+        window.innerWidth > 768;
+
+      if (!isDesktop) {
+
+        const manifest =
+          document.createElement("link");
+
+        manifest.rel = "manifest";
+
+        manifest.href = "/manifest.json";
+
+        document.head.appendChild(manifest);
+
+      }
+
+    </script>
 
     <link
       rel="icon"
@@ -36,22 +81,42 @@
     />
 
     <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q4Z5CE1XTB"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-Q4Z5CE1XTB"
+    ></script>
 
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
 
-      gtag('config', 'G-Q4Z5CE1XTB');
+      window.dataLayer =
+        window.dataLayer || [];
+
+      function gtag() {
+
+        dataLayer.push(arguments);
+
+      }
+
+      gtag("js", new Date());
+
+      gtag(
+        "config",
+        "G-Q4Z5CE1XTB"
+      );
+
     </script>
-
 
   </head>
 
   <body>
+
     <div id="root"></div>
 
-    <script type="module" src="/src/main.jsx"></script>
+    <script
+      type="module"
+      src="/src/main.jsx"
+    ></script>
+
   </body>
+
 </html>
