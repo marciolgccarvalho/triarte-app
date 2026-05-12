@@ -46,7 +46,7 @@ export default function MainApp() {
      CONFIG
   ======================================== */
 
-  const liberarNoPC = true;
+  const liberarNoPC = false;
 
   /* ========================================
      ESTADOS GLOBAIS

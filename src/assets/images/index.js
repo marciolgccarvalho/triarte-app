@@ -31,18 +31,33 @@ import mulhermaravilha from './personagens/mulhermaravilha.webp'
 import feiticeiraescarlate from './personagens/feiticeiraescarlate.webp'
 import ricksanchez from './personagens/ricksanchez.webp'
 import tanjirokamado from './personagens/tanjirokamado.webp'
-import mulhermaravilha4 from './personagens/mulhermaravilha.webp'
-import mulhermaravilha5 from './personagens/mulhermaravilha.webp'
-import mulhermaravilha6 from './personagens/mulhermaravilha.webp'
-import mulhermaravilha7 from './personagens/mulhermaravilha.webp'
-import mulhermaravilha8 from './personagens/mulhermaravilha.webp'
-import mulhermaravilha9 from './personagens/mulhermaravilha.webp'
-
-
-
-
-
-
+import luffy from './personagens/luffy.webp'
+import saitama from './personagens/saitama.webp'
+import goku from './personagens/goku.webp'
+import chapeleiromaluco from './personagens/chapeleiromaluco.webp'
+import moana from './personagens/moana.webp'
+import alegria from './personagens/alegria.webp'
+import charliebrown from './personagens/charliebrown.webp'
+import smurf from './personagens/smurf.webp'
+import cyclops from './personagens/cyclops.webp'
+import stitch from './personagens/stitch.webp'
+import capivara from './personagens/capivara.webp'
+import tristeza from './personagens/tristeza.webp'
+import coringa from './personagens/coringa.webp'
+import vampira from './personagens/vampira.webp'
+import knuckles from './personagens/knuckles.webp'
+import rainhadecopas from './personagens/rainhadecopas.webp'
+import vedita from './personagens/vedita.webp'
+import wandinha from './personagens/wandinha.webp'
+import coraline from './personagens/coraline.webp'
+import deidara from './personagens/deidara.webp'
+import sakura from './personagens/sakura.webp'
+import tails from './personagens/tails.webp'
+import sailormoon from './personagens/sailormoon.webp'
+import naruto from './personagens/naruto.webp'
+import pipi from './personagens/pipi.webp'
+import sophie from './personagens/sophie.webp'
+import pow from './personagens/pow.webp'
 
 // ==========================
 // ICONS
@@ -150,7 +165,33 @@ export const IMAGES = {
     mulhermaravilha,
     feiticeiraescarlate,
     ricksanchez,
-    tanjirokamado
+    tanjirokamado,
+    luffy,
+    saitama,
+    goku,
+    chapeleiromaluco,
+    moana,
+    alegria,
+    charliebrown,
+    cyclops,
+    stitch,
+    capivara,
+    tristeza,
+    coringa,
+    vampira,
+    knuckles,
+    rainhadecopas,
+    vedita,
+    wandinha,
+    coraline,
+    deidara,
+    sakura,
+    tails,
+    sailormoon,
+    naruto,
+    pipi,
+    sophie,
+    pow
   },
 
   icons: {

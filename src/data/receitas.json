@@ -2607,5 +2607,409 @@
         "liberacao": null
       }
     ]
+  },
+  {
+    "id": "luffy",
+    "nome": "Luffy",
+    "categoria": "Anime",
+    "subCategoria": "One Piece",
+    "descricao": "✨ Aprenda passo a passo a fazer o One Piece Amigurumi mais épico do YouTube!\nNeste curso completo de crochê amigurumi inspirado no universo vibrante de One Piece, você vai aprender a criar um personagem cheio de detalhes, identidade e acabamento digno dos maiores piratas dos mares! 🏴‍☠️🌊✨",
+    "premium": true,
+    "ativo": true,
+    "destaqueInicio": null,
+    "destaqueFim": null,
+    "ordem": 30,
+    "altura": "22 cm",
+    "materiais": {
+      "linhas": [
+        "8176",
+        "7625",
+        "8001",
+        "2829",
+        "3583",
+        "8990",
+        "7030",
+        "1298"
+      ],
+      "itens": [
+        "Agulha de Crochê",
+        "Agulha de Tapeceiro",
+        "Alfinetes",
+        "Tesoura",
+        "Cola de Silicone",
+        "Fibra Siliconada",
+        "Bastão de Cola Quente",
+        "Olhos com Trava de Segurança"
+      ]
+    },
+    "videos": [
+      {
+        "titulo": "Parte 01",
+        "youtubeId": "g8ipgZubtlg",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 02",
+        "youtubeId": "c6XgO7pgURo",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 03",
+        "youtubeId": "JVmB2IrlEuc",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 04",
+        "youtubeId": "QXbBQmmdNi8",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 05",
+        "youtubeId": "gna8RwyEQhQ",
+        "liberacao": null
+      }
+    ]
+  },
+  {
+    "id": "saitama",
+    "nome": "Saitama",
+    "categoria": "Anime",
+    "subCategoria": "One Punch Man",
+    "descricao": "✨ Aprenda passo a passo a fazer o Saitama Amigurumi mais estiloso do YouTube!\nNeste curso completo de crochê amigurumi inspirado no lendário herói de One Punch Man, você vai criar um boneco simples, marcante e com um acabamento impecável — digno do homem mais forte do mundo! 🥊⚡🟡",
+    "premium": true,
+    "ativo": true,
+    "destaqueInicio": null,
+    "destaqueFim": null,
+    "ordem": 31,
+    "altura": "24 cm",
+    "materiais": {
+      "linhas": [
+        "8990",
+        "8001",
+        "7030",
+        "1112",
+        "3583",
+        "8176"
+      ],
+      "itens": [
+        "Agulha de Crochê",
+        "Agulha de Tapeceiro",
+        "Alfinetes",
+        "Tesoura",
+        "Cola de Silicone",
+        "Fibra Siliconada",
+        "Bastão de Cola Quente",
+        "Olhos com Trava de Segurança"
+      ]
+    },
+    "videos": [
+      {
+        "titulo": "Parte 01",
+        "youtubeId": "E5I9lYL6mbk",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 02",
+        "youtubeId": "3E_lQvMjRKw",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 03",
+        "youtubeId": "dNfVnW4iJEU",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 04",
+        "youtubeId": "Hk-Urn0KQ8w",
+        "liberacao": null
+      }
+    ]
+  },
+  {
+    "id": "goku",
+    "nome": "Goku",
+    "categoria": "Anime",
+    "subCategoria": "Dragon Ball",
+    "descricao": "✨ Aprenda passo a passo a fazer o Goku Amigurumi mais poderoso do YouTube!\nNeste curso completo de crochê amigurumi inspirado no herói lendário de Dragon Ball, você vai aprender a criar um boneco cheio de energia, detalhes marcantes e um acabamento digno de um verdadeiro Super Saiyajin! 🟧🌟💥",
+    "premium": true,
+    "ativo": true,
+    "destaqueInicio": null,
+    "destaqueFim": null,
+    "ordem": 32,
+    "altura": "22 cm",
+    "materiais": {
+      "linhas": [
+        "8990",
+        "4456",
+        "8176",
+        "2770"
+      ],
+      "itens": [
+        "Agulha de Crochê",
+        "Agulha de Tapeceiro",
+        "Alfinetes",
+        "Tesoura",
+        "Cola de Silicone",
+        "Fibra Siliconada",
+        "Bastão de Cola Quente",
+        "Olhos com Trava de Segurança",
+        "Retalho de Feltro Branco"
+      ]
+    },
+    "videos": [
+      {
+        "titulo": "Parte 01",
+        "youtubeId": "EuAL2J9Znd4",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 02",
+        "youtubeId": "zvslTsseC4s",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 03",
+        "youtubeId": "u_21fQikuRo",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 04",
+        "youtubeId": "XTgmAPQqgzk",
+        "liberacao": null
+      }
+    ]
+  },
+  {
+    "id": "chapeleiromaluco",
+    "nome": "Chapeleiro Maluco",
+    "categoria": "",
+    "subCategoria": "Alice no Pais das Maravilhas",
+    "descricao": "✨ Aprenda passo a passo a fazer o Chapeleiro Maluco Amigurumi mais encantador do YouTube!\nNeste curso completo de crochê amigurumi inspirado no icônico personagem de Alice no País das Maravilhas, você vai aprender a criar um boneco cheio de personalidade, cores vivas e acabamento caprichado digno do universo mágico de Wonderland! 🎩🧵✨\n",
+    "premium": false,
+    "ativo": true,
+    "destaqueInicio": null,
+    "destaqueFim": null,
+    "ordem": 33,
+    "altura": "24 cm",
+    "materiais": {
+      "linhas": [
+        "8990",
+        "8001",
+        "7030",
+        "7569",
+        "7650",
+        "3182",
+        "5398",
+        "4456",
+        "2856",
+        "4092"
+      ],
+      "itens": [
+        "Agulha de Crochê",
+        "Agulha de Tapeceiro",
+        "Alfinetes",
+        "Tesoura",
+        "Cola de Silicone",
+        "Fibra Siliconada",
+        "Bastão de Cola Quente",
+        "Olhos com Trava de Segurança"
+      ]
+    },
+    "videos": [
+      {
+        "titulo": "Parte 01",
+        "youtubeId": "lNAApavuovY",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 02",
+        "youtubeId": "OeKEzcluJQU",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 03",
+        "youtubeId": "crU_EVE1oQc",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 04",
+        "youtubeId": "Xksc9fRBnzU",
+        "liberacao": null
+      }
+    ]
+  },
+  {
+    "id": "moana",
+    "nome": "Moana",
+    "categoria": "Animação",
+    "subCategoria": "Disney",
+    "descricao": "Aprenda a fazer a Moana em amigurumi (modelo 1) com esta playlist completa! 🧶🌊✨\nTodos os vídeos estão organizados em ordem para você acompanhar o passo a passo e confeccionar essa personagem inspiradora da Disney em crochê.",
+    "premium": false,
+    "ativo": true,
+    "destaqueInicio": null,
+    "destaqueFim": null,
+    "ordem": 34,
+    "altura": "22 cm",
+    "materiais": {
+      "linhas": [
+        "3611",
+        "8990",
+        "8001",
+        "7625",
+        "7998",
+        "2856",
+        "7650",
+        "3077"
+      ],
+      "itens": [
+        "Agulha de Crochê",
+        "Agulha de Tapeceiro",
+        "Alfinetes",
+        "Tesoura",
+        "Cola de Silicone",
+        "Fibra Siliconada",
+        "Bastão de Cola Quente",
+        "Olhos com Trava de Segurança"
+      ]
+    },
+    "videos": [
+      {
+        "titulo": "Parte 01",
+        "youtubeId": "mk0rf4AGQuU",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 02",
+        "youtubeId": "40a84xFa0TE",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 03",
+        "youtubeId": "blZwusUQvc4",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 04",
+        "youtubeId": "Zvu_llDwkes",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 05",
+        "youtubeId": "RnmL4w0HDIE",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 06",
+        "youtubeId": "B8vC55pADas",
+        "liberacao": null
+      }
+    ]
+  },
+  {
+    "id": "alegria",
+    "nome": "Alegria",
+    "categoria": "Animação",
+    "subCategoria": "Divertidamente",
+    "descricao": "Aprenda a fazer a Alegria Divertidamente com esta playlist completa! 🧶💛✨\nTodos os vídeos estão organizados em ordem para você acompanhar o passo a passo e confeccionar essa personagem encantadora do filme da Disney Pixar em crochê.",
+    "premium": false,
+    "ativo": true,
+    "destaqueInicio": null,
+    "destaqueFim": null,
+    "ordem": 35,
+    "altura": "22 cm",
+    "materiais": {
+      "linhas": [
+        "1730",
+        "2829",
+        "8001",
+        "5800"
+      ],
+      "itens": [
+        "Agulha de Crochê",
+        "Agulha de Tapeceiro",
+        "Alfinetes",
+        "Tesoura",
+        "Cola de Silicone",
+        "Fibra Siliconada",
+        "Bastão de Cola Quente",
+        "Olhos com Trava de Segurança"
+      ]
+    },
+    "videos": [
+      {
+        "titulo": "Parte 01",
+        "youtubeId": "HmAI2QprBKo",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 02",
+        "youtubeId": "SyQKYwhRcV0",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 03",
+        "youtubeId": "YmaAm9T0PBM",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 04",
+        "youtubeId": "NDzc3gQTlT0",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 05",
+        "youtubeId": "nTU1REXri6A",
+        "liberacao": null
+      }
+    ]
+  },
+  {
+    "id": "charliebrown",
+    "nome": "Charlie Brown",
+    "categoria": "Animação",
+    "subCategoria": "Charlie Brown",
+    "descricao": "💡 Traga à vida o inesquecível Charlie Brown, o menino mais querido dos quadrinhos! Neste vídeo, vamos crochetar cada detalhe desse personagem clássico e carismático em uma incrível versão amigurumi. Com seu visual único e expressividade marcante, ele será uma adição especial à sua coleção de artesanato geek!",
+    "premium": false,
+    "ativo": true,
+    "destaqueInicio": null,
+    "destaqueFim": null,
+    "ordem": 36,
+    "altura": "22 cm",
+    "materiais": {
+      "linhas": [
+        "8001",
+        "8990",
+        "7625",
+        "1289"
+      ],
+      "itens": []
+    },
+    "videos": [
+      {
+        "titulo": "Parte 01",
+        "youtubeId": "QfgiGpFqJ48",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 02",
+        "youtubeId": "FBHIwVZ68tc",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 03",
+        "youtubeId": "CLhIOzVIWKE",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 04",
+        "youtubeId": "-ZaxPeH1GSI",
+        "liberacao": null
+      },
+      {
+        "titulo": "Parte 05",
+        "youtubeId": "PuQbBDZzRYQ",
+        "liberacao": null
+      }
+    ]
   }
 ]

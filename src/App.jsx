@@ -32,7 +32,7 @@ function App() {
   ALTERE SOMENTE ESTA LINHA
   ==========================================
   */
-  const liberarNoPC = false;
+  const liberarNoPC = true;
 
   // SPLASH PREMIUM
   React.useEffect(() => {

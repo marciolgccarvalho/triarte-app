@@ -1,54 +1,70 @@
 [
   {
-    "Personagem": "Garfield",
-    "Votos": "32"
+    "Personagem": "She-Ra",
+    "Votos": "36"
   },
   {
-    "Personagem": "She-Ra",
+    "Personagem": "Nick - Zootopia",
+    "Votos": "34"
+  },
+  {
+    "Personagem": "Frozen",
     "Votos": "32"
   },
   {
     "Personagem": "Avatar",
-    "Votos": "29"
-  },
-  {
-    "Personagem": "Elza - Frozen",
-    "Votos": "29"
+    "Votos": "31"
   },
   {
     "Personagem": "Meninas Super Poderosas",
-    "Votos": "27"
+    "Votos": "29"
   },
   {
-    "Personagem": "Gandalf - Senhor do Anéis",
+    "Personagem": "Harry Potter",
+    "Votos": "24"
+  },
+  {
+    "Personagem": "Baby Yoda - Mandaloriano",
+    "Votos": "20"
+  },
+  {
+    "Personagem": "Gandalf",
     "Votos": "18"
   },
   {
-    "Personagem": "Nick - Zootopia",
-    "Votos": "18"
+    "Personagem": "Bulbasaur",
+    "Votos": "15"
   },
   {
-    "Personagem": "Bulbasaur - Poquemon",
+    "Personagem": "Yochi",
+    "Votos": "14"
+  },
+  {
+    "Personagem": "Charmander",
     "Votos": "13"
   },
   {
-    "Personagem": "Yoshi - Mario Bros",
+    "Personagem": "Legolas",
     "Votos": "13"
-  },
-  {
-    "Personagem": "Baby Yoda - Star Wars",
-    "Votos": "11"
-  },
-  {
-    "Personagem": "Raya",
-    "Votos": "11"
   },
   {
     "Personagem": "Brinquedo Assassino",
-    "Votos": "9"
+    "Votos": "11"
   },
   {
-    "Personagem": "My Melody",
+    "Personagem": "Grinch",
+    "Votos": "11"
+  },
+  {
+    "Personagem": "Raia",
+    "Votos": "11"
+  },
+  {
+    "Personagem": "Capitão Pátria - The Boys",
+    "Votos": "8"
+  },
+  {
+    "Personagem": "My Melodi",
     "Votos": "6"
   },
   {
@@ -56,27 +72,23 @@
     "Votos": "5"
   },
   {
-    "Personagem": "Grinch",
-    "Votos": "5"
-  },
-  {
     "Personagem": "Scorpions",
     "Votos": "5"
   },
   {
-    "Personagem": "Mega Man",
-    "Votos": "4"
+    "Personagem": "Pennywise",
+    "Votos": "5"
   },
   {
     "Personagem": "Power Rangers",
     "Votos": "4"
   },
   {
-    "Personagem": "Chun li",
-    "Votos": "3"
+    "Personagem": "Megaman",
+    "Votos": "4"
   },
   {
-    "Personagem": "Capitão Pátria",
-    "Votos": "2"
+    "Personagem": "Chun li",
+    "Votos": "3"
   }
 ]
