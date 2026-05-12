@@ -1,4 +1,4 @@
-const CACHE_NAME = "real-triarte-v6"; // 🔥 alterei versão (IMPORTANTE)
+const CACHE_NAME = "real-triarte-v8"; // 🔥 alterei versão (IMPORTANTE)
 
 // Arquivos essenciais
 const STATIC_ASSETS = [

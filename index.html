@@ -42,42 +42,21 @@
       content="default"
     />
 
-    <!--
-    ==========================================
-    MANIFEST APENAS NO MOBILE
-    BLOQUEIA INSTALAÇÃO NO PC
-    ==========================================
-    -->
-    <script>
-
-      const isDesktop =
-        window.innerWidth > 768;
-
-      if (!isDesktop) {
-
-        const manifest =
-          document.createElement("link");
-
-        manifest.rel = "manifest";
-
-        manifest.href = "/manifest.json";
-
-        document.head.appendChild(manifest);
-
-      }
-
-    </script>
+    <link
+      rel="manifest"
+      href="/manifest.json"
+    />
 
     <link
       rel="icon"
       type="image/png"
       sizes="192x192"
-      href="/images/icon-192.png"
+      href="/icon-192-v3.png"
     />
 
     <link
       rel="apple-touch-icon"
-      href="/images/icon-192.png"
+      href="/icon-192-v3.png"
     />
 
     <!-- Google Analytics -->

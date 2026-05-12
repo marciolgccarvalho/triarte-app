@@ -153,7 +153,7 @@ function App() {
     if (!promptInstalar) {
 
       alert(
-        "Use o menu do navegador para instalar"
+        "No Android, abra pelo Chrome e use o menu ⋮ > Instalar aplicativo ou Adicionar à tela inicial. No iPhone, abra pelo Safari, toque em Compartilhar e depois em Adicionar à Tela de Início."
       );
 
       return;
@@ -238,11 +238,11 @@ function App() {
   PC LIBERADO MANUALMENTE
   ==========================================
   */
-  if (liberarNoPC) {
+  if (isDesktop && liberarNoPC) {
 
-    return <MainApp />;
+  return <MainApp />;
 
-  }
+}
 
   /*
   ==========================================
@@ -268,18 +268,17 @@ function App() {
   APP JÁ INSTALADO
   ==========================================
   */
-  if (!promptInstalar) {
+if (!promptInstalar) {
 
-    return (
+  return (
 
-      <TelaCentro
-        titulo="📲 Aplicativo já instalado"
-        texto="O Real Triarte deve ser acessado somente pelo aplicativo instalado no dispositivo."
-      />
+    <InstallGate
+      instalarApp={instalarApp}
+    />
 
-    );
+  );
 
-  }
+}
 
   /*
   ==========================================
