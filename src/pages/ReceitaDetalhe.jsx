@@ -2,7 +2,44 @@ import React from "react";
 import "@/styles/pages/receita-detalhe.css";
 import { IMAGES } from "@/assets/images";
 import ParabensModal from "@/components/ui/ParabensModal";
-import { isVideoLiberado } from '@/services/receitasService';
+
+function getDataLiberacao(video) {
+  if (!video?.liberacao) return null;
+
+  const valor = String(video.liberacao).trim();
+
+  if (/^\d{2}\/\d{2}\/\d{4}$/.test(valor)) {
+    const [dia, mes, ano] = valor.split("/").map(Number);
+    return new Date(ano, mes - 1, dia, 16, 30, 0, 0);
+  }
+
+  const dataLiberacao = new Date(valor);
+  dataLiberacao.setHours(16, 30, 0, 0);
+
+  return dataLiberacao;
+}
+
+function isVideoLiberado(video) {
+  if (!video?.liberacao) return true;
+
+  const dataLiberacao = getDataLiberacao(video);
+
+  if (!dataLiberacao || Number.isNaN(dataLiberacao.getTime())) {
+    return false;
+  }
+
+  return new Date() >= dataLiberacao;
+}
+
+function formatarDataLiberacao(video) {
+  const dataLiberacao = getDataLiberacao(video);
+
+  if (!dataLiberacao || Number.isNaN(dataLiberacao.getTime())) {
+    return video?.liberacao || "";
+  }
+
+  return dataLiberacao.toLocaleDateString("pt-BR");
+}
 
 export default function ReceitaDetalhe({
   receita,
@@ -234,7 +271,7 @@ export default function ReceitaDetalhe({
                           </span>
 
                           <span className="rd-video-data">
-                            Libera em: {new Date(video.liberacao).toLocaleDateString("pt-BR")}
+                            Libera em: {formatarDataLiberacao(video)}
                           </span>
                         </>
                       )}

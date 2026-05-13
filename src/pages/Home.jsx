@@ -42,7 +42,7 @@ export default function Home({
       const fim = new Date(r.destaqueFim);
 
       return hoje >= inicio && hoje <= fim;
-    });
+    }).sort((a, b) => (Number(b?.ordem) || 0) - (Number(a?.ordem) || 0));
   }, [receitas, hoje]);
 
   React.useEffect(() => {
