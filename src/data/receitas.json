@@ -3011,5 +3011,142 @@
         "liberacao": null
       }
     ]
+  },
+  {
+    "id": "peach",
+    "nome": "Peach",
+    "categoria": "Games",
+    "subCategoria": "Mario Bros",
+    "descricao": "🧶 Aprenda como fazer a Princesa Peach em Amigurumi passo a passo! \nNeste tutorial completo de crochê geek, você vai criar a icônica Princesa Peach do universo Mario Bros em amigurumi, com explicações detalhadas, dicas práticas e uma receita fácil de acompanhar do início ao fim. 👑🍄",
+    "premium": true,
+    "ativo": true,
+    "destaqueInicio": "2026-05-13",
+    "destaqueFim": "2026-07-11",
+    "ordem": 37,
+    "altura": "24 cm",
+    "materiais": {
+      "linhas": [
+        "8001",
+        "8176",
+        "3182",
+        "3131",
+        "1317",
+        "7030",
+        "2194",
+        "3528"
+      ],
+      "itens": [
+        "Agulha de Crochê",
+        "Agulha de Tapeceiro",
+        "Alfinetes",
+        "Tesoura",
+        "Cola de Silicone",
+        "Fibra Siliconada",
+        "Bastão de Cola Quente",
+        "Olhos com Trava de Segurança"
+      ]
+    },
+    "videos": [
+      {
+        "titulo": "Parte 01",
+        "youtubeId": "5jXfOL7VGNc",
+        "liberacao": "28/05/2026"
+      },
+      {
+        "titulo": "Parte 02",
+        "youtubeId": "2SNPLwCVx34",
+        "liberacao": "30/05/2026"
+      },
+      {
+        "titulo": "Parte 03",
+        "youtubeId": "5CO-A3vneDQ",
+        "liberacao": "02/06/2026"
+      },
+      {
+        "titulo": "Parte 04",
+        "youtubeId": "WaxwY8kLtuo",
+        "liberacao": "04/06/2026"
+      },
+      {
+        "titulo": "Parte 05",
+        "youtubeId": "Gxcjr2EGz3M",
+        "liberacao": "06/06/2026"
+      },
+      {
+        "titulo": "Parte 06",
+        "youtubeId": "FiePPk4ImXc",
+        "liberacao": "09/06/2026"
+      },
+      {
+        "titulo": "Parte 07",
+        "youtubeId": "dzOX1xfWgy4",
+        "liberacao": "11/06/2026"
+      },
+      {
+        "titulo": "Parte 08",
+        "youtubeId": "fENU_-H4G9M",
+        "liberacao": "13/06/2026"
+      },
+      {
+        "titulo": "Parte 09",
+        "youtubeId": "4xP7sX0S5gI",
+        "liberacao": "16/06/2026"
+      },
+      {
+        "titulo": "Parte 10",
+        "youtubeId": "xu5iTP05CFc",
+        "liberacao": "18/06/2026"
+      },
+      {
+        "titulo": "Parte 11",
+        "youtubeId": "TlPRMUCUSUk",
+        "liberacao": "20/06/2026"
+      },
+      {
+        "titulo": "Parte 12",
+        "youtubeId": "kxlrG6MWvQA",
+        "liberacao": "23/06/2026"
+      },
+      {
+        "titulo": "Parte 13",
+        "youtubeId": "NBrXu63uNTY",
+        "liberacao": "25/06/2026"
+      },
+      {
+        "titulo": "Parte 14",
+        "youtubeId": "ten1F-SHFQg",
+        "liberacao": "27/06/2026"
+      },
+      {
+        "titulo": "Parte 15",
+        "youtubeId": "So5yGpod8rM",
+        "liberacao": "30/06/2026"
+      },
+      {
+        "titulo": "Parte 16",
+        "youtubeId": "ilDG79_olkU",
+        "liberacao": "02/07/2026"
+      },
+      {
+        "titulo": "Parte 17",
+        "youtubeId": "E03YWLdWod0",
+        "liberacao": "04/07/2026"
+      },
+      {
+        "titulo": "Parte 18",
+        "youtubeId": "rWlX4Afgjig",
+        "liberacao": "07/07/2026"
+      },
+      {
+        "titulo": "Parte 19",
+        "youtubeId": "T8vdSl90N6U",
+        "liberacao": "09/07/2026"
+      },
+      {
+        "titulo": "Parte 20",
+        "youtubeId": "bbaY66_5-ss",
+        "liberacao": "11/07/2026"
+      }
+    ]
   }
 ]

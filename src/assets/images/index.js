@@ -58,6 +58,7 @@ import naruto from './personagens/naruto.webp'
 import pipi from './personagens/pipi.webp'
 import sophie from './personagens/sophie.webp'
 import pow from './personagens/pow.webp'
+import peach from './personagens/peach.webp'
 
 // ==========================
 // ICONS
@@ -191,7 +192,8 @@ export const IMAGES = {
     naruto,
     pipi,
     sophie,
-    pow
+    pow,
+    peach
   },
 
   icons: {
