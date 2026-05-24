@@ -126,7 +126,7 @@ function Projetos() {
           />
 
           <div className="projetos-info">
-            <h2>Garfield</h2>
+            <h2>She-Ra</h2>
 
             <div className="projetos-progresso">
               <div className="projetos-barra">

@@ -1,67 +1,111 @@
 [
   {
-    "Personagem": "She-Ra",
-    "Votos": "36"
+    "Personagem": "Nick - Zootopia",
+    "Votos": "37"
   },
   {
-    "Personagem": "Nick - Zootopia",
-    "Votos": "34"
+    "Personagem": "Penélope Charmosa",
+    "Votos": "37"
   },
   {
     "Personagem": "Frozen",
-    "Votos": "32"
+    "Votos": "36"
   },
   {
     "Personagem": "Avatar",
+    "Votos": "34"
+  },
+  {
+    "Personagem": "Buzz Lightyear",
     "Votos": "31"
   },
   {
     "Personagem": "Meninas Super Poderosas",
-    "Votos": "29"
+    "Votos": "31"
+  },
+  {
+    "Personagem": "Batman - DC",
+    "Votos": "26"
   },
   {
     "Personagem": "Harry Potter",
+    "Votos": "25"
+  },
+  {
+    "Personagem": "Charmander",
     "Votos": "24"
   },
   {
     "Personagem": "Baby Yoda - Mandaloriano",
-    "Votos": "20"
+    "Votos": "21"
   },
   {
     "Personagem": "Gandalf",
-    "Votos": "18"
+    "Votos": "19"
   },
   {
     "Personagem": "Bulbasaur",
-    "Votos": "15"
-  },
-  {
-    "Personagem": "Yochi",
-    "Votos": "14"
-  },
-  {
-    "Personagem": "Charmander",
-    "Votos": "13"
+    "Votos": "17"
   },
   {
     "Personagem": "Legolas",
+    "Votos": "17"
+  },
+  {
+    "Personagem": "Satoru Gojo",
+    "Votos": "17"
+  },
+  {
+    "Personagem": "Snoopy",
+    "Votos": "16"
+  },
+  {
+    "Personagem": "Yochi",
+    "Votos": "16"
+  },
+  {
+    "Personagem": "Velma",
+    "Votos": "14"
+  },
+  {
+    "Personagem": "Dorothy",
     "Votos": "13"
   },
   {
+    "Personagem": "Billy - Jogos Mortais",
+    "Votos": "12"
+  },
+  {
     "Personagem": "Brinquedo Assassino",
-    "Votos": "11"
+    "Votos": "12"
   },
   {
     "Personagem": "Grinch",
-    "Votos": "11"
+    "Votos": "12"
   },
   {
     "Personagem": "Raia",
-    "Votos": "11"
+    "Votos": "12"
   },
   {
     "Personagem": "Capitão Pátria - The Boys",
     "Votos": "8"
+  },
+  {
+    "Personagem": "Izuku Midoriya",
+    "Votos": "8"
+  },
+  {
+    "Personagem": "Miles Morales",
+    "Votos": "8"
+  },
+  {
+    "Personagem": "Pennywise",
+    "Votos": "8"
+  },
+  {
+    "Personagem": "Bart Simpson",
+    "Votos": "7"
   },
   {
     "Personagem": "My Melodi",
@@ -72,11 +116,19 @@
     "Votos": "5"
   },
   {
+    "Personagem": "Megamen",
+    "Votos": "5"
+  },
+  {
+    "Personagem": "Rhaenira Targeryan - GOT",
+    "Votos": "5"
+  },
+  {
     "Personagem": "Scorpions",
     "Votos": "5"
   },
   {
-    "Personagem": "Pennywise",
+    "Personagem": "Sininho",
     "Votos": "5"
   },
   {
@@ -84,11 +136,15 @@
     "Votos": "4"
   },
   {
-    "Personagem": "Megaman",
-    "Votos": "4"
+    "Personagem": "Chun Li",
+    "Votos": "3"
   },
   {
-    "Personagem": "Chun li",
+    "Personagem": "Sub Zero",
     "Votos": "3"
+  },
+  {
+    "Personagem": "Princesa Zelda",
+    "Votos": "0"
   }
 ]

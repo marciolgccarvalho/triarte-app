@@ -3148,5 +3148,117 @@
         "liberacao": "11/07/2026"
       }
     ]
+  },
+  {
+    "id": "garfild",
+    "nome": "Garfild",
+    "categoria": "Séries",
+    "subCategoria": "Garfild",
+    "descricao": "🧶 Aprenda como fazer o Garfield em Amigurumi passo a passo! 🐱🧡\nNeste tutorial completo de crochê geek, você vai criar o famoso gatinho Garfield em amigurumi, com explicações detalhadas, dicas práticas e uma receita fácil de acompanhar do início ao fim.✨ ",
+    "premium": true,
+    "ativo": true,
+    "destaqueInicio": "2026-05-24",
+    "destaqueFim": "2026-07-06",
+    "ordem": 39,
+    "altura": "19",
+    "materiais": {
+      "linhas": [
+        "4146",
+        "1112",
+        "8990"
+      ],
+      "itens": [
+        "Agulha de Crochê",
+        "Agulha de Tapeceiro",
+        "Alfinetes",
+        "Tesoura",
+        "Cola de Silicone",
+        "Fibra Siliconada",
+        "Bastão de Cola Quente",
+        "Olhos com Trava de Segurança"
+      ]
+    },
+    "videos": [
+      {
+        "titulo": "Parte 01",
+        "youtubeId": "NlE_ccu33Wk",
+        "liberacao": "01/06/2026"
+      },
+      {
+        "titulo": "Parte 02",
+        "youtubeId": "UojbTWExTYg",
+        "liberacao": "03/06/2026"
+      },
+      {
+        "titulo": "Parte 03",
+        "youtubeId": "TcVYvImF4-0",
+        "liberacao": "05/06/2026"
+      },
+      {
+        "titulo": "Parte 04",
+        "youtubeId": "ewB8-kbDuIw",
+        "liberacao": "08/06/2026"
+      },
+      {
+        "titulo": "Parte 05",
+        "youtubeId": "OckgKpd6SAI",
+        "liberacao": "10/06/2026"
+      },
+      {
+        "titulo": "Parte 06",
+        "youtubeId": "mgAAjSTpSGI",
+        "liberacao": "12/06/2026"
+      },
+      {
+        "titulo": "Parte 07",
+        "youtubeId": "4cBUUlItNc4",
+        "liberacao": "15/06/2026"
+      },
+      {
+        "titulo": "Parte 08",
+        "youtubeId": "S1eogS2aCWo",
+        "liberacao": "17/06/2026"
+      },
+      {
+        "titulo": "Parte 09",
+        "youtubeId": "3KBt8Nb9_dk",
+        "liberacao": "19/06/2026"
+      },
+      {
+        "titulo": "Parte 10",
+        "youtubeId": "-C9pOTwGSq0",
+        "liberacao": "22/06/2026"
+      },
+      {
+        "titulo": "Parte 11",
+        "youtubeId": "jIW8coxrLBo",
+        "liberacao": "24/06/2026"
+      },
+      {
+        "titulo": "Parte 12",
+        "youtubeId": "yPcBl3IxRLA",
+        "liberacao": "26/06/2026"
+      },
+      {
+        "titulo": "Parte 13",
+        "youtubeId": "4mIj3oTaZ5U",
+        "liberacao": "29/06/2026"
+      },
+      {
+        "titulo": "Parte 14",
+        "youtubeId": "B2z3tH1HnVI",
+        "liberacao": "01/07/2026"
+      },
+      {
+        "titulo": "Parte 15",
+        "youtubeId": "5l-kJKoF3mE",
+        "liberacao": "03/07/2026"
+      },
+      {
+        "titulo": "Parte 16",
+        "youtubeId": "mOdVLCdyk3E",
+        "liberacao": "06/07/2026"
+      }
+    ]
   }
 ]
