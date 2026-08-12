@@ -68,13 +68,6 @@ export default function MenuLateral({
           />
 
           <Item
-            icone={IMAGES.icons.projeto.active}
-            texto="Projetos"
-            ativo={pagina === "projetos"}
-            onClick={() => handleClick("projetos")}
-          />
-
-          <Item
             icone={IMAGES.icons.favoritos.active}
             texto="Favoritos"
              ativo={pagina === "favoritos"}

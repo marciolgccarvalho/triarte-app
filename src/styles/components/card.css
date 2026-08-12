@@ -30,9 +30,11 @@
 .card-receita {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  min-width: 0;
 
   background: var(--color-bg-light);
-  border-radius: var(--radius-lg);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
   overflow: hidden;
 
   box-shadow: var(--shadow-sm);
@@ -43,11 +45,20 @@
 ========================= */
 .card-receita-img-wrapper {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 126px;
+  background:
+    linear-gradient(180deg, #fffdfa 0%, #fff7ed 100%);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  border-radius: 0;
 }
 
 .card-receita-img {
   width: 100%;
-  height: 140px;
+  height: 100%;
   object-fit: cover;
   display: block;
 }
@@ -93,11 +104,11 @@
    CONTEÚDO
 ========================= */
 .card-body {
-  padding: 10px;
+  padding: 10px 10px 12px;
 
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 7px;
 }
 
 /* TÍTULO */
@@ -106,6 +117,11 @@
   font-weight: 600;
   color: var(--color-text);
   line-height: 1.2;
+  min-height: 34px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 /* =========================

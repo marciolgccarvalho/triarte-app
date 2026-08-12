@@ -110,6 +110,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
+  align-items: start;
 }
 
 /* =========================
@@ -139,12 +140,16 @@
 }
 
 .receita-list-thumb {
-  width: 80px;
-  height: 70px;
+  width: 112px;
+  height: 64px;
+  flex: 0 0 112px;
 
   object-fit: cover;
+  object-position: center;
 
-  border-radius: 10px;
+  border-radius: 0;
+  background: #fff;
+  display: block;
 }
 
 .receita-list-info {

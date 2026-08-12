@@ -41,7 +41,6 @@ import "./styles/pages/receita-detalhe.css";
 import "./styles/pages/materiais.css";
 import "./styles/pages/linhas.css";
 import "./styles/pages/simulador.css";
-import "./styles/pages/projetos.css";
 import "./styles/pages/configuracoes.css";
 import "./styles/pages/conquistas.css";
 import "./styles/pages/abreviacoes.css";

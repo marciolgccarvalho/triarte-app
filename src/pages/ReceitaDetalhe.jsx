@@ -52,12 +52,13 @@ export default function ReceitaDetalhe({
   marcarVideo = () => {}
 }) {
 
-  const imagem = receita
-    ? new URL(
-        `../assets/images/personagens/${receita.id}.webp`,
-        import.meta.url
-      ).href
-    : "";
+  const imagem = receita?.imagem
+    || (receita
+      ? new URL(
+          `../assets/images/personagens/${receita.id}.webp`,
+          import.meta.url
+        ).href
+      : "");
 
   const isFavorito = receita
     ? favoritos.includes(receita.id)
@@ -110,17 +111,30 @@ export default function ReceitaDetalhe({
             </div>
 
             <div className="rd-col-right">
-              <button
-                className="rd-btn-materiais btn btn-secondary"
-                onClick={() => irPara && irPara("materiais")}
-              >
-                <img
-                  src={IMAGES.icons.lista.active}
-                  alt=""
-                  className="rd-materiais-icon"
-                />
-                <span>Ver materiais</span>
-              </button>
+              <div className="rd-top-actions">
+                {receita?.pdfLink && (
+                  <a
+                    href={receita.pdfLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rd-btn-pdf btn btn-primary"
+                  >
+                    Comprar PDF
+                  </a>
+                )}
+
+                <button
+                  className="rd-btn-materiais btn btn-secondary"
+                  onClick={() => irPara && irPara("materiais")}
+                >
+                  <img
+                    src={IMAGES.icons.lista.active}
+                    alt=""
+                    className="rd-materiais-icon"
+                  />
+                  <span>Ver materiais</span>
+                </button>
+              </div>
             </div>
 
           </div>

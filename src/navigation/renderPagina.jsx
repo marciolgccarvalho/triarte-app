@@ -12,7 +12,6 @@ import ReceitaDetalhe from "../pages/ReceitaDetalhe";
 import Materiais from "../pages/Materiais";
 import Configuracoes from "../pages/Configuracoes";
 import Linhas from "../pages/Linhas";
-import Projetos from "../pages/Projetos";
 import Informacoes from "../pages/Informacoes";
 
 
@@ -293,10 +292,6 @@ export function renderPagina({
     case "linhas":
 
       return <Linhas />;
-
-    case "projetos":
-
-      return <Projetos />;
 
     case "informacoes":
 
