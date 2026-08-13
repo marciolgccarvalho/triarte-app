@@ -24,9 +24,9 @@ export function getReceitas() {
     .map((r) => ({
       ...r,
 
-      // capa sempre prioriza o video 1
+      // capa sempre prioriza o video 1 em thumbnail widescreen
       imagem: r.videos?.[0]?.youtubeId
-        ? `https://img.youtube.com/vi/${r.videos[0].youtubeId}/hqdefault.jpg`
+        ? `https://img.youtube.com/vi/${r.videos[0].youtubeId}/mqdefault.jpg`
         : r.imagem || IMAGES.personagens[r.id] || IMAGES.ui.logo,
 
       // garante estrutura segura
