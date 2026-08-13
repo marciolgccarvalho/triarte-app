@@ -49,8 +49,7 @@
   align-items: center;
   justify-content: center;
   height: 126px;
-  background:
-    linear-gradient(180deg, #fffdfa 0%, #fff7ed 100%);
+  background: #fffdfa;
   border-bottom: 1px solid rgba(0, 0, 0, 0.04);
   overflow: hidden;
   border-radius: 0;
@@ -61,8 +60,6 @@
   height: 100%;
   object-fit: cover;
   object-position: center center;
-  transform: scale(1.12);
-  transform-origin: center center;
   display: block;
 }
 
